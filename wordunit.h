@@ -58,12 +58,13 @@
 
 // operator type
 #define UNARY_OP 60
-#define ARITH_OP 61
-#define SHIFT_OP 62
-#define RELAT_OP 63
-#define LOGIC_OP 64
-#define MIXASSIGN_OP 65
-#define ASSIGN_OP 66
+#define BIT_OP 61
+#define ARITH_OP 62
+#define SHIFT_OP 63
+#define RELAT_OP 64
+#define LOGIC_OP 65
+#define MIXASSIGN_OP 66
+#define ASSIGN_OP 67
 
 // seperator
 #define COMMA 70      // ,
