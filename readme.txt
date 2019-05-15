@@ -14,7 +14,27 @@ Feature:
 
 1. 词法分析器
 2. 语法分析器
-Program -> Def int main() { Stmt }
+Program -> DefList int main() { StmtList }
+DefList -> Def DefList | null
+Def -> Type ValList; | Type FunDef { StmtList }
+Type -> bool | int | float | Type[INUM] 
+ValList -> ID,ValList | ID
+FunDef -> ID(Args) | ID()
+Args -> Param,Args | Param
+Param -> Type ID
+
+StmtList -> Stmt StmtList | null
+Stmt -> Exp; | Type ValList; | return Exp; | { Stmt } | if(Exp) Stmt | if(Exp) Stmt else Stmt | while(Exp) Stmt | 
+        for(InitList;Exp;StepList) Stmt
+InitList -> init, InitList | init
+init -> ID=Exp | ID+=Exp | ID-=Exp
+StepList -> Step, StepList | Step
+Step -> ++ID | ID++ | --ID | ID-- | ID=Exp
+
+Exp -> Exp && Exp | Exp || Exp | Exp < Exp | Exp <= Exp | Exp > Exp | Exp >= Exp | 
+      Exp == Exp || Exp != Exp | Exp + Exp | Exp - Exp | Exp * Exp | Exp / Exp | Exp % Exp | INUM | FNUM | 
+      (Exp) | !Exp | Exp & Exp | 'Exp | Exp' | Exp ^ Exp | ~Exp | Step | init | Exp,Exp
+
 
 
 
@@ -56,7 +76,7 @@ Stmt -> Assignment ;
     | if ( Bool ) M Stmt
     | if ( Bool ) M Stmt N else M Stmt
     | while M ( Bool ) M Stmt
-    | for ( Fora ; M Forb ; Forc ) M Stmt
+    | for ( Fora ; M Forb ; Forc ) M Stmt~
     | { Stmts }
 Fora -> Assignment | ε
 Forb -> Bool | ε

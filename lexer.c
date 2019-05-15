@@ -431,12 +431,11 @@ int lex(char c, int line, int pos){
     }
 }
 
-
 int main()
 {
     initTrie();
     // char cc[100] = "while Rick hits Morty break dollardollar 100 for 1024 plumbus 1.11  == 2.22 ++ ";
-    char cc[100] = "int main(){int a=1 + 1; if(a==1)return 0; else return 1;} ";
+    char cc[100] = "int i, j; int fun(int a, float b){int m;if(a>b) m=a;else m=b;return m;}float x,y; ";
     for(int i = 0; i < strlen(cc); i++){
         if(lex(cc[i], 1, i)){
             lex(cc[i], 1, i);
