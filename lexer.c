@@ -6,25 +6,24 @@
 
 #define DEBUG
 
-#define MAXWORDS 10007
 #define isBlank(x) ((x) == ' ' || (x) == '\n' || (x) == '\t' || (x) == '\v' || (x) == '\f' || (x) == '\r')
 #define isAlpha(x) ((x) >= 'A' && (x) <= 'Z' || (x) >= 'a' && (x) <= 'z')
 #define isNum(x) ((x) >= '0' && (x) <= '9')
 #define isAlnum(x) (isAlpha((x)) || isNum((x)))
 
-static const char* keywords[] = {"", "bool", "break", "char", "continue",
+const char* keywords[] = {"", "bool", "break", "char", "continue",
                               "do", "else", "false", "float", "for", "if",
                               "int", "main", "return", "true", "while"};
-static const char* words_type[] = {"INUM", "FNUM", "ID", "KEYWORD", "OPERATOR", "SEPERATOR"};
-static const char* op_type[] = {"UNARY_OP", "BIT_OP", "ARITH_OP", 
+const char* words_type[] = {"INUM", "FNUM", "ID", "KEYWORD", "OPERATOR", "SEPERATOR"};
+const char* op_type[] = {"UNARY_OP", "BIT_OP", "ARITH_OP", 
                               "SHIFT_OP", "RELAT_OP", "LOGIC_OP",
                               "MIXASSIGN_OP", "ASSIGN_OP"};
-static const char* sep_type[] = {",", ";", "(", ")", "[", "]", "{", "}"};
-static Trie root;
-static int dfastate = SPACE;
+const char* sep_type[] = {",", ";", "(", ")", "[", "]", "{", "}"};
+Trie root;
+int dfastate = SPACE;
 
-static Word words[MAXWORDS];
-static int wordsSize = 0;
+Word words[MAXWORDS];
+int wordsSize = 0;
 
 void insertTrie(const char *str, int no, Trie root){
     Trie p = root;
@@ -79,32 +78,32 @@ void back2Space(){
     dfastate = SPACE;
 }
 
-void printWordInfo(Word w){
-    printf("(%s):", words_type[w.type - INUM]);
-    switch(w.type){
-        case ID:
-            printf("[%s]\n", w.tval.name);
-            break;
-        case KEYWORD:
-            printf("[%s]\n", keywords[w.tval.keyIdx]);
-            break;
-        case INUM:
-            printf("[%d]\n", w.tval.ivalue);
-            break;
-        case FNUM:
-            printf("[%f]\n", w.tval.fvalue);
-            break;
-        case OPERATER:
-            printf("[%s, %d]\n", op_type[w.tval.opType - UNARY_OP], w.op);
-            break;
-        case SEPERATOR:
-            printf("[%s]\n", sep_type[w.tval.sepType - COMMA]);
-            break;
-        default:
-            printf("\n");
-            break;
-    }
-}
+// void printWordInfo(Word w){
+//     printf("(%s):", words_type[w.type - INUM]);
+//     switch(w.type){
+//         case ID:
+//             printf("[%s]\n", w.tval.name);
+//             break;
+//         case KEYWORD:
+//             printf("[%s]\n", keywords[w.tval.keyIdx]);
+//             break;
+//         case INUM:
+//             printf("[%d]\n", w.tval.ivalue);
+//             break;
+//         case FNUM:
+//             printf("[%f]\n", w.tval.fvalue);
+//             break;
+//         case OPERATER:
+//             printf("[%s, %d]\n", op_type[w.tval.opType - UNARY_OP], w.op);
+//             break;
+//         case SEPERATOR:
+//             printf("[%s]\n", sep_type[w.tval.sepType - COMMA]);
+//             break;
+//         default:
+//             printf("\n");
+//             break;
+//     }
+// }
 
 int lex(char c, int line, int pos){
     switch(dfastate){
@@ -431,18 +430,18 @@ int lex(char c, int line, int pos){
     }
 }
 
-int main()
-{
-    initTrie();
-    // char cc[100] = "while Rick hits Morty break dollardollar 100 for 1024 plumbus 1.11  == 2.22 ++ ";
-    char cc[100] = "int i, j; int fun(int a, float b){int m;if(a>b) m=a;else m=b;return m;}float x,y; ";
-    for(int i = 0; i < strlen(cc); i++){
-        if(lex(cc[i], 1, i)){
-            lex(cc[i], 1, i);
-        }
-    }
-    for(int i = 1; i <= wordsSize; i++){
-        printWordInfo(words[i]);
-    }
-    return 0;
-}
+// int main()
+// {
+//     initTrie();
+//     // char cc[100] = "while Rick hits Morty break dollardollar 100 for 1024 plumbus 1.11  == 2.22 ++ ";
+//     char cc[100] = "int i, j; int fun(int a, float b){int m;if(a>b) m=a;else m=b;return m;}float x,y; ";
+//     for(int i = 0; i < strlen(cc); i++){
+//         if(lex(cc[i], 1, i)){
+//             lex(cc[i], 1, i);
+//         }
+//     }
+//     for(int i = 1; i <= wordsSize; i++){
+//         printWordInfo(words[i]);
+//     }
+//     return 0;
+// }

@@ -62,6 +62,6 @@
 #define ASSIGN_GET 45
 #define EQ_GET 46
 
-int lex(char c, int line);
+int lex(char c, int line, int pos);
 
 #endif

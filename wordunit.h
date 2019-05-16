@@ -87,12 +87,12 @@
 typedef struct TrieNode{
     int no;
     const char *value;
-    TrieNode *next[26];
+    struct TrieNode *next[26];
 } TrieNode;
 
 typedef TrieNode* Trie; 
 
-void insertTrie(const char *str, Trie root);
+void insertTrie(const char *str, int no, Trie root);
 void initTrie();
 Trie matchTrie(const char *str, Trie root);
 
@@ -110,5 +110,14 @@ typedef struct Word{
     typeVal tval;
     int op;        // only for OPERATER
 } Word;
+
+#define MAXWORDS 10007
+
+const char* keywords[];
+const char* words_type[];
+const char* op_type[];
+const char* sep_type[];
+Word words[MAXWORDS];
+int wordsSize;
 
 #endif
