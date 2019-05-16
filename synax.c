@@ -5,12 +5,17 @@
 #include <stdlib.h>
 #include <string.h>
 
-extern const char* keywords[]; 
-extern const char* words_type[];
-extern const char* op_type[];
-extern const char* sep_type[];
+extern const char* keywords[MAXSIZE]; 
+extern const char* words_type[MAXSIZE];
+extern const char* op_type[MAXSIZE];
+extern const char* sep_type[MAXSIZE];
 extern Word words[MAXWORDS];
 extern int wordsSize;
+
+static const char* synax_ele[] = {"program", "deflist", "tp", "def", "vallist", "fundef",
+                              "stmtlist", "args", "param", "stmt", "exp", "initlist", "init",
+                              "steplist", "step", "stmt1"};
+
 
 void printWordInfo(Word w){
     printf("(%s):", words_type[w.type - INUM]);

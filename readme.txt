@@ -14,85 +14,69 @@ Feature:
 
 1. 词法分析器
 2. 语法分析器
-Program -> DefList int main() { StmtList }
-DefList -> Def DefList | null
-Def -> Type ValList; | Type FunDef { StmtList }
-Type -> bool | int | float | Type[INUM] 
-ValList -> ID,ValList | ID
-FunDef -> ID(Args) | ID()
-Args -> Param,Args | Param
-Param -> Type ID
-
-StmtList -> Stmt StmtList | null
-Stmt -> Exp; | Type ValList; | return Exp; | { Stmt } | if(Exp) Stmt | if(Exp) Stmt else Stmt | while(Exp) Stmt | 
-        for(InitList;Exp;StepList) Stmt
-InitList -> init, InitList | init
-init -> ID=Exp | ID+=Exp | ID-=Exp
-StepList -> Step, StepList | Step
-Step -> ++ID | ID++ | --ID | ID-- | ID=Exp
-
-Exp -> Exp && Exp | Exp || Exp | Exp < Exp | Exp <= Exp | Exp > Exp | Exp >= Exp | 
-      Exp == Exp || Exp != Exp | Exp + Exp | Exp - Exp | Exp * Exp | Exp / Exp | Exp % Exp | INUM | FNUM | 
-      (Exp) | !Exp | Exp & Exp | 'Exp | Exp' | Exp ^ Exp | ~Exp | Step | init | Exp,Exp
-
-
-
-
-
-
-
-
-
-
-
-
-
-Program -> Type main() Block
-Type -> int | bool
-Block -> { Stmts return Num ; }
-Decl -> Type Array ;
-Array -> Identifier [ Num ] | Identifier [ Identifier ] | Identifier
-Stmts -> Stmts M Stmt | Stmt
-
-Letter -> A | B | C | D | E | F | G | H | I | J | K | L | M | N 
-    | O | P | Q | R | S | T | U | V | W | X | Y | Z | a | b
-    | c | d | e | f | g | h | i | j | k | l | m | n | o | p
-    | q | r | s | t | u | v | w | x | y | z | _
-Digit -> 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
-Non_digit -> 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
-Num -> Num Digit | Non_digit
-Identifier -> Identifier Digit | Identifier Letter | Letter
-Bool_value -> true | false
-
-Self_op -> ++ | --
-HLogic_op -> &&
-LLogic_op -> ||
-HMath_op -> * | / | %
-LMath_op -> + | - 
-Judge_op -> == | != | >= | <= | > | <
-
-Stmt -> Assignment ;
-    | Decl
-    | if ( Bool ) M Stmt
-    | if ( Bool ) M Stmt N else M Stmt
-    | while M ( Bool ) M Stmt
-    | for ( Fora ; M Forb ; Forc ) M Stmt~
-    | { Stmts }
-Fora -> Assignment | ε
-Forb -> Bool | ε
-Forc -> ForAssignment | ε
-
-Assignment -> LArray = Bool ; | LArray Self_op ; | Self_op LArray ; 
-
-ForAssignment -> LArray = Bool ; | LArray Self_op ; | Self_op LArray ; 
-
-Factor -> ( Bool ) | Array | Num | Bool_value | ! ( Bool )
-HExpr -> HExpr HMath_op Factor | Factor
-LExpr -> LExpr LMath_op HExpr | HExpr
-Rel -> Rel Judge_op LExpr | LExpr
-HRel -> HRel HLogic_op M Rel | Rel
-Bool -> Bool LLogic_op M HRel | HRel
-
-M -> ε 
-N -> ε  
+program -> deflist.
+deflist -> tp def deflist.
+deflist ->.
+tp -> INT.
+tp -> FLOAT.
+tp -> INT LMB INUM RMB.
+tp -> FLOAT LMB INUM RMB.
+vallist -> ID COMMA vallist.
+vallist -> ID.
+def -> vallist SEMICOLOM.
+def -> fundef LGB stmtlist RGB.
+fundef -> ID LLB args RLB.
+fundef -> ID LLB RLB.
+args -> param COMMA args.
+args -> param.
+param -> tp ID.
+stmtlist -> stmt stmtlist.
+stmtlist ->.
+stmt -> exp SEMICOLOM.
+stmt -> tp vallist SEMICOLOM.
+stmt -> RETURN exp SEMICOLOM.
+stmt -> LGB stmt RGB.
+stmt -> IF LLB exp RLB stmt.
+stmt -> IF LLB exp RLB stmt1 ELSE stmt.
+stmt -> WHILE LLB exp RLB stmt.
+stmt -> FOR LLB initlist SEMICOLOM exp SEMICOLOM steplist RLB stmt.
+initlist -> init COMMA initlist.
+initlist -> init.
+init -> ID ASSIGN exp.
+init -> ID ADDEQ exp.
+init -> ID MINUSEQ exp.
+steplist -> step COMMA steplist.
+steplist -> step.
+step -> BIADD ID.
+step -> ID BIADD.
+step -> BIMINUS ID.
+step -> ID BIMINUS.
+step -> ID ASSIGN exp.
+stmt1 -> IF LLB exp RLB stmt1 ELSE stmt1.
+stmt1 -> WHILE LLB exp RLB stmt1.
+stmt1 -> FOR LLB initlist SEMICOLOM exp SEMICOLOM steplist RLB stmt1.
+exp -> exp BIAND exp.
+exp -> exp BIOR exp.
+exp -> exp LSS exp.
+exp -> exp LSSEQ exp.
+exp -> exp GRT exp.
+exp -> exp GRTEQ exp.
+exp -> exp EQ exp.
+exp -> exp NOTEQ exp.
+exp -> exp ADD exp.
+exp -> exp MINUS exp.
+exp -> exp MULTI exp.
+exp -> exp DIV exp.
+exp -> exp MOD exp.
+exp -> INUM.
+exp -> FNUM.
+exp -> ID.
+exp -> LLB exp RLB.
+exp -> NOT exp.
+exp -> exp AND exp.
+exp -> exp OR exp.
+exp -> exp XOR exp.
+exp -> exp BITNOT exp.
+exp -> exp COMMA exp.
+exp -> ID LMB exp RMB.
 

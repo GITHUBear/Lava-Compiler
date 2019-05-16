@@ -112,11 +112,12 @@ typedef struct Word{
 } Word;
 
 #define MAXWORDS 10007
+#define MAXSIZE 307
 
-const char* keywords[];
-const char* words_type[];
-const char* op_type[];
-const char* sep_type[];
+const char* keywords[MAXSIZE];
+const char* words_type[MAXSIZE];
+const char* op_type[MAXSIZE];
+const char* sep_type[MAXSIZE];
 Word words[MAXWORDS];
 int wordsSize;
 
