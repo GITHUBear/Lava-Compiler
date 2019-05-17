@@ -53,7 +53,7 @@ State 12:
 
 State 13:
 3                               COMMA shift 14
-                           SEMICOLOM reduce 8
+                           SEMICOLON reduce 8
                                  LLB shift 17
 
 State 14:
@@ -62,10 +62,10 @@ State 14:
 
 State 15:
 2                               COMMA shift 14
-                           SEMICOLOM reduce 8
+                           SEMICOLON reduce 8
 
 State 16:
-1                           SEMICOLOM reduce 7
+1                           SEMICOLON reduce 7
 
 State 17:
 6                                 INT shift 5
@@ -105,7 +105,7 @@ State 25:
 1                           [default] reduce 15
 
 State 26:
-1                           SEMICOLOM shift 27
+1                           SEMICOLON shift 27
 
 State 27:
 1                           [default] reduce 9
@@ -179,7 +179,7 @@ State 34:
                                  MOD shift 60
                                MULTI shift 56
                               BITNOT shift 68
-                           SEMICOLOM shift 35
+                           SEMICOLON shift 35
 
 State 35:
 1                           [default] reduce 18
@@ -616,7 +616,7 @@ State 83:
                              vallist shift 84
 
 State 84:
-1                           SEMICOLOM shift 85
+1                           SEMICOLON shift 85
 
 State 85:
 1                           [default] reduce 19
@@ -648,7 +648,7 @@ State 87:
                                  MOD shift 60
                                MULTI shift 56
                               BITNOT shift 68
-                           SEMICOLOM shift 88
+                           SEMICOLON shift 88
 
 State 88:
 1                           [default] reduce 20
@@ -865,7 +865,7 @@ State 110:
                                 init shift 131
 
 State 111:
-1                           SEMICOLOM shift 112
+1                           SEMICOLON shift 112
 
 State 112:
 6                                 NOT shift 81
@@ -894,7 +894,7 @@ State 113:
                                  MOD shift 60
                                MULTI shift 56
                               BITNOT shift 68
-                           SEMICOLOM shift 114
+                           SEMICOLON shift 114
 
 State 114:
 5                               BIADD shift 122
@@ -997,7 +997,7 @@ State 130:
 
 State 131:
 2                               COMMA shift 132
-                           SEMICOLOM reduce 27
+                           SEMICOLON reduce 27
 
 State 132:
 3                                  ID shift 134
@@ -1005,7 +1005,7 @@ State 132:
                                 init shift 131
 
 State 133:
-1                           SEMICOLOM reduce 26
+1                           SEMICOLON reduce 26
 
 State 134:
 3                              ASSIGN shift 135
@@ -1180,7 +1180,7 @@ State 150:
                                 init shift 131
 
 State 151:
-1                           SEMICOLOM shift 152
+1                           SEMICOLON shift 152
 
 State 152:
 6                                 NOT shift 81
@@ -1209,7 +1209,7 @@ State 153:
                                  MOD shift 60
                                MULTI shift 56
                               BITNOT shift 68
-                           SEMICOLOM shift 154
+                           SEMICOLON shift 154
 
 State 154:
 5                               BIADD shift 122

@@ -18,6 +18,7 @@
 #define steplist 133
 #define step 134
 #define stmt1 135
+#define END 136
 
 #define SYNAX_ELE_MAX 300
 #define STACKMAX 10000
@@ -28,5 +29,6 @@ int stateStk[STACKMAX];
 Sentence* stcStk[STACKMAX];
 int stkTop;
 int syn_analysis_state;
+int fin;
 
 #endif

@@ -14,7 +14,7 @@
 const char* keywords[] = {"", "bool", "break", "char", "continue",
                               "do", "else", "false", "float", "for", "if",
                               "int", "main", "return", "true", "while"};
-const char* words_type[] = {"INUM", "FNUM", "ID", "KEYWORD", "OPERATOR", "SEPERATOR"};
+const char* words_type[] = {"INUM", "FNUM", "ID", "KEYWORD", "OPERATOR", "SEPERATOR", "SYNAXELE"};
 const char* op_type[] = {"UNARY_OP", "BIT_OP", "ARITH_OP", 
                               "SHIFT_OP", "RELAT_OP", "LOGIC_OP",
                               "MIXASSIGN_OP", "ASSIGN_OP"};

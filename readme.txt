@@ -14,16 +14,16 @@ Feature:
 
 1. 词法分析器
 2. 语法分析器
-program -> deflist.
-deflist -> tp def deflist.
-deflist ->.
-tp -> INT.
-tp -> FLOAT.
-tp -> INT LMB INUM RMB.
-tp -> FLOAT LMB INUM RMB.
-vallist -> ID COMMA vallist.
-vallist -> ID.
-def -> vallist SEMICOLOM.
+(0) program -> deflist.
+(1) deflist -> tp def deflist.
+(2) deflist ->.
+(3) tp -> INT.
+(4) tp -> FLOAT.
+(5) tp -> INT LMB INUM RMB.
+(6) tp -> FLOAT LMB INUM RMB.
+(7) vallist -> ID COMMA vallist.
+(8) vallist -> ID.
+(9) def -> vallist SEMICOLOM.
 def -> fundef LGB stmtlist RGB.
 fundef -> ID LLB args RLB.
 fundef -> ID LLB RLB.
@@ -79,4 +79,4 @@ exp -> exp XOR exp.
 exp -> exp BITNOT exp.
 exp -> exp COMMA exp.
 exp -> ID LMB exp RMB.
-
+exp -> exp ASSIGN exp.
