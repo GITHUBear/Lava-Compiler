@@ -83,6 +83,7 @@
 #define KEYWORD 103
 #define OPERATER 104
 #define SEPERATOR 105
+#define SYNAXELE 106
 
 typedef struct TrieNode{
     int no;
@@ -102,14 +103,18 @@ typedef union typeVal{
     int ivalue;     // only for INUM
     float fvalue;    // only for FNUM
     int opType;    // only for OPERATER
-    int sepType;   // only for SEPERATOR
+    int sepType;   // only for SEPERATORT
+    int synVal;     // only for SYNAXELE
 } typeVal;
 
 typedef struct Word{
-    int type;      // ID, KEYWORD, INUM, FNUM, OPERATER, SEPERATOR
+    int type;      // ID, KEYWORD, INUM, FNUM, OPERATER, SEPERATOR, SYNAXELE
     typeVal tval;
     int op;        // only for OPERATER
+    struct Word* next[20];
 } Word;
+
+typedef struct Word Sentence;
 
 #define MAXWORDS 10007
 #define MAXSIZE 307

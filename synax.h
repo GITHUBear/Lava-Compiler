@@ -19,6 +19,14 @@
 #define step 134
 #define stmt1 135
 
+#define SYNAX_ELE_MAX 300
+#define STACKMAX 10000
 
+const char* synax_ele[SYNAX_ELE_MAX];
+const int grammar_length[SYNAX_ELE_MAX];
+int stateStk[STACKMAX];
+Sentence* stcStk[STACKMAX];
+int stkTop;
+int syn_analysis_state;
 
 #endif

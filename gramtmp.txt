@@ -1,0 +1,1240 @@
+State 0:
+6                                   # reduce 2
+                                 INT shift 5
+                               FLOAT shift 9
+                             program accept
+                             deflist shift 1
+                                  tp shift 2
+
+State 1:
+1                                   # reduce 0
+
+State 2:
+4                                  ID shift 13
+                                 def shift 3
+                             vallist shift 26
+                              fundef shift 28
+
+State 3:
+5                                   # reduce 2
+                                 INT shift 5
+                               FLOAT shift 9
+                             deflist shift 4
+                                  tp shift 2
+
+State 4:
+1                                   # reduce 1
+
+State 5:
+2                                 LMB shift 6
+                                  ID reduce 3
+
+State 6:
+1                                INUM shift 7
+
+State 7:
+1                                 RMB shift 8
+
+State 8:
+1                                  ID reduce 5
+
+State 9:
+2                                 LMB shift 10
+                                  ID reduce 4
+
+State 10:
+1                                INUM shift 11
+
+State 11:
+1                                 RMB shift 12
+
+State 12:
+1                                  ID reduce 6
+
+State 13:
+3                               COMMA shift 14
+                           SEMICOLOM reduce 8
+                                 LLB shift 17
+
+State 14:
+2                                  ID shift 15
+                             vallist shift 16
+
+State 15:
+2                               COMMA shift 14
+                           SEMICOLOM reduce 8
+
+State 16:
+1                           SEMICOLOM reduce 7
+
+State 17:
+6                                 INT shift 5
+                               FLOAT shift 9
+                                 RLB shift 20
+                                  tp shift 24
+                                args shift 18
+                               param shift 21
+
+State 18:
+1                                 RLB shift 19
+
+State 19:
+1                                 LGB reduce 11
+
+State 20:
+1                                 LGB reduce 12
+
+State 21:
+2                               COMMA shift 22
+                                 RLB reduce 14
+
+State 22:
+5                                 INT shift 5
+                               FLOAT shift 9
+                                  tp shift 24
+                                args shift 23
+                               param shift 21
+
+State 23:
+1                                 RLB reduce 13
+
+State 24:
+1                                  ID shift 25
+
+State 25:
+1                           [default] reduce 15
+
+State 26:
+1                           SEMICOLOM shift 27
+
+State 27:
+1                           [default] reduce 9
+
+State 28:
+1                                 LGB shift 29
+
+State 29:
+17                                 NOT shift 81
+                                 INT shift 5
+                               FLOAT shift 9
+                                INUM shift 72
+                                  ID shift 74
+                                 LGB shift 89
+                                 RGB reduce 17
+                                 LLB shift 78
+                              RETURN shift 86
+                                  IF shift 92
+                               WHILE shift 145
+                                 FOR shift 149
+                                FNUM shift 73
+                                  tp shift 83
+                            stmtlist shift 30
+                                stmt shift 32
+                                 exp shift 34
+
+State 30:
+1                                 RGB shift 31
+
+State 31:
+1                           [default] reduce 10
+
+State 32:
+17                                 NOT shift 81
+                                 INT shift 5
+                               FLOAT shift 9
+                                INUM shift 72
+                                  ID shift 74
+                                 LGB shift 89
+                                 RGB reduce 17
+                                 LLB shift 78
+                              RETURN shift 86
+                                  IF shift 92
+                               WHILE shift 145
+                                 FOR shift 149
+                                FNUM shift 73
+                                  tp shift 83
+                            stmtlist shift 33
+                                stmt shift 32
+                                 exp shift 34
+
+State 33:
+1                                 RGB reduce 16
+
+State 34:
+19                               COMMA shift 70
+                                BIOR shift 38
+                               BIAND shift 36
+                                  OR shift 64
+                                 XOR shift 66
+                                 AND shift 62
+                                  EQ shift 48
+                               NOTEQ shift 50
+                                 LSS shift 40
+                               LSSEQ shift 42
+                                 GRT shift 44
+                               GRTEQ shift 46
+                                 ADD shift 52
+                               MINUS shift 54
+                                 DIV shift 58
+                                 MOD shift 60
+                               MULTI shift 56
+                              BITNOT shift 68
+                           SEMICOLOM shift 35
+
+State 35:
+1                           [default] reduce 18
+
+State 36:
+6                                 NOT shift 81
+                                INUM shift 72
+                                  ID shift 74
+                                 LLB shift 78
+                                FNUM shift 73
+                                 exp shift 37
+
+State 37:
+16                                  OR shift 64
+                                 XOR shift 66
+                                 AND shift 62
+                                  EQ shift 48
+                               NOTEQ shift 50
+                                 LSS shift 40
+                               LSSEQ shift 42
+                                 GRT shift 44
+                               GRTEQ shift 46
+                                 ADD shift 52
+                               MINUS shift 54
+                                 DIV shift 58
+                                 MOD shift 60
+                               MULTI shift 56
+                              BITNOT shift 68
+                           [default] reduce 41
+
+State 38:
+6                                 NOT shift 81
+                                INUM shift 72
+                                  ID shift 74
+                                 LLB shift 78
+                                FNUM shift 73
+                                 exp shift 39
+
+State 39:
+17                               BIAND shift 36
+                                  OR shift 64
+                                 XOR shift 66
+                                 AND shift 62
+                                  EQ shift 48
+                               NOTEQ shift 50
+                                 LSS shift 40
+                               LSSEQ shift 42
+                                 GRT shift 44
+                               GRTEQ shift 46
+                                 ADD shift 52
+                               MINUS shift 54
+                                 DIV shift 58
+                                 MOD shift 60
+                               MULTI shift 56
+                              BITNOT shift 68
+                           [default] reduce 42
+
+State 40:
+6                                 NOT shift 81
+                                INUM shift 72
+                                  ID shift 74
+                                 LLB shift 78
+                                FNUM shift 73
+                                 exp shift 41
+
+State 41:
+7                                 ADD shift 52
+                               MINUS shift 54
+                                 DIV shift 58
+                                 MOD shift 60
+                               MULTI shift 56
+                              BITNOT shift 68
+                           [default] reduce 43
+
+State 42:
+6                                 NOT shift 81
+                                INUM shift 72
+                                  ID shift 74
+                                 LLB shift 78
+                                FNUM shift 73
+                                 exp shift 43
+
+State 43:
+7                                 ADD shift 52
+                               MINUS shift 54
+                                 DIV shift 58
+                                 MOD shift 60
+                               MULTI shift 56
+                              BITNOT shift 68
+                           [default] reduce 44
+
+State 44:
+6                                 NOT shift 81
+                                INUM shift 72
+                                  ID shift 74
+                                 LLB shift 78
+                                FNUM shift 73
+                                 exp shift 45
+
+State 45:
+7                                 ADD shift 52
+                               MINUS shift 54
+                                 DIV shift 58
+                                 MOD shift 60
+                               MULTI shift 56
+                              BITNOT shift 68
+                           [default] reduce 45
+
+State 46:
+6                                 NOT shift 81
+                                INUM shift 72
+                                  ID shift 74
+                                 LLB shift 78
+                                FNUM shift 73
+                                 exp shift 47
+
+State 47:
+7                                 ADD shift 52
+                               MINUS shift 54
+                                 DIV shift 58
+                                 MOD shift 60
+                               MULTI shift 56
+                              BITNOT shift 68
+                           [default] reduce 46
+
+State 48:
+6                                 NOT shift 81
+                                INUM shift 72
+                                  ID shift 74
+                                 LLB shift 78
+                                FNUM shift 73
+                                 exp shift 49
+
+State 49:
+11                                 LSS shift 40
+                               LSSEQ shift 42
+                                 GRT shift 44
+                               GRTEQ shift 46
+                                 ADD shift 52
+                               MINUS shift 54
+                                 DIV shift 58
+                                 MOD shift 60
+                               MULTI shift 56
+                              BITNOT shift 68
+                           [default] reduce 47
+
+State 50:
+6                                 NOT shift 81
+                                INUM shift 72
+                                  ID shift 74
+                                 LLB shift 78
+                                FNUM shift 73
+                                 exp shift 51
+
+State 51:
+11                                 LSS shift 40
+                               LSSEQ shift 42
+                                 GRT shift 44
+                               GRTEQ shift 46
+                                 ADD shift 52
+                               MINUS shift 54
+                                 DIV shift 58
+                                 MOD shift 60
+                               MULTI shift 56
+                              BITNOT shift 68
+                           [default] reduce 48
+
+State 52:
+6                                 NOT shift 81
+                                INUM shift 72
+                                  ID shift 74
+                                 LLB shift 78
+                                FNUM shift 73
+                                 exp shift 53
+
+State 53:
+5                                 DIV shift 58
+                                 MOD shift 60
+                               MULTI shift 56
+                              BITNOT shift 68
+                           [default] reduce 49
+
+State 54:
+6                                 NOT shift 81
+                                INUM shift 72
+                                  ID shift 74
+                                 LLB shift 78
+                                FNUM shift 73
+                                 exp shift 55
+
+State 55:
+5                                 DIV shift 58
+                                 MOD shift 60
+                               MULTI shift 56
+                              BITNOT shift 68
+                           [default] reduce 50
+
+State 56:
+6                                 NOT shift 81
+                                INUM shift 72
+                                  ID shift 74
+                                 LLB shift 78
+                                FNUM shift 73
+                                 exp shift 57
+
+State 57:
+2                              BITNOT shift 68
+                           [default] reduce 51
+
+State 58:
+6                                 NOT shift 81
+                                INUM shift 72
+                                  ID shift 74
+                                 LLB shift 78
+                                FNUM shift 73
+                                 exp shift 59
+
+State 59:
+2                              BITNOT shift 68
+                           [default] reduce 52
+
+State 60:
+6                                 NOT shift 81
+                                INUM shift 72
+                                  ID shift 74
+                                 LLB shift 78
+                                FNUM shift 73
+                                 exp shift 61
+
+State 61:
+2                              BITNOT shift 68
+                           [default] reduce 53
+
+State 62:
+6                                 NOT shift 81
+                                INUM shift 72
+                                  ID shift 74
+                                 LLB shift 78
+                                FNUM shift 73
+                                 exp shift 63
+
+State 63:
+13                                  EQ shift 48
+                               NOTEQ shift 50
+                                 LSS shift 40
+                               LSSEQ shift 42
+                                 GRT shift 44
+                               GRTEQ shift 46
+                                 ADD shift 52
+                               MINUS shift 54
+                                 DIV shift 58
+                                 MOD shift 60
+                               MULTI shift 56
+                              BITNOT shift 68
+                           [default] reduce 59
+
+State 64:
+6                                 NOT shift 81
+                                INUM shift 72
+                                  ID shift 74
+                                 LLB shift 78
+                                FNUM shift 73
+                                 exp shift 65
+
+State 65:
+15                                 XOR shift 66
+                                 AND shift 62
+                                  EQ shift 48
+                               NOTEQ shift 50
+                                 LSS shift 40
+                               LSSEQ shift 42
+                                 GRT shift 44
+                               GRTEQ shift 46
+                                 ADD shift 52
+                               MINUS shift 54
+                                 DIV shift 58
+                                 MOD shift 60
+                               MULTI shift 56
+                              BITNOT shift 68
+                           [default] reduce 60
+
+State 66:
+6                                 NOT shift 81
+                                INUM shift 72
+                                  ID shift 74
+                                 LLB shift 78
+                                FNUM shift 73
+                                 exp shift 67
+
+State 67:
+14                                 AND shift 62
+                                  EQ shift 48
+                               NOTEQ shift 50
+                                 LSS shift 40
+                               LSSEQ shift 42
+                                 GRT shift 44
+                               GRTEQ shift 46
+                                 ADD shift 52
+                               MINUS shift 54
+                                 DIV shift 58
+                                 MOD shift 60
+                               MULTI shift 56
+                              BITNOT shift 68
+                           [default] reduce 61
+
+State 68:
+6                                 NOT shift 81
+                                INUM shift 72
+                                  ID shift 74
+                                 LLB shift 78
+                                FNUM shift 73
+                                 exp shift 69
+
+State 69:
+2                              BITNOT shift 68
+                           [default] reduce 62
+
+State 70:
+6                                 NOT shift 81
+                                INUM shift 72
+                                  ID shift 74
+                                 LLB shift 78
+                                FNUM shift 73
+                                 exp shift 71
+
+State 71:
+18                                BIOR shift 38
+                               BIAND shift 36
+                                  OR shift 64
+                                 XOR shift 66
+                                 AND shift 62
+                                  EQ shift 48
+                               NOTEQ shift 50
+                                 LSS shift 40
+                               LSSEQ shift 42
+                                 GRT shift 44
+                               GRTEQ shift 46
+                                 ADD shift 52
+                               MINUS shift 54
+                                 DIV shift 58
+                                 MOD shift 60
+                               MULTI shift 56
+                              BITNOT shift 68
+                           [default] reduce 63
+
+State 72:
+1                           [default] reduce 54
+
+State 73:
+1                           [default] reduce 55
+
+State 74:
+2                                 LMB shift 75
+                           [default] reduce 56
+
+State 75:
+6                                 NOT shift 81
+                                INUM shift 72
+                                  ID shift 74
+                                 LLB shift 78
+                                FNUM shift 73
+                                 exp shift 76
+
+State 76:
+19                               COMMA shift 70
+                                BIOR shift 38
+                               BIAND shift 36
+                                  OR shift 64
+                                 XOR shift 66
+                                 AND shift 62
+                                  EQ shift 48
+                               NOTEQ shift 50
+                                 LSS shift 40
+                               LSSEQ shift 42
+                                 GRT shift 44
+                               GRTEQ shift 46
+                                 ADD shift 52
+                               MINUS shift 54
+                                 DIV shift 58
+                                 MOD shift 60
+                               MULTI shift 56
+                              BITNOT shift 68
+                                 RMB shift 77
+
+State 77:
+1                           [default] reduce 64
+
+State 78:
+6                                 NOT shift 81
+                                INUM shift 72
+                                  ID shift 74
+                                 LLB shift 78
+                                FNUM shift 73
+                                 exp shift 79
+
+State 79:
+19                               COMMA shift 70
+                                BIOR shift 38
+                               BIAND shift 36
+                                  OR shift 64
+                                 XOR shift 66
+                                 AND shift 62
+                                  EQ shift 48
+                               NOTEQ shift 50
+                                 LSS shift 40
+                               LSSEQ shift 42
+                                 GRT shift 44
+                               GRTEQ shift 46
+                                 ADD shift 52
+                               MINUS shift 54
+                                 DIV shift 58
+                                 MOD shift 60
+                               MULTI shift 56
+                              BITNOT shift 68
+                                 RLB shift 80
+
+State 80:
+1                           [default] reduce 57
+
+State 81:
+6                                 NOT shift 81
+                                INUM shift 72
+                                  ID shift 74
+                                 LLB shift 78
+                                FNUM shift 73
+                                 exp shift 82
+
+State 82:
+2                              BITNOT shift 68
+                           [default] reduce 58
+
+State 83:
+2                                  ID shift 15
+                             vallist shift 84
+
+State 84:
+1                           SEMICOLOM shift 85
+
+State 85:
+1                           [default] reduce 19
+
+State 86:
+6                                 NOT shift 81
+                                INUM shift 72
+                                  ID shift 74
+                                 LLB shift 78
+                                FNUM shift 73
+                                 exp shift 87
+
+State 87:
+19                               COMMA shift 70
+                                BIOR shift 38
+                               BIAND shift 36
+                                  OR shift 64
+                                 XOR shift 66
+                                 AND shift 62
+                                  EQ shift 48
+                               NOTEQ shift 50
+                                 LSS shift 40
+                               LSSEQ shift 42
+                                 GRT shift 44
+                               GRTEQ shift 46
+                                 ADD shift 52
+                               MINUS shift 54
+                                 DIV shift 58
+                                 MOD shift 60
+                               MULTI shift 56
+                              BITNOT shift 68
+                           SEMICOLOM shift 88
+
+State 88:
+1                           [default] reduce 20
+
+State 89:
+15                                 NOT shift 81
+                                 INT shift 5
+                               FLOAT shift 9
+                                INUM shift 72
+                                  ID shift 74
+                                 LGB shift 89
+                                 LLB shift 78
+                              RETURN shift 86
+                                  IF shift 92
+                               WHILE shift 145
+                                 FOR shift 149
+                                FNUM shift 73
+                                  tp shift 83
+                                stmt shift 90
+                                 exp shift 34
+
+State 90:
+1                                 RGB shift 91
+
+State 91:
+1                           [default] reduce 21
+
+State 92:
+1                                 LLB shift 93
+
+State 93:
+6                                 NOT shift 81
+                                INUM shift 72
+                                  ID shift 74
+                                 LLB shift 78
+                                FNUM shift 73
+                                 exp shift 94
+
+State 94:
+19                               COMMA shift 70
+                                BIOR shift 38
+                               BIAND shift 36
+                                  OR shift 64
+                                 XOR shift 66
+                                 AND shift 62
+                                  EQ shift 48
+                               NOTEQ shift 50
+                                 LSS shift 40
+                               LSSEQ shift 42
+                                 GRT shift 44
+                               GRTEQ shift 46
+                                 ADD shift 52
+                               MINUS shift 54
+                                 DIV shift 58
+                                 MOD shift 60
+                               MULTI shift 56
+                              BITNOT shift 68
+                                 RLB shift 95
+
+State 95:
+16                                 NOT shift 81
+                                 INT shift 5
+                               FLOAT shift 9
+                                INUM shift 72
+                                  ID shift 74
+                                 LGB shift 89
+                                 LLB shift 78
+                              RETURN shift 86
+                                  IF shift 96
+                               WHILE shift 104
+                                 FOR shift 109
+                                FNUM shift 73
+                                  tp shift 83
+                                stmt shift 100
+                                 exp shift 34
+                               stmt1 shift 143
+
+State 96:
+1                                 LLB shift 97
+
+State 97:
+6                                 NOT shift 81
+                                INUM shift 72
+                                  ID shift 74
+                                 LLB shift 78
+                                FNUM shift 73
+                                 exp shift 98
+
+State 98:
+19                               COMMA shift 70
+                                BIOR shift 38
+                               BIAND shift 36
+                                  OR shift 64
+                                 XOR shift 66
+                                 AND shift 62
+                                  EQ shift 48
+                               NOTEQ shift 50
+                                 LSS shift 40
+                               LSSEQ shift 42
+                                 GRT shift 44
+                               GRTEQ shift 46
+                                 ADD shift 52
+                               MINUS shift 54
+                                 DIV shift 58
+                                 MOD shift 60
+                               MULTI shift 56
+                              BITNOT shift 68
+                                 RLB shift 99
+
+State 99:
+16                                 NOT shift 81
+                                 INT shift 5
+                               FLOAT shift 9
+                                INUM shift 72
+                                  ID shift 74
+                                 LGB shift 89
+                                 LLB shift 78
+                              RETURN shift 86
+                                  IF shift 96
+                               WHILE shift 104
+                                 FOR shift 109
+                                FNUM shift 73
+                                  tp shift 83
+                                stmt shift 100
+                                 exp shift 34
+                               stmt1 shift 101
+
+State 100:
+1                           [default] reduce 22
+
+State 101:
+1                                ELSE shift 102
+
+State 102:
+16                                 NOT shift 81
+                                 INT shift 5
+                               FLOAT shift 9
+                                INUM shift 72
+                                  ID shift 74
+                                 LGB shift 89
+                                 LLB shift 78
+                              RETURN shift 86
+                                  IF shift 96
+                               WHILE shift 104
+                                 FOR shift 109
+                                FNUM shift 73
+                                  tp shift 83
+                                stmt shift 103
+                                 exp shift 34
+                               stmt1 shift 142
+
+State 103:
+1                           [default] reduce 23
+
+State 104:
+1                                 LLB shift 105
+
+State 105:
+6                                 NOT shift 81
+                                INUM shift 72
+                                  ID shift 74
+                                 LLB shift 78
+                                FNUM shift 73
+                                 exp shift 106
+
+State 106:
+19                               COMMA shift 70
+                                BIOR shift 38
+                               BIAND shift 36
+                                  OR shift 64
+                                 XOR shift 66
+                                 AND shift 62
+                                  EQ shift 48
+                               NOTEQ shift 50
+                                 LSS shift 40
+                               LSSEQ shift 42
+                                 GRT shift 44
+                               GRTEQ shift 46
+                                 ADD shift 52
+                               MINUS shift 54
+                                 DIV shift 58
+                                 MOD shift 60
+                               MULTI shift 56
+                              BITNOT shift 68
+                                 RLB shift 107
+
+State 107:
+16                                 NOT shift 81
+                                 INT shift 5
+                               FLOAT shift 9
+                                INUM shift 72
+                                  ID shift 74
+                                 LGB shift 89
+                                 LLB shift 78
+                              RETURN shift 86
+                                  IF shift 96
+                               WHILE shift 104
+                                 FOR shift 109
+                                FNUM shift 73
+                                  tp shift 83
+                                stmt shift 108
+                                 exp shift 34
+                               stmt1 shift 141
+
+State 108:
+1                           [default] reduce 24
+
+State 109:
+1                                 LLB shift 110
+
+State 110:
+3                                  ID shift 134
+                            initlist shift 111
+                                init shift 131
+
+State 111:
+1                           SEMICOLOM shift 112
+
+State 112:
+6                                 NOT shift 81
+                                INUM shift 72
+                                  ID shift 74
+                                 LLB shift 78
+                                FNUM shift 73
+                                 exp shift 113
+
+State 113:
+19                               COMMA shift 70
+                                BIOR shift 38
+                               BIAND shift 36
+                                  OR shift 64
+                                 XOR shift 66
+                                 AND shift 62
+                                  EQ shift 48
+                               NOTEQ shift 50
+                                 LSS shift 40
+                               LSSEQ shift 42
+                                 GRT shift 44
+                               GRTEQ shift 46
+                                 ADD shift 52
+                               MINUS shift 54
+                                 DIV shift 58
+                                 MOD shift 60
+                               MULTI shift 56
+                              BITNOT shift 68
+                           SEMICOLOM shift 114
+
+State 114:
+5                               BIADD shift 122
+                             BIMINUS shift 129
+                                  ID shift 124
+                            steplist shift 115
+                                step shift 119
+
+State 115:
+1                                 RLB shift 116
+
+State 116:
+16                                 NOT shift 81
+                                 INT shift 5
+                               FLOAT shift 9
+                                INUM shift 72
+                                  ID shift 74
+                                 LGB shift 89
+                                 LLB shift 78
+                              RETURN shift 86
+                                  IF shift 96
+                               WHILE shift 104
+                                 FOR shift 109
+                                FNUM shift 73
+                                  tp shift 83
+                                stmt shift 117
+                                 exp shift 34
+                               stmt1 shift 118
+
+State 117:
+1                           [default] reduce 25
+
+State 118:
+1                                ELSE reduce 40
+
+State 119:
+2                               COMMA shift 120
+                                 RLB reduce 32
+
+State 120:
+5                               BIADD shift 122
+                             BIMINUS shift 129
+                                  ID shift 124
+                            steplist shift 121
+                                step shift 119
+
+State 121:
+1                                 RLB reduce 31
+
+State 122:
+1                                  ID shift 123
+
+State 123:
+1                           [default] reduce 33
+
+State 124:
+3                              ASSIGN shift 127
+                               BIADD shift 125
+                             BIMINUS shift 126
+
+State 125:
+1                           [default] reduce 34
+
+State 126:
+1                           [default] reduce 36
+
+State 127:
+6                                 NOT shift 81
+                                INUM shift 72
+                                  ID shift 74
+                                 LLB shift 78
+                                FNUM shift 73
+                                 exp shift 128
+
+State 128:
+18                                BIOR shift 38
+                               BIAND shift 36
+                                  OR shift 64
+                                 XOR shift 66
+                                 AND shift 62
+                                  EQ shift 48
+                               NOTEQ shift 50
+                                 LSS shift 40
+                               LSSEQ shift 42
+                                 GRT shift 44
+                               GRTEQ shift 46
+                                 ADD shift 52
+                               MINUS shift 54
+                                 DIV shift 58
+                                 MOD shift 60
+                               MULTI shift 56
+                              BITNOT shift 68
+                           [default] reduce 37
+
+State 129:
+1                                  ID shift 130
+
+State 130:
+1                           [default] reduce 35
+
+State 131:
+2                               COMMA shift 132
+                           SEMICOLOM reduce 27
+
+State 132:
+3                                  ID shift 134
+                            initlist shift 133
+                                init shift 131
+
+State 133:
+1                           SEMICOLOM reduce 26
+
+State 134:
+3                              ASSIGN shift 135
+                               ADDEQ shift 137
+                             MINUSEQ shift 139
+
+State 135:
+6                                 NOT shift 81
+                                INUM shift 72
+                                  ID shift 74
+                                 LLB shift 78
+                                FNUM shift 73
+                                 exp shift 136
+
+State 136:
+18                                BIOR shift 38
+                               BIAND shift 36
+                                  OR shift 64
+                                 XOR shift 66
+                                 AND shift 62
+                                  EQ shift 48
+                               NOTEQ shift 50
+                                 LSS shift 40
+                               LSSEQ shift 42
+                                 GRT shift 44
+                               GRTEQ shift 46
+                                 ADD shift 52
+                               MINUS shift 54
+                                 DIV shift 58
+                                 MOD shift 60
+                               MULTI shift 56
+                              BITNOT shift 68
+                           [default] reduce 28
+
+State 137:
+6                                 NOT shift 81
+                                INUM shift 72
+                                  ID shift 74
+                                 LLB shift 78
+                                FNUM shift 73
+                                 exp shift 138
+
+State 138:
+18                                BIOR shift 38
+                               BIAND shift 36
+                                  OR shift 64
+                                 XOR shift 66
+                                 AND shift 62
+                                  EQ shift 48
+                               NOTEQ shift 50
+                                 LSS shift 40
+                               LSSEQ shift 42
+                                 GRT shift 44
+                               GRTEQ shift 46
+                                 ADD shift 52
+                               MINUS shift 54
+                                 DIV shift 58
+                                 MOD shift 60
+                               MULTI shift 56
+                              BITNOT shift 68
+                           [default] reduce 29
+
+State 139:
+6                                 NOT shift 81
+                                INUM shift 72
+                                  ID shift 74
+                                 LLB shift 78
+                                FNUM shift 73
+                                 exp shift 140
+
+State 140:
+18                                BIOR shift 38
+                               BIAND shift 36
+                                  OR shift 64
+                                 XOR shift 66
+                                 AND shift 62
+                                  EQ shift 48
+                               NOTEQ shift 50
+                                 LSS shift 40
+                               LSSEQ shift 42
+                                 GRT shift 44
+                               GRTEQ shift 46
+                                 ADD shift 52
+                               MINUS shift 54
+                                 DIV shift 58
+                                 MOD shift 60
+                               MULTI shift 56
+                              BITNOT shift 68
+                           [default] reduce 30
+
+State 141:
+1                                ELSE reduce 39
+
+State 142:
+1                                ELSE reduce 38
+
+State 143:
+1                                ELSE shift 144
+
+State 144:
+15                                 NOT shift 81
+                                 INT shift 5
+                               FLOAT shift 9
+                                INUM shift 72
+                                  ID shift 74
+                                 LGB shift 89
+                                 LLB shift 78
+                              RETURN shift 86
+                                  IF shift 92
+                               WHILE shift 145
+                                 FOR shift 149
+                                FNUM shift 73
+                                  tp shift 83
+                                stmt shift 103
+                                 exp shift 34
+
+State 145:
+1                                 LLB shift 146
+
+State 146:
+6                                 NOT shift 81
+                                INUM shift 72
+                                  ID shift 74
+                                 LLB shift 78
+                                FNUM shift 73
+                                 exp shift 147
+
+State 147:
+19                               COMMA shift 70
+                                BIOR shift 38
+                               BIAND shift 36
+                                  OR shift 64
+                                 XOR shift 66
+                                 AND shift 62
+                                  EQ shift 48
+                               NOTEQ shift 50
+                                 LSS shift 40
+                               LSSEQ shift 42
+                                 GRT shift 44
+                               GRTEQ shift 46
+                                 ADD shift 52
+                               MINUS shift 54
+                                 DIV shift 58
+                                 MOD shift 60
+                               MULTI shift 56
+                              BITNOT shift 68
+                                 RLB shift 148
+
+State 148:
+15                                 NOT shift 81
+                                 INT shift 5
+                               FLOAT shift 9
+                                INUM shift 72
+                                  ID shift 74
+                                 LGB shift 89
+                                 LLB shift 78
+                              RETURN shift 86
+                                  IF shift 92
+                               WHILE shift 145
+                                 FOR shift 149
+                                FNUM shift 73
+                                  tp shift 83
+                                stmt shift 108
+                                 exp shift 34
+
+State 149:
+1                                 LLB shift 150
+
+State 150:
+3                                  ID shift 134
+                            initlist shift 151
+                                init shift 131
+
+State 151:
+1                           SEMICOLOM shift 152
+
+State 152:
+6                                 NOT shift 81
+                                INUM shift 72
+                                  ID shift 74
+                                 LLB shift 78
+                                FNUM shift 73
+                                 exp shift 153
+
+State 153:
+19                               COMMA shift 70
+                                BIOR shift 38
+                               BIAND shift 36
+                                  OR shift 64
+                                 XOR shift 66
+                                 AND shift 62
+                                  EQ shift 48
+                               NOTEQ shift 50
+                                 LSS shift 40
+                               LSSEQ shift 42
+                                 GRT shift 44
+                               GRTEQ shift 46
+                                 ADD shift 52
+                               MINUS shift 54
+                                 DIV shift 58
+                                 MOD shift 60
+                               MULTI shift 56
+                              BITNOT shift 68
+                           SEMICOLOM shift 154
+
+State 154:
+5                               BIADD shift 122
+                             BIMINUS shift 129
+                                  ID shift 124
+                            steplist shift 155
+                                step shift 119
+
+State 155:
+1                                 RLB shift 156
+
+State 156:
+15                                 NOT shift 81
+                                 INT shift 5
+                               FLOAT shift 9
+                                INUM shift 72
+                                  ID shift 74
+                                 LGB shift 89
+                                 LLB shift 78
+                              RETURN shift 86
+                                  IF shift 92
+                               WHILE shift 145
+                                 FOR shift 149
+                                FNUM shift 73
+                                  tp shift 83
+                                stmt shift 117
+                                 exp shift 34
+

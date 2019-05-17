@@ -12,10 +12,52 @@ extern const char* sep_type[MAXSIZE];
 extern Word words[MAXWORDS];
 extern int wordsSize;
 
-static const char* synax_ele[] = {"program", "deflist", "tp", "def", "vallist", "fundef",
+const char* synax_ele[] = {"program", "deflist", "tp", "def", "vallist", "fundef",
                               "stmtlist", "args", "param", "stmt", "exp", "initlist", "init",
                               "steplist", "step", "stmt1"};
+const int grammar_length[] = {1, 3, 0, 1, 1, 4, 4, 3, 1, 2, 4, 4, 3, 3, 1, 2, 2, 0, 2, 3, 3, 3, 5,
+                                  7, 5, 9, 3, 1, 3, 3, 3, 3, 1, 2, 2, 2, 2, 3, 7, 5, 9, 3, 3, 3, 3, 3, 3,
+                                  3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 3, 2, 3, 3, 3, 3, 3, 4};
+const int grammar_rule[] = {program, deflist, deflist, tp, tp, tp, tp, vallist, vallist, def, def, fundef, fundef,
+                          args, args, param, stmtlist, stmtlist, stmt, stmt, stmt, stmt, stmt, stmt, stmt, stmt,
+                          initlist, initlist, init, init, init, steplist, steplist, step, step, step, step, step, stmt1, stmt1, stmt1,
+                          exp, exp, exp, exp, exp, exp, exp, exp, exp, exp, exp, exp, 
+                          exp, exp, exp, exp, exp, exp, exp, exp, exp, exp, exp, exp};
 
+Sentence* mkNode(int ruleNum){
+    Sentence* newnode = (Sentence*) malloc(sizeof(Sentence));
+    newnode->type = SYNAXELE;
+    newnode->tval.synVal = grammar_rule[ruleNum];
+    int startpos = stkTop - grammar_length[ruleNum] + 1;
+    int endpos = stkTop;
+    for(; startpos <= endpos; startpos++)
+        newnode->next[startpos] = stcStk[startpos];
+    return newnode;
+}
+
+Sentence* shift(int nextState, Sentence* stc){
+    stateStk[++stkTop] = nextState;
+    stcStk[stkTop] = stc;
+    return NULL;
+}
+
+Sentence* reduce(int ruleNum){
+    Sentence* newnode = mkNode(ruleNum);
+    stkTop = stkTop - grammar_length[ruleNum];
+    syn_analysis_state = stateStk[stkTop];
+    return newnode;
+}
+
+void initSynaxDfa(){
+    stkTop = 0;
+    syn_analysis_state = 0;
+}
+
+Sentence* synaxdfa(Sentence* stc){
+    switch(syn_analysis_state){
+        
+    }
+}
 
 void printWordInfo(Word w){
     printf("(%s):", words_type[w.type - INUM]);
