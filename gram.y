@@ -64,7 +64,7 @@ vallist -> ID.{
     
 }
 
-def -> vallist SEMICOLOM.{
+def -> vallist SEMICOLON.{
     
 }
 
@@ -100,15 +100,15 @@ stmtlist -> .{
     
 }
 
-stmt -> exp SEMICOLOM.{
+stmt -> exp SEMICOLON.{
     
 }
 
-stmt -> tp vallist SEMICOLOM.{
+stmt -> tp vallist SEMICOLON.{
     
 }
 
-stmt -> RETURN exp SEMICOLOM.{
+stmt -> RETURN exp SEMICOLON.{
     
 }
 
@@ -128,7 +128,7 @@ stmt -> WHILE LLB exp RLB stmt.{
     
 }
 
-stmt -> FOR LLB initlist SEMICOLOM exp SEMICOLOM steplist RLB stmt. {
+stmt -> FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt. {
     
 }
 
@@ -188,7 +188,7 @@ stmt1 -> WHILE LLB exp RLB stmt1.{
     
 }
 
-stmt1 -> FOR LLB initlist SEMICOLOM exp SEMICOLOM steplist RLB stmt1.{
+stmt1 -> FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1.{
     
 }
 
@@ -285,6 +285,10 @@ exp -> exp COMMA exp.{
 }
 
 exp -> ID LMB exp RMB.{
+    
+}
+
+exp -> exp ASSIGN exp.{
     
 } 
 

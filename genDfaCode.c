@@ -10,15 +10,17 @@ int tmp;
 int main(){
     freopen("./gramtmp.txt", "r", stdin);
     freopen("./dfaCode.txt", "w", stdout);
-    for(int i = 0; i <= 156; i++){
+    for(int i = 0; i <= 149; i++){
         scanf("%s %d %s", A, &num, B);
         printf("case %d:\n", num);
         scanf("%d", &num);
+        int hasDefault = 0;
         for(int j = 1; j <= num; j++){
             scanf("%s %s", A, B);
             if(A[0] == '#'){
                 printf("\tif(synid == END){\n");
             }else if(A[0] == '['){
+                hasDefault = 1;
                 scanf("%d", &tmp);
                 if(B[0] == 'r'){
                     printf("\treturn reduce(%d);\n", tmp);
@@ -40,7 +42,8 @@ int main(){
                 }
             }
         }
-        printf("\texit(0);\n");
+        if(!hasDefault)
+            printf("\texit(0);\n");
     }
     return 0;
 }
