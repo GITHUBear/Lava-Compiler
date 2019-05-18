@@ -1,0 +1,116 @@
+lex:
+(KEYWORD):[int]
+(ID):[i]
+(SEPERATOR):[,]
+(ID):[j]
+(SEPERATOR):[;]
+(KEYWORD):[int]
+(ID):[fun]
+(SEPERATOR):[(]
+(KEYWORD):[int]
+(ID):[a]
+(SEPERATOR):[,]
+(KEYWORD):[float]
+(ID):[b]
+(SEPERATOR):[)]
+(SEPERATOR):[{]
+(KEYWORD):[int]
+(ID):[m]
+(SEPERATOR):[;]
+(KEYWORD):[if]
+(SEPERATOR):[(]
+(ID):[a]
+(OPERATOR):[RELAT_OP, 41]
+(ID):[b]
+(SEPERATOR):[)]
+(ID):[m]
+(OPERATOR):[ASSIGN_OP, 57]
+(ID):[a]
+(SEPERATOR):[;]
+(KEYWORD):[else]
+(ID):[m]
+(OPERATOR):[ASSIGN_OP, 57]
+(ID):[b]
+(SEPERATOR):[;]
+(KEYWORD):[return]
+(ID):[m]
+(SEPERATOR):[;]
+(SEPERATOR):[}]
+(KEYWORD):[float]
+(ID):[x]
+(SEPERATOR):[,]
+(ID):[y]
+(SEPERATOR):[;]
+
+
+syntax:
+program:
+    deflist:
+        tp:
+            'int':
+        def:
+            vallist:
+                ID:  [i]
+                vallist:
+                    ID:  [j]
+        deflist:
+            tp:
+                'int':
+            def:
+                fundef:
+                    ID:  [fun]
+                    args:
+                        param:
+                            tp:
+                                'int':
+                            ID:  [a]
+                        args:
+                            param:
+                                tp:
+                                    'float':
+                                ID:  [b]
+                stmtlist:
+                    stmt1:
+                        tp:
+                            'int':
+                        vallist:
+                            ID:  [m]
+                    stmtlist:
+                        stmt1:
+                            'if':
+                            exp:
+                                exp:
+                                    ID:  [a]
+                                OPERATER:  (RELAT_OP, >)
+                                exp:
+                                    ID:  [b]
+                            stmt1:
+                                exp:
+                                    exp:
+                                        ID:  [m]
+                                    OPERATER:  (ASSIGN_OP, =)
+                                    exp:
+                                        ID:  [a]
+                            'else':
+                            stmt1:
+                                exp:
+                                    exp:
+                                        ID:  [m]
+                                    OPERATER:  (ASSIGN_OP, =)
+                                    exp:
+                                        ID:  [b]
+                        stmtlist:
+                            stmt1:
+                                'return':
+                                exp:
+                                    ID:  [m]
+                            stmtlist:
+            deflist:
+                tp:
+                    'float':
+                def:
+                    vallist:
+                        ID:  [x]
+                        vallist:
+                            ID:  [y]
+                deflist:

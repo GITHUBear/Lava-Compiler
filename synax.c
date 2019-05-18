@@ -3145,16 +3145,23 @@ void printWordInfo(Word w){
     }
 }
 
-void lex_part(){
+void lex_part(FILE* file){
     initTrie();
     // char cc[100] = "while Rick hits Morty break dollardollar 10 for 1024 plumbus 1.11  == 2.22 ++ ";
-    char cc[100] = "int i, j; int fun(int a, int b){int m;if(a > b) m = a; else m=b;return m;} float a,b;";
+    // char cc[100] = "int i, j; int fun(int a, int b){int m;if(a > b) m = a; else m=b;return m;} float a,b;";
     // char cc[100] = "int main(){if(a > 0 && b > 0) m = 0;} ";
-    for(int i = 0; i < strlen(cc); i++){
-        if(lex(cc[i], 1, i)){
-            lex(cc[i], 1, i);
+    char c;
+    int colomn = 1, line = 1;
+    while((c = fgetc(file)) != EOF){
+        if(c == '\n'){
+            colomn = 1;
+            line++;
         }
+        if(lex(c, line, colomn))
+            lex(c, line, colomn);
+        colomn++;
     }
+    lex(' ', line, colomn);
     for(int i = 1; i <= wordsSize; i++){
         printWordInfo(words[i]);
     }
@@ -3230,11 +3237,14 @@ void showAST(Sentence* node, int lv){
 
 int main()
 {
+    FILE* f = fopen("./Test/SYNTAX_TEST1.txt", "r");
+    freopen("./TestRes/TEST1_RES.txt", "w", stdout);
     printf("lex:\n");
-    lex_part();
+    lex_part(f);
     printf("\n\nsyntax:\n");
     syn_part();
     // printf("%d\n", fin);
     showAST(pgm, 0);
+    fclose(f);
     return 0;
 }
