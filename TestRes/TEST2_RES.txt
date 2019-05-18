@@ -1,0 +1,163 @@
+lex:
+(KEYWORD):[int]
+(ID):[main]
+(SEPERATOR):[(]
+(SEPERATOR):[)]
+(SEPERATOR):[{]
+(KEYWORD):[int]
+(ID):[i]
+(SEPERATOR):[,]
+(ID):[j]
+(SEPERATOR):[;]
+(ID):[i]
+(OPERATOR):[ASSIGN_OP, 57]
+(INUM):[1]
+(SEPERATOR):[;]
+(ID):[j]
+(OPERATOR):[ASSIGN_OP, 57]
+(INUM):[2]
+(SEPERATOR):[;]
+(KEYWORD):[int]
+(ID):[a]
+(SEPERATOR):[,]
+(ID):[b]
+(SEPERATOR):[;]
+(ID):[a]
+(OPERATOR):[ASSIGN_OP, 57]
+(INUM):[3]
+(SEPERATOR):[;]
+(ID):[b]
+(OPERATOR):[ASSIGN_OP, 57]
+(INUM):[4]
+(SEPERATOR):[;]
+(KEYWORD):[int]
+(ID):[res]
+(SEPERATOR):[;]
+(KEYWORD):[if]
+(SEPERATOR):[(]
+(ID):[i]
+(OPERATOR):[RELAT_OP, 41]
+(ID):[j]
+(SEPERATOR):[)]
+(KEYWORD):[if]
+(SEPERATOR):[(]
+(ID):[a]
+(OPERATOR):[RELAT_OP, 43]
+(ID):[b]
+(SEPERATOR):[)]
+(ID):[res]
+(OPERATOR):[ASSIGN_OP, 57]
+(INUM):[233]
+(SEPERATOR):[;]
+(KEYWORD):[else]
+(ID):[res]
+(OPERATOR):[ASSIGN_OP, 57]
+(INUM):[666]
+(SEPERATOR):[;]
+(KEYWORD):[return]
+(ID):[res]
+(SEPERATOR):[;]
+(SEPERATOR):[}]
+
+
+syntax:
+program:
+    deflist:
+        tp:
+            'int':
+        def:
+            fundef:
+                ID:  [main]
+            stmtlist:
+                stmt1:
+                    tp:
+                        'int':
+                    vallist:
+                        ID:  [i]
+                        vallist:
+                            ID:  [j]
+                stmtlist:
+                    stmt1:
+                        exp:
+                            exp:
+                                ID:  [i]
+                            OPERATER:  (ASSIGN_OP, =)
+                            exp:
+                                INTEGER:  [1]
+                    stmtlist:
+                        stmt1:
+                            exp:
+                                exp:
+                                    ID:  [j]
+                                OPERATER:  (ASSIGN_OP, =)
+                                exp:
+                                    INTEGER:  [2]
+                        stmtlist:
+                            stmt1:
+                                tp:
+                                    'int':
+                                vallist:
+                                    ID:  [a]
+                                    vallist:
+                                        ID:  [b]
+                            stmtlist:
+                                stmt1:
+                                    exp:
+                                        exp:
+                                            ID:  [a]
+                                        OPERATER:  (ASSIGN_OP, =)
+                                        exp:
+                                            INTEGER:  [3]
+                                stmtlist:
+                                    stmt1:
+                                        exp:
+                                            exp:
+                                                ID:  [b]
+                                            OPERATER:  (ASSIGN_OP, =)
+                                            exp:
+                                                INTEGER:  [4]
+                                    stmtlist:
+                                        stmt1:
+                                            tp:
+                                                'int':
+                                            vallist:
+                                                ID:  [res]
+                                        stmtlist:
+                                            stmt:
+                                                'if':
+                                                exp:
+                                                    exp:
+                                                        ID:  [i]
+                                                    OPERATER:  (RELAT_OP, >)
+                                                    exp:
+                                                        ID:  [j]
+                                                stmt1:
+                                                    'if':
+                                                    exp:
+                                                        exp:
+                                                            ID:  [a]
+                                                        OPERATER:  (RELAT_OP, <)
+                                                        exp:
+                                                            ID:  [b]
+                                                    stmt1:
+                                                        exp:
+                                                            exp:
+                                                                ID:  [res]
+                                                            OPERATER:  (ASSIGN_OP, =)
+                                                            exp:
+                                                                INTEGER:  [233]
+                                                    'else':
+                                                    stmt1:
+                                                        exp:
+                                                            exp:
+                                                                ID:  [res]
+                                                            OPERATER:  (ASSIGN_OP, =)
+                                                            exp:
+                                                                INTEGER:  [666]
+                                            stmtlist:
+                                                stmt1:
+                                                    'return':
+                                                    exp:
+                                                        ID:  [res]
+                                                stmtlist:
+        deflist:

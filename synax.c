@@ -3237,8 +3237,8 @@ void showAST(Sentence* node, int lv){
 
 int main()
 {
-    FILE* f = fopen("./Test/SYNTAX_TEST1.txt", "r");
-    freopen("./TestRes/TEST1_RES.txt", "w", stdout);
+    FILE* f = fopen("./Test/SYNTAX_TEST2.txt", "r");
+    freopen("./TestRes/TEST2_RES.txt", "w", stdout);
     printf("lex:\n");
     lex_part(f);
     printf("\n\nsyntax:\n");
