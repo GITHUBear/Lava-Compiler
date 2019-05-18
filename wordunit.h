@@ -13,48 +13,48 @@
 #define FOR 9
 #define IF 10
 #define INT 11
-#define MAIN 12
-#define RETURN 13
-#define TRUE 14
-#define WHILE 15
+// #define MAIN 12
+#define RETURN 12
+#define TRUE 13
+#define WHILE 14
 
 // operator
 // ++, --, !, ~
 #define BIADD 30
 #define BIMINUS 31
 // #define NEG 32
-#define NOT 33
-#define BITNOT 34
+#define NOT 32
+#define BITNOT 33
 // *, /, %, +, -
-#define MULTI 35
-#define DIV 36
-#define MOD 37
-#define ADD 38
-#define MINUS 39
+#define MULTI 34
+#define DIV 35
+#define MOD 36
+#define ADD 37
+#define MINUS 38
 // <<, >>
-#define LSHIFT 40
-#define RSHIFT 41
+#define LSHIFT 39
+#define RSHIFT 40
 // >, >=, <, <=, ==, !=
-#define GRT 42
-#define GRTEQ 43
-#define LSS 44
-#define LSSEQ 45
-#define EQ 46
-#define NOTEQ 47
+#define GRT 41
+#define GRTEQ 42
+#define LSS 43
+#define LSSEQ 44
+#define EQ 45
+#define NOTEQ 46
 // &, ^, |, &&, ||
-#define AND 48
-#define XOR 49
-#define OR 50
-#define BIAND 51
-#define BIOR 52
+#define AND 47
+#define XOR 48
+#define OR 49
+#define BIAND 50
+#define BIOR 51
 // +=, -=, *=, /=, %=
-#define ADDEQ 53
-#define MINUSEQ 54
-#define MULTIEQ 55
-#define DIVEQ 56
-#define MODEQ 57
+#define ADDEQ 52
+#define MINUSEQ 53
+#define MULTIEQ 54
+#define DIVEQ 55
+#define MODEQ 56
 // =
-#define SETVAL 58
+#define SETVAL 57
 
 // operator type
 #define UNARY_OP 60
@@ -122,6 +122,7 @@ typedef struct Word Sentence;
 const char* keywords[MAXSIZE];
 const char* words_type[MAXSIZE];
 const char* op_type[MAXSIZE];
+const char* op_detail_type[MAXSIZE];
 const char* sep_type[MAXSIZE];
 Word words[MAXWORDS];
 int wordsSize;

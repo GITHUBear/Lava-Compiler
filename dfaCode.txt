@@ -251,13 +251,13 @@ case 29:
 		return shift(88, stc);
 	}
 	if(synid == IF){
-		return shift(94, stc);
+		return shift(98, stc);
 	}
 	if(synid == WHILE){
-		return shift(147, stc);
+		return shift(106, stc);
 	}
 	if(synid == FOR){
-		return shift(151, stc);
+		return shift(111, stc);
 	}
 	if(synid == FNUM){
 		return shift(75, stc);
@@ -270,6 +270,9 @@ case 29:
 	}
 	if(synid == stmt){
 		return shift(32, stc);
+	}
+	if(synid == stmt1){
+		return shift(159, stc);
 	}
 	if(synid == exp){
 		return shift(34, stc);
@@ -311,13 +314,13 @@ case 32:
 		return shift(88, stc);
 	}
 	if(synid == IF){
-		return shift(94, stc);
+		return shift(98, stc);
 	}
 	if(synid == WHILE){
-		return shift(147, stc);
+		return shift(106, stc);
 	}
 	if(synid == FOR){
-		return shift(151, stc);
+		return shift(111, stc);
 	}
 	if(synid == FNUM){
 		return shift(75, stc);
@@ -330,6 +333,9 @@ case 32:
 	}
 	if(synid == stmt){
 		return shift(32, stc);
+	}
+	if(synid == stmt1){
+		return shift(159, stc);
 	}
 	if(synid == exp){
 		return shift(34, stc);
@@ -1610,29 +1616,8 @@ case 89:
 case 90:
 	return reduce(20);
 case 91:
-	if(synid == NOT){
-		return shift(83, stc);
-	}
-	if(synid == INT){
-		return shift(5, stc);
-	}
-	if(synid == FLOAT){
-		return shift(9, stc);
-	}
-	if(synid == INUM){
-		return shift(74, stc);
-	}
-	if(synid == ID){
-		return shift(76, stc);
-	}
 	if(synid == LGB){
 		return shift(91, stc);
-	}
-	if(synid == LLB){
-		return shift(80, stc);
-	}
-	if(synid == RETURN){
-		return shift(88, stc);
 	}
 	if(synid == IF){
 		return shift(94, stc);
@@ -1643,17 +1628,8 @@ case 91:
 	if(synid == FOR){
 		return shift(151, stc);
 	}
-	if(synid == FNUM){
-		return shift(75, stc);
-	}
-	if(synid == tp){
-		return shift(85, stc);
-	}
 	if(synid == stmt){
 		return shift(92, stc);
-	}
-	if(synid == exp){
-		return shift(34, stc);
 	}
 	exit(0);
 case 92:
@@ -1793,11 +1769,11 @@ case 97:
 	if(synid == stmt){
 		return shift(102, stc);
 	}
-	if(synid == exp){
-		return shift(34, stc);
-	}
 	if(synid == stmt1){
 		return shift(145, stc);
+	}
+	if(synid == exp){
+		return shift(34, stc);
 	}
 	exit(0);
 case 98:
@@ -1930,11 +1906,11 @@ case 101:
 	if(synid == stmt){
 		return shift(102, stc);
 	}
-	if(synid == exp){
-		return shift(34, stc);
-	}
 	if(synid == stmt1){
 		return shift(103, stc);
+	}
+	if(synid == exp){
+		return shift(34, stc);
 	}
 	exit(0);
 case 102:
@@ -1943,7 +1919,7 @@ case 103:
 	if(synid == ELSE){
 		return shift(104, stc);
 	}
-	exit(0);
+	return reduce(67);
 case 104:
 	if(synid == NOT){
 		return shift(83, stc);
@@ -1987,11 +1963,11 @@ case 104:
 	if(synid == stmt){
 		return shift(105, stc);
 	}
-	if(synid == exp){
-		return shift(34, stc);
-	}
 	if(synid == stmt1){
 		return shift(144, stc);
+	}
+	if(synid == exp){
+		return shift(34, stc);
 	}
 	exit(0);
 case 105:
@@ -2126,11 +2102,11 @@ case 109:
 	if(synid == stmt){
 		return shift(110, stc);
 	}
-	if(synid == exp){
-		return shift(34, stc);
-	}
 	if(synid == stmt1){
 		return shift(143, stc);
+	}
+	if(synid == exp){
+		return shift(34, stc);
 	}
 	exit(0);
 case 110:
@@ -2303,20 +2279,17 @@ case 118:
 	if(synid == stmt){
 		return shift(119, stc);
 	}
-	if(synid == exp){
-		return shift(34, stc);
-	}
 	if(synid == stmt1){
 		return shift(120, stc);
+	}
+	if(synid == exp){
+		return shift(34, stc);
 	}
 	exit(0);
 case 119:
 	return reduce(25);
 case 120:
-	if(synid == ELSE){
-		return reduce(40);
-	}
-	exit(0);
+	return reduce(40);
 case 121:
 	if(synid == COMMA){
 		return shift(122, stc);
@@ -2716,44 +2689,20 @@ case 142:
 	}
 	return reduce(30);
 case 143:
-	if(synid == ELSE){
-		return reduce(39);
-	}
-	exit(0);
+	return reduce(39);
 case 144:
-	if(synid == ELSE){
-		return reduce(38);
-	}
-	exit(0);
+	return reduce(38);
 case 145:
 	if(synid == ELSE){
 		return shift(146, stc);
 	}
+	if(synid == RGB){
+		return reduce(67);
+	}
 	exit(0);
 case 146:
-	if(synid == NOT){
-		return shift(83, stc);
-	}
-	if(synid == INT){
-		return shift(5, stc);
-	}
-	if(synid == FLOAT){
-		return shift(9, stc);
-	}
-	if(synid == INUM){
-		return shift(74, stc);
-	}
-	if(synid == ID){
-		return shift(76, stc);
-	}
 	if(synid == LGB){
 		return shift(91, stc);
-	}
-	if(synid == LLB){
-		return shift(80, stc);
-	}
-	if(synid == RETURN){
-		return shift(88, stc);
 	}
 	if(synid == IF){
 		return shift(94, stc);
@@ -2764,17 +2713,8 @@ case 146:
 	if(synid == FOR){
 		return shift(151, stc);
 	}
-	if(synid == FNUM){
-		return shift(75, stc);
-	}
-	if(synid == tp){
-		return shift(85, stc);
-	}
 	if(synid == stmt){
 		return shift(105, stc);
-	}
-	if(synid == exp){
-		return shift(34, stc);
 	}
 	exit(0);
 case 147:
@@ -2862,5 +2802,225 @@ case 149:
 	}
 	if(synid == RLB){
 		return shift(150, stc);
+	}
+	exit(0);
+case 150:
+	if(synid == LGB){
+		return shift(91, stc);
+	}
+	if(synid == IF){
+		return shift(94, stc);
+	}
+	if(synid == WHILE){
+		return shift(147, stc);
+	}
+	if(synid == FOR){
+		return shift(151, stc);
+	}
+	if(synid == stmt){
+		return shift(110, stc);
+	}
+	exit(0);
+case 151:
+	if(synid == LLB){
+		return shift(152, stc);
+	}
+	exit(0);
+case 152:
+	if(synid == ID){
+		return shift(136, stc);
+	}
+	if(synid == initlist){
+		return shift(153, stc);
+	}
+	if(synid == init){
+		return shift(133, stc);
+	}
+	exit(0);
+case 153:
+	if(synid == SEMICOLON){
+		return shift(154, stc);
+	}
+	exit(0);
+case 154:
+	if(synid == NOT){
+		return shift(83, stc);
+	}
+	if(synid == INUM){
+		return shift(74, stc);
+	}
+	if(synid == ID){
+		return shift(76, stc);
+	}
+	if(synid == LLB){
+		return shift(80, stc);
+	}
+	if(synid == FNUM){
+		return shift(75, stc);
+	}
+	if(synid == exp){
+		return shift(155, stc);
+	}
+	exit(0);
+case 155:
+	if(synid == COMMA){
+		return shift(70, stc);
+	}
+	if(synid == ASSIGN){
+		return shift(72, stc);
+	}
+	if(synid == BIOR){
+		return shift(38, stc);
+	}
+	if(synid == BIAND){
+		return shift(36, stc);
+	}
+	if(synid == OR){
+		return shift(64, stc);
+	}
+	if(synid == XOR){
+		return shift(66, stc);
+	}
+	if(synid == AND){
+		return shift(62, stc);
+	}
+	if(synid == EQ){
+		return shift(48, stc);
+	}
+	if(synid == NOTEQ){
+		return shift(50, stc);
+	}
+	if(synid == LSS){
+		return shift(40, stc);
+	}
+	if(synid == LSSEQ){
+		return shift(42, stc);
+	}
+	if(synid == GRT){
+		return shift(44, stc);
+	}
+	if(synid == GRTEQ){
+		return shift(46, stc);
+	}
+	if(synid == ADD){
+		return shift(52, stc);
+	}
+	if(synid == MINUS){
+		return shift(54, stc);
+	}
+	if(synid == DIV){
+		return shift(58, stc);
+	}
+	if(synid == MOD){
+		return shift(60, stc);
+	}
+	if(synid == MULTI){
+		return shift(56, stc);
+	}
+	if(synid == BITNOT){
+		return shift(68, stc);
+	}
+	if(synid == SEMICOLON){
+		return shift(156, stc);
+	}
+	exit(0);
+case 156:
+	if(synid == BIADD){
+		return shift(124, stc);
+	}
+	if(synid == BIMINUS){
+		return shift(131, stc);
+	}
+	if(synid == ID){
+		return shift(126, stc);
+	}
+	if(synid == steplist){
+		return shift(157, stc);
+	}
+	if(synid == step){
+		return shift(121, stc);
+	}
+	exit(0);
+case 157:
+	if(synid == RLB){
+		return shift(158, stc);
+	}
+	exit(0);
+case 158:
+	if(synid == LGB){
+		return shift(91, stc);
+	}
+	if(synid == IF){
+		return shift(94, stc);
+	}
+	if(synid == WHILE){
+		return shift(147, stc);
+	}
+	if(synid == FOR){
+		return shift(151, stc);
+	}
+	if(synid == stmt){
+		return shift(119, stc);
+	}
+	exit(0);
+case 159:
+	if(synid == NOT){
+		return shift(83, stc);
+	}
+	if(synid == INT){
+		return shift(5, stc);
+	}
+	if(synid == FLOAT){
+		return shift(9, stc);
+	}
+	if(synid == INUM){
+		return shift(74, stc);
+	}
+	if(synid == ID){
+		return shift(76, stc);
+	}
+	if(synid == LGB){
+		return shift(91, stc);
+	}
+	if(synid == RGB){
+		return reduce(17);
+	}
+	if(synid == LLB){
+		return shift(80, stc);
+	}
+	if(synid == RETURN){
+		return shift(88, stc);
+	}
+	if(synid == IF){
+		return shift(98, stc);
+	}
+	if(synid == WHILE){
+		return shift(106, stc);
+	}
+	if(synid == FOR){
+		return shift(111, stc);
+	}
+	if(synid == FNUM){
+		return shift(75, stc);
+	}
+	if(synid == tp){
+		return shift(85, stc);
+	}
+	if(synid == stmtlist){
+		return shift(160, stc);
+	}
+	if(synid == stmt){
+		return shift(32, stc);
+	}
+	if(synid == stmt1){
+		return shift(159, stc);
+	}
+	if(synid == exp){
+		return shift(34, stc);
+	}
+	exit(0);
+case 160:
+	if(synid == RGB){
+		return reduce(66);
 	}
 	exit(0);

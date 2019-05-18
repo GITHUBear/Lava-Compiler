@@ -86,15 +86,12 @@ State 4:
 State 5:
              (3)tp -> INT . {ID}
                     From (state 000) tp -> * INT .
-                    From (state 158) tp -> * INT .
-                    From (state 150) tp -> * INT .
-                    From (state 146) tp -> * INT .
+                    From (state 159) tp -> * INT .
                     From (state 118) tp -> * INT .
                     From (state 109) tp -> * INT .
                     From (state 104) tp -> * INT .
                     From (state 101) tp -> * INT .
                     From (state 097) tp -> * INT .
-                    From (state 091) tp -> * INT .
                     From (state 032) tp -> * INT .
                     From (state 029) tp -> * INT .
                     From (state 022) tp -> * INT .
@@ -103,15 +100,12 @@ State 5:
                 tp -> INT * LMB INUM RMB . {ID}
                     To (state 006) tp -> INT LMB * INUM RMB .
                     From (state 000) tp -> * INT LMB INUM RMB .
-                    From (state 158) tp -> * INT LMB INUM RMB .
-                    From (state 150) tp -> * INT LMB INUM RMB .
-                    From (state 146) tp -> * INT LMB INUM RMB .
+                    From (state 159) tp -> * INT LMB INUM RMB .
                     From (state 118) tp -> * INT LMB INUM RMB .
                     From (state 109) tp -> * INT LMB INUM RMB .
                     From (state 104) tp -> * INT LMB INUM RMB .
                     From (state 101) tp -> * INT LMB INUM RMB .
                     From (state 097) tp -> * INT LMB INUM RMB .
-                    From (state 091) tp -> * INT LMB INUM RMB .
                     From (state 032) tp -> * INT LMB INUM RMB .
                     From (state 029) tp -> * INT LMB INUM RMB .
                     From (state 022) tp -> * INT LMB INUM RMB .
@@ -144,15 +138,12 @@ State 8:
 State 9:
              (4)tp -> FLOAT . {ID}
                     From (state 000) tp -> * FLOAT .
-                    From (state 158) tp -> * FLOAT .
-                    From (state 150) tp -> * FLOAT .
-                    From (state 146) tp -> * FLOAT .
+                    From (state 159) tp -> * FLOAT .
                     From (state 118) tp -> * FLOAT .
                     From (state 109) tp -> * FLOAT .
                     From (state 104) tp -> * FLOAT .
                     From (state 101) tp -> * FLOAT .
                     From (state 097) tp -> * FLOAT .
-                    From (state 091) tp -> * FLOAT .
                     From (state 032) tp -> * FLOAT .
                     From (state 029) tp -> * FLOAT .
                     From (state 022) tp -> * FLOAT .
@@ -161,15 +152,12 @@ State 9:
                 tp -> FLOAT * LMB INUM RMB . {ID}
                     To (state 010) tp -> FLOAT LMB * INUM RMB .
                     From (state 000) tp -> * FLOAT LMB INUM RMB .
-                    From (state 158) tp -> * FLOAT LMB INUM RMB .
-                    From (state 150) tp -> * FLOAT LMB INUM RMB .
-                    From (state 146) tp -> * FLOAT LMB INUM RMB .
+                    From (state 159) tp -> * FLOAT LMB INUM RMB .
                     From (state 118) tp -> * FLOAT LMB INUM RMB .
                     From (state 109) tp -> * FLOAT LMB INUM RMB .
                     From (state 104) tp -> * FLOAT LMB INUM RMB .
                     From (state 101) tp -> * FLOAT LMB INUM RMB .
                     From (state 097) tp -> * FLOAT LMB INUM RMB .
-                    From (state 091) tp -> * FLOAT LMB INUM RMB .
                     From (state 032) tp -> * FLOAT LMB INUM RMB .
                     From (state 029) tp -> * FLOAT LMB INUM RMB .
                     From (state 022) tp -> * FLOAT LMB INUM RMB .
@@ -392,31 +380,35 @@ State 29:
                     From (state 028) def -> fundef * LGB stmtlist RGB .
                 stmtlist -> * stmt stmtlist . {RGB}
                     To (state 032) stmtlist -> stmt * stmtlist .
-                    To (state 029) stmt -> * exp SEMICOLON .
-                    To (state 029) stmt -> * tp vallist SEMICOLON .
-                    To (state 029) stmt -> * RETURN exp SEMICOLON .
                     To (state 029) stmt -> * LGB stmt RGB .
                     To (state 029) stmt -> * IF LLB exp RLB stmt .
                     To (state 029) stmt -> * IF LLB exp RLB stmt1 ELSE stmt .
                     To (state 029) stmt -> * WHILE LLB exp RLB stmt .
                     To (state 029) stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
+                    To (state 029) stmt -> * IF LLB exp RLB stmt1 .
             (17)stmtlist -> . {RGB}
-                stmt -> * exp SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 034) stmt -> exp * SEMICOLON .
-                stmt -> * tp vallist SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 085) stmt -> tp * vallist SEMICOLON .
-                stmt -> * RETURN exp SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 088) stmt -> RETURN * exp SEMICOLON .
+                stmt1 -> * exp SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 034) stmt1 -> exp * SEMICOLON .
+                stmt1 -> * tp vallist SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 085) stmt1 -> tp * vallist SEMICOLON .
+                stmt1 -> * RETURN exp SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 088) stmt1 -> RETURN * exp SEMICOLON .
                 stmt -> * LGB stmt RGB . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 091) stmt -> LGB * stmt RGB .
                 stmt -> * IF LLB exp RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 094) stmt -> IF * LLB exp RLB stmt .
+                    To (state 098) stmt -> IF * LLB exp RLB stmt .
                 stmt -> * IF LLB exp RLB stmt1 ELSE stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 094) stmt -> IF * LLB exp RLB stmt1 ELSE stmt .
+                    To (state 098) stmt -> IF * LLB exp RLB stmt1 ELSE stmt .
                 stmt -> * WHILE LLB exp RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 147) stmt -> WHILE * LLB exp RLB stmt .
+                    To (state 106) stmt -> WHILE * LLB exp RLB stmt .
                 stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 151) stmt -> FOR * LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
+                    To (state 111) stmt -> FOR * LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
+                stmt1 -> * IF LLB exp RLB stmt1 ELSE stmt1 . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 098) stmt1 -> IF * LLB exp RLB stmt1 ELSE stmt1 .
+                stmt1 -> * WHILE LLB exp RLB stmt1 . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 106) stmt1 -> WHILE * LLB exp RLB stmt1 .
+                stmt1 -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 111) stmt1 -> FOR * LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 .
                 exp -> * exp BIAND exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 034) exp -> exp * BIAND exp .
                 exp -> * exp BIOR exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
@@ -467,6 +459,16 @@ State 29:
                     To (state 076) exp -> ID * LMB exp RMB .
                 exp -> * exp ASSIGN exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 034) exp -> exp * ASSIGN exp .
+                stmtlist -> * stmt1 stmtlist . {RGB}
+                    To (state 159) stmtlist -> stmt1 * stmtlist .
+                    To (state 029) stmt1 -> * exp SEMICOLON .
+                    To (state 029) stmt1 -> * tp vallist SEMICOLON .
+                    To (state 029) stmt1 -> * RETURN exp SEMICOLON .
+                    To (state 029) stmt1 -> * IF LLB exp RLB stmt1 ELSE stmt1 .
+                    To (state 029) stmt1 -> * WHILE LLB exp RLB stmt1 .
+                    To (state 029) stmt1 -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 .
+                stmt -> * IF LLB exp RLB stmt1 . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 098) stmt -> IF * LLB exp RLB stmt1 .
 
                                  NOT shift 83
                                  INT shift 5
@@ -477,13 +479,14 @@ State 29:
                                  RGB reduce 17
                                  LLB shift 80
                               RETURN shift 88
-                                  IF shift 94
-                               WHILE shift 147
-                                 FOR shift 151
+                                  IF shift 98
+                               WHILE shift 106
+                                 FOR shift 111
                                 FNUM shift 75
                                   tp shift 85
                             stmtlist shift 30
                                 stmt shift 32
+                               stmt1 shift 159
                                  exp shift 34
 
 State 30:
@@ -510,37 +513,43 @@ State 32:
                     To (state 009) tp -> FLOAT * LMB INUM RMB .
                 stmtlist -> * stmt stmtlist . {RGB}
                     To (state 032) stmtlist -> stmt * stmtlist .
-                    To (state 032) stmt -> * exp SEMICOLON .
-                    To (state 032) stmt -> * tp vallist SEMICOLON .
-                    To (state 032) stmt -> * RETURN exp SEMICOLON .
                     To (state 032) stmt -> * LGB stmt RGB .
                     To (state 032) stmt -> * IF LLB exp RLB stmt .
                     To (state 032) stmt -> * IF LLB exp RLB stmt1 ELSE stmt .
                     To (state 032) stmt -> * WHILE LLB exp RLB stmt .
                     To (state 032) stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
+                    To (state 032) stmt -> * IF LLB exp RLB stmt1 .
                 stmtlist -> stmt * stmtlist . {RGB}
                     To (state 033) stmtlist -> stmt stmtlist .
                     To (state 032) stmtlist -> * stmt stmtlist .
                     To (state 032) stmtlist -> .
+                    To (state 032) stmtlist -> * stmt1 stmtlist .
+                    From (state 159) stmtlist -> * stmt stmtlist .
                     From (state 032) stmtlist -> * stmt stmtlist .
                     From (state 029) stmtlist -> * stmt stmtlist .
             (17)stmtlist -> . {RGB}
-                stmt -> * exp SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 034) stmt -> exp * SEMICOLON .
-                stmt -> * tp vallist SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 085) stmt -> tp * vallist SEMICOLON .
-                stmt -> * RETURN exp SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 088) stmt -> RETURN * exp SEMICOLON .
+                stmt1 -> * exp SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 034) stmt1 -> exp * SEMICOLON .
+                stmt1 -> * tp vallist SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 085) stmt1 -> tp * vallist SEMICOLON .
+                stmt1 -> * RETURN exp SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 088) stmt1 -> RETURN * exp SEMICOLON .
                 stmt -> * LGB stmt RGB . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 091) stmt -> LGB * stmt RGB .
                 stmt -> * IF LLB exp RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 094) stmt -> IF * LLB exp RLB stmt .
+                    To (state 098) stmt -> IF * LLB exp RLB stmt .
                 stmt -> * IF LLB exp RLB stmt1 ELSE stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 094) stmt -> IF * LLB exp RLB stmt1 ELSE stmt .
+                    To (state 098) stmt -> IF * LLB exp RLB stmt1 ELSE stmt .
                 stmt -> * WHILE LLB exp RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 147) stmt -> WHILE * LLB exp RLB stmt .
+                    To (state 106) stmt -> WHILE * LLB exp RLB stmt .
                 stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 151) stmt -> FOR * LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
+                    To (state 111) stmt -> FOR * LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
+                stmt1 -> * IF LLB exp RLB stmt1 ELSE stmt1 . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 098) stmt1 -> IF * LLB exp RLB stmt1 ELSE stmt1 .
+                stmt1 -> * WHILE LLB exp RLB stmt1 . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 106) stmt1 -> WHILE * LLB exp RLB stmt1 .
+                stmt1 -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 111) stmt1 -> FOR * LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 .
                 exp -> * exp BIAND exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 034) exp -> exp * BIAND exp .
                 exp -> * exp BIOR exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
@@ -591,6 +600,16 @@ State 32:
                     To (state 076) exp -> ID * LMB exp RMB .
                 exp -> * exp ASSIGN exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 034) exp -> exp * ASSIGN exp .
+                stmtlist -> * stmt1 stmtlist . {RGB}
+                    To (state 159) stmtlist -> stmt1 * stmtlist .
+                    To (state 032) stmt1 -> * exp SEMICOLON .
+                    To (state 032) stmt1 -> * tp vallist SEMICOLON .
+                    To (state 032) stmt1 -> * RETURN exp SEMICOLON .
+                    To (state 032) stmt1 -> * IF LLB exp RLB stmt1 ELSE stmt1 .
+                    To (state 032) stmt1 -> * WHILE LLB exp RLB stmt1 .
+                    To (state 032) stmt1 -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 .
+                stmt -> * IF LLB exp RLB stmt1 . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 098) stmt -> IF * LLB exp RLB stmt1 .
 
                                  NOT shift 83
                                  INT shift 5
@@ -601,13 +620,14 @@ State 32:
                                  RGB reduce 17
                                  LLB shift 80
                               RETURN shift 88
-                                  IF shift 94
-                               WHILE shift 147
-                                 FOR shift 151
+                                  IF shift 98
+                               WHILE shift 106
+                                 FOR shift 111
                                 FNUM shift 75
                                   tp shift 85
                             stmtlist shift 33
                                 stmt shift 32
+                               stmt1 shift 159
                                  exp shift 34
 
 State 33:
@@ -617,265 +637,205 @@ State 33:
                                  RGB reduce 16
 
 State 34:
-                stmt -> exp * SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 035) stmt -> exp SEMICOLON .
-                    From (state 029) stmt -> * exp SEMICOLON .
-                    From (state 158) stmt -> * exp SEMICOLON .
-                    From (state 150) stmt -> * exp SEMICOLON .
-                    From (state 146) stmt -> * exp SEMICOLON .
-                    From (state 118) stmt -> * exp SEMICOLON .
-                    From (state 109) stmt -> * exp SEMICOLON .
-                    From (state 104) stmt -> * exp SEMICOLON .
-                    From (state 101) stmt -> * exp SEMICOLON .
-                    From (state 097) stmt -> * exp SEMICOLON .
-                    From (state 091) stmt -> * exp SEMICOLON .
-                    From (state 032) stmt -> * exp SEMICOLON .
+                stmt1 -> exp * SEMICOLON . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 035) stmt1 -> exp SEMICOLON .
+                    From (state 029) stmt1 -> * exp SEMICOLON .
+                    From (state 159) stmt1 -> * exp SEMICOLON .
+                    From (state 118) stmt1 -> * exp SEMICOLON .
+                    From (state 109) stmt1 -> * exp SEMICOLON .
+                    From (state 104) stmt1 -> * exp SEMICOLON .
+                    From (state 101) stmt1 -> * exp SEMICOLON .
+                    From (state 097) stmt1 -> * exp SEMICOLON .
+                    From (state 032) stmt1 -> * exp SEMICOLON .
                 exp -> exp * BIAND exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 036) exp -> exp BIAND * exp .
                     From (state 029) exp -> * exp BIAND exp .
-                    From (state 158) exp -> * exp BIAND exp .
-                    From (state 150) exp -> * exp BIAND exp .
-                    From (state 146) exp -> * exp BIAND exp .
+                    From (state 159) exp -> * exp BIAND exp .
                     From (state 118) exp -> * exp BIAND exp .
                     From (state 109) exp -> * exp BIAND exp .
                     From (state 104) exp -> * exp BIAND exp .
                     From (state 101) exp -> * exp BIAND exp .
                     From (state 097) exp -> * exp BIAND exp .
-                    From (state 091) exp -> * exp BIAND exp .
                     From (state 032) exp -> * exp BIAND exp .
                 exp -> exp * BIOR exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 038) exp -> exp BIOR * exp .
                     From (state 029) exp -> * exp BIOR exp .
-                    From (state 158) exp -> * exp BIOR exp .
-                    From (state 150) exp -> * exp BIOR exp .
-                    From (state 146) exp -> * exp BIOR exp .
+                    From (state 159) exp -> * exp BIOR exp .
                     From (state 118) exp -> * exp BIOR exp .
                     From (state 109) exp -> * exp BIOR exp .
                     From (state 104) exp -> * exp BIOR exp .
                     From (state 101) exp -> * exp BIOR exp .
                     From (state 097) exp -> * exp BIOR exp .
-                    From (state 091) exp -> * exp BIOR exp .
                     From (state 032) exp -> * exp BIOR exp .
                 exp -> exp * LSS exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 040) exp -> exp LSS * exp .
                     From (state 029) exp -> * exp LSS exp .
-                    From (state 158) exp -> * exp LSS exp .
-                    From (state 150) exp -> * exp LSS exp .
-                    From (state 146) exp -> * exp LSS exp .
+                    From (state 159) exp -> * exp LSS exp .
                     From (state 118) exp -> * exp LSS exp .
                     From (state 109) exp -> * exp LSS exp .
                     From (state 104) exp -> * exp LSS exp .
                     From (state 101) exp -> * exp LSS exp .
                     From (state 097) exp -> * exp LSS exp .
-                    From (state 091) exp -> * exp LSS exp .
                     From (state 032) exp -> * exp LSS exp .
                 exp -> exp * LSSEQ exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 042) exp -> exp LSSEQ * exp .
                     From (state 029) exp -> * exp LSSEQ exp .
-                    From (state 158) exp -> * exp LSSEQ exp .
-                    From (state 150) exp -> * exp LSSEQ exp .
-                    From (state 146) exp -> * exp LSSEQ exp .
+                    From (state 159) exp -> * exp LSSEQ exp .
                     From (state 118) exp -> * exp LSSEQ exp .
                     From (state 109) exp -> * exp LSSEQ exp .
                     From (state 104) exp -> * exp LSSEQ exp .
                     From (state 101) exp -> * exp LSSEQ exp .
                     From (state 097) exp -> * exp LSSEQ exp .
-                    From (state 091) exp -> * exp LSSEQ exp .
                     From (state 032) exp -> * exp LSSEQ exp .
                 exp -> exp * GRT exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 044) exp -> exp GRT * exp .
                     From (state 029) exp -> * exp GRT exp .
-                    From (state 158) exp -> * exp GRT exp .
-                    From (state 150) exp -> * exp GRT exp .
-                    From (state 146) exp -> * exp GRT exp .
+                    From (state 159) exp -> * exp GRT exp .
                     From (state 118) exp -> * exp GRT exp .
                     From (state 109) exp -> * exp GRT exp .
                     From (state 104) exp -> * exp GRT exp .
                     From (state 101) exp -> * exp GRT exp .
                     From (state 097) exp -> * exp GRT exp .
-                    From (state 091) exp -> * exp GRT exp .
                     From (state 032) exp -> * exp GRT exp .
                 exp -> exp * GRTEQ exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 046) exp -> exp GRTEQ * exp .
                     From (state 029) exp -> * exp GRTEQ exp .
-                    From (state 158) exp -> * exp GRTEQ exp .
-                    From (state 150) exp -> * exp GRTEQ exp .
-                    From (state 146) exp -> * exp GRTEQ exp .
+                    From (state 159) exp -> * exp GRTEQ exp .
                     From (state 118) exp -> * exp GRTEQ exp .
                     From (state 109) exp -> * exp GRTEQ exp .
                     From (state 104) exp -> * exp GRTEQ exp .
                     From (state 101) exp -> * exp GRTEQ exp .
                     From (state 097) exp -> * exp GRTEQ exp .
-                    From (state 091) exp -> * exp GRTEQ exp .
                     From (state 032) exp -> * exp GRTEQ exp .
                 exp -> exp * EQ exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 048) exp -> exp EQ * exp .
                     From (state 029) exp -> * exp EQ exp .
-                    From (state 158) exp -> * exp EQ exp .
-                    From (state 150) exp -> * exp EQ exp .
-                    From (state 146) exp -> * exp EQ exp .
+                    From (state 159) exp -> * exp EQ exp .
                     From (state 118) exp -> * exp EQ exp .
                     From (state 109) exp -> * exp EQ exp .
                     From (state 104) exp -> * exp EQ exp .
                     From (state 101) exp -> * exp EQ exp .
                     From (state 097) exp -> * exp EQ exp .
-                    From (state 091) exp -> * exp EQ exp .
                     From (state 032) exp -> * exp EQ exp .
                 exp -> exp * NOTEQ exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 050) exp -> exp NOTEQ * exp .
                     From (state 029) exp -> * exp NOTEQ exp .
-                    From (state 158) exp -> * exp NOTEQ exp .
-                    From (state 150) exp -> * exp NOTEQ exp .
-                    From (state 146) exp -> * exp NOTEQ exp .
+                    From (state 159) exp -> * exp NOTEQ exp .
                     From (state 118) exp -> * exp NOTEQ exp .
                     From (state 109) exp -> * exp NOTEQ exp .
                     From (state 104) exp -> * exp NOTEQ exp .
                     From (state 101) exp -> * exp NOTEQ exp .
                     From (state 097) exp -> * exp NOTEQ exp .
-                    From (state 091) exp -> * exp NOTEQ exp .
                     From (state 032) exp -> * exp NOTEQ exp .
                 exp -> exp * ADD exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 052) exp -> exp ADD * exp .
                     From (state 029) exp -> * exp ADD exp .
-                    From (state 158) exp -> * exp ADD exp .
-                    From (state 150) exp -> * exp ADD exp .
-                    From (state 146) exp -> * exp ADD exp .
+                    From (state 159) exp -> * exp ADD exp .
                     From (state 118) exp -> * exp ADD exp .
                     From (state 109) exp -> * exp ADD exp .
                     From (state 104) exp -> * exp ADD exp .
                     From (state 101) exp -> * exp ADD exp .
                     From (state 097) exp -> * exp ADD exp .
-                    From (state 091) exp -> * exp ADD exp .
                     From (state 032) exp -> * exp ADD exp .
                 exp -> exp * MINUS exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 054) exp -> exp MINUS * exp .
                     From (state 029) exp -> * exp MINUS exp .
-                    From (state 158) exp -> * exp MINUS exp .
-                    From (state 150) exp -> * exp MINUS exp .
-                    From (state 146) exp -> * exp MINUS exp .
+                    From (state 159) exp -> * exp MINUS exp .
                     From (state 118) exp -> * exp MINUS exp .
                     From (state 109) exp -> * exp MINUS exp .
                     From (state 104) exp -> * exp MINUS exp .
                     From (state 101) exp -> * exp MINUS exp .
                     From (state 097) exp -> * exp MINUS exp .
-                    From (state 091) exp -> * exp MINUS exp .
                     From (state 032) exp -> * exp MINUS exp .
                 exp -> exp * MULTI exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 056) exp -> exp MULTI * exp .
                     From (state 029) exp -> * exp MULTI exp .
-                    From (state 158) exp -> * exp MULTI exp .
-                    From (state 150) exp -> * exp MULTI exp .
-                    From (state 146) exp -> * exp MULTI exp .
+                    From (state 159) exp -> * exp MULTI exp .
                     From (state 118) exp -> * exp MULTI exp .
                     From (state 109) exp -> * exp MULTI exp .
                     From (state 104) exp -> * exp MULTI exp .
                     From (state 101) exp -> * exp MULTI exp .
                     From (state 097) exp -> * exp MULTI exp .
-                    From (state 091) exp -> * exp MULTI exp .
                     From (state 032) exp -> * exp MULTI exp .
                 exp -> exp * DIV exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 058) exp -> exp DIV * exp .
                     From (state 029) exp -> * exp DIV exp .
-                    From (state 158) exp -> * exp DIV exp .
-                    From (state 150) exp -> * exp DIV exp .
-                    From (state 146) exp -> * exp DIV exp .
+                    From (state 159) exp -> * exp DIV exp .
                     From (state 118) exp -> * exp DIV exp .
                     From (state 109) exp -> * exp DIV exp .
                     From (state 104) exp -> * exp DIV exp .
                     From (state 101) exp -> * exp DIV exp .
                     From (state 097) exp -> * exp DIV exp .
-                    From (state 091) exp -> * exp DIV exp .
                     From (state 032) exp -> * exp DIV exp .
                 exp -> exp * MOD exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 060) exp -> exp MOD * exp .
                     From (state 029) exp -> * exp MOD exp .
-                    From (state 158) exp -> * exp MOD exp .
-                    From (state 150) exp -> * exp MOD exp .
-                    From (state 146) exp -> * exp MOD exp .
+                    From (state 159) exp -> * exp MOD exp .
                     From (state 118) exp -> * exp MOD exp .
                     From (state 109) exp -> * exp MOD exp .
                     From (state 104) exp -> * exp MOD exp .
                     From (state 101) exp -> * exp MOD exp .
                     From (state 097) exp -> * exp MOD exp .
-                    From (state 091) exp -> * exp MOD exp .
                     From (state 032) exp -> * exp MOD exp .
                 exp -> exp * AND exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 062) exp -> exp AND * exp .
                     From (state 029) exp -> * exp AND exp .
-                    From (state 158) exp -> * exp AND exp .
-                    From (state 150) exp -> * exp AND exp .
-                    From (state 146) exp -> * exp AND exp .
+                    From (state 159) exp -> * exp AND exp .
                     From (state 118) exp -> * exp AND exp .
                     From (state 109) exp -> * exp AND exp .
                     From (state 104) exp -> * exp AND exp .
                     From (state 101) exp -> * exp AND exp .
                     From (state 097) exp -> * exp AND exp .
-                    From (state 091) exp -> * exp AND exp .
                     From (state 032) exp -> * exp AND exp .
                 exp -> exp * OR exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 064) exp -> exp OR * exp .
                     From (state 029) exp -> * exp OR exp .
-                    From (state 158) exp -> * exp OR exp .
-                    From (state 150) exp -> * exp OR exp .
-                    From (state 146) exp -> * exp OR exp .
+                    From (state 159) exp -> * exp OR exp .
                     From (state 118) exp -> * exp OR exp .
                     From (state 109) exp -> * exp OR exp .
                     From (state 104) exp -> * exp OR exp .
                     From (state 101) exp -> * exp OR exp .
                     From (state 097) exp -> * exp OR exp .
-                    From (state 091) exp -> * exp OR exp .
                     From (state 032) exp -> * exp OR exp .
                 exp -> exp * XOR exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 066) exp -> exp XOR * exp .
                     From (state 029) exp -> * exp XOR exp .
-                    From (state 158) exp -> * exp XOR exp .
-                    From (state 150) exp -> * exp XOR exp .
-                    From (state 146) exp -> * exp XOR exp .
+                    From (state 159) exp -> * exp XOR exp .
                     From (state 118) exp -> * exp XOR exp .
                     From (state 109) exp -> * exp XOR exp .
                     From (state 104) exp -> * exp XOR exp .
                     From (state 101) exp -> * exp XOR exp .
                     From (state 097) exp -> * exp XOR exp .
-                    From (state 091) exp -> * exp XOR exp .
                     From (state 032) exp -> * exp XOR exp .
                 exp -> exp * BITNOT exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 068) exp -> exp BITNOT * exp .
                     From (state 029) exp -> * exp BITNOT exp .
-                    From (state 158) exp -> * exp BITNOT exp .
-                    From (state 150) exp -> * exp BITNOT exp .
-                    From (state 146) exp -> * exp BITNOT exp .
+                    From (state 159) exp -> * exp BITNOT exp .
                     From (state 118) exp -> * exp BITNOT exp .
                     From (state 109) exp -> * exp BITNOT exp .
                     From (state 104) exp -> * exp BITNOT exp .
                     From (state 101) exp -> * exp BITNOT exp .
                     From (state 097) exp -> * exp BITNOT exp .
-                    From (state 091) exp -> * exp BITNOT exp .
                     From (state 032) exp -> * exp BITNOT exp .
                 exp -> exp * COMMA exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 070) exp -> exp COMMA * exp .
                     From (state 029) exp -> * exp COMMA exp .
-                    From (state 158) exp -> * exp COMMA exp .
-                    From (state 150) exp -> * exp COMMA exp .
-                    From (state 146) exp -> * exp COMMA exp .
+                    From (state 159) exp -> * exp COMMA exp .
                     From (state 118) exp -> * exp COMMA exp .
                     From (state 109) exp -> * exp COMMA exp .
                     From (state 104) exp -> * exp COMMA exp .
                     From (state 101) exp -> * exp COMMA exp .
                     From (state 097) exp -> * exp COMMA exp .
-                    From (state 091) exp -> * exp COMMA exp .
                     From (state 032) exp -> * exp COMMA exp .
                 exp -> exp * ASSIGN exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 072) exp -> exp ASSIGN * exp .
                     From (state 029) exp -> * exp ASSIGN exp .
-                    From (state 158) exp -> * exp ASSIGN exp .
-                    From (state 150) exp -> * exp ASSIGN exp .
-                    From (state 146) exp -> * exp ASSIGN exp .
+                    From (state 159) exp -> * exp ASSIGN exp .
                     From (state 118) exp -> * exp ASSIGN exp .
                     From (state 109) exp -> * exp ASSIGN exp .
                     From (state 104) exp -> * exp ASSIGN exp .
                     From (state 101) exp -> * exp ASSIGN exp .
                     From (state 097) exp -> * exp ASSIGN exp .
-                    From (state 091) exp -> * exp ASSIGN exp .
                     From (state 032) exp -> * exp ASSIGN exp .
 
                                COMMA shift 70
@@ -900,8 +860,8 @@ State 34:
                            SEMICOLON shift 35
 
 State 35:
-            (18)stmt -> exp SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    From (state 034) stmt -> exp * SEMICOLON .
+            (18)stmt1 -> exp SEMICOLON . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    From (state 034) stmt1 -> exp * SEMICOLON .
 
                            [default] reduce 18
 
@@ -4547,15 +4507,12 @@ State 73:
 State 74:
             (54)exp -> INUM . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,RMB,SEMICOLON,RLB}
                     From (state 029) exp -> * INUM .
+                    From (state 159) exp -> * INUM .
                     From (state 032) exp -> * INUM .
-                    From (state 091) exp -> * INUM .
                     From (state 095) exp -> * INUM .
                     From (state 097) exp -> * INUM .
-                    From (state 146) exp -> * INUM .
                     From (state 148) exp -> * INUM .
-                    From (state 150) exp -> * INUM .
                     From (state 154) exp -> * INUM .
-                    From (state 158) exp -> * INUM .
                     From (state 099) exp -> * INUM .
                     From (state 101) exp -> * INUM .
                     From (state 104) exp -> * INUM .
@@ -4596,15 +4553,12 @@ State 74:
 State 75:
             (55)exp -> FNUM . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,RMB,SEMICOLON,RLB}
                     From (state 029) exp -> * FNUM .
+                    From (state 159) exp -> * FNUM .
                     From (state 032) exp -> * FNUM .
-                    From (state 091) exp -> * FNUM .
                     From (state 095) exp -> * FNUM .
                     From (state 097) exp -> * FNUM .
-                    From (state 146) exp -> * FNUM .
                     From (state 148) exp -> * FNUM .
-                    From (state 150) exp -> * FNUM .
                     From (state 154) exp -> * FNUM .
-                    From (state 158) exp -> * FNUM .
                     From (state 099) exp -> * FNUM .
                     From (state 101) exp -> * FNUM .
                     From (state 104) exp -> * FNUM .
@@ -4645,15 +4599,12 @@ State 75:
 State 76:
             (56)exp -> ID . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,RMB,SEMICOLON,RLB}
                     From (state 029) exp -> * ID .
+                    From (state 159) exp -> * ID .
                     From (state 032) exp -> * ID .
-                    From (state 091) exp -> * ID .
                     From (state 095) exp -> * ID .
                     From (state 097) exp -> * ID .
-                    From (state 146) exp -> * ID .
                     From (state 148) exp -> * ID .
-                    From (state 150) exp -> * ID .
                     From (state 154) exp -> * ID .
-                    From (state 158) exp -> * ID .
                     From (state 099) exp -> * ID .
                     From (state 101) exp -> * ID .
                     From (state 104) exp -> * ID .
@@ -4691,15 +4642,12 @@ State 76:
                 exp -> ID * LMB exp RMB . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,RMB,SEMICOLON,RLB}
                     To (state 077) exp -> ID LMB * exp RMB .
                     From (state 029) exp -> * ID LMB exp RMB .
+                    From (state 159) exp -> * ID LMB exp RMB .
                     From (state 032) exp -> * ID LMB exp RMB .
-                    From (state 091) exp -> * ID LMB exp RMB .
                     From (state 095) exp -> * ID LMB exp RMB .
                     From (state 097) exp -> * ID LMB exp RMB .
-                    From (state 146) exp -> * ID LMB exp RMB .
                     From (state 148) exp -> * ID LMB exp RMB .
-                    From (state 150) exp -> * ID LMB exp RMB .
                     From (state 154) exp -> * ID LMB exp RMB .
-                    From (state 158) exp -> * ID LMB exp RMB .
                     From (state 099) exp -> * ID LMB exp RMB .
                     From (state 101) exp -> * ID LMB exp RMB .
                     From (state 104) exp -> * ID LMB exp RMB .
@@ -4927,15 +4875,12 @@ State 80:
                 exp -> LLB * exp RLB . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,RMB,SEMICOLON,RLB}
                     To (state 081) exp -> LLB exp * RLB .
                     From (state 029) exp -> * LLB exp RLB .
+                    From (state 159) exp -> * LLB exp RLB .
                     From (state 032) exp -> * LLB exp RLB .
-                    From (state 091) exp -> * LLB exp RLB .
                     From (state 095) exp -> * LLB exp RLB .
                     From (state 097) exp -> * LLB exp RLB .
-                    From (state 146) exp -> * LLB exp RLB .
                     From (state 148) exp -> * LLB exp RLB .
-                    From (state 150) exp -> * LLB exp RLB .
                     From (state 154) exp -> * LLB exp RLB .
-                    From (state 158) exp -> * LLB exp RLB .
                     From (state 099) exp -> * LLB exp RLB .
                     From (state 101) exp -> * LLB exp RLB .
                     From (state 104) exp -> * LLB exp RLB .
@@ -5148,15 +5093,12 @@ State 83:
                     To (state 083) exp -> * ID LMB exp RMB .
                     To (state 083) exp -> * exp ASSIGN exp .
                     From (state 029) exp -> * NOT exp .
+                    From (state 159) exp -> * NOT exp .
                     From (state 032) exp -> * NOT exp .
-                    From (state 091) exp -> * NOT exp .
                     From (state 095) exp -> * NOT exp .
                     From (state 097) exp -> * NOT exp .
-                    From (state 146) exp -> * NOT exp .
                     From (state 148) exp -> * NOT exp .
-                    From (state 150) exp -> * NOT exp .
                     From (state 154) exp -> * NOT exp .
-                    From (state 158) exp -> * NOT exp .
                     From (state 099) exp -> * NOT exp .
                     From (state 101) exp -> * NOT exp .
                     From (state 104) exp -> * NOT exp .
@@ -5282,50 +5224,44 @@ State 85:
                     To (state 015) vallist -> ID * COMMA vallist .
                 vallist -> * ID . {SEMICOLON}
                     To (state 015) vallist -> ID .
-                stmt -> tp * vallist SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 086) stmt -> tp vallist * SEMICOLON .
-                    From (state 029) stmt -> * tp vallist SEMICOLON .
-                    From (state 158) stmt -> * tp vallist SEMICOLON .
-                    From (state 150) stmt -> * tp vallist SEMICOLON .
-                    From (state 146) stmt -> * tp vallist SEMICOLON .
-                    From (state 118) stmt -> * tp vallist SEMICOLON .
-                    From (state 109) stmt -> * tp vallist SEMICOLON .
-                    From (state 104) stmt -> * tp vallist SEMICOLON .
-                    From (state 101) stmt -> * tp vallist SEMICOLON .
-                    From (state 097) stmt -> * tp vallist SEMICOLON .
-                    From (state 091) stmt -> * tp vallist SEMICOLON .
-                    From (state 032) stmt -> * tp vallist SEMICOLON .
+                stmt1 -> tp * vallist SEMICOLON . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 086) stmt1 -> tp vallist * SEMICOLON .
+                    From (state 029) stmt1 -> * tp vallist SEMICOLON .
+                    From (state 159) stmt1 -> * tp vallist SEMICOLON .
+                    From (state 118) stmt1 -> * tp vallist SEMICOLON .
+                    From (state 109) stmt1 -> * tp vallist SEMICOLON .
+                    From (state 104) stmt1 -> * tp vallist SEMICOLON .
+                    From (state 101) stmt1 -> * tp vallist SEMICOLON .
+                    From (state 097) stmt1 -> * tp vallist SEMICOLON .
+                    From (state 032) stmt1 -> * tp vallist SEMICOLON .
 
                                   ID shift 15
                              vallist shift 86
 
 State 86:
-                stmt -> tp vallist * SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 087) stmt -> tp vallist SEMICOLON .
-                    From (state 085) stmt -> tp * vallist SEMICOLON .
+                stmt1 -> tp vallist * SEMICOLON . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 087) stmt1 -> tp vallist SEMICOLON .
+                    From (state 085) stmt1 -> tp * vallist SEMICOLON .
 
                            SEMICOLON shift 87
 
 State 87:
-            (19)stmt -> tp vallist SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    From (state 086) stmt -> tp vallist * SEMICOLON .
+            (19)stmt1 -> tp vallist SEMICOLON . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    From (state 086) stmt1 -> tp vallist * SEMICOLON .
 
                            [default] reduce 19
 
 State 88:
-                stmt -> RETURN * exp SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 089) stmt -> RETURN exp * SEMICOLON .
-                    From (state 029) stmt -> * RETURN exp SEMICOLON .
-                    From (state 158) stmt -> * RETURN exp SEMICOLON .
-                    From (state 150) stmt -> * RETURN exp SEMICOLON .
-                    From (state 146) stmt -> * RETURN exp SEMICOLON .
-                    From (state 118) stmt -> * RETURN exp SEMICOLON .
-                    From (state 109) stmt -> * RETURN exp SEMICOLON .
-                    From (state 104) stmt -> * RETURN exp SEMICOLON .
-                    From (state 101) stmt -> * RETURN exp SEMICOLON .
-                    From (state 097) stmt -> * RETURN exp SEMICOLON .
-                    From (state 091) stmt -> * RETURN exp SEMICOLON .
-                    From (state 032) stmt -> * RETURN exp SEMICOLON .
+                stmt1 -> RETURN * exp SEMICOLON . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 089) stmt1 -> RETURN exp * SEMICOLON .
+                    From (state 029) stmt1 -> * RETURN exp SEMICOLON .
+                    From (state 159) stmt1 -> * RETURN exp SEMICOLON .
+                    From (state 118) stmt1 -> * RETURN exp SEMICOLON .
+                    From (state 109) stmt1 -> * RETURN exp SEMICOLON .
+                    From (state 104) stmt1 -> * RETURN exp SEMICOLON .
+                    From (state 101) stmt1 -> * RETURN exp SEMICOLON .
+                    From (state 097) stmt1 -> * RETURN exp SEMICOLON .
+                    From (state 032) stmt1 -> * RETURN exp SEMICOLON .
                 exp -> * exp BIAND exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 089) exp -> exp * BIAND exp .
                 exp -> * exp BIOR exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
@@ -5385,9 +5321,9 @@ State 88:
                                  exp shift 89
 
 State 89:
-                stmt -> RETURN exp * SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 090) stmt -> RETURN exp SEMICOLON .
-                    From (state 088) stmt -> RETURN * exp SEMICOLON .
+                stmt1 -> RETURN exp * SEMICOLON . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 090) stmt1 -> RETURN exp SEMICOLON .
+                    From (state 088) stmt1 -> RETURN * exp SEMICOLON .
                 exp -> exp * BIAND exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 036) exp -> exp BIAND * exp .
                     From (state 088) exp -> * exp BIAND exp .
@@ -5468,31 +5404,18 @@ State 89:
                            SEMICOLON shift 90
 
 State 90:
-            (20)stmt -> RETURN exp SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    From (state 089) stmt -> RETURN exp * SEMICOLON .
+            (20)stmt1 -> RETURN exp SEMICOLON . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    From (state 089) stmt1 -> RETURN exp * SEMICOLON .
 
                            [default] reduce 20
 
 State 91:
-                tp -> * INT . {ID}
-                    To (state 005) tp -> INT .
-                tp -> * FLOAT . {ID}
-                    To (state 009) tp -> FLOAT .
-                tp -> * INT LMB INUM RMB . {ID}
-                    To (state 005) tp -> INT * LMB INUM RMB .
-                tp -> * FLOAT LMB INUM RMB . {ID}
-                    To (state 009) tp -> FLOAT * LMB INUM RMB .
-                stmt -> * exp SEMICOLON . {RGB}
-                    To (state 034) stmt -> exp * SEMICOLON .
-                stmt -> * tp vallist SEMICOLON . {RGB}
-                    To (state 085) stmt -> tp * vallist SEMICOLON .
-                stmt -> * RETURN exp SEMICOLON . {RGB}
-                    To (state 088) stmt -> RETURN * exp SEMICOLON .
                 stmt -> * LGB stmt RGB . {RGB}
                     To (state 091) stmt -> LGB * stmt RGB .
                 stmt -> LGB * stmt RGB . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 092) stmt -> LGB stmt * RGB .
                     From (state 029) stmt -> * LGB stmt RGB .
+                    From (state 159) stmt -> * LGB stmt RGB .
                     From (state 158) stmt -> * LGB stmt RGB .
                     From (state 150) stmt -> * LGB stmt RGB .
                     From (state 146) stmt -> * LGB stmt RGB .
@@ -5511,72 +5434,14 @@ State 91:
                     To (state 147) stmt -> WHILE * LLB exp RLB stmt .
                 stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt . {RGB}
                     To (state 151) stmt -> FOR * LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
-                exp -> * exp BIAND exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * BIAND exp .
-                exp -> * exp BIOR exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * BIOR exp .
-                exp -> * exp LSS exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * LSS exp .
-                exp -> * exp LSSEQ exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * LSSEQ exp .
-                exp -> * exp GRT exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * GRT exp .
-                exp -> * exp GRTEQ exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * GRTEQ exp .
-                exp -> * exp EQ exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * EQ exp .
-                exp -> * exp NOTEQ exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * NOTEQ exp .
-                exp -> * exp ADD exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * ADD exp .
-                exp -> * exp MINUS exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * MINUS exp .
-                exp -> * exp MULTI exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * MULTI exp .
-                exp -> * exp DIV exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * DIV exp .
-                exp -> * exp MOD exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * MOD exp .
-                exp -> * INUM . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 074) exp -> INUM .
-                exp -> * FNUM . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 075) exp -> FNUM .
-                exp -> * ID . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 076) exp -> ID .
-                exp -> * LLB exp RLB . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 080) exp -> LLB * exp RLB .
-                exp -> * NOT exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 083) exp -> NOT * exp .
-                exp -> * exp AND exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * AND exp .
-                exp -> * exp OR exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * OR exp .
-                exp -> * exp XOR exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * XOR exp .
-                exp -> * exp BITNOT exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * BITNOT exp .
-                exp -> * exp COMMA exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * COMMA exp .
-                exp -> * ID LMB exp RMB . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 076) exp -> ID * LMB exp RMB .
-                exp -> * exp ASSIGN exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * ASSIGN exp .
+                stmt -> * IF LLB exp RLB stmt1 . {RGB}
+                    To (state 094) stmt -> IF * LLB exp RLB stmt1 .
 
-                                 NOT shift 83
-                                 INT shift 5
-                               FLOAT shift 9
-                                INUM shift 74
-                                  ID shift 76
                                  LGB shift 91
-                                 LLB shift 80
-                              RETURN shift 88
                                   IF shift 94
                                WHILE shift 147
                                  FOR shift 151
-                                FNUM shift 75
-                                  tp shift 85
                                 stmt shift 92
-                                 exp shift 34
 
 State 92:
                 stmt -> LGB stmt * RGB . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
@@ -5592,30 +5457,32 @@ State 93:
                            [default] reduce 21
 
 State 94:
-                stmt -> IF * LLB exp RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> IF * LLB exp RLB stmt . {RGB}
                     To (state 095) stmt -> IF LLB * exp RLB stmt .
-                    From (state 029) stmt -> * IF LLB exp RLB stmt .
-                    From (state 032) stmt -> * IF LLB exp RLB stmt .
                     From (state 158) stmt -> * IF LLB exp RLB stmt .
                     From (state 150) stmt -> * IF LLB exp RLB stmt .
                     From (state 146) stmt -> * IF LLB exp RLB stmt .
                     From (state 091) stmt -> * IF LLB exp RLB stmt .
-                stmt -> IF * LLB exp RLB stmt1 ELSE stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> IF * LLB exp RLB stmt1 ELSE stmt . {RGB}
                     To (state 095) stmt -> IF LLB * exp RLB stmt1 ELSE stmt .
-                    From (state 029) stmt -> * IF LLB exp RLB stmt1 ELSE stmt .
-                    From (state 032) stmt -> * IF LLB exp RLB stmt1 ELSE stmt .
                     From (state 158) stmt -> * IF LLB exp RLB stmt1 ELSE stmt .
                     From (state 150) stmt -> * IF LLB exp RLB stmt1 ELSE stmt .
                     From (state 146) stmt -> * IF LLB exp RLB stmt1 ELSE stmt .
                     From (state 091) stmt -> * IF LLB exp RLB stmt1 ELSE stmt .
+                stmt -> IF * LLB exp RLB stmt1 . {RGB}
+                    To (state 095) stmt -> IF LLB * exp RLB stmt1 .
+                    From (state 158) stmt -> * IF LLB exp RLB stmt1 .
+                    From (state 150) stmt -> * IF LLB exp RLB stmt1 .
+                    From (state 146) stmt -> * IF LLB exp RLB stmt1 .
+                    From (state 091) stmt -> * IF LLB exp RLB stmt1 .
 
                                  LLB shift 95
 
 State 95:
-                stmt -> IF LLB * exp RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> IF LLB * exp RLB stmt . {RGB}
                     To (state 096) stmt -> IF LLB exp * RLB stmt .
                     From (state 094) stmt -> IF * LLB exp RLB stmt .
-                stmt -> IF LLB * exp RLB stmt1 ELSE stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> IF LLB * exp RLB stmt1 ELSE stmt . {RGB}
                     To (state 096) stmt -> IF LLB exp * RLB stmt1 ELSE stmt .
                     From (state 094) stmt -> IF * LLB exp RLB stmt1 ELSE stmt .
                 exp -> * exp BIAND exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,RLB}
@@ -5668,6 +5535,9 @@ State 95:
                     To (state 076) exp -> ID * LMB exp RMB .
                 exp -> * exp ASSIGN exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,RLB}
                     To (state 096) exp -> exp * ASSIGN exp .
+                stmt -> IF LLB * exp RLB stmt1 . {RGB}
+                    To (state 096) stmt -> IF LLB exp * RLB stmt1 .
+                    From (state 094) stmt -> IF * LLB exp RLB stmt1 .
 
                                  NOT shift 83
                                 INUM shift 74
@@ -5677,10 +5547,10 @@ State 95:
                                  exp shift 96
 
 State 96:
-                stmt -> IF LLB exp * RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> IF LLB exp * RLB stmt . {RGB}
                     To (state 097) stmt -> IF LLB exp RLB * stmt .
                     From (state 095) stmt -> IF LLB * exp RLB stmt .
-                stmt -> IF LLB exp * RLB stmt1 ELSE stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> IF LLB exp * RLB stmt1 ELSE stmt . {RGB}
                     To (state 097) stmt -> IF LLB exp RLB * stmt1 ELSE stmt .
                     From (state 095) stmt -> IF LLB * exp RLB stmt1 ELSE stmt .
                 exp -> exp * BIAND exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,RLB}
@@ -5740,6 +5610,9 @@ State 96:
                 exp -> exp * ASSIGN exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,RLB}
                     To (state 072) exp -> exp ASSIGN * exp .
                     From (state 095) exp -> * exp ASSIGN exp .
+                stmt -> IF LLB exp * RLB stmt1 . {RGB}
+                    To (state 097) stmt -> IF LLB exp RLB * stmt1 .
+                    From (state 095) stmt -> IF LLB * exp RLB stmt1 .
 
                                COMMA shift 70
                               ASSIGN shift 72
@@ -5771,41 +5644,39 @@ State 97:
                     To (state 005) tp -> INT * LMB INUM RMB .
                 tp -> * FLOAT LMB INUM RMB . {ID}
                     To (state 009) tp -> FLOAT * LMB INUM RMB .
-                stmt -> * exp SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 034) stmt -> exp * SEMICOLON .
-                stmt -> * tp vallist SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 085) stmt -> tp * vallist SEMICOLON .
-                stmt -> * RETURN exp SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 088) stmt -> RETURN * exp SEMICOLON .
-                stmt -> * LGB stmt RGB . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt1 -> * exp SEMICOLON . {ELSE,RGB}
+                    To (state 034) stmt1 -> exp * SEMICOLON .
+                stmt1 -> * tp vallist SEMICOLON . {ELSE,RGB}
+                    To (state 085) stmt1 -> tp * vallist SEMICOLON .
+                stmt1 -> * RETURN exp SEMICOLON . {ELSE,RGB}
+                    To (state 088) stmt1 -> RETURN * exp SEMICOLON .
+                stmt -> * LGB stmt RGB . {RGB}
                     To (state 091) stmt -> LGB * stmt RGB .
-                stmt -> * IF LLB exp RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> * IF LLB exp RLB stmt . {RGB}
                     To (state 098) stmt -> IF * LLB exp RLB stmt .
-                stmt -> IF LLB exp RLB * stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> IF LLB exp RLB * stmt . {RGB}
                     To (state 102) stmt -> IF LLB exp RLB stmt .
-                    To (state 097) stmt -> * exp SEMICOLON .
-                    To (state 097) stmt -> * tp vallist SEMICOLON .
-                    To (state 097) stmt -> * RETURN exp SEMICOLON .
                     To (state 097) stmt -> * LGB stmt RGB .
                     To (state 097) stmt -> * IF LLB exp RLB stmt .
                     To (state 097) stmt -> * IF LLB exp RLB stmt1 ELSE stmt .
                     To (state 097) stmt -> * WHILE LLB exp RLB stmt .
                     To (state 097) stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
+                    To (state 097) stmt -> * IF LLB exp RLB stmt1 .
                     From (state 096) stmt -> IF LLB exp * RLB stmt .
-                stmt -> * IF LLB exp RLB stmt1 ELSE stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> * IF LLB exp RLB stmt1 ELSE stmt . {RGB}
                     To (state 098) stmt -> IF * LLB exp RLB stmt1 ELSE stmt .
-                stmt -> IF LLB exp RLB * stmt1 ELSE stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> IF LLB exp RLB * stmt1 ELSE stmt . {RGB}
                     To (state 145) stmt -> IF LLB exp RLB stmt1 * ELSE stmt .
                     From (state 096) stmt -> IF LLB exp * RLB stmt1 ELSE stmt .
-                stmt -> * WHILE LLB exp RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> * WHILE LLB exp RLB stmt . {RGB}
                     To (state 106) stmt -> WHILE * LLB exp RLB stmt .
-                stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt . {RGB}
                     To (state 111) stmt -> FOR * LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
-                stmt1 -> * IF LLB exp RLB stmt1 ELSE stmt1 . {ELSE}
+                stmt1 -> * IF LLB exp RLB stmt1 ELSE stmt1 . {ELSE,RGB}
                     To (state 098) stmt1 -> IF * LLB exp RLB stmt1 ELSE stmt1 .
-                stmt1 -> * WHILE LLB exp RLB stmt1 . {ELSE}
+                stmt1 -> * WHILE LLB exp RLB stmt1 . {ELSE,RGB}
                     To (state 106) stmt1 -> WHILE * LLB exp RLB stmt1 .
-                stmt1 -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 . {ELSE}
+                stmt1 -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 . {ELSE,RGB}
                     To (state 111) stmt1 -> FOR * LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 .
                 exp -> * exp BIAND exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 034) exp -> exp * BIAND exp .
@@ -5857,6 +5728,17 @@ State 97:
                     To (state 076) exp -> ID * LMB exp RMB .
                 exp -> * exp ASSIGN exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 034) exp -> exp * ASSIGN exp .
+                stmt -> * IF LLB exp RLB stmt1 . {RGB}
+                    To (state 098) stmt -> IF * LLB exp RLB stmt1 .
+                stmt -> IF LLB exp RLB * stmt1 . {RGB}
+                    To (state 145) stmt -> IF LLB exp RLB stmt1 .
+                    To (state 097) stmt1 -> * exp SEMICOLON .
+                    To (state 097) stmt1 -> * tp vallist SEMICOLON .
+                    To (state 097) stmt1 -> * RETURN exp SEMICOLON .
+                    To (state 097) stmt1 -> * IF LLB exp RLB stmt1 ELSE stmt1 .
+                    To (state 097) stmt1 -> * WHILE LLB exp RLB stmt1 .
+                    To (state 097) stmt1 -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 .
+                    From (state 096) stmt -> IF LLB exp * RLB stmt1 .
 
                                  NOT shift 83
                                  INT shift 5
@@ -5872,12 +5754,15 @@ State 97:
                                 FNUM shift 75
                                   tp shift 85
                                 stmt shift 102
-                                 exp shift 34
                                stmt1 shift 145
+                                 exp shift 34
 
 State 98:
                 stmt -> IF * LLB exp RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 099) stmt -> IF LLB * exp RLB stmt .
+                    From (state 029) stmt -> * IF LLB exp RLB stmt .
+                    From (state 159) stmt -> * IF LLB exp RLB stmt .
+                    From (state 032) stmt -> * IF LLB exp RLB stmt .
                     From (state 118) stmt -> * IF LLB exp RLB stmt .
                     From (state 109) stmt -> * IF LLB exp RLB stmt .
                     From (state 104) stmt -> * IF LLB exp RLB stmt .
@@ -5885,18 +5770,34 @@ State 98:
                     From (state 097) stmt -> * IF LLB exp RLB stmt .
                 stmt -> IF * LLB exp RLB stmt1 ELSE stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 099) stmt -> IF LLB * exp RLB stmt1 ELSE stmt .
+                    From (state 029) stmt -> * IF LLB exp RLB stmt1 ELSE stmt .
+                    From (state 159) stmt -> * IF LLB exp RLB stmt1 ELSE stmt .
+                    From (state 032) stmt -> * IF LLB exp RLB stmt1 ELSE stmt .
                     From (state 118) stmt -> * IF LLB exp RLB stmt1 ELSE stmt .
                     From (state 109) stmt -> * IF LLB exp RLB stmt1 ELSE stmt .
                     From (state 104) stmt -> * IF LLB exp RLB stmt1 ELSE stmt .
                     From (state 101) stmt -> * IF LLB exp RLB stmt1 ELSE stmt .
                     From (state 097) stmt -> * IF LLB exp RLB stmt1 ELSE stmt .
-                stmt1 -> IF * LLB exp RLB stmt1 ELSE stmt1 . {ELSE}
+                stmt1 -> IF * LLB exp RLB stmt1 ELSE stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 099) stmt1 -> IF LLB * exp RLB stmt1 ELSE stmt1 .
+                    From (state 029) stmt1 -> * IF LLB exp RLB stmt1 ELSE stmt1 .
+                    From (state 159) stmt1 -> * IF LLB exp RLB stmt1 ELSE stmt1 .
+                    From (state 032) stmt1 -> * IF LLB exp RLB stmt1 ELSE stmt1 .
                     From (state 118) stmt1 -> * IF LLB exp RLB stmt1 ELSE stmt1 .
                     From (state 109) stmt1 -> * IF LLB exp RLB stmt1 ELSE stmt1 .
                     From (state 104) stmt1 -> * IF LLB exp RLB stmt1 ELSE stmt1 .
                     From (state 101) stmt1 -> * IF LLB exp RLB stmt1 ELSE stmt1 .
                     From (state 097) stmt1 -> * IF LLB exp RLB stmt1 ELSE stmt1 .
+                stmt -> IF * LLB exp RLB stmt1 . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 099) stmt -> IF LLB * exp RLB stmt1 .
+                    From (state 029) stmt -> * IF LLB exp RLB stmt1 .
+                    From (state 159) stmt -> * IF LLB exp RLB stmt1 .
+                    From (state 032) stmt -> * IF LLB exp RLB stmt1 .
+                    From (state 118) stmt -> * IF LLB exp RLB stmt1 .
+                    From (state 109) stmt -> * IF LLB exp RLB stmt1 .
+                    From (state 104) stmt -> * IF LLB exp RLB stmt1 .
+                    From (state 101) stmt -> * IF LLB exp RLB stmt1 .
+                    From (state 097) stmt -> * IF LLB exp RLB stmt1 .
 
                                  LLB shift 99
 
@@ -5907,7 +5808,7 @@ State 99:
                 stmt -> IF LLB * exp RLB stmt1 ELSE stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 100) stmt -> IF LLB exp * RLB stmt1 ELSE stmt .
                     From (state 098) stmt -> IF * LLB exp RLB stmt1 ELSE stmt .
-                stmt1 -> IF LLB * exp RLB stmt1 ELSE stmt1 . {ELSE}
+                stmt1 -> IF LLB * exp RLB stmt1 ELSE stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 100) stmt1 -> IF LLB exp * RLB stmt1 ELSE stmt1 .
                     From (state 098) stmt1 -> IF * LLB exp RLB stmt1 ELSE stmt1 .
                 exp -> * exp BIAND exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,RLB}
@@ -5960,6 +5861,9 @@ State 99:
                     To (state 076) exp -> ID * LMB exp RMB .
                 exp -> * exp ASSIGN exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,RLB}
                     To (state 100) exp -> exp * ASSIGN exp .
+                stmt -> IF LLB * exp RLB stmt1 . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 100) stmt -> IF LLB exp * RLB stmt1 .
+                    From (state 098) stmt -> IF * LLB exp RLB stmt1 .
 
                                  NOT shift 83
                                 INUM shift 74
@@ -5975,7 +5879,7 @@ State 100:
                 stmt -> IF LLB exp * RLB stmt1 ELSE stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 101) stmt -> IF LLB exp RLB * stmt1 ELSE stmt .
                     From (state 099) stmt -> IF LLB * exp RLB stmt1 ELSE stmt .
-                stmt1 -> IF LLB exp * RLB stmt1 ELSE stmt1 . {ELSE}
+                stmt1 -> IF LLB exp * RLB stmt1 ELSE stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 101) stmt1 -> IF LLB exp RLB * stmt1 ELSE stmt1 .
                     From (state 099) stmt1 -> IF LLB * exp RLB stmt1 ELSE stmt1 .
                 exp -> exp * BIAND exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,RLB}
@@ -6035,6 +5939,9 @@ State 100:
                 exp -> exp * ASSIGN exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,RLB}
                     To (state 072) exp -> exp ASSIGN * exp .
                     From (state 099) exp -> * exp ASSIGN exp .
+                stmt -> IF LLB exp * RLB stmt1 . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 101) stmt -> IF LLB exp RLB * stmt1 .
+                    From (state 099) stmt -> IF LLB * exp RLB stmt1 .
 
                                COMMA shift 70
                               ASSIGN shift 72
@@ -6066,26 +5973,24 @@ State 101:
                     To (state 005) tp -> INT * LMB INUM RMB .
                 tp -> * FLOAT LMB INUM RMB . {ID}
                     To (state 009) tp -> FLOAT * LMB INUM RMB .
-                stmt -> * exp SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 034) stmt -> exp * SEMICOLON .
-                stmt -> * tp vallist SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 085) stmt -> tp * vallist SEMICOLON .
-                stmt -> * RETURN exp SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 088) stmt -> RETURN * exp SEMICOLON .
+                stmt1 -> * exp SEMICOLON . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 034) stmt1 -> exp * SEMICOLON .
+                stmt1 -> * tp vallist SEMICOLON . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 085) stmt1 -> tp * vallist SEMICOLON .
+                stmt1 -> * RETURN exp SEMICOLON . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 088) stmt1 -> RETURN * exp SEMICOLON .
                 stmt -> * LGB stmt RGB . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 091) stmt -> LGB * stmt RGB .
                 stmt -> * IF LLB exp RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 098) stmt -> IF * LLB exp RLB stmt .
                 stmt -> IF LLB exp RLB * stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 102) stmt -> IF LLB exp RLB stmt .
-                    To (state 101) stmt -> * exp SEMICOLON .
-                    To (state 101) stmt -> * tp vallist SEMICOLON .
-                    To (state 101) stmt -> * RETURN exp SEMICOLON .
                     To (state 101) stmt -> * LGB stmt RGB .
                     To (state 101) stmt -> * IF LLB exp RLB stmt .
                     To (state 101) stmt -> * IF LLB exp RLB stmt1 ELSE stmt .
                     To (state 101) stmt -> * WHILE LLB exp RLB stmt .
                     To (state 101) stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
+                    To (state 101) stmt -> * IF LLB exp RLB stmt1 .
                     From (state 100) stmt -> IF LLB exp * RLB stmt .
                 stmt -> * IF LLB exp RLB stmt1 ELSE stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 098) stmt -> IF * LLB exp RLB stmt1 ELSE stmt .
@@ -6096,14 +6001,14 @@ State 101:
                     To (state 106) stmt -> WHILE * LLB exp RLB stmt .
                 stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 111) stmt -> FOR * LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
-                stmt1 -> * IF LLB exp RLB stmt1 ELSE stmt1 . {ELSE}
+                stmt1 -> * IF LLB exp RLB stmt1 ELSE stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 098) stmt1 -> IF * LLB exp RLB stmt1 ELSE stmt1 .
-                stmt1 -> IF LLB exp RLB * stmt1 ELSE stmt1 . {ELSE}
+                stmt1 -> IF LLB exp RLB * stmt1 ELSE stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 103) stmt1 -> IF LLB exp RLB stmt1 * ELSE stmt1 .
                     From (state 100) stmt1 -> IF LLB exp * RLB stmt1 ELSE stmt1 .
-                stmt1 -> * WHILE LLB exp RLB stmt1 . {ELSE}
+                stmt1 -> * WHILE LLB exp RLB stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 106) stmt1 -> WHILE * LLB exp RLB stmt1 .
-                stmt1 -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 . {ELSE}
+                stmt1 -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 111) stmt1 -> FOR * LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 .
                 exp -> * exp BIAND exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 034) exp -> exp * BIAND exp .
@@ -6155,6 +6060,17 @@ State 101:
                     To (state 076) exp -> ID * LMB exp RMB .
                 exp -> * exp ASSIGN exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 034) exp -> exp * ASSIGN exp .
+                stmt -> * IF LLB exp RLB stmt1 . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 098) stmt -> IF * LLB exp RLB stmt1 .
+                stmt -> IF LLB exp RLB * stmt1 . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 103) stmt -> IF LLB exp RLB stmt1 .
+                    To (state 101) stmt1 -> * exp SEMICOLON .
+                    To (state 101) stmt1 -> * tp vallist SEMICOLON .
+                    To (state 101) stmt1 -> * RETURN exp SEMICOLON .
+                    To (state 101) stmt1 -> * IF LLB exp RLB stmt1 ELSE stmt1 .
+                    To (state 101) stmt1 -> * WHILE LLB exp RLB stmt1 .
+                    To (state 101) stmt1 -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 .
+                    From (state 100) stmt -> IF LLB exp * RLB stmt1 .
 
                                  NOT shift 83
                                  INT shift 5
@@ -6170,8 +6086,8 @@ State 101:
                                 FNUM shift 75
                                   tp shift 85
                                 stmt shift 102
-                                 exp shift 34
                                stmt1 shift 103
+                                 exp shift 34
 
 State 102:
             (22)stmt -> IF LLB exp RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
@@ -6184,11 +6100,14 @@ State 103:
                 stmt -> IF LLB exp RLB stmt1 * ELSE stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 104) stmt -> IF LLB exp RLB stmt1 ELSE * stmt .
                     From (state 101) stmt -> IF LLB exp RLB * stmt1 ELSE stmt .
-                stmt1 -> IF LLB exp RLB stmt1 * ELSE stmt1 . {ELSE}
+                stmt1 -> IF LLB exp RLB stmt1 * ELSE stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 104) stmt1 -> IF LLB exp RLB stmt1 ELSE * stmt1 .
                     From (state 101) stmt1 -> IF LLB exp RLB * stmt1 ELSE stmt1 .
+            (67)stmt -> IF LLB exp RLB stmt1 . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    From (state 101) stmt -> IF LLB exp RLB * stmt1 .
 
                                 ELSE shift 104
+                           [default] reduce 67
 
 State 104:
                 tp -> * INT . {ID}
@@ -6199,12 +6118,12 @@ State 104:
                     To (state 005) tp -> INT * LMB INUM RMB .
                 tp -> * FLOAT LMB INUM RMB . {ID}
                     To (state 009) tp -> FLOAT * LMB INUM RMB .
-                stmt -> * exp SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 034) stmt -> exp * SEMICOLON .
-                stmt -> * tp vallist SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 085) stmt -> tp * vallist SEMICOLON .
-                stmt -> * RETURN exp SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 088) stmt -> RETURN * exp SEMICOLON .
+                stmt1 -> * exp SEMICOLON . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 034) stmt1 -> exp * SEMICOLON .
+                stmt1 -> * tp vallist SEMICOLON . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 085) stmt1 -> tp * vallist SEMICOLON .
+                stmt1 -> * RETURN exp SEMICOLON . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 088) stmt1 -> RETURN * exp SEMICOLON .
                 stmt -> * LGB stmt RGB . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 091) stmt -> LGB * stmt RGB .
                 stmt -> * IF LLB exp RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
@@ -6213,30 +6132,31 @@ State 104:
                     To (state 098) stmt -> IF * LLB exp RLB stmt1 ELSE stmt .
                 stmt -> IF LLB exp RLB stmt1 ELSE * stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 105) stmt -> IF LLB exp RLB stmt1 ELSE stmt .
-                    To (state 104) stmt -> * exp SEMICOLON .
-                    To (state 104) stmt -> * tp vallist SEMICOLON .
-                    To (state 104) stmt -> * RETURN exp SEMICOLON .
                     To (state 104) stmt -> * LGB stmt RGB .
                     To (state 104) stmt -> * IF LLB exp RLB stmt .
                     To (state 104) stmt -> * IF LLB exp RLB stmt1 ELSE stmt .
                     To (state 104) stmt -> * WHILE LLB exp RLB stmt .
                     To (state 104) stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
+                    To (state 104) stmt -> * IF LLB exp RLB stmt1 .
                     From (state 103) stmt -> IF LLB exp RLB stmt1 * ELSE stmt .
                 stmt -> * WHILE LLB exp RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 106) stmt -> WHILE * LLB exp RLB stmt .
                 stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 111) stmt -> FOR * LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
-                stmt1 -> * IF LLB exp RLB stmt1 ELSE stmt1 . {ELSE}
+                stmt1 -> * IF LLB exp RLB stmt1 ELSE stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 098) stmt1 -> IF * LLB exp RLB stmt1 ELSE stmt1 .
-                stmt1 -> IF LLB exp RLB stmt1 ELSE * stmt1 . {ELSE}
+                stmt1 -> IF LLB exp RLB stmt1 ELSE * stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 144) stmt1 -> IF LLB exp RLB stmt1 ELSE stmt1 .
+                    To (state 104) stmt1 -> * exp SEMICOLON .
+                    To (state 104) stmt1 -> * tp vallist SEMICOLON .
+                    To (state 104) stmt1 -> * RETURN exp SEMICOLON .
                     To (state 104) stmt1 -> * IF LLB exp RLB stmt1 ELSE stmt1 .
                     To (state 104) stmt1 -> * WHILE LLB exp RLB stmt1 .
                     To (state 104) stmt1 -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 .
                     From (state 103) stmt1 -> IF LLB exp RLB stmt1 * ELSE stmt1 .
-                stmt1 -> * WHILE LLB exp RLB stmt1 . {ELSE}
+                stmt1 -> * WHILE LLB exp RLB stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 106) stmt1 -> WHILE * LLB exp RLB stmt1 .
-                stmt1 -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 . {ELSE}
+                stmt1 -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 111) stmt1 -> FOR * LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 .
                 exp -> * exp BIAND exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 034) exp -> exp * BIAND exp .
@@ -6288,6 +6208,8 @@ State 104:
                     To (state 076) exp -> ID * LMB exp RMB .
                 exp -> * exp ASSIGN exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 034) exp -> exp * ASSIGN exp .
+                stmt -> * IF LLB exp RLB stmt1 . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 098) stmt -> IF * LLB exp RLB stmt1 .
 
                                  NOT shift 83
                                  INT shift 5
@@ -6303,8 +6225,8 @@ State 104:
                                 FNUM shift 75
                                   tp shift 85
                                 stmt shift 105
-                                 exp shift 34
                                stmt1 shift 144
+                                 exp shift 34
 
 State 105:
             (23)stmt -> IF LLB exp RLB stmt1 ELSE stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
@@ -6316,13 +6238,19 @@ State 105:
 State 106:
                 stmt -> WHILE * LLB exp RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 107) stmt -> WHILE LLB * exp RLB stmt .
+                    From (state 029) stmt -> * WHILE LLB exp RLB stmt .
+                    From (state 159) stmt -> * WHILE LLB exp RLB stmt .
+                    From (state 032) stmt -> * WHILE LLB exp RLB stmt .
                     From (state 097) stmt -> * WHILE LLB exp RLB stmt .
                     From (state 101) stmt -> * WHILE LLB exp RLB stmt .
                     From (state 118) stmt -> * WHILE LLB exp RLB stmt .
                     From (state 109) stmt -> * WHILE LLB exp RLB stmt .
                     From (state 104) stmt -> * WHILE LLB exp RLB stmt .
-                stmt1 -> WHILE * LLB exp RLB stmt1 . {ELSE}
+                stmt1 -> WHILE * LLB exp RLB stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 107) stmt1 -> WHILE LLB * exp RLB stmt1 .
+                    From (state 029) stmt1 -> * WHILE LLB exp RLB stmt1 .
+                    From (state 159) stmt1 -> * WHILE LLB exp RLB stmt1 .
+                    From (state 032) stmt1 -> * WHILE LLB exp RLB stmt1 .
                     From (state 097) stmt1 -> * WHILE LLB exp RLB stmt1 .
                     From (state 101) stmt1 -> * WHILE LLB exp RLB stmt1 .
                     From (state 118) stmt1 -> * WHILE LLB exp RLB stmt1 .
@@ -6335,7 +6263,7 @@ State 107:
                 stmt -> WHILE LLB * exp RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 108) stmt -> WHILE LLB exp * RLB stmt .
                     From (state 106) stmt -> WHILE * LLB exp RLB stmt .
-                stmt1 -> WHILE LLB * exp RLB stmt1 . {ELSE}
+                stmt1 -> WHILE LLB * exp RLB stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 108) stmt1 -> WHILE LLB exp * RLB stmt1 .
                     From (state 106) stmt1 -> WHILE * LLB exp RLB stmt1 .
                 exp -> * exp BIAND exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,RLB}
@@ -6400,7 +6328,7 @@ State 108:
                 stmt -> WHILE LLB exp * RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 109) stmt -> WHILE LLB exp RLB * stmt .
                     From (state 107) stmt -> WHILE LLB * exp RLB stmt .
-                stmt1 -> WHILE LLB exp * RLB stmt1 . {ELSE}
+                stmt1 -> WHILE LLB exp * RLB stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 109) stmt1 -> WHILE LLB exp RLB * stmt1 .
                     From (state 107) stmt1 -> WHILE LLB * exp RLB stmt1 .
                 exp -> exp * BIAND exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,RLB}
@@ -6491,12 +6419,12 @@ State 109:
                     To (state 005) tp -> INT * LMB INUM RMB .
                 tp -> * FLOAT LMB INUM RMB . {ID}
                     To (state 009) tp -> FLOAT * LMB INUM RMB .
-                stmt -> * exp SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 034) stmt -> exp * SEMICOLON .
-                stmt -> * tp vallist SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 085) stmt -> tp * vallist SEMICOLON .
-                stmt -> * RETURN exp SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 088) stmt -> RETURN * exp SEMICOLON .
+                stmt1 -> * exp SEMICOLON . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 034) stmt1 -> exp * SEMICOLON .
+                stmt1 -> * tp vallist SEMICOLON . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 085) stmt1 -> tp * vallist SEMICOLON .
+                stmt1 -> * RETURN exp SEMICOLON . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 088) stmt1 -> RETURN * exp SEMICOLON .
                 stmt -> * LGB stmt RGB . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 091) stmt -> LGB * stmt RGB .
                 stmt -> * IF LLB exp RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
@@ -6507,28 +6435,29 @@ State 109:
                     To (state 106) stmt -> WHILE * LLB exp RLB stmt .
                 stmt -> WHILE LLB exp RLB * stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 110) stmt -> WHILE LLB exp RLB stmt .
-                    To (state 109) stmt -> * exp SEMICOLON .
-                    To (state 109) stmt -> * tp vallist SEMICOLON .
-                    To (state 109) stmt -> * RETURN exp SEMICOLON .
                     To (state 109) stmt -> * LGB stmt RGB .
                     To (state 109) stmt -> * IF LLB exp RLB stmt .
                     To (state 109) stmt -> * IF LLB exp RLB stmt1 ELSE stmt .
                     To (state 109) stmt -> * WHILE LLB exp RLB stmt .
                     To (state 109) stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
+                    To (state 109) stmt -> * IF LLB exp RLB stmt1 .
                     From (state 108) stmt -> WHILE LLB exp * RLB stmt .
                 stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 111) stmt -> FOR * LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
-                stmt1 -> * IF LLB exp RLB stmt1 ELSE stmt1 . {ELSE}
+                stmt1 -> * IF LLB exp RLB stmt1 ELSE stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 098) stmt1 -> IF * LLB exp RLB stmt1 ELSE stmt1 .
-                stmt1 -> * WHILE LLB exp RLB stmt1 . {ELSE}
+                stmt1 -> * WHILE LLB exp RLB stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 106) stmt1 -> WHILE * LLB exp RLB stmt1 .
-                stmt1 -> WHILE LLB exp RLB * stmt1 . {ELSE}
+                stmt1 -> WHILE LLB exp RLB * stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 143) stmt1 -> WHILE LLB exp RLB stmt1 .
+                    To (state 109) stmt1 -> * exp SEMICOLON .
+                    To (state 109) stmt1 -> * tp vallist SEMICOLON .
+                    To (state 109) stmt1 -> * RETURN exp SEMICOLON .
                     To (state 109) stmt1 -> * IF LLB exp RLB stmt1 ELSE stmt1 .
                     To (state 109) stmt1 -> * WHILE LLB exp RLB stmt1 .
                     To (state 109) stmt1 -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 .
                     From (state 108) stmt1 -> WHILE LLB exp * RLB stmt1 .
-                stmt1 -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 . {ELSE}
+                stmt1 -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 111) stmt1 -> FOR * LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 .
                 exp -> * exp BIAND exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 034) exp -> exp * BIAND exp .
@@ -6580,6 +6509,8 @@ State 109:
                     To (state 076) exp -> ID * LMB exp RMB .
                 exp -> * exp ASSIGN exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 034) exp -> exp * ASSIGN exp .
+                stmt -> * IF LLB exp RLB stmt1 . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 098) stmt -> IF * LLB exp RLB stmt1 .
 
                                  NOT shift 83
                                  INT shift 5
@@ -6595,8 +6526,8 @@ State 109:
                                 FNUM shift 75
                                   tp shift 85
                                 stmt shift 110
-                                 exp shift 34
                                stmt1 shift 143
+                                 exp shift 34
 
 State 110:
             (24)stmt -> WHILE LLB exp RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
@@ -6608,13 +6539,19 @@ State 110:
 State 111:
                 stmt -> FOR * LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 112) stmt -> FOR LLB * initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
+                    From (state 029) stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
+                    From (state 159) stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
+                    From (state 032) stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
                     From (state 097) stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
                     From (state 101) stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
                     From (state 104) stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
                     From (state 118) stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
                     From (state 109) stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
-                stmt1 -> FOR * LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 . {ELSE}
+                stmt1 -> FOR * LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 112) stmt1 -> FOR LLB * initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 .
+                    From (state 029) stmt1 -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 .
+                    From (state 159) stmt1 -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 .
+                    From (state 032) stmt1 -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 .
                     From (state 097) stmt1 -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 .
                     From (state 101) stmt1 -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 .
                     From (state 104) stmt1 -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 .
@@ -6640,7 +6577,7 @@ State 112:
                     To (state 136) init -> ID * ADDEQ exp .
                 init -> * ID MINUSEQ exp . {COMMA,SEMICOLON}
                     To (state 136) init -> ID * MINUSEQ exp .
-                stmt1 -> FOR LLB * initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 . {ELSE}
+                stmt1 -> FOR LLB * initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 113) stmt1 -> FOR LLB initlist * SEMICOLON exp SEMICOLON steplist RLB stmt1 .
                     From (state 111) stmt1 -> FOR * LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 .
 
@@ -6652,7 +6589,7 @@ State 113:
                 stmt -> FOR LLB initlist * SEMICOLON exp SEMICOLON steplist RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 114) stmt -> FOR LLB initlist SEMICOLON * exp SEMICOLON steplist RLB stmt .
                     From (state 112) stmt -> FOR LLB * initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
-                stmt1 -> FOR LLB initlist * SEMICOLON exp SEMICOLON steplist RLB stmt1 . {ELSE}
+                stmt1 -> FOR LLB initlist * SEMICOLON exp SEMICOLON steplist RLB stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 114) stmt1 -> FOR LLB initlist SEMICOLON * exp SEMICOLON steplist RLB stmt1 .
                     From (state 112) stmt1 -> FOR LLB * initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 .
 
@@ -6662,7 +6599,7 @@ State 114:
                 stmt -> FOR LLB initlist SEMICOLON * exp SEMICOLON steplist RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 115) stmt -> FOR LLB initlist SEMICOLON exp * SEMICOLON steplist RLB stmt .
                     From (state 113) stmt -> FOR LLB initlist * SEMICOLON exp SEMICOLON steplist RLB stmt .
-                stmt1 -> FOR LLB initlist SEMICOLON * exp SEMICOLON steplist RLB stmt1 . {ELSE}
+                stmt1 -> FOR LLB initlist SEMICOLON * exp SEMICOLON steplist RLB stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 115) stmt1 -> FOR LLB initlist SEMICOLON exp * SEMICOLON steplist RLB stmt1 .
                     From (state 113) stmt1 -> FOR LLB initlist * SEMICOLON exp SEMICOLON steplist RLB stmt1 .
                 exp -> * exp BIAND exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
@@ -6727,7 +6664,7 @@ State 115:
                 stmt -> FOR LLB initlist SEMICOLON exp * SEMICOLON steplist RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 116) stmt -> FOR LLB initlist SEMICOLON exp SEMICOLON * steplist RLB stmt .
                     From (state 114) stmt -> FOR LLB initlist SEMICOLON * exp SEMICOLON steplist RLB stmt .
-                stmt1 -> FOR LLB initlist SEMICOLON exp * SEMICOLON steplist RLB stmt1 . {ELSE}
+                stmt1 -> FOR LLB initlist SEMICOLON exp * SEMICOLON steplist RLB stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 116) stmt1 -> FOR LLB initlist SEMICOLON exp SEMICOLON * steplist RLB stmt1 .
                     From (state 114) stmt1 -> FOR LLB initlist SEMICOLON * exp SEMICOLON steplist RLB stmt1 .
                 exp -> exp * BIAND exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
@@ -6832,7 +6769,7 @@ State 116:
                     To (state 126) step -> ID * BIMINUS .
                 step -> * ID ASSIGN exp . {COMMA,RLB}
                     To (state 126) step -> ID * ASSIGN exp .
-                stmt1 -> FOR LLB initlist SEMICOLON exp SEMICOLON * steplist RLB stmt1 . {ELSE}
+                stmt1 -> FOR LLB initlist SEMICOLON exp SEMICOLON * steplist RLB stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 117) stmt1 -> FOR LLB initlist SEMICOLON exp SEMICOLON steplist * RLB stmt1 .
                     From (state 115) stmt1 -> FOR LLB initlist SEMICOLON exp * SEMICOLON steplist RLB stmt1 .
 
@@ -6846,7 +6783,7 @@ State 117:
                 stmt -> FOR LLB initlist SEMICOLON exp SEMICOLON steplist * RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 118) stmt -> FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB * stmt .
                     From (state 116) stmt -> FOR LLB initlist SEMICOLON exp SEMICOLON * steplist RLB stmt .
-                stmt1 -> FOR LLB initlist SEMICOLON exp SEMICOLON steplist * RLB stmt1 . {ELSE}
+                stmt1 -> FOR LLB initlist SEMICOLON exp SEMICOLON steplist * RLB stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 118) stmt1 -> FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB * stmt1 .
                     From (state 116) stmt1 -> FOR LLB initlist SEMICOLON exp SEMICOLON * steplist RLB stmt1 .
 
@@ -6861,12 +6798,12 @@ State 118:
                     To (state 005) tp -> INT * LMB INUM RMB .
                 tp -> * FLOAT LMB INUM RMB . {ID}
                     To (state 009) tp -> FLOAT * LMB INUM RMB .
-                stmt -> * exp SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 034) stmt -> exp * SEMICOLON .
-                stmt -> * tp vallist SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 085) stmt -> tp * vallist SEMICOLON .
-                stmt -> * RETURN exp SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 088) stmt -> RETURN * exp SEMICOLON .
+                stmt1 -> * exp SEMICOLON . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 034) stmt1 -> exp * SEMICOLON .
+                stmt1 -> * tp vallist SEMICOLON . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 085) stmt1 -> tp * vallist SEMICOLON .
+                stmt1 -> * RETURN exp SEMICOLON . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 088) stmt1 -> RETURN * exp SEMICOLON .
                 stmt -> * LGB stmt RGB . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 091) stmt -> LGB * stmt RGB .
                 stmt -> * IF LLB exp RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
@@ -6879,23 +6816,24 @@ State 118:
                     To (state 111) stmt -> FOR * LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
                 stmt -> FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB * stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 119) stmt -> FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
-                    To (state 118) stmt -> * exp SEMICOLON .
-                    To (state 118) stmt -> * tp vallist SEMICOLON .
-                    To (state 118) stmt -> * RETURN exp SEMICOLON .
                     To (state 118) stmt -> * LGB stmt RGB .
                     To (state 118) stmt -> * IF LLB exp RLB stmt .
                     To (state 118) stmt -> * IF LLB exp RLB stmt1 ELSE stmt .
                     To (state 118) stmt -> * WHILE LLB exp RLB stmt .
                     To (state 118) stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
+                    To (state 118) stmt -> * IF LLB exp RLB stmt1 .
                     From (state 117) stmt -> FOR LLB initlist SEMICOLON exp SEMICOLON steplist * RLB stmt .
-                stmt1 -> * IF LLB exp RLB stmt1 ELSE stmt1 . {ELSE}
+                stmt1 -> * IF LLB exp RLB stmt1 ELSE stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 098) stmt1 -> IF * LLB exp RLB stmt1 ELSE stmt1 .
-                stmt1 -> * WHILE LLB exp RLB stmt1 . {ELSE}
+                stmt1 -> * WHILE LLB exp RLB stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 106) stmt1 -> WHILE * LLB exp RLB stmt1 .
-                stmt1 -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 . {ELSE}
+                stmt1 -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 111) stmt1 -> FOR * LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 .
-                stmt1 -> FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB * stmt1 . {ELSE}
+                stmt1 -> FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB * stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 120) stmt1 -> FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 .
+                    To (state 118) stmt1 -> * exp SEMICOLON .
+                    To (state 118) stmt1 -> * tp vallist SEMICOLON .
+                    To (state 118) stmt1 -> * RETURN exp SEMICOLON .
                     To (state 118) stmt1 -> * IF LLB exp RLB stmt1 ELSE stmt1 .
                     To (state 118) stmt1 -> * WHILE LLB exp RLB stmt1 .
                     To (state 118) stmt1 -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 .
@@ -6950,6 +6888,8 @@ State 118:
                     To (state 076) exp -> ID * LMB exp RMB .
                 exp -> * exp ASSIGN exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 034) exp -> exp * ASSIGN exp .
+                stmt -> * IF LLB exp RLB stmt1 . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 098) stmt -> IF * LLB exp RLB stmt1 .
 
                                  NOT shift 83
                                  INT shift 5
@@ -6965,8 +6905,8 @@ State 118:
                                 FNUM shift 75
                                   tp shift 85
                                 stmt shift 119
-                                 exp shift 34
                                stmt1 shift 120
+                                 exp shift 34
 
 State 119:
             (25)stmt -> FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
@@ -6976,10 +6916,10 @@ State 119:
                            [default] reduce 25
 
 State 120:
-            (40)stmt1 -> FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 . {ELSE}
+            (40)stmt1 -> FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     From (state 118) stmt1 -> FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB * stmt1 .
 
-                                ELSE reduce 40
+                           [default] reduce 40
 
 State 121:
                 steplist -> step * COMMA steplist . {RLB}
@@ -7834,132 +7774,59 @@ State 142:
                            [default] reduce 30
 
 State 143:
-            (39)stmt1 -> WHILE LLB exp RLB stmt1 . {ELSE}
+            (39)stmt1 -> WHILE LLB exp RLB stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     From (state 109) stmt1 -> WHILE LLB exp RLB * stmt1 .
 
-                                ELSE reduce 39
+                           [default] reduce 39
 
 State 144:
-            (38)stmt1 -> IF LLB exp RLB stmt1 ELSE stmt1 . {ELSE}
+            (38)stmt1 -> IF LLB exp RLB stmt1 ELSE stmt1 . {NOT,ELSE,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     From (state 104) stmt1 -> IF LLB exp RLB stmt1 ELSE * stmt1 .
 
-                                ELSE reduce 38
+                           [default] reduce 38
 
 State 145:
-                stmt -> IF LLB exp RLB stmt1 * ELSE stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> IF LLB exp RLB stmt1 * ELSE stmt . {RGB}
                     To (state 146) stmt -> IF LLB exp RLB stmt1 ELSE * stmt .
                     From (state 097) stmt -> IF LLB exp RLB * stmt1 ELSE stmt .
+            (67)stmt -> IF LLB exp RLB stmt1 . {RGB}
+                    From (state 097) stmt -> IF LLB exp RLB * stmt1 .
 
                                 ELSE shift 146
+                                 RGB reduce 67
 
 State 146:
-                tp -> * INT . {ID}
-                    To (state 005) tp -> INT .
-                tp -> * FLOAT . {ID}
-                    To (state 009) tp -> FLOAT .
-                tp -> * INT LMB INUM RMB . {ID}
-                    To (state 005) tp -> INT * LMB INUM RMB .
-                tp -> * FLOAT LMB INUM RMB . {ID}
-                    To (state 009) tp -> FLOAT * LMB INUM RMB .
-                stmt -> * exp SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 034) stmt -> exp * SEMICOLON .
-                stmt -> * tp vallist SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 085) stmt -> tp * vallist SEMICOLON .
-                stmt -> * RETURN exp SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 088) stmt -> RETURN * exp SEMICOLON .
-                stmt -> * LGB stmt RGB . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> * LGB stmt RGB . {RGB}
                     To (state 091) stmt -> LGB * stmt RGB .
-                stmt -> * IF LLB exp RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> * IF LLB exp RLB stmt . {RGB}
                     To (state 094) stmt -> IF * LLB exp RLB stmt .
-                stmt -> * IF LLB exp RLB stmt1 ELSE stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> * IF LLB exp RLB stmt1 ELSE stmt . {RGB}
                     To (state 094) stmt -> IF * LLB exp RLB stmt1 ELSE stmt .
-                stmt -> IF LLB exp RLB stmt1 ELSE * stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> IF LLB exp RLB stmt1 ELSE * stmt . {RGB}
                     To (state 105) stmt -> IF LLB exp RLB stmt1 ELSE stmt .
-                    To (state 146) stmt -> * exp SEMICOLON .
-                    To (state 146) stmt -> * tp vallist SEMICOLON .
-                    To (state 146) stmt -> * RETURN exp SEMICOLON .
                     To (state 146) stmt -> * LGB stmt RGB .
                     To (state 146) stmt -> * IF LLB exp RLB stmt .
                     To (state 146) stmt -> * IF LLB exp RLB stmt1 ELSE stmt .
                     To (state 146) stmt -> * WHILE LLB exp RLB stmt .
                     To (state 146) stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
+                    To (state 146) stmt -> * IF LLB exp RLB stmt1 .
                     From (state 145) stmt -> IF LLB exp RLB stmt1 * ELSE stmt .
-                stmt -> * WHILE LLB exp RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> * WHILE LLB exp RLB stmt . {RGB}
                     To (state 147) stmt -> WHILE * LLB exp RLB stmt .
-                stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt . {RGB}
                     To (state 151) stmt -> FOR * LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
-                exp -> * exp BIAND exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * BIAND exp .
-                exp -> * exp BIOR exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * BIOR exp .
-                exp -> * exp LSS exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * LSS exp .
-                exp -> * exp LSSEQ exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * LSSEQ exp .
-                exp -> * exp GRT exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * GRT exp .
-                exp -> * exp GRTEQ exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * GRTEQ exp .
-                exp -> * exp EQ exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * EQ exp .
-                exp -> * exp NOTEQ exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * NOTEQ exp .
-                exp -> * exp ADD exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * ADD exp .
-                exp -> * exp MINUS exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * MINUS exp .
-                exp -> * exp MULTI exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * MULTI exp .
-                exp -> * exp DIV exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * DIV exp .
-                exp -> * exp MOD exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * MOD exp .
-                exp -> * INUM . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 074) exp -> INUM .
-                exp -> * FNUM . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 075) exp -> FNUM .
-                exp -> * ID . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 076) exp -> ID .
-                exp -> * LLB exp RLB . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 080) exp -> LLB * exp RLB .
-                exp -> * NOT exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 083) exp -> NOT * exp .
-                exp -> * exp AND exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * AND exp .
-                exp -> * exp OR exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * OR exp .
-                exp -> * exp XOR exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * XOR exp .
-                exp -> * exp BITNOT exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * BITNOT exp .
-                exp -> * exp COMMA exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * COMMA exp .
-                exp -> * ID LMB exp RMB . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 076) exp -> ID * LMB exp RMB .
-                exp -> * exp ASSIGN exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * ASSIGN exp .
+                stmt -> * IF LLB exp RLB stmt1 . {RGB}
+                    To (state 094) stmt -> IF * LLB exp RLB stmt1 .
 
-                                 NOT shift 83
-                                 INT shift 5
-                               FLOAT shift 9
-                                INUM shift 74
-                                  ID shift 76
                                  LGB shift 91
-                                 LLB shift 80
-                              RETURN shift 88
                                   IF shift 94
                                WHILE shift 147
                                  FOR shift 151
-                                FNUM shift 75
-                                  tp shift 85
                                 stmt shift 105
-                                 exp shift 34
 
 State 147:
-                stmt -> WHILE * LLB exp RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> WHILE * LLB exp RLB stmt . {RGB}
                     To (state 148) stmt -> WHILE LLB * exp RLB stmt .
-                    From (state 029) stmt -> * WHILE LLB exp RLB stmt .
-                    From (state 032) stmt -> * WHILE LLB exp RLB stmt .
                     From (state 091) stmt -> * WHILE LLB exp RLB stmt .
                     From (state 158) stmt -> * WHILE LLB exp RLB stmt .
                     From (state 150) stmt -> * WHILE LLB exp RLB stmt .
@@ -7968,7 +7835,7 @@ State 147:
                                  LLB shift 148
 
 State 148:
-                stmt -> WHILE LLB * exp RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> WHILE LLB * exp RLB stmt . {RGB}
                     To (state 149) stmt -> WHILE LLB exp * RLB stmt .
                     From (state 147) stmt -> WHILE * LLB exp RLB stmt .
                 exp -> * exp BIAND exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,RLB}
@@ -8030,7 +7897,7 @@ State 148:
                                  exp shift 149
 
 State 149:
-                stmt -> WHILE LLB exp * RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> WHILE LLB exp * RLB stmt . {RGB}
                     To (state 150) stmt -> WHILE LLB exp RLB * stmt .
                     From (state 148) stmt -> WHILE LLB * exp RLB stmt .
                 exp -> exp * BIAND exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,RLB}
@@ -8113,113 +7980,37 @@ State 149:
                                  RLB shift 150
 
 State 150:
-                tp -> * INT . {ID}
-                    To (state 005) tp -> INT .
-                tp -> * FLOAT . {ID}
-                    To (state 009) tp -> FLOAT .
-                tp -> * INT LMB INUM RMB . {ID}
-                    To (state 005) tp -> INT * LMB INUM RMB .
-                tp -> * FLOAT LMB INUM RMB . {ID}
-                    To (state 009) tp -> FLOAT * LMB INUM RMB .
-                stmt -> * exp SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 034) stmt -> exp * SEMICOLON .
-                stmt -> * tp vallist SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 085) stmt -> tp * vallist SEMICOLON .
-                stmt -> * RETURN exp SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 088) stmt -> RETURN * exp SEMICOLON .
-                stmt -> * LGB stmt RGB . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> * LGB stmt RGB . {RGB}
                     To (state 091) stmt -> LGB * stmt RGB .
-                stmt -> * IF LLB exp RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> * IF LLB exp RLB stmt . {RGB}
                     To (state 094) stmt -> IF * LLB exp RLB stmt .
-                stmt -> * IF LLB exp RLB stmt1 ELSE stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> * IF LLB exp RLB stmt1 ELSE stmt . {RGB}
                     To (state 094) stmt -> IF * LLB exp RLB stmt1 ELSE stmt .
-                stmt -> * WHILE LLB exp RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> * WHILE LLB exp RLB stmt . {RGB}
                     To (state 147) stmt -> WHILE * LLB exp RLB stmt .
-                stmt -> WHILE LLB exp RLB * stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> WHILE LLB exp RLB * stmt . {RGB}
                     To (state 110) stmt -> WHILE LLB exp RLB stmt .
-                    To (state 150) stmt -> * exp SEMICOLON .
-                    To (state 150) stmt -> * tp vallist SEMICOLON .
-                    To (state 150) stmt -> * RETURN exp SEMICOLON .
                     To (state 150) stmt -> * LGB stmt RGB .
                     To (state 150) stmt -> * IF LLB exp RLB stmt .
                     To (state 150) stmt -> * IF LLB exp RLB stmt1 ELSE stmt .
                     To (state 150) stmt -> * WHILE LLB exp RLB stmt .
                     To (state 150) stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
+                    To (state 150) stmt -> * IF LLB exp RLB stmt1 .
                     From (state 149) stmt -> WHILE LLB exp * RLB stmt .
-                stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt . {RGB}
                     To (state 151) stmt -> FOR * LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
-                exp -> * exp BIAND exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * BIAND exp .
-                exp -> * exp BIOR exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * BIOR exp .
-                exp -> * exp LSS exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * LSS exp .
-                exp -> * exp LSSEQ exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * LSSEQ exp .
-                exp -> * exp GRT exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * GRT exp .
-                exp -> * exp GRTEQ exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * GRTEQ exp .
-                exp -> * exp EQ exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * EQ exp .
-                exp -> * exp NOTEQ exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * NOTEQ exp .
-                exp -> * exp ADD exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * ADD exp .
-                exp -> * exp MINUS exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * MINUS exp .
-                exp -> * exp MULTI exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * MULTI exp .
-                exp -> * exp DIV exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * DIV exp .
-                exp -> * exp MOD exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * MOD exp .
-                exp -> * INUM . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 074) exp -> INUM .
-                exp -> * FNUM . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 075) exp -> FNUM .
-                exp -> * ID . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 076) exp -> ID .
-                exp -> * LLB exp RLB . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 080) exp -> LLB * exp RLB .
-                exp -> * NOT exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 083) exp -> NOT * exp .
-                exp -> * exp AND exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * AND exp .
-                exp -> * exp OR exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * OR exp .
-                exp -> * exp XOR exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * XOR exp .
-                exp -> * exp BITNOT exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * BITNOT exp .
-                exp -> * exp COMMA exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * COMMA exp .
-                exp -> * ID LMB exp RMB . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 076) exp -> ID * LMB exp RMB .
-                exp -> * exp ASSIGN exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
-                    To (state 034) exp -> exp * ASSIGN exp .
+                stmt -> * IF LLB exp RLB stmt1 . {RGB}
+                    To (state 094) stmt -> IF * LLB exp RLB stmt1 .
 
-                                 NOT shift 83
-                                 INT shift 5
-                               FLOAT shift 9
-                                INUM shift 74
-                                  ID shift 76
                                  LGB shift 91
-                                 LLB shift 80
-                              RETURN shift 88
                                   IF shift 94
                                WHILE shift 147
                                  FOR shift 151
-                                FNUM shift 75
-                                  tp shift 85
                                 stmt shift 110
-                                 exp shift 34
 
 State 151:
-                stmt -> FOR * LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> FOR * LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt . {RGB}
                     To (state 152) stmt -> FOR LLB * initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
-                    From (state 029) stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
-                    From (state 032) stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
                     From (state 091) stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
                     From (state 146) stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
                     From (state 158) stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
@@ -8228,7 +8019,7 @@ State 151:
                                  LLB shift 152
 
 State 152:
-                stmt -> FOR LLB * initlist SEMICOLON exp SEMICOLON steplist RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> FOR LLB * initlist SEMICOLON exp SEMICOLON steplist RLB stmt . {RGB}
                     To (state 153) stmt -> FOR LLB initlist * SEMICOLON exp SEMICOLON steplist RLB stmt .
                     From (state 151) stmt -> FOR * LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
                 initlist -> * init COMMA initlist . {SEMICOLON}
@@ -8250,14 +8041,14 @@ State 152:
                                 init shift 133
 
 State 153:
-                stmt -> FOR LLB initlist * SEMICOLON exp SEMICOLON steplist RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> FOR LLB initlist * SEMICOLON exp SEMICOLON steplist RLB stmt . {RGB}
                     To (state 154) stmt -> FOR LLB initlist SEMICOLON * exp SEMICOLON steplist RLB stmt .
                     From (state 152) stmt -> FOR LLB * initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
 
                            SEMICOLON shift 154
 
 State 154:
-                stmt -> FOR LLB initlist SEMICOLON * exp SEMICOLON steplist RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> FOR LLB initlist SEMICOLON * exp SEMICOLON steplist RLB stmt . {RGB}
                     To (state 155) stmt -> FOR LLB initlist SEMICOLON exp * SEMICOLON steplist RLB stmt .
                     From (state 153) stmt -> FOR LLB initlist * SEMICOLON exp SEMICOLON steplist RLB stmt .
                 exp -> * exp BIAND exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
@@ -8319,7 +8110,7 @@ State 154:
                                  exp shift 155
 
 State 155:
-                stmt -> FOR LLB initlist SEMICOLON exp * SEMICOLON steplist RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> FOR LLB initlist SEMICOLON exp * SEMICOLON steplist RLB stmt . {RGB}
                     To (state 156) stmt -> FOR LLB initlist SEMICOLON exp SEMICOLON * steplist RLB stmt .
                     From (state 154) stmt -> FOR LLB initlist SEMICOLON * exp SEMICOLON steplist RLB stmt .
                 exp -> exp * BIAND exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
@@ -8402,7 +8193,7 @@ State 155:
                            SEMICOLON shift 156
 
 State 156:
-                stmt -> FOR LLB initlist SEMICOLON exp SEMICOLON * steplist RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> FOR LLB initlist SEMICOLON exp SEMICOLON * steplist RLB stmt . {RGB}
                     To (state 157) stmt -> FOR LLB initlist SEMICOLON exp SEMICOLON steplist * RLB stmt .
                     From (state 155) stmt -> FOR LLB initlist SEMICOLON exp * SEMICOLON steplist RLB stmt .
                 steplist -> * step COMMA steplist . {RLB}
@@ -8432,13 +8223,42 @@ State 156:
                                 step shift 121
 
 State 157:
-                stmt -> FOR LLB initlist SEMICOLON exp SEMICOLON steplist * RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                stmt -> FOR LLB initlist SEMICOLON exp SEMICOLON steplist * RLB stmt . {RGB}
                     To (state 158) stmt -> FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB * stmt .
                     From (state 156) stmt -> FOR LLB initlist SEMICOLON exp SEMICOLON * steplist RLB stmt .
 
                                  RLB shift 158
 
 State 158:
+                stmt -> * LGB stmt RGB . {RGB}
+                    To (state 091) stmt -> LGB * stmt RGB .
+                stmt -> * IF LLB exp RLB stmt . {RGB}
+                    To (state 094) stmt -> IF * LLB exp RLB stmt .
+                stmt -> * IF LLB exp RLB stmt1 ELSE stmt . {RGB}
+                    To (state 094) stmt -> IF * LLB exp RLB stmt1 ELSE stmt .
+                stmt -> * WHILE LLB exp RLB stmt . {RGB}
+                    To (state 147) stmt -> WHILE * LLB exp RLB stmt .
+                stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt . {RGB}
+                    To (state 151) stmt -> FOR * LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
+                stmt -> FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB * stmt . {RGB}
+                    To (state 119) stmt -> FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
+                    To (state 158) stmt -> * LGB stmt RGB .
+                    To (state 158) stmt -> * IF LLB exp RLB stmt .
+                    To (state 158) stmt -> * IF LLB exp RLB stmt1 ELSE stmt .
+                    To (state 158) stmt -> * WHILE LLB exp RLB stmt .
+                    To (state 158) stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
+                    To (state 158) stmt -> * IF LLB exp RLB stmt1 .
+                    From (state 157) stmt -> FOR LLB initlist SEMICOLON exp SEMICOLON steplist * RLB stmt .
+                stmt -> * IF LLB exp RLB stmt1 . {RGB}
+                    To (state 094) stmt -> IF * LLB exp RLB stmt1 .
+
+                                 LGB shift 91
+                                  IF shift 94
+                               WHILE shift 147
+                                 FOR shift 151
+                                stmt shift 119
+
+State 159:
                 tp -> * INT . {ID}
                     To (state 005) tp -> INT .
                 tp -> * FLOAT . {ID}
@@ -8447,33 +8267,37 @@ State 158:
                     To (state 005) tp -> INT * LMB INUM RMB .
                 tp -> * FLOAT LMB INUM RMB . {ID}
                     To (state 009) tp -> FLOAT * LMB INUM RMB .
-                stmt -> * exp SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 034) stmt -> exp * SEMICOLON .
-                stmt -> * tp vallist SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 085) stmt -> tp * vallist SEMICOLON .
-                stmt -> * RETURN exp SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 088) stmt -> RETURN * exp SEMICOLON .
+                stmtlist -> * stmt stmtlist . {RGB}
+                    To (state 032) stmtlist -> stmt * stmtlist .
+                    To (state 159) stmt -> * LGB stmt RGB .
+                    To (state 159) stmt -> * IF LLB exp RLB stmt .
+                    To (state 159) stmt -> * IF LLB exp RLB stmt1 ELSE stmt .
+                    To (state 159) stmt -> * WHILE LLB exp RLB stmt .
+                    To (state 159) stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
+                    To (state 159) stmt -> * IF LLB exp RLB stmt1 .
+            (17)stmtlist -> . {RGB}
+                stmt1 -> * exp SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 034) stmt1 -> exp * SEMICOLON .
+                stmt1 -> * tp vallist SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 085) stmt1 -> tp * vallist SEMICOLON .
+                stmt1 -> * RETURN exp SEMICOLON . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 088) stmt1 -> RETURN * exp SEMICOLON .
                 stmt -> * LGB stmt RGB . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
                     To (state 091) stmt -> LGB * stmt RGB .
                 stmt -> * IF LLB exp RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 094) stmt -> IF * LLB exp RLB stmt .
+                    To (state 098) stmt -> IF * LLB exp RLB stmt .
                 stmt -> * IF LLB exp RLB stmt1 ELSE stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 094) stmt -> IF * LLB exp RLB stmt1 ELSE stmt .
+                    To (state 098) stmt -> IF * LLB exp RLB stmt1 ELSE stmt .
                 stmt -> * WHILE LLB exp RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 147) stmt -> WHILE * LLB exp RLB stmt .
+                    To (state 106) stmt -> WHILE * LLB exp RLB stmt .
                 stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 151) stmt -> FOR * LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
-                stmt -> FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB * stmt . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
-                    To (state 119) stmt -> FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
-                    To (state 158) stmt -> * exp SEMICOLON .
-                    To (state 158) stmt -> * tp vallist SEMICOLON .
-                    To (state 158) stmt -> * RETURN exp SEMICOLON .
-                    To (state 158) stmt -> * LGB stmt RGB .
-                    To (state 158) stmt -> * IF LLB exp RLB stmt .
-                    To (state 158) stmt -> * IF LLB exp RLB stmt1 ELSE stmt .
-                    To (state 158) stmt -> * WHILE LLB exp RLB stmt .
-                    To (state 158) stmt -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
-                    From (state 157) stmt -> FOR LLB initlist SEMICOLON exp SEMICOLON steplist * RLB stmt .
+                    To (state 111) stmt -> FOR * LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt .
+                stmt1 -> * IF LLB exp RLB stmt1 ELSE stmt1 . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 098) stmt1 -> IF * LLB exp RLB stmt1 ELSE stmt1 .
+                stmt1 -> * WHILE LLB exp RLB stmt1 . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 106) stmt1 -> WHILE * LLB exp RLB stmt1 .
+                stmt1 -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 111) stmt1 -> FOR * LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 .
                 exp -> * exp BIAND exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 034) exp -> exp * BIAND exp .
                 exp -> * exp BIOR exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
@@ -8524,6 +8348,24 @@ State 158:
                     To (state 076) exp -> ID * LMB exp RMB .
                 exp -> * exp ASSIGN exp . {COMMA,ASSIGN,BIOR,BIAND,OR,XOR,AND,EQ,NOTEQ,LSS,LSSEQ,GRT,GRTEQ,ADD,MINUS,DIV,MOD,MULTI,BITNOT,SEMICOLON}
                     To (state 034) exp -> exp * ASSIGN exp .
+                stmtlist -> * stmt1 stmtlist . {RGB}
+                    To (state 159) stmtlist -> stmt1 * stmtlist .
+                    To (state 159) stmt1 -> * exp SEMICOLON .
+                    To (state 159) stmt1 -> * tp vallist SEMICOLON .
+                    To (state 159) stmt1 -> * RETURN exp SEMICOLON .
+                    To (state 159) stmt1 -> * IF LLB exp RLB stmt1 ELSE stmt1 .
+                    To (state 159) stmt1 -> * WHILE LLB exp RLB stmt1 .
+                    To (state 159) stmt1 -> * FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt1 .
+                stmtlist -> stmt1 * stmtlist . {RGB}
+                    To (state 160) stmtlist -> stmt1 stmtlist .
+                    To (state 159) stmtlist -> * stmt stmtlist .
+                    To (state 159) stmtlist -> .
+                    To (state 159) stmtlist -> * stmt1 stmtlist .
+                    From (state 029) stmtlist -> * stmt1 stmtlist .
+                    From (state 159) stmtlist -> * stmt1 stmtlist .
+                    From (state 032) stmtlist -> * stmt1 stmtlist .
+                stmt -> * IF LLB exp RLB stmt1 . {NOT,INT,FLOAT,INUM,ID,LGB,RGB,LLB,RETURN,IF,WHILE,FOR,FNUM}
+                    To (state 098) stmt -> IF * LLB exp RLB stmt1 .
 
                                  NOT shift 83
                                  INT shift 5
@@ -8531,13 +8373,21 @@ State 158:
                                 INUM shift 74
                                   ID shift 76
                                  LGB shift 91
+                                 RGB reduce 17
                                  LLB shift 80
                               RETURN shift 88
-                                  IF shift 94
-                               WHILE shift 147
-                                 FOR shift 151
+                                  IF shift 98
+                               WHILE shift 106
+                                 FOR shift 111
                                 FNUM shift 75
                                   tp shift 85
-                                stmt shift 119
+                            stmtlist shift 160
+                                stmt shift 32
+                               stmt1 shift 159
                                  exp shift 34
 
+State 160:
+            (66)stmtlist -> stmt1 stmtlist . {RGB}
+                    From (state 159) stmtlist -> stmt1 * stmtlist .
+
+                                 RGB reduce 66

@@ -24,7 +24,7 @@ Feature:
 (7) vallist -> ID COMMA vallist.
 (8) vallist -> ID.
 (9) def -> vallist SEMICOLOM.
-def -> fundef LGB stmtlist RGB.
+(10) def -> fundef LGB stmtlist RGB.
 fundef -> ID LLB args RLB.
 fundef -> ID LLB RLB.
 args -> param COMMA args.

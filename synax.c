@@ -9,6 +9,7 @@ extern const char* keywords[MAXSIZE];
 extern const char* words_type[MAXSIZE];
 extern const char* op_type[MAXSIZE];
 extern const char* sep_type[MAXSIZE];
+extern const char* op_detail_type[MAXSIZE];
 extern Word words[MAXWORDS];
 extern int wordsSize;
 
@@ -17,12 +18,12 @@ const char* synax_ele[] = {"program", "deflist", "tp", "def", "vallist", "fundef
                               "steplist", "step", "stmt1"};
 const int grammar_length[] = {1, 3, 0, 1, 1, 4, 4, 3, 1, 2, 4, 4, 3, 3, 1, 2, 2, 0, 2, 3, 3, 3, 5,
                                   7, 5, 9, 3, 1, 3, 3, 3, 3, 1, 2, 2, 2, 2, 3, 7, 5, 9, 3, 3, 3, 3, 3, 3,
-                                  3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 3, 2, 3, 3, 3, 3, 3, 4, 3};
+                                  3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 3, 2, 3, 3, 3, 3, 3, 4, 3, 2, 5};
 const int grammar_rule[] = {program, deflist, deflist, tp, tp, tp, tp, vallist, vallist, def, def, fundef, fundef,
-                          args, args, param, stmtlist, stmtlist, stmt, stmt, stmt, stmt, stmt, stmt, stmt, stmt,
+                          args, args, param, stmtlist, stmtlist, stmt1, stmt1, stmt1, stmt, stmt, stmt, stmt, stmt,
                           initlist, initlist, init, init, init, steplist, steplist, step, step, step, step, step, stmt1, stmt1, stmt1,
                           exp, exp, exp, exp, exp, exp, exp, exp, exp, exp, exp, exp, 
-                          exp, exp, exp, exp, exp, exp, exp, exp, exp, exp, exp, exp, exp};
+                          exp, exp, exp, exp, exp, exp, exp, exp, exp, exp, exp, exp, exp, stmtlist, stmt};
 
 Sentence* pgm;
 
@@ -33,13 +34,16 @@ Sentence* mkNode(int ruleNum){
     int startpos = stkTop - grammar_length[ruleNum] + 1;
     int endpos = stkTop;
     pgm = newnode;
-    for(; startpos <= endpos; startpos++)
-        newnode->next[startpos] = stcStk[startpos];
+    for(int i = 1; startpos <= endpos; startpos++){
+        if(stcStk[startpos]->type == SEPERATOR) continue;
+        newnode->next[i] = stcStk[startpos];
+        i++;
+    }
     return newnode;
 }
 
 Sentence* shift(int nextState, Sentence* stc){
-    printf("shift %d\n", nextState);
+    // printf("shift %d\n", nextState);
     stateStk[++stkTop] = nextState;
     stcStk[stkTop] = stc;
     syn_analysis_state = nextState;
@@ -47,7 +51,7 @@ Sentence* shift(int nextState, Sentence* stc){
 }
 
 Sentence* reduce(int ruleNum){
-    printf("reduce %d\n", ruleNum);
+    // printf("reduce %d\n", ruleNum);
     Sentence* newnode = mkNode(ruleNum);
     stkTop = stkTop - grammar_length[ruleNum];
     syn_analysis_state = stateStk[stkTop];
@@ -82,7 +86,7 @@ int getSynFromSentence(Sentence* stc){
 Sentence* synaxdfa(Sentence* stc){
     int synid = getSynFromSentence(stc);
     switch(syn_analysis_state){
-        case 0:
+case 0:
     if(synid == END){
         return reduce(2);
     }
@@ -335,13 +339,13 @@ case 29:
         return shift(88, stc);
     }
     if(synid == IF){
-        return shift(94, stc);
+        return shift(98, stc);
     }
     if(synid == WHILE){
-        return shift(147, stc);
+        return shift(106, stc);
     }
     if(synid == FOR){
-        return shift(151, stc);
+        return shift(111, stc);
     }
     if(synid == FNUM){
         return shift(75, stc);
@@ -354,6 +358,9 @@ case 29:
     }
     if(synid == stmt){
         return shift(32, stc);
+    }
+    if(synid == stmt1){
+        return shift(159, stc);
     }
     if(synid == exp){
         return shift(34, stc);
@@ -395,13 +402,13 @@ case 32:
         return shift(88, stc);
     }
     if(synid == IF){
-        return shift(94, stc);
+        return shift(98, stc);
     }
     if(synid == WHILE){
-        return shift(147, stc);
+        return shift(106, stc);
     }
     if(synid == FOR){
-        return shift(151, stc);
+        return shift(111, stc);
     }
     if(synid == FNUM){
         return shift(75, stc);
@@ -414,6 +421,9 @@ case 32:
     }
     if(synid == stmt){
         return shift(32, stc);
+    }
+    if(synid == stmt1){
+        return shift(159, stc);
     }
     if(synid == exp){
         return shift(34, stc);
@@ -1694,29 +1704,8 @@ case 89:
 case 90:
     return reduce(20);
 case 91:
-    if(synid == NOT){
-        return shift(83, stc);
-    }
-    if(synid == INT){
-        return shift(5, stc);
-    }
-    if(synid == FLOAT){
-        return shift(9, stc);
-    }
-    if(synid == INUM){
-        return shift(74, stc);
-    }
-    if(synid == ID){
-        return shift(76, stc);
-    }
     if(synid == LGB){
         return shift(91, stc);
-    }
-    if(synid == LLB){
-        return shift(80, stc);
-    }
-    if(synid == RETURN){
-        return shift(88, stc);
     }
     if(synid == IF){
         return shift(94, stc);
@@ -1727,17 +1716,8 @@ case 91:
     if(synid == FOR){
         return shift(151, stc);
     }
-    if(synid == FNUM){
-        return shift(75, stc);
-    }
-    if(synid == tp){
-        return shift(85, stc);
-    }
     if(synid == stmt){
         return shift(92, stc);
-    }
-    if(synid == exp){
-        return shift(34, stc);
     }
     exit(0);
 case 92:
@@ -1877,11 +1857,11 @@ case 97:
     if(synid == stmt){
         return shift(102, stc);
     }
-    if(synid == exp){
-        return shift(34, stc);
-    }
     if(synid == stmt1){
         return shift(145, stc);
+    }
+    if(synid == exp){
+        return shift(34, stc);
     }
     exit(0);
 case 98:
@@ -2014,11 +1994,11 @@ case 101:
     if(synid == stmt){
         return shift(102, stc);
     }
-    if(synid == exp){
-        return shift(34, stc);
-    }
     if(synid == stmt1){
         return shift(103, stc);
+    }
+    if(synid == exp){
+        return shift(34, stc);
     }
     exit(0);
 case 102:
@@ -2027,7 +2007,7 @@ case 103:
     if(synid == ELSE){
         return shift(104, stc);
     }
-    exit(0);
+    return reduce(67);
 case 104:
     if(synid == NOT){
         return shift(83, stc);
@@ -2071,11 +2051,11 @@ case 104:
     if(synid == stmt){
         return shift(105, stc);
     }
-    if(synid == exp){
-        return shift(34, stc);
-    }
     if(synid == stmt1){
         return shift(144, stc);
+    }
+    if(synid == exp){
+        return shift(34, stc);
     }
     exit(0);
 case 105:
@@ -2210,11 +2190,11 @@ case 109:
     if(synid == stmt){
         return shift(110, stc);
     }
-    if(synid == exp){
-        return shift(34, stc);
-    }
     if(synid == stmt1){
         return shift(143, stc);
+    }
+    if(synid == exp){
+        return shift(34, stc);
     }
     exit(0);
 case 110:
@@ -2387,20 +2367,17 @@ case 118:
     if(synid == stmt){
         return shift(119, stc);
     }
-    if(synid == exp){
-        return shift(34, stc);
-    }
     if(synid == stmt1){
         return shift(120, stc);
+    }
+    if(synid == exp){
+        return shift(34, stc);
     }
     exit(0);
 case 119:
     return reduce(25);
 case 120:
-    if(synid == ELSE){
-        return reduce(40);
-    }
-    exit(0);
+    return reduce(40);
 case 121:
     if(synid == COMMA){
         return shift(122, stc);
@@ -2800,44 +2777,20 @@ case 142:
     }
     return reduce(30);
 case 143:
-    if(synid == ELSE){
-        return reduce(39);
-    }
-    exit(0);
+    return reduce(39);
 case 144:
-    if(synid == ELSE){
-        return reduce(38);
-    }
-    exit(0);
+    return reduce(38);
 case 145:
     if(synid == ELSE){
         return shift(146, stc);
     }
+    if(synid == RGB){
+        return reduce(67);
+    }
     exit(0);
 case 146:
-    if(synid == NOT){
-        return shift(83, stc);
-    }
-    if(synid == INT){
-        return shift(5, stc);
-    }
-    if(synid == FLOAT){
-        return shift(9, stc);
-    }
-    if(synid == INUM){
-        return shift(74, stc);
-    }
-    if(synid == ID){
-        return shift(76, stc);
-    }
     if(synid == LGB){
         return shift(91, stc);
-    }
-    if(synid == LLB){
-        return shift(80, stc);
-    }
-    if(synid == RETURN){
-        return shift(88, stc);
     }
     if(synid == IF){
         return shift(94, stc);
@@ -2848,17 +2801,8 @@ case 146:
     if(synid == FOR){
         return shift(151, stc);
     }
-    if(synid == FNUM){
-        return shift(75, stc);
-    }
-    if(synid == tp){
-        return shift(85, stc);
-    }
     if(synid == stmt){
         return shift(105, stc);
-    }
-    if(synid == exp){
-        return shift(34, stc);
     }
     exit(0);
 case 147:
@@ -2948,6 +2892,226 @@ case 149:
         return shift(150, stc);
     }
     exit(0);
+case 150:
+    if(synid == LGB){
+        return shift(91, stc);
+    }
+    if(synid == IF){
+        return shift(94, stc);
+    }
+    if(synid == WHILE){
+        return shift(147, stc);
+    }
+    if(synid == FOR){
+        return shift(151, stc);
+    }
+    if(synid == stmt){
+        return shift(110, stc);
+    }
+    exit(0);
+case 151:
+    if(synid == LLB){
+        return shift(152, stc);
+    }
+    exit(0);
+case 152:
+    if(synid == ID){
+        return shift(136, stc);
+    }
+    if(synid == initlist){
+        return shift(153, stc);
+    }
+    if(synid == init){
+        return shift(133, stc);
+    }
+    exit(0);
+case 153:
+    if(synid == SEMICOLON){
+        return shift(154, stc);
+    }
+    exit(0);
+case 154:
+    if(synid == NOT){
+        return shift(83, stc);
+    }
+    if(synid == INUM){
+        return shift(74, stc);
+    }
+    if(synid == ID){
+        return shift(76, stc);
+    }
+    if(synid == LLB){
+        return shift(80, stc);
+    }
+    if(synid == FNUM){
+        return shift(75, stc);
+    }
+    if(synid == exp){
+        return shift(155, stc);
+    }
+    exit(0);
+case 155:
+    if(synid == COMMA){
+        return shift(70, stc);
+    }
+    if(synid == SETVAL){
+        return shift(72, stc);
+    }
+    if(synid == BIOR){
+        return shift(38, stc);
+    }
+    if(synid == BIAND){
+        return shift(36, stc);
+    }
+    if(synid == OR){
+        return shift(64, stc);
+    }
+    if(synid == XOR){
+        return shift(66, stc);
+    }
+    if(synid == AND){
+        return shift(62, stc);
+    }
+    if(synid == EQ){
+        return shift(48, stc);
+    }
+    if(synid == NOTEQ){
+        return shift(50, stc);
+    }
+    if(synid == LSS){
+        return shift(40, stc);
+    }
+    if(synid == LSSEQ){
+        return shift(42, stc);
+    }
+    if(synid == GRT){
+        return shift(44, stc);
+    }
+    if(synid == GRTEQ){
+        return shift(46, stc);
+    }
+    if(synid == ADD){
+        return shift(52, stc);
+    }
+    if(synid == MINUS){
+        return shift(54, stc);
+    }
+    if(synid == DIV){
+        return shift(58, stc);
+    }
+    if(synid == MOD){
+        return shift(60, stc);
+    }
+    if(synid == MULTI){
+        return shift(56, stc);
+    }
+    if(synid == BITNOT){
+        return shift(68, stc);
+    }
+    if(synid == SEMICOLON){
+        return shift(156, stc);
+    }
+    exit(0);
+case 156:
+    if(synid == BIADD){
+        return shift(124, stc);
+    }
+    if(synid == BIMINUS){
+        return shift(131, stc);
+    }
+    if(synid == ID){
+        return shift(126, stc);
+    }
+    if(synid == steplist){
+        return shift(157, stc);
+    }
+    if(synid == step){
+        return shift(121, stc);
+    }
+    exit(0);
+case 157:
+    if(synid == RLB){
+        return shift(158, stc);
+    }
+    exit(0);
+case 158:
+    if(synid == LGB){
+        return shift(91, stc);
+    }
+    if(synid == IF){
+        return shift(94, stc);
+    }
+    if(synid == WHILE){
+        return shift(147, stc);
+    }
+    if(synid == FOR){
+        return shift(151, stc);
+    }
+    if(synid == stmt){
+        return shift(119, stc);
+    }
+    exit(0);
+case 159:
+    if(synid == NOT){
+        return shift(83, stc);
+    }
+    if(synid == INT){
+        return shift(5, stc);
+    }
+    if(synid == FLOAT){
+        return shift(9, stc);
+    }
+    if(synid == INUM){
+        return shift(74, stc);
+    }
+    if(synid == ID){
+        return shift(76, stc);
+    }
+    if(synid == LGB){
+        return shift(91, stc);
+    }
+    if(synid == RGB){
+        return reduce(17);
+    }
+    if(synid == LLB){
+        return shift(80, stc);
+    }
+    if(synid == RETURN){
+        return shift(88, stc);
+    }
+    if(synid == IF){
+        return shift(98, stc);
+    }
+    if(synid == WHILE){
+        return shift(106, stc);
+    }
+    if(synid == FOR){
+        return shift(111, stc);
+    }
+    if(synid == FNUM){
+        return shift(75, stc);
+    }
+    if(synid == tp){
+        return shift(85, stc);
+    }
+    if(synid == stmtlist){
+        return shift(160, stc);
+    }
+    if(synid == stmt){
+        return shift(32, stc);
+    }
+    if(synid == stmt1){
+        return shift(159, stc);
+    }
+    if(synid == exp){
+        return shift(34, stc);
+    }
+    exit(0);
+case 160:
+    if(synid == RGB){
+        return reduce(66);
+    }
+    exit(0);
     }
 }
 
@@ -2984,7 +3148,8 @@ void printWordInfo(Word w){
 void lex_part(){
     initTrie();
     // char cc[100] = "while Rick hits Morty break dollardollar 10 for 1024 plumbus 1.11  == 2.22 ++ ";
-    char cc[100] = "int i, j; int fun(int a, int b){int m;if(a > b) m = a; return m;}";
+    char cc[100] = "int i, j; int fun(int a, int b){int m;if(a > b) m = a; else m=b;return m;} float a,b;";
+    // char cc[100] = "int main(){if(a > 0 && b > 0) m = 0;} ";
     for(int i = 0; i < strlen(cc); i++){
         if(lex(cc[i], 1, i)){
             lex(cc[i], 1, i);
@@ -3007,16 +3172,59 @@ void syn_part(){
     words[wordsSize].tval.synVal = END;
     for(int i = 1; !fin && i <= wordsSize; i++){
         Sentence* res = synaxdfa(words + i);
-        printf("%d state:%d:\n", i, syn_analysis_state);
-        debugsyn();
-        printf("\n");
+        // printf("%d state:%d:\n", i, syn_analysis_state);
+        // debugsyn();
+        // printf("\n");
         if(res){
-            printf("%d:(reduce) state:%d\n", i, syn_analysis_state);
+            // printf("%d:(reduce) state:%d\n", i, syn_analysis_state);
             synaxdfa(res);
-            debugsyn();
-            printf("\n");
+            // debugsyn();
+            // printf("\n");
             i--;
         }
+    }
+}
+
+void lvprint(int lv){
+    for(int i = 1; i <= lv; i++)
+        printf("    ");
+}
+
+void showNodeInfo(Sentence* node, int lv){
+    lvprint(lv);
+    int nodetype = node->type;
+    if(nodetype == SYNAXELE)
+        printf("%s:\n", synax_ele[node->tval.synVal - program]);
+    else{
+        switch(nodetype){
+        case ID:
+            printf("ID:  [%s]\n", node->tval.name);
+            break;
+        case KEYWORD:
+            printf("\'%s\':\n", keywords[node->tval.keyIdx]);
+            break;
+        case INUM:
+            printf("INTEGER:  [%d]\n", node->tval.ivalue);
+            break;
+        case FNUM:
+            printf("FLOAT:  [%f]\n", node->tval.fvalue);
+            break;
+        case OPERATER:
+            printf("OPERATER:  (%s, %s)\n", op_type[node->tval.opType - UNARY_OP], op_detail_type[node->op - BIADD]);
+            break;
+        case SEPERATOR:
+            printf("[%s]\n", sep_type[node->tval.sepType - COMMA]);
+            break;
+        }
+    }
+}
+
+void showAST(Sentence* node, int lv){
+    showNodeInfo(node, lv);
+    for(int i = 1; ; i++){
+        if(node->next[i] == NULL)
+            break;
+        showAST(node->next[i], lv + 1);
     }
 }
 
@@ -3026,6 +3234,7 @@ int main()
     lex_part();
     printf("\n\nsyntax:\n");
     syn_part();
-    printf("%d\n", fin);
+    // printf("%d\n", fin);
+    showAST(pgm, 0);
     return 0;
 }

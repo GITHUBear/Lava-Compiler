@@ -114,7 +114,7 @@ State 28:
 1                                 LGB shift 29
 
 State 29:
-17                                 NOT shift 83
+18                                 NOT shift 83
                                  INT shift 5
                                FLOAT shift 9
                                 INUM shift 74
@@ -123,13 +123,14 @@ State 29:
                                  RGB reduce 17
                                  LLB shift 80
                               RETURN shift 88
-                                  IF shift 94
-                               WHILE shift 147
-                                 FOR shift 151
+                                  IF shift 98
+                               WHILE shift 106
+                                 FOR shift 111
                                 FNUM shift 75
                                   tp shift 85
                             stmtlist shift 30
                                 stmt shift 32
+                               stmt1 shift 159
                                  exp shift 34
 
 State 30:
@@ -139,7 +140,7 @@ State 31:
 1                           [default] reduce 10
 
 State 32:
-17                                 NOT shift 83
+18                                 NOT shift 83
                                  INT shift 5
                                FLOAT shift 9
                                 INUM shift 74
@@ -148,13 +149,14 @@ State 32:
                                  RGB reduce 17
                                  LLB shift 80
                               RETURN shift 88
-                                  IF shift 94
-                               WHILE shift 147
-                                 FOR shift 151
+                                  IF shift 98
+                               WHILE shift 106
+                                 FOR shift 111
                                 FNUM shift 75
                                   tp shift 85
                             stmtlist shift 33
                                 stmt shift 32
+                               stmt1 shift 159
                                  exp shift 34
 
 State 33:
@@ -688,21 +690,11 @@ State 90:
 1                           [default] reduce 20
 
 State 91:
-15                                 NOT shift 83
-                                 INT shift 5
-                               FLOAT shift 9
-                                INUM shift 74
-                                  ID shift 76
-                                 LGB shift 91
-                                 LLB shift 80
-                              RETURN shift 88
+5                                 LGB shift 91
                                   IF shift 94
                                WHILE shift 147
                                  FOR shift 151
-                                FNUM shift 75
-                                  tp shift 85
                                 stmt shift 92
-                                 exp shift 34
 
 State 92:
 1                                 RGB shift 93
@@ -758,8 +750,8 @@ State 97:
                                 FNUM shift 75
                                   tp shift 85
                                 stmt shift 102
-                                 exp shift 34
                                stmt1 shift 145
+                                 exp shift 34
 
 State 98:
 1                                 LLB shift 99
@@ -809,14 +801,15 @@ State 101:
                                 FNUM shift 75
                                   tp shift 85
                                 stmt shift 102
-                                 exp shift 34
                                stmt1 shift 103
+                                 exp shift 34
 
 State 102:
 1                           [default] reduce 22
 
 State 103:
-1                                ELSE shift 104
+2                                ELSE shift 104
+                           [default] reduce 67
 
 State 104:
 16                                 NOT shift 83
@@ -833,8 +826,8 @@ State 104:
                                 FNUM shift 75
                                   tp shift 85
                                 stmt shift 105
-                                 exp shift 34
                                stmt1 shift 144
+                                 exp shift 34
 
 State 105:
 1                           [default] reduce 23
@@ -887,8 +880,8 @@ State 109:
                                 FNUM shift 75
                                   tp shift 85
                                 stmt shift 110
-                                 exp shift 34
                                stmt1 shift 143
+                                 exp shift 34
 
 State 110:
 1                           [default] reduce 24
@@ -959,14 +952,14 @@ State 118:
                                 FNUM shift 75
                                   tp shift 85
                                 stmt shift 119
-                                 exp shift 34
                                stmt1 shift 120
+                                 exp shift 34
 
 State 119:
 1                           [default] reduce 25
 
 State 120:
-1                                ELSE reduce 40
+1                           [default] reduce 40
 
 State 121:
 2                               COMMA shift 122
@@ -1139,30 +1132,21 @@ State 142:
                            [default] reduce 30
 
 State 143:
-1                                ELSE reduce 39
+1                           [default] reduce 39
 
 State 144:
-1                                ELSE reduce 38
+1                           [default] reduce 38
 
 State 145:
-1                                ELSE shift 146
+2                                ELSE shift 146
+                                 RGB reduce 67
 
 State 146:
-15                                 NOT shift 83
-                                 INT shift 5
-                               FLOAT shift 9
-                                INUM shift 74
-                                  ID shift 76
-                                 LGB shift 91
-                                 LLB shift 80
-                              RETURN shift 88
+5                                 LGB shift 91
                                   IF shift 94
                                WHILE shift 147
                                  FOR shift 151
-                                FNUM shift 75
-                                  tp shift 85
                                 stmt shift 105
-                                 exp shift 34
 
 State 147:
 1                                 LLB shift 148
@@ -1196,4 +1180,92 @@ State 149:
                                MULTI shift 56
                               BITNOT shift 68
                                  RLB shift 150
+
+State 150:
+5                                 LGB shift 91
+                                  IF shift 94
+                               WHILE shift 147
+                                 FOR shift 151
+                                stmt shift 110
+
+State 151:
+1                                 LLB shift 152
+
+State 152:
+3                                  ID shift 136
+                            initlist shift 153
+                                init shift 133
+
+State 153:
+1                           SEMICOLON shift 154
+
+State 154:
+6                                 NOT shift 83
+                                INUM shift 74
+                                  ID shift 76
+                                 LLB shift 80
+                                FNUM shift 75
+                                 exp shift 155
+
+State 155:
+20                               COMMA shift 70
+                              ASSIGN shift 72
+                                BIOR shift 38
+                               BIAND shift 36
+                                  OR shift 64
+                                 XOR shift 66
+                                 AND shift 62
+                                  EQ shift 48
+                               NOTEQ shift 50
+                                 LSS shift 40
+                               LSSEQ shift 42
+                                 GRT shift 44
+                               GRTEQ shift 46
+                                 ADD shift 52
+                               MINUS shift 54
+                                 DIV shift 58
+                                 MOD shift 60
+                               MULTI shift 56
+                              BITNOT shift 68
+                           SEMICOLON shift 156
+
+State 156:
+5                               BIADD shift 124
+                             BIMINUS shift 131
+                                  ID shift 126
+                            steplist shift 157
+                                step shift 121
+
+State 157:
+1                                 RLB shift 158
+
+State 158:
+5                                 LGB shift 91
+                                  IF shift 94
+                               WHILE shift 147
+                                 FOR shift 151
+                                stmt shift 119
+
+State 159:
+18                                 NOT shift 83
+                                 INT shift 5
+                               FLOAT shift 9
+                                INUM shift 74
+                                  ID shift 76
+                                 LGB shift 91
+                                 RGB reduce 17
+                                 LLB shift 80
+                              RETURN shift 88
+                                  IF shift 98
+                               WHILE shift 106
+                                 FOR shift 111
+                                FNUM shift 75
+                                  tp shift 85
+                            stmtlist shift 160
+                                stmt shift 32
+                               stmt1 shift 159
+                                 exp shift 34
+
+State 160:
+1                                 RGB reduce 66
 

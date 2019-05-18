@@ -18,6 +18,7 @@ using System.Collections.Generic;
 %left ADD MINUS.
 %left DIV MOD MULTI.
 %right BIADD BIMINUS NOT BITNOT.
+%nonassoc ELSE.
 
 %syntax_error{
      Console.WriteLine("Syntax Error! \n By Shift " + @@ + " value(" + $$ + ")");
@@ -100,15 +101,15 @@ stmtlist -> .{
     
 }
 
-stmt -> exp SEMICOLON.{
+stmt1 -> exp SEMICOLON.{
     
 }
 
-stmt -> tp vallist SEMICOLON.{
+stmt1 -> tp vallist SEMICOLON.{
     
 }
 
-stmt -> RETURN exp SEMICOLON.{
+stmt1 -> RETURN exp SEMICOLON.{
     
 }
 
@@ -291,6 +292,14 @@ exp -> ID LMB exp RMB.{
 exp -> exp ASSIGN exp.{
     
 } 
+
+stmtlist -> stmt1 stmtlist.{
+    
+}
+
+stmt -> IF LLB exp RLB stmt1.{
+    
+}
 
 %code{
     
