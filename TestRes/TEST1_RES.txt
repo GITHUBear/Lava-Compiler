@@ -69,14 +69,17 @@ program:
                                 tp:
                                     'float':
                                 ID:  [b]
-                stmtlist:
-                    stmt1:
-                        tp:
-                            'int':
-                        vallist:
-                            ID:  [m]
+                compstmt:
+                    innerdeflist:
+                        innerdef:
+                            tp:
+                                'int':
+                            innerdeclist:
+                                innerdec:
+                                    ID:  [m]
+                        innerdeflist:
                     stmtlist:
-                        stmt1:
+                        stmt:
                             'if':
                             exp:
                                 exp:
@@ -84,7 +87,7 @@ program:
                                 OPERATER:  (RELAT_OP, >)
                                 exp:
                                     ID:  [b]
-                            stmt1:
+                            stmt:
                                 exp:
                                     exp:
                                         ID:  [m]
@@ -92,7 +95,7 @@ program:
                                     exp:
                                         ID:  [a]
                             'else':
-                            stmt1:
+                            stmt:
                                 exp:
                                     exp:
                                         ID:  [m]
@@ -100,7 +103,7 @@ program:
                                     exp:
                                         ID:  [b]
                         stmtlist:
-                            stmt1:
+                            stmt:
                                 'return':
                                 exp:
                                     ID:  [m]

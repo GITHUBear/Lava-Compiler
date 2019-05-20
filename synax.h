@@ -17,8 +17,12 @@
 #define init 132
 #define steplist 133
 #define step 134
-#define stmt1 135
-#define END 136
+#define compstmt 135
+#define innerdeflist 136
+#define innerdef 137
+#define innerdeclist 138
+#define innerdec 139
+#define END 140
 
 #define SYNAX_ELE_MAX 300
 #define STACKMAX 10000

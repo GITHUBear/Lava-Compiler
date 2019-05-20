@@ -6,4 +6,3 @@ int fun(int a, float b){
     return m;
 }
 float x,y; 
- 

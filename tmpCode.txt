@@ -9,22 +9,28 @@ extern const char* keywords[MAXSIZE];
 extern const char* words_type[MAXSIZE];
 extern const char* op_type[MAXSIZE];
 extern const char* sep_type[MAXSIZE];
+extern const char* op_detail_type[MAXSIZE];
 extern Word words[MAXWORDS];
 extern int wordsSize;
 
 const char* synax_ele[] = {"program", "deflist", "tp", "def", "vallist", "fundef",
                               "stmtlist", "args", "param", "stmt", "exp", "initlist", "init",
-                              "steplist", "step", "stmt1"};
-const int grammar_length[] = {1, 3, 0, 1, 1, 4, 4, 3, 1, 2, 4, 4, 3, 3, 1, 2, 2, 0, 2, 3, 3, 3, 5,
-                                  7, 5, 9, 3, 1, 3, 3, 3, 3, 1, 2, 2, 2, 2, 3, 7, 5, 9, 3, 3, 3, 3, 3, 3,
-                                  3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 3, 2, 3, 3, 3, 3, 3, 4, 3, 2, 5};
-const int grammar_rule[] = {program, deflist, deflist, tp, tp, tp, tp, vallist, vallist, def, def, fundef, fundef,
-                          args, args, param, stmtlist, stmtlist, stmt1, stmt1, stmt1, stmt, stmt, stmt, stmt, stmt,
-                          initlist, initlist, init, init, init, steplist, steplist, step, step, step, step, step, stmt1, stmt1, stmt1,
-                          exp, exp, exp, exp, exp, exp, exp, exp, exp, exp, exp, exp, 
-                          exp, exp, exp, exp, exp, exp, exp, exp, exp, exp, exp, exp, exp, stmtlist, stmt};
+                              "steplist", "step", "compstmt", "innerdeflist", "innerdef",
+                              "innerdeclist", "innerdec"};
+const int grammar_length[] = {1, 3, 0, 1, 1, 4, 4, 3, 1, 2, 2, 4, 3, 3, 1, 2, 4, 2, 0, 3, 3, 1, 3, 1, 2, 4, 0,
+                             2, 3, 5, 7, 7, 9, 5, 7, 9, 11, 3, 1, 3, 3, 3, 3, 1, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3,
+                             3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 3, 2, 3, 3, 3, 3, 3, 4, 3, 3, 3, 2, 2, 2, 2};
+const int grammar_rule[] = {program, deflist, deflist, tp, tp, tp, tp, vallist, vallist, def, def,
+                             fundef, fundef, args, args, param, compstmt, innerdeflist, innerdeflist, innerdef,
+                             innerdeclist, innerdeclist, innerdec, innerdec, stmtlist, stmtlist, stmtlist,
+                             stmt, stmt, stmt, stmt, stmt, stmt, stmt, stmt, stmt, stmt, initlist, initlist,
+                             init, init, init, steplist, steplist, step, step, step, step, step,
+                             exp, exp, exp, exp, exp, exp, exp, exp, exp, exp, exp, exp, 
+                             exp, exp, exp, exp, exp, exp, exp, exp, exp, exp, exp, exp,
+                             exp, exp, exp, exp, exp, exp, exp};
 
 Sentence* pgm;
+int scanIdx;
 
 Sentence* mkNode(int ruleNum){
     Sentence* newnode = (Sentence*) malloc(sizeof(Sentence));
@@ -33,13 +39,18 @@ Sentence* mkNode(int ruleNum){
     int startpos = stkTop - grammar_length[ruleNum] + 1;
     int endpos = stkTop;
     pgm = newnode;
-    for(; startpos <= endpos; startpos++)
-        newnode->next[startpos] = stcStk[startpos];
+    for(int i = 1; startpos <= endpos; startpos++){
+        if(stcStk[startpos]->type == SEPERATOR) continue;
+        newnode->next[i] = stcStk[startpos];
+        i++;
+    }
     return newnode;
 }
 
-Sentence* shift(int nextState, Sentence* stc){
+Sentence* shift(int nextState, Sentence* stc, int canGo){
     printf("shift %d\n", nextState);
+    if(canGo)
+        scanIdx++;
     stateStk[++stkTop] = nextState;
     stcStk[stkTop] = stc;
     syn_analysis_state = nextState;
@@ -58,6 +69,7 @@ void initSynaxDfa(){
     fin = 0;
     stkTop = 0;
     syn_analysis_state = 0;
+    scanIdx = 1;
 }
 
 int getSynFromSentence(Sentence* stc){
@@ -82,6 +94,7 @@ int getSynFromSentence(Sentence* stc){
 Sentence* synaxdfa(Sentence* stc){
     int synid = getSynFromSentence(stc);
     switch(syn_analysis_state){
+        
     }
 }
 
@@ -115,15 +128,23 @@ void printWordInfo(Word w){
     }
 }
 
-void lex_part(){
+void lex_part(FILE* file){
     initTrie();
     // char cc[100] = "while Rick hits Morty break dollardollar 10 for 1024 plumbus 1.11  == 2.22 ++ ";
-    char cc[100] = "int i, j; int fun(int a, int b){int m;if(a > b) m = a; else m=b;return m;} float a,b;";
-    for(int i = 0; i < strlen(cc); i++){
-        if(lex(cc[i], 1, i)){
-            lex(cc[i], 1, i);
+    // char cc[100] = "int i, j; int fun(int a, int b){int m;if(a > b) m = a; else m=b;return m;} float a,b;";
+    // char cc[100] = "int main(){if(a > 0 && b > 0) m = 0;} ";
+    char c;
+    int colomn = 1, line = 1;
+    while((c = fgetc(file)) != EOF){
+        if(c == '\n'){
+            colomn = 1;
+            line++;
         }
+        if(lex(c, line, colomn))
+            lex(c, line, colomn);
+        colomn++;
     }
+    lex(' ', line, colomn);
     for(int i = 1; i <= wordsSize; i++){
         printWordInfo(words[i]);
     }
@@ -139,27 +160,73 @@ void syn_part(){
     initSynaxDfa();
     words[++wordsSize].type = SYNAXELE;
     words[wordsSize].tval.synVal = END;
-    for(int i = 1; !fin && i <= wordsSize; i++){
-        Sentence* res = synaxdfa(words + i);
+    for(; !fin && scanIdx <= wordsSize;){
+        Sentence* res = synaxdfa(words + scanIdx, 1);
         printf("%d state:%d:\n", i, syn_analysis_state);
         debugsyn();
         printf("\n");
         if(res){
             printf("%d:(reduce) state:%d\n", i, syn_analysis_state);
-            synaxdfa(res);
+            while((res = synaxdfa(res, 0)));
             debugsyn();
             printf("\n");
-            i--;
         }
+    }
+}
+
+void lvprint(int lv){
+    for(int i = 1; i <= lv; i++)
+        printf("    ");
+}
+
+void showNodeInfo(Sentence* node, int lv){
+    lvprint(lv);
+    int nodetype = node->type;
+    if(nodetype == SYNAXELE)
+        printf("%s:\n", synax_ele[node->tval.synVal - program]);
+    else{
+        switch(nodetype){
+        case ID:
+            printf("ID:  [%s]\n", node->tval.name);
+            break;
+        case KEYWORD:
+            printf("\'%s\':\n", keywords[node->tval.keyIdx]);
+            break;
+        case INUM:
+            printf("INTEGER:  [%d]\n", node->tval.ivalue);
+            break;
+        case FNUM:
+            printf("FLOAT:  [%f]\n", node->tval.fvalue);
+            break;
+        case OPERATER:
+            printf("OPERATER:  (%s, %s)\n", op_type[node->tval.opType - UNARY_OP], op_detail_type[node->op - BIADD]);
+            break;
+        case SEPERATOR:
+            printf("[%s]\n", sep_type[node->tval.sepType - COMMA]);
+            break;
+        }
+    }
+}
+
+void showAST(Sentence* node, int lv){
+    showNodeInfo(node, lv);
+    for(int i = 1; ; i++){
+        if(node->next[i] == NULL)
+            break;
+        showAST(node->next[i], lv + 1);
     }
 }
 
 int main()
 {
+    FILE* f = fopen("./Test/SYNTAX_TEST1.txt", "r");
+    freopen("./TestRes/TEST1_RES.txt", "w", stdout);
     printf("lex:\n");
-    lex_part();
+    lex_part(f);
     printf("\n\nsyntax:\n");
     syn_part();
-    printf("%d\n", fin);
+    // printf("%d\n", fin);
+    showAST(pgm, 0);
+    fclose(f);
     return 0;
 }

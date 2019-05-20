@@ -9,6 +9,14 @@ lex:
 (SEPERATOR):[,]
 (ID):[j]
 (SEPERATOR):[;]
+(KEYWORD):[int]
+(ID):[a]
+(SEPERATOR):[,]
+(ID):[b]
+(SEPERATOR):[;]
+(KEYWORD):[int]
+(ID):[res]
+(SEPERATOR):[;]
 (ID):[i]
 (OPERATOR):[ASSIGN_OP, 57]
 (INUM):[1]
@@ -17,11 +25,6 @@ lex:
 (OPERATOR):[ASSIGN_OP, 57]
 (INUM):[2]
 (SEPERATOR):[;]
-(KEYWORD):[int]
-(ID):[a]
-(SEPERATOR):[,]
-(ID):[b]
-(SEPERATOR):[;]
 (ID):[a]
 (OPERATOR):[ASSIGN_OP, 57]
 (INUM):[3]
@@ -29,9 +32,6 @@ lex:
 (ID):[b]
 (OPERATOR):[ASSIGN_OP, 57]
 (INUM):[4]
-(SEPERATOR):[;]
-(KEYWORD):[int]
-(ID):[res]
 (SEPERATOR):[;]
 (KEYWORD):[if]
 (SEPERATOR):[(]
@@ -68,16 +68,37 @@ program:
         def:
             fundef:
                 ID:  [main]
-            stmtlist:
-                stmt1:
-                    tp:
-                        'int':
-                    vallist:
-                        ID:  [i]
-                        vallist:
-                            ID:  [j]
+            compstmt:
+                innerdeflist:
+                    innerdef:
+                        tp:
+                            'int':
+                        innerdeclist:
+                            innerdec:
+                                ID:  [i]
+                            innerdeclist:
+                                innerdec:
+                                    ID:  [j]
+                    innerdeflist:
+                        innerdef:
+                            tp:
+                                'int':
+                            innerdeclist:
+                                innerdec:
+                                    ID:  [a]
+                                innerdeclist:
+                                    innerdec:
+                                        ID:  [b]
+                        innerdeflist:
+                            innerdef:
+                                tp:
+                                    'int':
+                                innerdeclist:
+                                    innerdec:
+                                        ID:  [res]
+                            innerdeflist:
                 stmtlist:
-                    stmt1:
+                    stmt:
                         exp:
                             exp:
                                 ID:  [i]
@@ -85,7 +106,7 @@ program:
                             exp:
                                 INTEGER:  [1]
                     stmtlist:
-                        stmt1:
+                        stmt:
                             exp:
                                 exp:
                                     ID:  [j]
@@ -93,71 +114,57 @@ program:
                                 exp:
                                     INTEGER:  [2]
                         stmtlist:
-                            stmt1:
-                                tp:
-                                    'int':
-                                vallist:
-                                    ID:  [a]
-                                    vallist:
-                                        ID:  [b]
+                            stmt:
+                                exp:
+                                    exp:
+                                        ID:  [a]
+                                    OPERATER:  (ASSIGN_OP, =)
+                                    exp:
+                                        INTEGER:  [3]
                             stmtlist:
-                                stmt1:
+                                stmt:
                                     exp:
                                         exp:
-                                            ID:  [a]
+                                            ID:  [b]
                                         OPERATER:  (ASSIGN_OP, =)
                                         exp:
-                                            INTEGER:  [3]
+                                            INTEGER:  [4]
                                 stmtlist:
-                                    stmt1:
+                                    stmt:
+                                        'if':
                                         exp:
                                             exp:
-                                                ID:  [b]
-                                            OPERATER:  (ASSIGN_OP, =)
+                                                ID:  [i]
+                                            OPERATER:  (RELAT_OP, >)
                                             exp:
-                                                INTEGER:  [4]
-                                    stmtlist:
-                                        stmt1:
-                                            tp:
-                                                'int':
-                                            vallist:
-                                                ID:  [res]
-                                        stmtlist:
+                                                ID:  [j]
+                                        stmt:
+                                            'if':
+                                            exp:
+                                                exp:
+                                                    ID:  [a]
+                                                OPERATER:  (RELAT_OP, <)
+                                                exp:
+                                                    ID:  [b]
                                             stmt:
-                                                'if':
                                                 exp:
                                                     exp:
-                                                        ID:  [i]
-                                                    OPERATER:  (RELAT_OP, >)
+                                                        ID:  [res]
+                                                    OPERATER:  (ASSIGN_OP, =)
                                                     exp:
-                                                        ID:  [j]
-                                                stmt1:
-                                                    'if':
-                                                    exp:
-                                                        exp:
-                                                            ID:  [a]
-                                                        OPERATER:  (RELAT_OP, <)
-                                                        exp:
-                                                            ID:  [b]
-                                                    stmt1:
-                                                        exp:
-                                                            exp:
-                                                                ID:  [res]
-                                                            OPERATER:  (ASSIGN_OP, =)
-                                                            exp:
-                                                                INTEGER:  [233]
-                                                    'else':
-                                                    stmt1:
-                                                        exp:
-                                                            exp:
-                                                                ID:  [res]
-                                                            OPERATER:  (ASSIGN_OP, =)
-                                                            exp:
-                                                                INTEGER:  [666]
-                                            stmtlist:
-                                                stmt1:
-                                                    'return':
+                                                        INTEGER:  [233]
+                                            'else':
+                                            stmt:
+                                                exp:
                                                     exp:
                                                         ID:  [res]
-                                                stmtlist:
+                                                    OPERATER:  (ASSIGN_OP, =)
+                                                    exp:
+                                                        INTEGER:  [666]
+                                    stmtlist:
+                                        stmt:
+                                            'return':
+                                            exp:
+                                                ID:  [res]
+                                        stmtlist:
         deflist:

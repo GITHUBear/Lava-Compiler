@@ -1,11 +1,11 @@
 int main(){
     int i,j;
+    int a, b;
+    int res;
     i = 1;
     j = 2;
-    int a, b;
     a = 3;
     b = 4;
-    int res;
     if(i > j)
         if(a < b)
             res = 233;

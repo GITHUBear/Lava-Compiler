@@ -1,0 +1,21 @@
+int main(){
+    int[12] a;
+    int i = 1, j = 2;
+    int res;
+    {
+        {
+        res = 0;
+        }
+        i = 0;
+    }
+    for(i = 0; i <= 11; i++){
+        a[i] = i;   
+    }
+    for(i = 0; i <= 11; i++)
+        if(a[i] % 2 == 0)
+            if(i < 10)
+                res += a[i];
+        else
+            res--;
+    return res;
+}

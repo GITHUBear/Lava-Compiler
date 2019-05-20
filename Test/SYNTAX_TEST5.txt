@@ -1,0 +1,17 @@
+int main(){
+    for(i = 1; i <= 10; i++){
+        res += 1;
+        if(a > b){
+            a = 1;
+            a++;
+        }else{
+            b = 3;
+            c = 4;
+        }
+        while(i >= 0){
+            d = d + c;
+            i--;
+        }
+    }
+    return 0;
+}
