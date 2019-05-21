@@ -197,6 +197,10 @@ exp ::= CNUM.{
     
 }
 
+exp ::= ID LLB exp RLB.{
+    
+}
+
 %code{
     
 }

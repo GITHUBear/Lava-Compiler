@@ -1,5 +1,13 @@
 int main(){
     char c = 'a';
-    int a = 1;
+    int a = 1, aa;
     float b = 1.0;
+    int res = 0;
+    for(a = 2; a < 10; a++){
+        for(aa = 3; aa < 10; aa++){
+            res += aa;
+        }
+        res -= a;
+    }
+    return res;
 }

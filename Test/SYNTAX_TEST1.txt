@@ -1,8 +1,15 @@
-int i, j;
+int i1, j;
+// jskdnckndskm dscknkjsdc
+int max(int a, int b){
+    /* if(a > b)
+        return a;
+    else
+        return b; */
+    return a;
+}
+
 int fun(int a, float b){
-    int m;
-    if(a > b) m=a;
-    else m=b;
+    int m = max(a, b);
     return m;
 }
 float x,y; 

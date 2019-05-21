@@ -100,3 +100,4 @@ Rules:
   82: exp ::= BIADD exp. [BIADD precedence=12]
   83: exp ::= BIMINUS exp. [BIMINUS precedence=12]
   84: exp ::= CNUM.
+  85: exp ::= ID LLB exp RLB.

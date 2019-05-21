@@ -481,6 +481,12 @@ int lex(char c, int line, int pos){
                 words[wordsSize].colomn = pos;
                 back2Space();
                 return 0;
+            }else if(c == '/'){
+                dfastate = LINECOMMENT;
+                return 0;
+            }else if(c == '*'){
+                dfastate = BLOCKCOMMENT;
+                return 0;
             }else{
                 words[++wordsSize].type = OPERATER;
                 words[wordsSize].tval.opType = ARITH_OP;
@@ -489,6 +495,33 @@ int lex(char c, int line, int pos){
                 words[wordsSize].colomn = pos;
                 back2Space();
                 return 1;
+            }
+
+        case LINECOMMENT:
+            if(c == '\n'){
+                back2Space();
+                return 0;
+            }else{
+                dfastate = LINECOMMENT;
+                return 0;
+            }
+
+        case BLOCKCOMMENT:
+            if(c == '*'){
+                dfastate = BLOCKCOMMENTEND;
+                return 0;
+            }else{
+                dfastate = BLOCKCOMMENT;
+                return 0;
+            }
+
+        case BLOCKCOMMENTEND:
+            if(c == '/'){
+                back2Space();
+                return 0;
+            }else{
+                dfastate = BLOCKCOMMENT;
+                return 0;
             }
 
         case MOD_ONE:

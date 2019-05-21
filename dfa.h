@@ -65,6 +65,10 @@
 #define CHAR_ONE 47
 #define CHAR_END 48
 
+#define LINECOMMENT 49
+#define BLOCKCOMMENT 50
+#define BLOCKCOMMENTEND 51
+
 int lex(char c, int line, int pos);
 
 #endif
