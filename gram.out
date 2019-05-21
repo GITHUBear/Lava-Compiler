@@ -4,20 +4,23 @@ State 0:
       (2) deflist ::= *
           tp ::= * INT
           tp ::= * FLOAT
+          tp ::= * CHAR
           tp ::= * INT LMB INUM RMB
           tp ::= * FLOAT LMB INUM RMB
+          tp ::= * CHAR LMB INUM RMB
 
-                           INT shift        135    
-                         FLOAT shift        132    
+                           INT shift        138    
+                         FLOAT shift        135    
+                          CHAR shift        132    
                        program accept
-                       deflist shift        136    
+                       deflist shift        139    
                             tp shift        14     
                      {default} reduce       2      
 
 State 1:
           stmtlist ::= * stmt stmtlist
           stmtlist ::= * LGB stmtlist RGB stmtlist
-     (26) stmtlist ::= *
+     (28) stmtlist ::= *
           stmt ::= * exp SEMICOLON
           stmt ::= * RETURN exp SEMICOLON
           stmt ::= * IF LLB exp RLB stmt
@@ -62,11 +65,12 @@ State 1:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
                            LGB shift        7      
@@ -74,16 +78,17 @@ State 1:
                             IF shift        121    
                          WHILE shift        118    
                            FOR shift        116    
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                       stmtlist shift        106    
                            exp shift        70     
                           stmt shift        8      
-                     {default} reduce       26     
+                     {default} reduce       28     
 
 State 2:
           stmtlist ::= * stmt stmtlist
           stmtlist ::= * LGB stmtlist RGB stmtlist
-     (26) stmtlist ::= *
+     (28) stmtlist ::= *
           stmt ::= * exp SEMICOLON
           stmt ::= * RETURN exp SEMICOLON
           stmt ::= * IF LLB exp RLB stmt
@@ -130,11 +135,12 @@ State 2:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
                            LGB shift        7      
@@ -142,16 +148,17 @@ State 2:
                             IF shift        121    
                          WHILE shift        118    
                            FOR shift        116    
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                       stmtlist shift        108    
                            exp shift        70     
                           stmt shift        8      
-                     {default} reduce       26     
+                     {default} reduce       28     
 
 State 3:
           stmtlist ::= * stmt stmtlist
           stmtlist ::= * LGB stmtlist RGB stmtlist
-     (26) stmtlist ::= *
+     (28) stmtlist ::= *
           stmt ::= * exp SEMICOLON
           stmt ::= * RETURN exp SEMICOLON
           stmt ::= * IF LLB exp RLB stmt
@@ -196,11 +203,12 @@ State 3:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
                            LGB shift        7      
@@ -208,16 +216,17 @@ State 3:
                             IF shift        121    
                          WHILE shift        118    
                            FOR shift        116    
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                       stmtlist shift        113    
                            exp shift        70     
                           stmt shift        8      
-                     {default} reduce       26     
+                     {default} reduce       28     
 
 State 4:
           stmtlist ::= * stmt stmtlist
           stmtlist ::= * LGB stmtlist RGB stmtlist
-     (26) stmtlist ::= *
+     (28) stmtlist ::= *
           stmt ::= * exp SEMICOLON
           stmt ::= * RETURN exp SEMICOLON
           stmt ::= * IF LLB exp RLB stmt
@@ -262,11 +271,12 @@ State 4:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
                            LGB shift        7      
@@ -274,16 +284,17 @@ State 4:
                             IF shift        121    
                          WHILE shift        118    
                            FOR shift        116    
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                       stmtlist shift        117    
                            exp shift        70     
                           stmt shift        8      
-                     {default} reduce       26     
+                     {default} reduce       28     
 
 State 5:
           stmtlist ::= * stmt stmtlist
           stmtlist ::= * LGB stmtlist RGB stmtlist
-     (26) stmtlist ::= *
+     (28) stmtlist ::= *
           stmt ::= * exp SEMICOLON
           stmt ::= * RETURN exp SEMICOLON
           stmt ::= * IF LLB exp RLB stmt
@@ -328,11 +339,12 @@ State 5:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
                            LGB shift        7      
@@ -340,17 +352,18 @@ State 5:
                             IF shift        121    
                          WHILE shift        118    
                            FOR shift        116    
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                       stmtlist shift        119    
                            exp shift        70     
                           stmt shift        8      
-                     {default} reduce       26     
+                     {default} reduce       28     
 
 State 6:
           stmtlist ::= * stmt stmtlist
           stmtlist ::= * LGB stmtlist RGB stmtlist
           stmtlist ::= LGB stmtlist RGB * stmtlist
-     (26) stmtlist ::= *
+     (28) stmtlist ::= *
           stmt ::= * exp SEMICOLON
           stmt ::= * RETURN exp SEMICOLON
           stmt ::= * IF LLB exp RLB stmt
@@ -394,11 +407,12 @@ State 6:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
                            LGB shift        7      
@@ -406,17 +420,18 @@ State 6:
                             IF shift        121    
                          WHILE shift        118    
                            FOR shift        116    
-                          FNUM shift-reduce 65     
-                      stmtlist shift-reduce 25     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
+                      stmtlist shift-reduce 27     
                            exp shift        70     
                           stmt shift        8      
-                     {default} reduce       26     
+                     {default} reduce       28     
 
 State 7:
           stmtlist ::= * stmt stmtlist
           stmtlist ::= * LGB stmtlist RGB stmtlist
           stmtlist ::= LGB * stmtlist RGB stmtlist
-     (26) stmtlist ::= *
+     (28) stmtlist ::= *
           stmt ::= * exp SEMICOLON
           stmt ::= * RETURN exp SEMICOLON
           stmt ::= * IF LLB exp RLB stmt
@@ -460,11 +475,12 @@ State 7:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
                            LGB shift        7      
@@ -472,17 +488,18 @@ State 7:
                             IF shift        121    
                          WHILE shift        118    
                            FOR shift        116    
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                       stmtlist shift        123    
                            exp shift        70     
                           stmt shift        8      
-                     {default} reduce       26     
+                     {default} reduce       28     
 
 State 8:
           stmtlist ::= * stmt stmtlist
           stmtlist ::= stmt * stmtlist
           stmtlist ::= * LGB stmtlist RGB stmtlist
-     (26) stmtlist ::= *
+     (28) stmtlist ::= *
           stmt ::= * exp SEMICOLON
           stmt ::= * RETURN exp SEMICOLON
           stmt ::= * IF LLB exp RLB stmt
@@ -526,11 +543,12 @@ State 8:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
                            LGB shift        7      
@@ -538,17 +556,18 @@ State 8:
                             IF shift        121    
                          WHILE shift        118    
                            FOR shift        116    
-                          FNUM shift-reduce 65     
-                      stmtlist shift-reduce 24     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
+                      stmtlist shift-reduce 26     
                            exp shift        70     
                           stmt shift        8      
-                     {default} reduce       26     
+                     {default} reduce       28     
 
 State 9:
           compstmt ::= LGB innerdeflist * stmtlist RGB
           stmtlist ::= * stmt stmtlist
           stmtlist ::= * LGB stmtlist RGB stmtlist
-     (26) stmtlist ::= *
+     (28) stmtlist ::= *
           stmt ::= * exp SEMICOLON
           stmt ::= * RETURN exp SEMICOLON
           stmt ::= * IF LLB exp RLB stmt
@@ -592,11 +611,12 @@ State 9:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
                            LGB shift        7      
@@ -604,26 +624,30 @@ State 9:
                             IF shift        121    
                          WHILE shift        118    
                            FOR shift        116    
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                       stmtlist shift        124    
                            exp shift        70     
                           stmt shift        8      
-                     {default} reduce       26     
+                     {default} reduce       28     
 
 State 10:
           tp ::= * INT
           tp ::= * FLOAT
+          tp ::= * CHAR
           tp ::= * INT LMB INUM RMB
           tp ::= * FLOAT LMB INUM RMB
+          tp ::= * CHAR LMB INUM RMB
           fundef ::= ID LLB * args RLB
           fundef ::= ID LLB * RLB
           args ::= * param COMMA args
           args ::= * param
           param ::= * tp ID
 
-                           INT shift        135    
-                         FLOAT shift        132    
-                           RLB shift-reduce 12     
+                           INT shift        138    
+                         FLOAT shift        135    
+                          CHAR shift        132    
+                           RLB shift-reduce 14     
                             tp shift        126    
                           args shift        128    
                          param shift        127    
@@ -631,51 +655,60 @@ State 10:
 State 11:
           tp ::= * INT
           tp ::= * FLOAT
+          tp ::= * CHAR
           tp ::= * INT LMB INUM RMB
           tp ::= * FLOAT LMB INUM RMB
+          tp ::= * CHAR LMB INUM RMB
           innerdeflist ::= * innerdef innerdeflist
           innerdeflist ::= innerdef * innerdeflist
-     (18) innerdeflist ::= *
+     (20) innerdeflist ::= *
           innerdef ::= * tp innerdeclist SEMICOLON
 
-                           INT shift        135    
-                         FLOAT shift        132    
+                           INT shift        138    
+                         FLOAT shift        135    
+                          CHAR shift        132    
                             tp shift        24     
-                  innerdeflist shift-reduce 17     
+                  innerdeflist shift-reduce 19     
                       innerdef shift        11     
-                     {default} reduce       18     
+                     {default} reduce       20     
 
 State 12:
           tp ::= * INT
           tp ::= * FLOAT
+          tp ::= * CHAR
           tp ::= * INT LMB INUM RMB
           tp ::= * FLOAT LMB INUM RMB
+          tp ::= * CHAR LMB INUM RMB
           compstmt ::= LGB * innerdeflist stmtlist RGB
           innerdeflist ::= * innerdef innerdeflist
-     (18) innerdeflist ::= *
+     (20) innerdeflist ::= *
           innerdef ::= * tp innerdeclist SEMICOLON
 
-                           INT shift        135    
-                         FLOAT shift        132    
+                           INT shift        138    
+                         FLOAT shift        135    
+                          CHAR shift        132    
                             tp shift        24     
                   innerdeflist shift        9      
                       innerdef shift        11     
-                     {default} reduce       18     
+                     {default} reduce       20     
 
 State 13:
           tp ::= * INT
           tp ::= * FLOAT
+          tp ::= * CHAR
           tp ::= * INT LMB INUM RMB
           tp ::= * FLOAT LMB INUM RMB
+          tp ::= * CHAR LMB INUM RMB
           args ::= * param COMMA args
           args ::= param COMMA * args
           args ::= * param
           param ::= * tp ID
 
-                           INT shift        135    
-                         FLOAT shift        132    
+                           INT shift        138    
+                         FLOAT shift        135    
+                          CHAR shift        132    
                             tp shift        126    
-                          args shift-reduce 13     
+                          args shift-reduce 15     
                          param shift        127    
 
 State 14:
@@ -738,11 +771,12 @@ State 15:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
                            LGB shift        1      
@@ -750,9 +784,10 @@ State 15:
                             IF shift        121    
                          WHILE shift        118    
                            FOR shift        116    
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        70     
-                          stmt shift-reduce 34     
+                          stmt shift-reduce 36     
 
 State 16:
           stmt ::= * exp SEMICOLON
@@ -800,11 +835,12 @@ State 16:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
                            LGB shift        3      
@@ -812,9 +848,10 @@ State 16:
                             IF shift        121    
                          WHILE shift        118    
                            FOR shift        116    
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        70     
-                          stmt shift-reduce 37     
+                          stmt shift-reduce 39     
 
 State 17:
           stmt ::= * exp SEMICOLON
@@ -862,11 +899,12 @@ State 17:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
                            LGB shift        4      
@@ -874,9 +912,10 @@ State 17:
                             IF shift        121    
                          WHILE shift        118    
                            FOR shift        116    
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        70     
-                          stmt shift-reduce 35     
+                          stmt shift-reduce 37     
 
 State 18:
           stmt ::= * exp SEMICOLON
@@ -924,11 +963,12 @@ State 18:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
                            LGB shift        5      
@@ -936,9 +976,10 @@ State 18:
                             IF shift        121    
                          WHILE shift        118    
                            FOR shift        116    
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        70     
-                          stmt shift-reduce 31     
+                          stmt shift-reduce 33     
 
 State 19:
           stmt ::= * exp SEMICOLON
@@ -990,11 +1031,12 @@ State 19:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
                            LGB shift        2      
@@ -1002,7 +1044,8 @@ State 19:
                             IF shift        121    
                          WHILE shift        118    
                            FOR shift        116    
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        70     
                           stmt shift        120    
 
@@ -1019,7 +1062,7 @@ State 20:
                          BIADD shift        111    
                        BIMINUS shift        110    
                             ID shift        94     
-                      steplist shift-reduce 44     
+                      steplist shift-reduce 46     
                           step shift        112    
 
 State 21:
@@ -1045,11 +1088,14 @@ State 22:
       (2) deflist ::= *
           tp ::= * INT
           tp ::= * FLOAT
+          tp ::= * CHAR
           tp ::= * INT LMB INUM RMB
           tp ::= * FLOAT LMB INUM RMB
+          tp ::= * CHAR LMB INUM RMB
 
-                           INT shift        135    
-                         FLOAT shift        132    
+                           INT shift        138    
+                         FLOAT shift        135    
+                          CHAR shift        132    
                        deflist shift-reduce 1      
                             tp shift        14     
                      {default} reduce       2      
@@ -1062,7 +1108,7 @@ State 23:
           innerdec ::= * ID
 
                             ID shift        103    
-                  innerdeclist shift-reduce 20     
+                  innerdeclist shift-reduce 22     
                       innerdec shift        104    
 
 State 24:
@@ -1085,7 +1131,7 @@ State 25:
           init ::= * ID MINUSEQ exp
 
                             ID shift        93     
-                      initlist shift-reduce 39     
+                      initlist shift-reduce 41     
                           init shift        109    
 
 State 26:
@@ -1134,14 +1180,16 @@ State 27:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        71     
 
 State 28:
@@ -1177,14 +1225,16 @@ State 28:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        72     
 
 State 29:
@@ -1220,14 +1270,16 @@ State 29:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        73     
 
 State 30:
@@ -1263,14 +1315,16 @@ State 30:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        74     
 
 State 31:
@@ -1306,14 +1360,16 @@ State 31:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        75     
 
 State 32:
@@ -1350,14 +1406,16 @@ State 32:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        64     
 
 State 33:
@@ -1394,14 +1452,16 @@ State 33:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        65     
 
 State 34:
@@ -1442,14 +1502,16 @@ State 34:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        66     
 
 State 35:
@@ -1485,14 +1547,16 @@ State 35:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        67     
 
 State 36:
@@ -1528,14 +1592,16 @@ State 36:
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
           exp ::= BIMINUS * exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        95     
 
 State 37:
@@ -1571,14 +1637,16 @@ State 37:
           exp ::= * BIADD exp
           exp ::= BIADD * exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        96     
 
 State 38:
@@ -1614,14 +1682,16 @@ State 38:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        97     
 
 State 39:
@@ -1657,14 +1727,16 @@ State 39:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        68     
 
 State 40:
@@ -1700,14 +1772,16 @@ State 40:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        69     
 
 State 41:
@@ -1743,14 +1817,16 @@ State 41:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        76     
 
 State 42:
@@ -1786,14 +1862,16 @@ State 42:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        77     
 
 State 43:
@@ -1829,14 +1907,16 @@ State 43:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        78     
 
 State 44:
@@ -1872,14 +1952,16 @@ State 44:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        79     
 
 State 45:
@@ -1915,14 +1997,16 @@ State 45:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        98     
 
 State 46:
@@ -1958,14 +2042,16 @@ State 46:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        83     
 
 State 47:
@@ -2001,14 +2087,16 @@ State 47:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        82     
 
 State 48:
@@ -2044,14 +2132,16 @@ State 48:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        84     
 
 State 49:
@@ -2087,14 +2177,16 @@ State 49:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        99     
 
 State 50:
@@ -2130,14 +2222,16 @@ State 50:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        100    
 
 State 51:
@@ -2173,14 +2267,16 @@ State 51:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        101    
 
 State 52:
@@ -2216,14 +2312,16 @@ State 52:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        91     
 
 State 53:
@@ -2259,14 +2357,16 @@ State 53:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        92     
 
 State 54:
@@ -2302,14 +2402,16 @@ State 54:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        85     
 
 State 55:
@@ -2345,14 +2447,16 @@ State 55:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        86     
 
 State 56:
@@ -2388,14 +2492,16 @@ State 56:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        87     
 
 State 57:
@@ -2431,14 +2537,16 @@ State 57:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        88     
 
 State 58:
@@ -2474,14 +2582,16 @@ State 58:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        89     
 
 State 59:
@@ -2517,14 +2627,16 @@ State 59:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        90     
 
 State 60:
@@ -2560,14 +2672,16 @@ State 60:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        80     
 
 State 61:
@@ -2603,14 +2717,16 @@ State 61:
           exp ::= * exp BIMINUS
           exp ::= * BIADD exp
           exp ::= * BIMINUS exp
+          exp ::= * CNUM
 
                          BIADD shift        37     
                        BIMINUS shift        36     
                            NOT shift        38     
-                          INUM shift-reduce 64     
+                          INUM shift-reduce 66     
                             ID shift        122    
                            LLB shift        39     
-                          FNUM shift-reduce 65     
+                          FNUM shift-reduce 67     
+                          CNUM shift-reduce 84     
                            exp shift        81     
 
 State 62:
@@ -2618,7 +2734,7 @@ State 62:
           compstmt ::= * LGB innerdeflist stmtlist RGB
 
                            LGB shift        12     
-                      compstmt shift-reduce 10     
+                      compstmt shift-reduce 12     
 
 State 63:
           vallist ::= * ID COMMA vallist
@@ -2626,7 +2742,7 @@ State 63:
           vallist ::= * ID
 
                             ID shift        129    
-                       vallist shift-reduce 7      
+                       vallist shift-reduce 9      
 
 State 64:
           stmt ::= FOR LLB initlist SEMICOLON exp * SEMICOLON steplist RLB stmt
@@ -2675,8 +2791,8 @@ State 64:
                            DIV shift        50     
                            MOD shift        49     
                          MULTI shift        51     
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
                      SEMICOLON shift        21     
 
@@ -2727,8 +2843,8 @@ State 65:
                            DIV shift        50     
                            MOD shift        49     
                          MULTI shift        51     
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
                            RLB shift        17     
 
@@ -2783,8 +2899,8 @@ State 66:
                            DIV shift        50     
                            MOD shift        49     
                          MULTI shift        51     
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
                            RLB shift        19     
 
@@ -2834,10 +2950,10 @@ State 67:
                            DIV shift        50     
                            MOD shift        49     
                          MULTI shift        51     
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
-                     SEMICOLON shift-reduce 28     
+                     SEMICOLON shift-reduce 30     
 
 State 68:
           exp ::= exp * BIAND exp
@@ -2885,10 +3001,10 @@ State 68:
                            DIV shift        50     
                            MOD shift        49     
                          MULTI shift        51     
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
-                           RLB shift-reduce 67     
+                           RLB shift-reduce 69     
 
 State 69:
           exp ::= exp * BIAND exp
@@ -2936,10 +3052,10 @@ State 69:
                            DIV shift        50     
                            MOD shift        49     
                          MULTI shift        51     
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
-                           RMB shift-reduce 74     
+                           RMB shift-reduce 76     
 
 State 70:
           stmt ::= exp * SEMICOLON
@@ -2987,13 +3103,13 @@ State 70:
                            DIV shift        50     
                            MOD shift        49     
                          MULTI shift        51     
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
-                     SEMICOLON shift-reduce 27     
+                     SEMICOLON shift-reduce 29     
 
 State 71:
-     (22) innerdec ::= ID ASSIGN exp *
+     (24) innerdec ::= ID ASSIGN exp *
           exp ::= exp * BIAND exp
           exp ::= exp * BIOR exp
           exp ::= exp * LSS exp
@@ -3037,13 +3153,13 @@ State 71:
                            DIV shift        50     
                            MOD shift        49     
                          MULTI shift        51     
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
-                     {default} reduce       22     
+                     {default} reduce       24     
 
 State 72:
-     (43) init ::= ID MINUSEQ exp *
+     (45) init ::= ID MINUSEQ exp *
           exp ::= exp * BIAND exp
           exp ::= exp * BIOR exp
           exp ::= exp * LSS exp
@@ -3087,113 +3203,113 @@ State 72:
                            DIV shift        50     
                            MOD shift        49     
                          MULTI shift        51     
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
+                        BITNOT shift        45     
+                     {default} reduce       45     
+
+State 73:
+     (44) init ::= ID ADDEQ exp *
+          exp ::= exp * BIAND exp
+          exp ::= exp * BIOR exp
+          exp ::= exp * LSS exp
+          exp ::= exp * LSSEQ exp
+          exp ::= exp * GRT exp
+          exp ::= exp * GRTEQ exp
+          exp ::= exp * EQ exp
+          exp ::= exp * NOTEQ exp
+          exp ::= exp * ADD exp
+          exp ::= exp * MINUS exp
+          exp ::= exp * MULTI exp
+          exp ::= exp * DIV exp
+          exp ::= exp * MOD exp
+          exp ::= exp * AND exp
+          exp ::= exp * OR exp
+          exp ::= exp * XOR exp
+          exp ::= exp * BITNOT exp
+          exp ::= exp * COMMA exp
+          exp ::= exp * ASSIGN exp
+          exp ::= exp * ADDEQ exp
+          exp ::= exp * MINUSEQ exp
+          exp ::= exp * BIADD
+          exp ::= exp * BIMINUS
+
+                        ASSIGN shift        43     
+                         ADDEQ shift        42     
+                       MINUSEQ shift        41     
+                          BIOR shift        60     
+                         BIAND shift        61     
+                            OR shift        47     
+                           XOR shift        46     
+                           AND shift        48     
+                            EQ shift        55     
+                         NOTEQ shift        54     
+                           LSS shift        59     
+                         LSSEQ shift        58     
+                           GRT shift        57     
+                         GRTEQ shift        56     
+                           ADD shift        53     
+                         MINUS shift        52     
+                           DIV shift        50     
+                           MOD shift        49     
+                         MULTI shift        51     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
+                        BITNOT shift        45     
+                     {default} reduce       44     
+
+State 74:
+     (43) init ::= ID ASSIGN exp *
+          exp ::= exp * BIAND exp
+          exp ::= exp * BIOR exp
+          exp ::= exp * LSS exp
+          exp ::= exp * LSSEQ exp
+          exp ::= exp * GRT exp
+          exp ::= exp * GRTEQ exp
+          exp ::= exp * EQ exp
+          exp ::= exp * NOTEQ exp
+          exp ::= exp * ADD exp
+          exp ::= exp * MINUS exp
+          exp ::= exp * MULTI exp
+          exp ::= exp * DIV exp
+          exp ::= exp * MOD exp
+          exp ::= exp * AND exp
+          exp ::= exp * OR exp
+          exp ::= exp * XOR exp
+          exp ::= exp * BITNOT exp
+          exp ::= exp * COMMA exp
+          exp ::= exp * ASSIGN exp
+          exp ::= exp * ADDEQ exp
+          exp ::= exp * MINUSEQ exp
+          exp ::= exp * BIADD
+          exp ::= exp * BIMINUS
+
+                        ASSIGN shift        43     
+                         ADDEQ shift        42     
+                       MINUSEQ shift        41     
+                          BIOR shift        60     
+                         BIAND shift        61     
+                            OR shift        47     
+                           XOR shift        46     
+                           AND shift        48     
+                            EQ shift        55     
+                         NOTEQ shift        54     
+                           LSS shift        59     
+                         LSSEQ shift        58     
+                           GRT shift        57     
+                         GRTEQ shift        56     
+                           ADD shift        53     
+                         MINUS shift        52     
+                           DIV shift        50     
+                           MOD shift        49     
+                         MULTI shift        51     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
                      {default} reduce       43     
 
-State 73:
-     (42) init ::= ID ADDEQ exp *
-          exp ::= exp * BIAND exp
-          exp ::= exp * BIOR exp
-          exp ::= exp * LSS exp
-          exp ::= exp * LSSEQ exp
-          exp ::= exp * GRT exp
-          exp ::= exp * GRTEQ exp
-          exp ::= exp * EQ exp
-          exp ::= exp * NOTEQ exp
-          exp ::= exp * ADD exp
-          exp ::= exp * MINUS exp
-          exp ::= exp * MULTI exp
-          exp ::= exp * DIV exp
-          exp ::= exp * MOD exp
-          exp ::= exp * AND exp
-          exp ::= exp * OR exp
-          exp ::= exp * XOR exp
-          exp ::= exp * BITNOT exp
-          exp ::= exp * COMMA exp
-          exp ::= exp * ASSIGN exp
-          exp ::= exp * ADDEQ exp
-          exp ::= exp * MINUSEQ exp
-          exp ::= exp * BIADD
-          exp ::= exp * BIMINUS
-
-                        ASSIGN shift        43     
-                         ADDEQ shift        42     
-                       MINUSEQ shift        41     
-                          BIOR shift        60     
-                         BIAND shift        61     
-                            OR shift        47     
-                           XOR shift        46     
-                           AND shift        48     
-                            EQ shift        55     
-                         NOTEQ shift        54     
-                           LSS shift        59     
-                         LSSEQ shift        58     
-                           GRT shift        57     
-                         GRTEQ shift        56     
-                           ADD shift        53     
-                         MINUS shift        52     
-                           DIV shift        50     
-                           MOD shift        49     
-                         MULTI shift        51     
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
-                        BITNOT shift        45     
-                     {default} reduce       42     
-
-State 74:
-     (41) init ::= ID ASSIGN exp *
-          exp ::= exp * BIAND exp
-          exp ::= exp * BIOR exp
-          exp ::= exp * LSS exp
-          exp ::= exp * LSSEQ exp
-          exp ::= exp * GRT exp
-          exp ::= exp * GRTEQ exp
-          exp ::= exp * EQ exp
-          exp ::= exp * NOTEQ exp
-          exp ::= exp * ADD exp
-          exp ::= exp * MINUS exp
-          exp ::= exp * MULTI exp
-          exp ::= exp * DIV exp
-          exp ::= exp * MOD exp
-          exp ::= exp * AND exp
-          exp ::= exp * OR exp
-          exp ::= exp * XOR exp
-          exp ::= exp * BITNOT exp
-          exp ::= exp * COMMA exp
-          exp ::= exp * ASSIGN exp
-          exp ::= exp * ADDEQ exp
-          exp ::= exp * MINUSEQ exp
-          exp ::= exp * BIADD
-          exp ::= exp * BIMINUS
-
-                        ASSIGN shift        43     
-                         ADDEQ shift        42     
-                       MINUSEQ shift        41     
-                          BIOR shift        60     
-                         BIAND shift        61     
-                            OR shift        47     
-                           XOR shift        46     
-                           AND shift        48     
-                            EQ shift        55     
-                         NOTEQ shift        54     
-                           LSS shift        59     
-                         LSSEQ shift        58     
-                           GRT shift        57     
-                         GRTEQ shift        56     
-                           ADD shift        53     
-                         MINUS shift        52     
-                           DIV shift        50     
-                           MOD shift        49     
-                         MULTI shift        51     
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
-                        BITNOT shift        45     
-                     {default} reduce       41     
-
 State 75:
-     (50) step ::= ID ASSIGN exp *
+     (52) step ::= ID ASSIGN exp *
           exp ::= exp * BIAND exp
           exp ::= exp * BIOR exp
           exp ::= exp * LSS exp
@@ -3237,10 +3353,10 @@ State 75:
                            DIV shift        50     
                            MOD shift        49     
                          MULTI shift        51     
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
-                     {default} reduce       50     
+                     {default} reduce       52     
 
 State 76:
           exp ::= exp * BIAND exp
@@ -3264,7 +3380,7 @@ State 76:
           exp ::= exp * ASSIGN exp
           exp ::= exp * ADDEQ exp
           exp ::= exp * MINUSEQ exp
-     (77) exp ::= exp MINUSEQ exp *
+     (79) exp ::= exp MINUSEQ exp *
           exp ::= exp * BIADD
           exp ::= exp * BIMINUS
 
@@ -3287,10 +3403,10 @@ State 76:
                            DIV shift        50     
                            MOD shift        49     
                          MULTI shift        51     
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
-                     {default} reduce       77     
+                     {default} reduce       79     
 
 State 77:
           exp ::= exp * BIAND exp
@@ -3313,7 +3429,7 @@ State 77:
           exp ::= exp * COMMA exp
           exp ::= exp * ASSIGN exp
           exp ::= exp * ADDEQ exp
-     (76) exp ::= exp ADDEQ exp *
+     (78) exp ::= exp ADDEQ exp *
           exp ::= exp * MINUSEQ exp
           exp ::= exp * BIADD
           exp ::= exp * BIMINUS
@@ -3337,10 +3453,10 @@ State 77:
                            DIV shift        50     
                            MOD shift        49     
                          MULTI shift        51     
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
-                     {default} reduce       76     
+                     {default} reduce       78     
 
 State 78:
           exp ::= exp * BIAND exp
@@ -3362,7 +3478,7 @@ State 78:
           exp ::= exp * BITNOT exp
           exp ::= exp * COMMA exp
           exp ::= exp * ASSIGN exp
-     (75) exp ::= exp ASSIGN exp *
+     (77) exp ::= exp ASSIGN exp *
           exp ::= exp * ADDEQ exp
           exp ::= exp * MINUSEQ exp
           exp ::= exp * BIADD
@@ -3387,10 +3503,10 @@ State 78:
                            DIV shift        50     
                            MOD shift        49     
                          MULTI shift        51     
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
-                     {default} reduce       75     
+                     {default} reduce       77     
 
 State 79:
           exp ::= exp * BIAND exp
@@ -3411,7 +3527,7 @@ State 79:
           exp ::= exp * XOR exp
           exp ::= exp * BITNOT exp
           exp ::= exp * COMMA exp
-     (73) exp ::= exp COMMA exp *
+     (75) exp ::= exp COMMA exp *
           exp ::= exp * ASSIGN exp
           exp ::= exp * ADDEQ exp
           exp ::= exp * MINUSEQ exp
@@ -3437,15 +3553,15 @@ State 79:
                            DIV shift        50     
                            MOD shift        49     
                          MULTI shift        51     
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
-                     {default} reduce       73     
+                     {default} reduce       75     
 
 State 80:
           exp ::= exp * BIAND exp
           exp ::= exp * BIOR exp
-     (52) exp ::= exp BIOR exp *
+     (54) exp ::= exp BIOR exp *
           exp ::= exp * LSS exp
           exp ::= exp * LSSEQ exp
           exp ::= exp * GRT exp
@@ -3483,14 +3599,14 @@ State 80:
                            DIV shift        50     
                            MOD shift        49     
                          MULTI shift        51     
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
-                     {default} reduce       52     
+                     {default} reduce       54     
 
 State 81:
           exp ::= exp * BIAND exp
-     (51) exp ::= exp BIAND exp *
+     (53) exp ::= exp BIAND exp *
           exp ::= exp * BIOR exp
           exp ::= exp * LSS exp
           exp ::= exp * LSSEQ exp
@@ -3528,10 +3644,10 @@ State 81:
                            DIV shift        50     
                            MOD shift        49     
                          MULTI shift        51     
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
-                     {default} reduce       51     
+                     {default} reduce       53     
 
 State 82:
           exp ::= exp * BIAND exp
@@ -3549,7 +3665,7 @@ State 82:
           exp ::= exp * MOD exp
           exp ::= exp * AND exp
           exp ::= exp * OR exp
-     (70) exp ::= exp OR exp *
+     (72) exp ::= exp OR exp *
           exp ::= exp * XOR exp
           exp ::= exp * BITNOT exp
           exp ::= exp * COMMA exp
@@ -3572,10 +3688,10 @@ State 82:
                            DIV shift        50     
                            MOD shift        49     
                          MULTI shift        51     
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
-                     {default} reduce       70     
+                     {default} reduce       72     
 
 State 83:
           exp ::= exp * BIAND exp
@@ -3594,7 +3710,7 @@ State 83:
           exp ::= exp * AND exp
           exp ::= exp * OR exp
           exp ::= exp * XOR exp
-     (71) exp ::= exp XOR exp *
+     (73) exp ::= exp XOR exp *
           exp ::= exp * BITNOT exp
           exp ::= exp * COMMA exp
           exp ::= exp * ASSIGN exp
@@ -3615,10 +3731,10 @@ State 83:
                            DIV shift        50     
                            MOD shift        49     
                          MULTI shift        51     
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
-                     {default} reduce       71     
+                     {default} reduce       73     
 
 State 84:
           exp ::= exp * BIAND exp
@@ -3635,7 +3751,7 @@ State 84:
           exp ::= exp * DIV exp
           exp ::= exp * MOD exp
           exp ::= exp * AND exp
-     (69) exp ::= exp AND exp *
+     (71) exp ::= exp AND exp *
           exp ::= exp * OR exp
           exp ::= exp * XOR exp
           exp ::= exp * BITNOT exp
@@ -3657,10 +3773,10 @@ State 84:
                            DIV shift        50     
                            MOD shift        49     
                          MULTI shift        51     
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
-                     {default} reduce       69     
+                     {default} reduce       71     
 
 State 85:
           exp ::= exp * BIAND exp
@@ -3671,7 +3787,7 @@ State 85:
           exp ::= exp * GRTEQ exp
           exp ::= exp * EQ exp
           exp ::= exp * NOTEQ exp
-     (58) exp ::= exp NOTEQ exp *
+     (60) exp ::= exp NOTEQ exp *
           exp ::= exp * ADD exp
           exp ::= exp * MINUS exp
           exp ::= exp * MULTI exp
@@ -3697,10 +3813,10 @@ State 85:
                            DIV shift        50     
                            MOD shift        49     
                          MULTI shift        51     
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
-                     {default} reduce       58     
+                     {default} reduce       60     
 
 State 86:
           exp ::= exp * BIAND exp
@@ -3710,7 +3826,7 @@ State 86:
           exp ::= exp * GRT exp
           exp ::= exp * GRTEQ exp
           exp ::= exp * EQ exp
-     (57) exp ::= exp EQ exp *
+     (59) exp ::= exp EQ exp *
           exp ::= exp * NOTEQ exp
           exp ::= exp * ADD exp
           exp ::= exp * MINUS exp
@@ -3737,10 +3853,10 @@ State 86:
                            DIV shift        50     
                            MOD shift        49     
                          MULTI shift        51     
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
-                     {default} reduce       57     
+                     {default} reduce       59     
 
 State 87:
           exp ::= exp * BIAND exp
@@ -3749,7 +3865,7 @@ State 87:
           exp ::= exp * LSSEQ exp
           exp ::= exp * GRT exp
           exp ::= exp * GRTEQ exp
-     (56) exp ::= exp GRTEQ exp *
+     (58) exp ::= exp GRTEQ exp *
           exp ::= exp * EQ exp
           exp ::= exp * NOTEQ exp
           exp ::= exp * ADD exp
@@ -3773,10 +3889,10 @@ State 87:
                            DIV shift        50     
                            MOD shift        49     
                          MULTI shift        51     
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
-                     {default} reduce       56     
+                     {default} reduce       58     
 
 State 88:
           exp ::= exp * BIAND exp
@@ -3784,7 +3900,7 @@ State 88:
           exp ::= exp * LSS exp
           exp ::= exp * LSSEQ exp
           exp ::= exp * GRT exp
-     (55) exp ::= exp GRT exp *
+     (57) exp ::= exp GRT exp *
           exp ::= exp * GRTEQ exp
           exp ::= exp * EQ exp
           exp ::= exp * NOTEQ exp
@@ -3809,17 +3925,17 @@ State 88:
                            DIV shift        50     
                            MOD shift        49     
                          MULTI shift        51     
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
-                     {default} reduce       55     
+                     {default} reduce       57     
 
 State 89:
           exp ::= exp * BIAND exp
           exp ::= exp * BIOR exp
           exp ::= exp * LSS exp
           exp ::= exp * LSSEQ exp
-     (54) exp ::= exp LSSEQ exp *
+     (56) exp ::= exp LSSEQ exp *
           exp ::= exp * GRT exp
           exp ::= exp * GRTEQ exp
           exp ::= exp * EQ exp
@@ -3845,16 +3961,16 @@ State 89:
                            DIV shift        50     
                            MOD shift        49     
                          MULTI shift        51     
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
-                     {default} reduce       54     
+                     {default} reduce       56     
 
 State 90:
           exp ::= exp * BIAND exp
           exp ::= exp * BIOR exp
           exp ::= exp * LSS exp
-     (53) exp ::= exp LSS exp *
+     (55) exp ::= exp LSS exp *
           exp ::= exp * LSSEQ exp
           exp ::= exp * GRT exp
           exp ::= exp * GRTEQ exp
@@ -3881,10 +3997,10 @@ State 90:
                            DIV shift        50     
                            MOD shift        49     
                          MULTI shift        51     
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
-                     {default} reduce       53     
+                     {default} reduce       55     
 
 State 91:
           exp ::= exp * BIAND exp
@@ -3897,7 +4013,7 @@ State 91:
           exp ::= exp * NOTEQ exp
           exp ::= exp * ADD exp
           exp ::= exp * MINUS exp
-     (60) exp ::= exp MINUS exp *
+     (62) exp ::= exp MINUS exp *
           exp ::= exp * MULTI exp
           exp ::= exp * DIV exp
           exp ::= exp * MOD exp
@@ -3915,10 +4031,10 @@ State 91:
                            DIV shift        50     
                            MOD shift        49     
                          MULTI shift        51     
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
-                     {default} reduce       60     
+                     {default} reduce       62     
 
 State 92:
           exp ::= exp * BIAND exp
@@ -3930,7 +4046,7 @@ State 92:
           exp ::= exp * EQ exp
           exp ::= exp * NOTEQ exp
           exp ::= exp * ADD exp
-     (59) exp ::= exp ADD exp *
+     (61) exp ::= exp ADD exp *
           exp ::= exp * MINUS exp
           exp ::= exp * MULTI exp
           exp ::= exp * DIV exp
@@ -3949,10 +4065,10 @@ State 92:
                            DIV shift        50     
                            MOD shift        49     
                          MULTI shift        51     
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
-                     {default} reduce       59     
+                     {default} reduce       61     
 
 State 93:
           init ::= ID * ASSIGN exp
@@ -3969,8 +4085,8 @@ State 94:
           step ::= ID * ASSIGN exp
 
                         ASSIGN shift        31     
-                         BIADD shift-reduce 47     
-                       BIMINUS shift-reduce 49     
+                         BIADD shift-reduce 49     
+                       BIMINUS shift-reduce 51     
 
 State 95:
           exp ::= exp * BIAND exp
@@ -3996,12 +4112,12 @@ State 95:
           exp ::= exp * MINUSEQ exp
           exp ::= exp * BIADD
           exp ::= exp * BIMINUS
-     (81) exp ::= BIMINUS exp *
+     (83) exp ::= BIMINUS exp *
 
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
-                     {default} reduce       81     
+                     {default} reduce       83     
 
 State 96:
           exp ::= exp * BIAND exp
@@ -4027,12 +4143,12 @@ State 96:
           exp ::= exp * MINUSEQ exp
           exp ::= exp * BIADD
           exp ::= exp * BIMINUS
-     (80) exp ::= BIADD exp *
+     (82) exp ::= BIADD exp *
 
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
-                     {default} reduce       80     
+                     {default} reduce       82     
 
 State 97:
           exp ::= exp * BIAND exp
@@ -4048,7 +4164,7 @@ State 97:
           exp ::= exp * MULTI exp
           exp ::= exp * DIV exp
           exp ::= exp * MOD exp
-     (68) exp ::= NOT exp *
+     (70) exp ::= NOT exp *
           exp ::= exp * AND exp
           exp ::= exp * OR exp
           exp ::= exp * XOR exp
@@ -4060,10 +4176,10 @@ State 97:
           exp ::= exp * BIADD
           exp ::= exp * BIMINUS
 
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
-                     {default} reduce       68     
+                     {default} reduce       70     
 
 State 98:
           exp ::= exp * BIAND exp
@@ -4083,7 +4199,7 @@ State 98:
           exp ::= exp * OR exp
           exp ::= exp * XOR exp
           exp ::= exp * BITNOT exp
-     (72) exp ::= exp BITNOT exp *
+     (74) exp ::= exp BITNOT exp *
           exp ::= exp * COMMA exp
           exp ::= exp * ASSIGN exp
           exp ::= exp * ADDEQ exp
@@ -4091,10 +4207,10 @@ State 98:
           exp ::= exp * BIADD
           exp ::= exp * BIMINUS
 
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
-                     {default} reduce       72     
+                     {default} reduce       74     
 
 State 99:
           exp ::= exp * BIAND exp
@@ -4110,7 +4226,7 @@ State 99:
           exp ::= exp * MULTI exp
           exp ::= exp * DIV exp
           exp ::= exp * MOD exp
-     (63) exp ::= exp MOD exp *
+     (65) exp ::= exp MOD exp *
           exp ::= exp * AND exp
           exp ::= exp * OR exp
           exp ::= exp * XOR exp
@@ -4122,10 +4238,10 @@ State 99:
           exp ::= exp * BIADD
           exp ::= exp * BIMINUS
 
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
-                     {default} reduce       63     
+                     {default} reduce       65     
 
 State 100:
           exp ::= exp * BIAND exp
@@ -4140,7 +4256,7 @@ State 100:
           exp ::= exp * MINUS exp
           exp ::= exp * MULTI exp
           exp ::= exp * DIV exp
-     (62) exp ::= exp DIV exp *
+     (64) exp ::= exp DIV exp *
           exp ::= exp * MOD exp
           exp ::= exp * AND exp
           exp ::= exp * OR exp
@@ -4153,10 +4269,10 @@ State 100:
           exp ::= exp * BIADD
           exp ::= exp * BIMINUS
 
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
-                     {default} reduce       62     
+                     {default} reduce       64     
 
 State 101:
           exp ::= exp * BIAND exp
@@ -4170,7 +4286,7 @@ State 101:
           exp ::= exp * ADD exp
           exp ::= exp * MINUS exp
           exp ::= exp * MULTI exp
-     (61) exp ::= exp MULTI exp *
+     (63) exp ::= exp MULTI exp *
           exp ::= exp * DIV exp
           exp ::= exp * MOD exp
           exp ::= exp * AND exp
@@ -4184,52 +4300,52 @@ State 101:
           exp ::= exp * BIADD
           exp ::= exp * BIMINUS
 
-                         BIADD shift-reduce 78     
-                       BIMINUS shift-reduce 79     
+                         BIADD shift-reduce 80     
+                       BIMINUS shift-reduce 81     
                         BITNOT shift        45     
-                     {default} reduce       61     
+                     {default} reduce       63     
 
 State 102:
           vallist ::= ID * COMMA vallist
-      (8) vallist ::= ID *
+     (10) vallist ::= ID *
           fundef ::= ID * LLB args RLB
           fundef ::= ID * LLB RLB
 
                          COMMA shift        63     
                            LLB shift        10     
-                     {default} reduce       8      
+                     {default} reduce       10     
 
 State 103:
           innerdec ::= ID * ASSIGN exp
-     (23) innerdec ::= ID *
+     (25) innerdec ::= ID *
 
                         ASSIGN shift        27     
-                     {default} reduce       23     
+                     {default} reduce       25     
 
 State 104:
           innerdeclist ::= innerdec * COMMA innerdeclist
-     (21) innerdeclist ::= innerdec *
+     (23) innerdeclist ::= innerdec *
 
                          COMMA shift        23     
-                     {default} reduce       21     
+                     {default} reduce       23     
 
 State 105:
           innerdef ::= tp innerdeclist * SEMICOLON
 
-                     SEMICOLON shift-reduce 19     
+                     SEMICOLON shift-reduce 21     
 
 State 106:
           stmt ::= IF LLB exp RLB LGB stmtlist RGB ELSE LGB stmtlist * RGB
 
-                           RGB shift-reduce 33     
+                           RGB shift-reduce 35     
 
 State 107:
-     (30) stmt ::= IF LLB exp RLB LGB stmtlist RGB *
+     (32) stmt ::= IF LLB exp RLB LGB stmtlist RGB *
           stmt ::= IF LLB exp RLB LGB stmtlist RGB * ELSE LGB stmtlist RGB
           stmt ::= IF LLB exp RLB LGB stmtlist RGB * ELSE stmt
 
                           ELSE shift        15     
-                     {default} reduce       30     
+                     {default} reduce       32     
 
 State 108:
           stmt ::= IF LLB exp RLB LGB stmtlist * RGB
@@ -4240,32 +4356,32 @@ State 108:
 
 State 109:
           initlist ::= init * COMMA initlist
-     (40) initlist ::= init *
+     (42) initlist ::= init *
 
                          COMMA shift        25     
-                     {default} reduce       40     
+                     {default} reduce       42     
 
 State 110:
           step ::= BIMINUS * ID
 
-                            ID shift-reduce 48     
+                            ID shift-reduce 50     
 
 State 111:
           step ::= BIADD * ID
 
-                            ID shift-reduce 46     
+                            ID shift-reduce 48     
 
 State 112:
           steplist ::= step * COMMA steplist
-     (45) steplist ::= step *
+     (47) steplist ::= step *
 
                          COMMA shift        20     
-                     {default} reduce       45     
+                     {default} reduce       47     
 
 State 113:
           stmt ::= FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB LGB stmtlist * RGB
 
-                           RGB shift-reduce 38     
+                           RGB shift-reduce 40     
 
 State 114:
           stmt ::= FOR LLB initlist SEMICOLON exp SEMICOLON steplist * RLB stmt
@@ -4288,7 +4404,7 @@ State 116:
 State 117:
           stmt ::= WHILE LLB exp RLB LGB stmtlist * RGB
 
-                           RGB shift-reduce 36     
+                           RGB shift-reduce 38     
 
 State 118:
           stmt ::= WHILE * LLB exp RLB stmt
@@ -4299,15 +4415,15 @@ State 118:
 State 119:
           stmt ::= IF LLB exp RLB stmt ELSE LGB stmtlist * RGB
 
-                           RGB shift-reduce 32     
+                           RGB shift-reduce 34     
 
 State 120:
-     (29) stmt ::= IF LLB exp RLB stmt *
+     (31) stmt ::= IF LLB exp RLB stmt *
           stmt ::= IF LLB exp RLB stmt * ELSE stmt
           stmt ::= IF LLB exp RLB stmt * ELSE LGB stmtlist RGB
 
                           ELSE shift        18     
-                     {default} reduce       29     
+                     {default} reduce       31     
 
 State 121:
           stmt ::= IF * LLB exp RLB stmt
@@ -4320,11 +4436,11 @@ State 121:
                            LLB shift        34     
 
 State 122:
-     (66) exp ::= ID *
+     (68) exp ::= ID *
           exp ::= ID * LMB exp RMB
 
                            LMB shift        40     
-                     {default} reduce       66     
+                     {default} reduce       68     
 
 State 123:
           stmtlist ::= LGB stmtlist * RGB stmtlist
@@ -4334,72 +4450,90 @@ State 123:
 State 124:
           compstmt ::= LGB innerdeflist stmtlist * RGB
 
-                           RGB shift-reduce 16     
+                           RGB shift-reduce 18     
 
 State 125:
           def ::= vallist * SEMICOLON
 
-                     SEMICOLON shift-reduce 9      
+                     SEMICOLON shift-reduce 11     
 
 State 126:
           param ::= tp * ID
 
-                            ID shift-reduce 15     
+                            ID shift-reduce 17     
 
 State 127:
           args ::= param * COMMA args
-     (14) args ::= param *
+     (16) args ::= param *
 
                          COMMA shift        13     
-                     {default} reduce       14     
+                     {default} reduce       16     
 
 State 128:
           fundef ::= ID LLB args * RLB
 
-                           RLB shift-reduce 11     
+                           RLB shift-reduce 13     
 
 State 129:
           vallist ::= ID * COMMA vallist
-      (8) vallist ::= ID *
+     (10) vallist ::= ID *
 
                          COMMA shift        63     
-                     {default} reduce       8      
+                     {default} reduce       10     
 
 State 130:
-          tp ::= FLOAT LMB INUM * RMB
+          tp ::= CHAR LMB INUM * RMB
 
-                           RMB shift-reduce 6      
+                           RMB shift-reduce 8      
 
 State 131:
-          tp ::= FLOAT LMB * INUM RMB
+          tp ::= CHAR LMB * INUM RMB
 
                           INUM shift        130    
 
 State 132:
-      (4) tp ::= FLOAT *
-          tp ::= FLOAT * LMB INUM RMB
+      (5) tp ::= CHAR *
+          tp ::= CHAR * LMB INUM RMB
 
                            LMB shift        131    
-                     {default} reduce       4      
+                     {default} reduce       5      
 
 State 133:
-          tp ::= INT LMB INUM * RMB
+          tp ::= FLOAT LMB INUM * RMB
 
-                           RMB shift-reduce 5      
+                           RMB shift-reduce 7      
 
 State 134:
-          tp ::= INT LMB * INUM RMB
+          tp ::= FLOAT LMB * INUM RMB
 
                           INUM shift        133    
 
 State 135:
+      (4) tp ::= FLOAT *
+          tp ::= FLOAT * LMB INUM RMB
+
+                           LMB shift        134    
+                     {default} reduce       4      
+
+State 136:
+          tp ::= INT LMB INUM * RMB
+
+                           RMB shift-reduce 6      
+
+State 137:
+          tp ::= INT LMB * INUM RMB
+
+                          INUM shift        136    
+
+State 138:
       (3) tp ::= INT *
           tp ::= INT * LMB INUM RMB
 
-                           LMB shift        134    
+                           LMB shift        137    
                      {default} reduce       3      
 
-State 136:
+State 139:
       (0) program ::= deflist *
 
                              $ reduce       0      
+                             

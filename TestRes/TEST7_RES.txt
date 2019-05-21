@@ -1,0 +1,66 @@
+lex:
+(KEYWORD):[int]
+(ID):[main]
+(SEPERATOR):[(]
+(SEPERATOR):[)]
+(SEPERATOR):[{]
+(KEYWORD):[char]
+(ID):[c]
+(OPERATOR):[ASSIGN_OP, 57]
+(CNUM):['a']
+(SEPERATOR):[;]
+(KEYWORD):[int]
+(ID):[a]
+(OPERATOR):[ASSIGN_OP, 57]
+(INUM):[1]
+(SEPERATOR):[;]
+(KEYWORD):[float]
+(ID):[b]
+(OPERATOR):[ASSIGN_OP, 57]
+(FNUM):[1.000000]
+(SEPERATOR):[;]
+(SEPERATOR):[}]
+
+
+syntax:
+program:
+    deflist:
+        tp:
+            'int':
+        def:
+            fundef:
+                ID:  [main]
+            compstmt:
+                innerdeflist:
+                    innerdef:
+                        tp:
+                            'char':
+                        innerdeclist:
+                            innerdec:
+                                ID:  [c]
+                                OPERATER:  (ASSIGN_OP, =)
+                                exp:
+                                    CHAR:  ['a']
+                    innerdeflist:
+                        innerdef:
+                            tp:
+                                'int':
+                            innerdeclist:
+                                innerdec:
+                                    ID:  [a]
+                                    OPERATER:  (ASSIGN_OP, =)
+                                    exp:
+                                        INTEGER:  [1]
+                        innerdeflist:
+                            innerdef:
+                                tp:
+                                    'float':
+                                innerdeclist:
+                                    innerdec:
+                                        ID:  [b]
+                                        OPERATER:  (ASSIGN_OP, =)
+                                        exp:
+                                            FLOAT:  [1.000000]
+                            innerdeflist:
+                stmtlist:
+        deflist:

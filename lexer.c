@@ -14,7 +14,7 @@
 const char* keywords[] = {"", "bool", "break", "char", "continue",
                               "do", "else", "false", "float", "for", "if",
                               "int", "return", "true", "while"};
-const char* words_type[] = {"INUM", "FNUM", "ID", "KEYWORD", "OPERATOR", "SEPERATOR", "SYNAXELE"};
+const char* words_type[] = {"INUM", "FNUM", "ID", "KEYWORD", "OPERATOR", "SEPERATOR", "SYNAXELE", "CNUM"};
 const char* op_type[] = {"UNARY_OP", "BIT_OP", "ARITH_OP", 
                               "SHIFT_OP", "RELAT_OP", "LOGIC_OP",
                               "MIXASSIGN_OP", "ASSIGN_OP"};
@@ -63,6 +63,7 @@ Trie matchTrie(const char *str, Trie root){
 }
 
 char tmp[256];
+char tmpChar;
 int tmptop = 0;
 int tmpIval = 0;
 float fw = 0.1f;
@@ -75,6 +76,7 @@ void lex_error(int line, int pos){
 }
 
 void back2Space(){
+    tmpChar = 0;
     tmptop = 0;
     tmpIval = 0;
     fw = 0.1f;
@@ -149,27 +151,45 @@ int lex(char c, int line, int pos){
             }else if(c == ','){
                 words[++wordsSize].type = SEPERATOR;
                 words[wordsSize].tval.sepType = COMMA;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
             }else if(c == ';'){
                 words[++wordsSize].type = SEPERATOR;
                 words[wordsSize].tval.sepType = SEMICOLON;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
             }else if(c == '('){
                 words[++wordsSize].type = SEPERATOR;
                 words[wordsSize].tval.sepType = LLB;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
             }else if(c == ')'){
                 words[++wordsSize].type = SEPERATOR;
                 words[wordsSize].tval.sepType = RLB;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
             }else if(c == '['){
                 words[++wordsSize].type = SEPERATOR;
                 words[wordsSize].tval.sepType = LMB;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
             }else if(c == ']'){
                 words[++wordsSize].type = SEPERATOR;
                 words[wordsSize].tval.sepType = RMB;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
             }else if(c == '{'){
                 words[++wordsSize].type = SEPERATOR;
                 words[wordsSize].tval.sepType = LGB;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
             }else if(c == '}'){
                 words[++wordsSize].type = SEPERATOR;
                 words[wordsSize].tval.sepType = RGB;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
+            }else if(c == '\''){
+                dfastate = CHAR_ONE;
             }else{
                 tmp[++tmptop] = c;
                 lex_error(line, pos);
@@ -188,13 +208,34 @@ int lex(char c, int line, int pos){
                 if((p = matchTrie(tmp + 1, root))){
                     words[++wordsSize].type = KEYWORD;
                     words[wordsSize].tval.keyIdx = p->no;
+                    words[wordsSize].line = line;
+                    words[wordsSize].colomn = pos;
                 }else{
                     words[++wordsSize].type = ID;
                     words[wordsSize].tval.name = (char *) malloc(sizeof(char) * tmptop);
+                    words[wordsSize].line = line;
+                    words[wordsSize].colomn = pos;
                     strcpy(words[wordsSize].tval.name, tmp + 1);
                 }
                 back2Space();
                 return 1;
+            }
+
+        case CHAR_ONE:
+            words[++wordsSize].type = CNUM;
+            words[wordsSize].tval.cvalue = c;
+            words[wordsSize].line = line;
+            words[wordsSize].colomn = pos;
+            dfastate = CHAR_END;
+            return 0;
+
+        case CHAR_END:
+            if(c == '\''){
+                back2Space();
+                return 0;
+            }else{
+                lex_error(line, pos);
+                exit(0);
             }
 
         case INUM_NUM:
@@ -208,6 +249,8 @@ int lex(char c, int line, int pos){
             }else{
                 words[++wordsSize].type = INUM;
                 words[wordsSize].tval.ivalue = tmpIval;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
                 back2Space();
                 return 1;
             }
@@ -221,6 +264,8 @@ int lex(char c, int line, int pos){
             }else{
                 words[++wordsSize].type = FNUM;
                 words[wordsSize].tval.fvalue = tmpFval + tmpIval;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
                 back2Space();
                 return 1;
             }
@@ -230,18 +275,24 @@ int lex(char c, int line, int pos){
                 words[++wordsSize].type = OPERATER;
                 words[wordsSize].tval.opType = UNARY_OP;
                 words[wordsSize].op = BIADD;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
                 back2Space();
                 return 0;
             }else if(c == '='){
                 words[++wordsSize].type = OPERATER;
                 words[wordsSize].tval.opType = MIXASSIGN_OP;
                 words[wordsSize].op = ADDEQ;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
                 back2Space();
                 return 0;
             }else{
                 words[++wordsSize].type = OPERATER;
                 words[wordsSize].tval.opType = ARITH_OP;
                 words[wordsSize].op = ADD;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
                 back2Space();
                 return 1;
             }
@@ -251,18 +302,24 @@ int lex(char c, int line, int pos){
                 words[++wordsSize].type = OPERATER;
                 words[wordsSize].tval.opType = UNARY_OP;
                 words[wordsSize].op = BIMINUS;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
                 back2Space();
                 return 0;
             }else if(c == '='){
                 words[++wordsSize].type = OPERATER;
                 words[wordsSize].tval.opType = MIXASSIGN_OP;
                 words[wordsSize].op = MINUSEQ;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
                 back2Space();
                 return 0;
             }else{
                 words[++wordsSize].type = OPERATER;
                 words[wordsSize].tval.opType = ARITH_OP;
                 words[wordsSize].op = MINUS;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
                 back2Space();
                 return 1;
             }
@@ -272,12 +329,16 @@ int lex(char c, int line, int pos){
                 words[++wordsSize].type = OPERATER;
                 words[wordsSize].tval.opType = RELAT_OP;
                 words[wordsSize].op = NOTEQ;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
                 back2Space();
                 return 0;
             }else{
                 words[++wordsSize].type = OPERATER;
                 words[wordsSize].tval.opType = UNARY_OP;
                 words[wordsSize].op = NOT;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
                 back2Space();
                 return 1;
             }
@@ -286,6 +347,8 @@ int lex(char c, int line, int pos){
             words[++wordsSize].type = OPERATER;
             words[wordsSize].tval.opType = UNARY_OP;
             words[wordsSize].op = BITNOT;
+            words[wordsSize].line = line;
+            words[wordsSize].colomn = pos;
             back2Space();
             return 1;
 
@@ -294,12 +357,16 @@ int lex(char c, int line, int pos){
                 words[++wordsSize].type = OPERATER;
                 words[wordsSize].tval.opType = LOGIC_OP;
                 words[wordsSize].op = BIOR;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
                 back2Space();
                 return 0;
             }else{
                 words[++wordsSize].type = OPERATER;
                 words[wordsSize].tval.opType = BIT_OP;
                 words[wordsSize].op = OR;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
                 back2Space();
                 return 1;
             }
@@ -309,12 +376,16 @@ int lex(char c, int line, int pos){
                 words[++wordsSize].type = OPERATER;
                 words[wordsSize].tval.opType = LOGIC_OP;
                 words[wordsSize].op = BIAND;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
                 back2Space();
                 return 0;
             }else{
                 words[++wordsSize].type = OPERATER;
                 words[wordsSize].tval.opType = BIT_OP;
                 words[wordsSize].op = AND;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
                 back2Space();
                 return 1;
             }
@@ -323,6 +394,8 @@ int lex(char c, int line, int pos){
             words[++wordsSize].type = OPERATER;
             words[wordsSize].tval.opType = BIT_OP;
             words[wordsSize].op = XOR;
+            words[wordsSize].line = line;
+            words[wordsSize].colomn = pos;
             back2Space();
             return 1;
 
@@ -331,18 +404,24 @@ int lex(char c, int line, int pos){
                 words[++wordsSize].type = OPERATER;
                 words[wordsSize].tval.opType = RELAT_OP;
                 words[wordsSize].op = LSSEQ;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
                 back2Space();
                 return 0;
             }else if(c == '<'){
                 words[++wordsSize].type = OPERATER;
                 words[wordsSize].tval.opType = SHIFT_OP;
                 words[wordsSize].op = LSHIFT;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
                 back2Space();
                 return 0;
             }else{
                 words[++wordsSize].type = OPERATER;
                 words[wordsSize].tval.opType = RELAT_OP;
                 words[wordsSize].op = LSS;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
                 back2Space();
                 return 1;
             }
@@ -352,18 +431,24 @@ int lex(char c, int line, int pos){
                 words[++wordsSize].type = OPERATER;
                 words[wordsSize].tval.opType = RELAT_OP;
                 words[wordsSize].op = GRTEQ;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
                 back2Space();
                 return 0;
             }else if(c == '>'){
                 words[++wordsSize].type = OPERATER;
                 words[wordsSize].tval.opType = SHIFT_OP;
                 words[wordsSize].op = RSHIFT;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
                 back2Space();
                 return 0;
             }else{
                 words[++wordsSize].type = OPERATER;
                 words[wordsSize].tval.opType = RELAT_OP;
                 words[wordsSize].op = GRT;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
                 back2Space();
                 return 1;
             }
@@ -373,12 +458,16 @@ int lex(char c, int line, int pos){
                 words[++wordsSize].type = OPERATER;
                 words[wordsSize].tval.opType = MIXASSIGN_OP;
                 words[wordsSize].op = MULTIEQ;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
                 back2Space();
                 return 0;
             }else{
                 words[++wordsSize].type = OPERATER;
                 words[wordsSize].tval.opType = ARITH_OP;
                 words[wordsSize].op = MULTI;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
                 back2Space();
                 return 1;
             }
@@ -388,12 +477,16 @@ int lex(char c, int line, int pos){
                 words[++wordsSize].type = OPERATER;
                 words[wordsSize].tval.opType = MIXASSIGN_OP;
                 words[wordsSize].op = DIVEQ;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
                 back2Space();
                 return 0;
             }else{
                 words[++wordsSize].type = OPERATER;
                 words[wordsSize].tval.opType = ARITH_OP;
                 words[wordsSize].op = DIV;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
                 back2Space();
                 return 1;
             }
@@ -403,12 +496,16 @@ int lex(char c, int line, int pos){
                 words[++wordsSize].type = OPERATER;
                 words[wordsSize].tval.opType = MIXASSIGN_OP;
                 words[wordsSize].op = MODEQ;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
                 back2Space();
                 return 0;
             }else{
                 words[++wordsSize].type = OPERATER;
                 words[wordsSize].tval.opType = ARITH_OP;
                 words[wordsSize].op = MOD;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
                 back2Space();
                 return 1;
             }
@@ -418,18 +515,23 @@ int lex(char c, int line, int pos){
                 words[++wordsSize].type = OPERATER;
                 words[wordsSize].tval.opType = RELAT_OP;
                 words[wordsSize].op = EQ;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
                 back2Space();
                 return 0;
             }else{
                 words[++wordsSize].type = OPERATER;
                 words[wordsSize].tval.opType = ASSIGN_OP;
                 words[wordsSize].op = SETVAL;
+                words[wordsSize].line = line;
+                words[wordsSize].colomn = pos;
                 back2Space();
                 return 1;
             }
 
         default:
             lex_error(line, pos);
+            exit(0);
             break;    
     }
 }

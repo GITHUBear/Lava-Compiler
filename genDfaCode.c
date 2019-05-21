@@ -10,7 +10,7 @@ int tmp;
 int main(){
     freopen("./gramtmp.txt", "r", stdin);
     freopen("./dfaCode.txt", "w", stdout);
-    for(int i = 0; i <= 136; i++){
+    for(int i = 0; i <= 139; i++){
         scanf("%s %d %s", A, &num, B);
         printf("case %d:\n", num);
         scanf("%d", &num);
@@ -45,7 +45,7 @@ int main(){
             }
         }
         if(!hasDefault)
-            printf("\texit(0);\n");
+            printf("\tsyntax_err(stc);\n");
     }
     return 0;
 }

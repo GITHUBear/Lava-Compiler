@@ -1,0 +1,5 @@
+int main(){
+    int a = 1;
+    int b = ;
+    while(a > 1) { a--;
+}

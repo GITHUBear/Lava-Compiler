@@ -84,6 +84,7 @@
 #define OPERATER 104
 #define SEPERATOR 105
 #define SYNAXELE 106
+#define CNUM 107
 
 typedef struct TrieNode{
     int no;
@@ -100,6 +101,7 @@ Trie matchTrie(const char *str, Trie root);
 typedef union typeVal{
     char* name;   // only for ID
     int keyIdx;     // only for KEYWORD
+    char cvalue;   // only for CNUM
     int ivalue;     // only for INUM
     float fvalue;    // only for FNUM
     int opType;    // only for OPERATER
@@ -111,6 +113,8 @@ typedef struct Word{
     int type;      // ID, KEYWORD, INUM, FNUM, OPERATER, SEPERATOR, SYNAXELE
     typeVal tval;
     int op;        // only for OPERATER
+    int line;
+    int colomn;    
     struct Word* next[20];
 } Word;
 

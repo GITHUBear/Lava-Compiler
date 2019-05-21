@@ -1,0 +1,5 @@
+int main(){
+    char c = 'a';
+    int a = 1;
+    float b = 1.0;
+}
