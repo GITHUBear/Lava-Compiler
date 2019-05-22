@@ -4452,16 +4452,16 @@ void showAST(Sentence* node, int lv){
     }
 }
 
-int main()
-{
-    FILE* f = fopen("./Test/SYNTAX_TEST1.txt", "r");
-    freopen("./TestRes/TEST1_RES.txt", "w", stdout);
-    printf("lex:\n");
-    lex_part(f);
-    printf("\n\nsyntax:\n");
-    syn_part();
-    // printf("%d\n", fin);
-    showAST(pgm, 0);
-    fclose(f);
-    return 0;
-}
+// int main()
+// {
+//     FILE* f = fopen("./Test/SYNTAX_TEST1.txt", "r");
+//     freopen("./TestRes/TEST1_RES.txt", "w", stdout);
+//     printf("lex:\n");
+//     lex_part(f);
+//     printf("\n\nsyntax:\n");
+//     syn_part();
+//     // printf("%d\n", fin);
+//     showAST(pgm, 0);
+//     fclose(f);
+//     return 0;
+// }

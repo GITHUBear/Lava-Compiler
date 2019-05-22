@@ -9,7 +9,7 @@ int max(int a, int b){
 }
 
 int fun(int a, float b){
-    int m = max(a, b);
+    int m = max(a, b, c, d);
     return m;
 }
 float x,y; 

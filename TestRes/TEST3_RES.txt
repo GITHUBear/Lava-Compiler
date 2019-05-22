@@ -1,0 +1,259 @@
+lex:
+(KEYWORD):[int]
+(ID):[main]
+(SEPERATOR):[(]
+(SEPERATOR):[)]
+(SEPERATOR):[{]
+(KEYWORD):[int]
+(SEPERATOR):[[]
+(INUM):[12]
+(SEPERATOR):[]]
+(ID):[a]
+(SEPERATOR):[;]
+(KEYWORD):[int]
+(ID):[i]
+(OPERATOR):[ASSIGN_OP, 57]
+(INUM):[1]
+(SEPERATOR):[,]
+(ID):[j]
+(OPERATOR):[ASSIGN_OP, 57]
+(INUM):[2]
+(SEPERATOR):[;]
+(KEYWORD):[int]
+(ID):[res]
+(SEPERATOR):[;]
+(SEPERATOR):[{]
+(SEPERATOR):[{]
+(ID):[res]
+(OPERATOR):[ASSIGN_OP, 57]
+(INUM):[0]
+(SEPERATOR):[;]
+(SEPERATOR):[}]
+(ID):[i]
+(OPERATOR):[ASSIGN_OP, 57]
+(INUM):[0]
+(SEPERATOR):[;]
+(SEPERATOR):[}]
+(KEYWORD):[for]
+(SEPERATOR):[(]
+(ID):[i]
+(OPERATOR):[ASSIGN_OP, 57]
+(INUM):[0]
+(SEPERATOR):[;]
+(ID):[i]
+(OPERATOR):[RELAT_OP, 44]
+(INUM):[11]
+(SEPERATOR):[;]
+(ID):[i]
+(OPERATOR):[UNARY_OP, 30]
+(SEPERATOR):[)]
+(SEPERATOR):[{]
+(ID):[a]
+(SEPERATOR):[[]
+(ID):[i]
+(SEPERATOR):[]]
+(OPERATOR):[ASSIGN_OP, 57]
+(ID):[i]
+(SEPERATOR):[;]
+(SEPERATOR):[}]
+(KEYWORD):[for]
+(SEPERATOR):[(]
+(ID):[i]
+(OPERATOR):[ASSIGN_OP, 57]
+(INUM):[0]
+(SEPERATOR):[;]
+(ID):[i]
+(OPERATOR):[RELAT_OP, 44]
+(INUM):[11]
+(SEPERATOR):[;]
+(ID):[i]
+(OPERATOR):[UNARY_OP, 30]
+(SEPERATOR):[)]
+(KEYWORD):[if]
+(SEPERATOR):[(]
+(ID):[a]
+(SEPERATOR):[[]
+(ID):[i]
+(SEPERATOR):[]]
+(OPERATOR):[ARITH_OP, 36]
+(INUM):[2]
+(OPERATOR):[RELAT_OP, 45]
+(INUM):[0]
+(SEPERATOR):[)]
+(KEYWORD):[if]
+(SEPERATOR):[(]
+(ID):[i]
+(OPERATOR):[RELAT_OP, 43]
+(INUM):[10]
+(SEPERATOR):[)]
+(ID):[res]
+(OPERATOR):[MIXASSIGN_OP, 52]
+(ID):[a]
+(SEPERATOR):[[]
+(ID):[i]
+(SEPERATOR):[]]
+(SEPERATOR):[;]
+(KEYWORD):[else]
+(ID):[res]
+(OPERATOR):[UNARY_OP, 31]
+(SEPERATOR):[;]
+(KEYWORD):[return]
+(ID):[res]
+(SEPERATOR):[;]
+(SEPERATOR):[}]
+
+
+syntax:
+program:
+    deflist:
+        tp:
+            'int':
+        def:
+            fundef:
+                ID:  [main]
+            compstmt:
+                innerdeflist:
+                    innerdef:
+                        tp:
+                            'int':
+                            INTEGER:  [12]
+                        innerdeclist:
+                            innerdec:
+                                ID:  [a]
+                    innerdeflist:
+                        innerdef:
+                            tp:
+                                'int':
+                            innerdeclist:
+                                innerdec:
+                                    ID:  [i]
+                                    OPERATER:  (ASSIGN_OP, =)
+                                    exp:
+                                        INTEGER:  [1]
+                                innerdeclist:
+                                    innerdec:
+                                        ID:  [j]
+                                        OPERATER:  (ASSIGN_OP, =)
+                                        exp:
+                                            INTEGER:  [2]
+                        innerdeflist:
+                            innerdef:
+                                tp:
+                                    'int':
+                                innerdeclist:
+                                    innerdec:
+                                        ID:  [res]
+                            innerdeflist:
+                stmtlist:
+                    stmtlist:
+                        stmtlist:
+                            stmt:
+                                exp:
+                                    exp:
+                                        ID:  [res]
+                                    OPERATER:  (ASSIGN_OP, =)
+                                    exp:
+                                        INTEGER:  [0]
+                            stmtlist:
+                        stmtlist:
+                            stmt:
+                                exp:
+                                    exp:
+                                        ID:  [i]
+                                    OPERATER:  (ASSIGN_OP, =)
+                                    exp:
+                                        INTEGER:  [0]
+                            stmtlist:
+                    stmtlist:
+                        stmt:
+                            'for':
+                            initlist:
+                                init:
+                                    ID:  [i]
+                                    OPERATER:  (ASSIGN_OP, =)
+                                    exp:
+                                        INTEGER:  [0]
+                            exp:
+                                exp:
+                                    ID:  [i]
+                                OPERATER:  (RELAT_OP, <=)
+                                exp:
+                                    INTEGER:  [11]
+                            steplist:
+                                step:
+                                    ID:  [i]
+                                    OPERATER:  (UNARY_OP, ++)
+                            stmtlist:
+                                stmt:
+                                    exp:
+                                        exp:
+                                            ID:  [a]
+                                            exp:
+                                                ID:  [i]
+                                        OPERATER:  (ASSIGN_OP, =)
+                                        exp:
+                                            ID:  [i]
+                                stmtlist:
+                        stmtlist:
+                            stmt:
+                                'for':
+                                initlist:
+                                    init:
+                                        ID:  [i]
+                                        OPERATER:  (ASSIGN_OP, =)
+                                        exp:
+                                            INTEGER:  [0]
+                                exp:
+                                    exp:
+                                        ID:  [i]
+                                    OPERATER:  (RELAT_OP, <=)
+                                    exp:
+                                        INTEGER:  [11]
+                                steplist:
+                                    step:
+                                        ID:  [i]
+                                        OPERATER:  (UNARY_OP, ++)
+                                stmt:
+                                    'if':
+                                    exp:
+                                        exp:
+                                            exp:
+                                                ID:  [a]
+                                                exp:
+                                                    ID:  [i]
+                                            OPERATER:  (ARITH_OP, %)
+                                            exp:
+                                                INTEGER:  [2]
+                                        OPERATER:  (RELAT_OP, ==)
+                                        exp:
+                                            INTEGER:  [0]
+                                    stmt:
+                                        'if':
+                                        exp:
+                                            exp:
+                                                ID:  [i]
+                                            OPERATER:  (RELAT_OP, <)
+                                            exp:
+                                                INTEGER:  [10]
+                                        stmt:
+                                            exp:
+                                                exp:
+                                                    ID:  [res]
+                                                OPERATER:  (MIXASSIGN_OP, +=)
+                                                exp:
+                                                    ID:  [a]
+                                                    exp:
+                                                        ID:  [i]
+                                        'else':
+                                        stmt:
+                                            exp:
+                                                exp:
+                                                    ID:  [res]
+                                                OPERATER:  (UNARY_OP, --)
+                            stmtlist:
+                                stmt:
+                                    'return':
+                                    exp:
+                                        ID:  [res]
+                                stmtlist:
+        deflist:

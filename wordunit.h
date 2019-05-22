@@ -86,6 +86,8 @@
 #define SYNAXELE 106
 #define CNUM 107
 
+#define MAXARG 10
+
 typedef struct TrieNode{
     int no;
     const char *value;
@@ -97,6 +99,15 @@ typedef TrieNode* Trie;
 void insertTrie(const char *str, int no, Trie root);
 void initTrie();
 Trie matchTrie(const char *str, Trie root);
+
+typedef struct seminfo
+{
+    int type;
+    int retype;
+    int canLeft;
+    int argtype[MAXARG];
+    int argnum;
+} seminfo;
 
 typedef union typeVal{
     char* name;   // only for ID
@@ -116,6 +127,8 @@ typedef struct Word{
     int line;
     int colomn;
     int irule;
+    int idc;
+    seminfo sem;
     struct Word* next[20];
 } Word;
 

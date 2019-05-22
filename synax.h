@@ -1,6 +1,7 @@
 #ifndef SYNAX_H
 #define SYNAX_H
 
+#include <stdio.h>
 // syntax elements
 #define program 120
 #define deflist 121
@@ -36,5 +37,9 @@ int syn_analysis_state;
 int fin;
 
 Sentence* pgm;
+
+void showAST(Sentence* node, int lv);
+void lex_part(FILE* file);
+void syn_part();
 
 #endif

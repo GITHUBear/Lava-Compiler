@@ -26,8 +26,8 @@ const char* op_detail_type[] = {"++", "--", "!", "~", "*", "/", "%", "+", "-", "
 Trie root;
 int dfastate = SPACE;
 
-Word words[MAXWORDS];
-int wordsSize = 0;
+extern Word words[];
+extern int wordsSize;
 
 void insertTrie(const char *str, int no, Trie root){
     Trie p = root;
