@@ -114,7 +114,8 @@ typedef struct Word{
     typeVal tval;
     int op;        // only for OPERATER
     int line;
-    int colomn;    
+    int colomn;
+    int irule;
     struct Word* next[20];
 } Word;
 

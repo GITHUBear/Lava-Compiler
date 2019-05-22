@@ -101,3 +101,5 @@ Rules:
   83: exp ::= BIMINUS exp. [BIMINUS precedence=12]
   84: exp ::= CNUM.
   85: exp ::= ID LLB exp RLB.
+3. 语义分析以及符号表的生成
+    

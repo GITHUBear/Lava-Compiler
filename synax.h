@@ -35,4 +35,6 @@ int stkTop;
 int syn_analysis_state;
 int fin;
 
+Sentence* pgm;
+
 #endif

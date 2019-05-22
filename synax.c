@@ -29,7 +29,6 @@ const int grammar_rule[] = {program, deflist, deflist, tp, tp, tp, tp, tp, tp, v
                              exp, exp, exp, exp, exp, exp, exp, exp, exp, exp, exp, exp,
                              exp, exp, exp, exp, exp, exp, exp, exp, exp};
 
-Sentence* pgm;
 int scanIdx;
 
 void printStcInfo(Sentence* node){
@@ -75,6 +74,7 @@ Sentence* mkNode(int ruleNum){
     Sentence* newnode = (Sentence*) malloc(sizeof(Sentence));
     newnode->type = SYNAXELE;
     newnode->tval.synVal = grammar_rule[ruleNum];
+    newnode->irule = ruleNum;
     int startpos = stkTop - grammar_length[ruleNum] + 1;
     int endpos = stkTop;
     pgm = newnode;
