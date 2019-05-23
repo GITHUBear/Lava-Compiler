@@ -148,7 +148,7 @@ Rules:
   43: init ::= ID {check ID reference} ASSIGN exp {check ID.type == exp.type}. [ASSIGN precedence=2]
   44: init ::= ID {check ID reference} ADDEQ exp {exp.type == ID.type && (ID.type == INT || ID.type == FLOAT)}. [ADDEQ precedence=2]
   45: init ::= ID {check ID reference} MINUSEQ exp {exp.type == ID.type && (ID.type == INT || ID.type == FLOAT)}. [MINUSEQ precedence=2]
-  46: steplist ::= step COMMA steplist. [COMMA precedence=1]
+  46: steplist ::= step steplist. [COMMA precedence=1]
   47: steplist ::= step.
   48: step ::= BIADD ID {check ID reference}. [BIADD precedence=12]
   49: step ::= ID {check ID reference} BIADD. [BIADD precedence=12]
@@ -171,14 +171,14 @@ Rules:
   66: exp ::= INUM. {exp.type = INTEXP}
   67: exp ::= FNUM. {exp.type = FLOATEXP}
   68: exp ::= ID. {exp.type = ID.type; exp.canLeft = 1}
-  69: exp ::= LLB exp RLB. {exp.type = exp.type; exp.canLeft = exp.canLeft}
+  69: exp ::= exp. {exp.type = exp.type; exp.canLeft = exp.canLeft}
   70: exp ::= NOT exp {check exp.type = BOOLEXP}. [NOT precedence=12]
   71: exp ::= exp {check exp.type == INTEXP} AND exp {check exp.type == INTEXP; exp.type = INTEXP}. [AND precedence=7]
   72: exp ::= exp OR exp. [OR precedence=5] (the same as above)
   73: exp ::= exp XOR exp. [XOR precedence=6] (the same as above)
   74: exp ::= exp BITNOT exp. [BITNOT precedence=12] (the same as above)
-  75: exp ::= exp COMMA exp. {exp.type = UNDEFINEXP} [COMMA precedence=1]
-  76: exp ::= ID {check ID reference} LMB exp {check exp.type = INTEXP} RMB. {exp.type = ID.type - ARRAY; exp.canLeft = 1}
+  75: exp ::= exp exp. {exp.type = UNDEFINEXP} [COMMA precedence=1]
+  76: exp ::= ID {check ID reference} exp {check exp.type = INTEXP}. {exp.type = ID.type - ARRAY; exp.canLeft = 1}
   77: exp ::= exp {check exp.canLeft == 1} ASSIGN exp {check exp2.type == exp1.type; exp.type = exp1.type}. {check exp.type} [ASSIGN precedence=2]
   78: exp ::= exp {check exp.type != BOOLEXP && exp.canLeft == 1} ADDEQ exp {check exp.type != BOOLEXP && exp1.type == exp2.type; exp.type = exp1.type}. [ADDEQ precedence=2]
   79: exp ::= exp MINUSEQ exp. [MINUSEQ precedence=2] (the same as above)

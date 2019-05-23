@@ -15,6 +15,7 @@
 #define SEM_FLOAT_EXP 12
 #define SEM_CHAR_EXP 13
 #define SEM_BOOL_EXP 14
+#define SEM_UNDEF_EXP 15
 
 #define EXPOFFSET (SEM_INT_EXP - SEM_INT)
 

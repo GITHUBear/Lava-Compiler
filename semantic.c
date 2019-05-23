@@ -77,6 +77,18 @@ int searchTable(Sentence* id){
     return NOT_FOUND;
 }
 
+int searchReference(Sentence* id, int isFunc){
+    for(int i = tptr; i > 0; i--){
+        if(strcmp(id->tval.name, table[i].name) == 0){
+            if(isFunc && table[i].type == SEM_FUNC)
+                return i;
+            if(!isFunc && table[i].type != SEM_FUNC)
+                return i;
+        }
+    }
+    return -1;
+}
+
 void showTable(){
     printf("table:\n");
     printf("%7s %7s %7s %9s %7s\n", "name", "type", "level", "offset", "funarg");
@@ -376,7 +388,7 @@ void sem(Sentence* node, int rulenum, int stepnum){
         case 31:
             if(stepnum == 2){
                 if(NODE_SEM(2).type != SEM_BOOL_EXP)
-                    sem_error(NODE_SEM(2), "exp should be a BOOL EXP in if clause");
+                    sem_error(NODE(2), "exp should be a BOOL EXP in if clause");
             }else if(stepnum == 3){
                 FNODE_SEM.retype = NODE_SEM(3).retype;
             }
@@ -384,7 +396,7 @@ void sem(Sentence* node, int rulenum, int stepnum){
         case 32:
             if(stepnum == 2){
                 if(NODE_SEM(2).type != SEM_BOOL_EXP)
-                    sem_error(NODE_SEM(2), "exp should be a BOOL EXP in if clause");
+                    sem_error(NODE(2), "exp should be a BOOL EXP in if clause");
                 newZone();
             }else if(stepnum == 3){
                 quitZone();
@@ -394,7 +406,7 @@ void sem(Sentence* node, int rulenum, int stepnum){
         case 33:
             if(stepnum == 2){
                 if(NODE_SEM(2).type != SEM_BOOL_EXP)
-                    sem_error(NODE_SEM(2), "exp should be a BOOL EXP in if clause");
+                    sem_error(NODE(2), "exp should be a BOOL EXP in if clause");
             }else if(stepnum == 5){
                 if(NODE_SEM(3).retype != SEM_VOID && NODE_SEM(5).retype != SEM_VOID
                     && NODE_SEM(3).retype != NODE_SEM(5).retype)
@@ -408,7 +420,7 @@ void sem(Sentence* node, int rulenum, int stepnum){
         case 34:
             if(stepnum == 2){
                 if(NODE_SEM(2).type != SEM_BOOL_EXP)
-                    sem_error(NODE_SEM(2), "exp should be a BOOL EXP in if clause");
+                    sem_error(NODE(2), "exp should be a BOOL EXP in if clause");
             }else if(stepnum == 4){
                 newZone();
             }else if(stepnum == 5){
@@ -425,7 +437,7 @@ void sem(Sentence* node, int rulenum, int stepnum){
         case 35:
             if(stepnum == 2){
                 if(NODE_SEM(2).type != SEM_BOOL_EXP)
-                    sem_error(NODE_SEM(2), "exp should be a BOOL EXP in if clause");
+                    sem_error(NODE(2), "exp should be a BOOL EXP in if clause");
                 newZone();
             }else if(stepnum == 3){
                 quitZone();
@@ -445,7 +457,7 @@ void sem(Sentence* node, int rulenum, int stepnum){
         case 36:
             if(stepnum == 2){
                 if(NODE_SEM(2).type != SEM_BOOL_EXP)
-                    sem_error(NODE_SEM(2), "exp should be a BOOL EXP in if clause");
+                    sem_error(NODE(2), "exp should be a BOOL EXP in if clause");
                 newZone();
             }else if(stepnum == 3){
                 quitZone();
@@ -462,7 +474,7 @@ void sem(Sentence* node, int rulenum, int stepnum){
         case 37:
             if(stepnum == 2){
                 if(NODE_SEM(2).type != SEM_BOOL_EXP)
-                    sem_error(NODE_SEM(2), "exp should be a BOOL EXP in while clause");
+                    sem_error(NODE(2), "exp should be a BOOL EXP in while clause");
             }else if(stepnum == 3){
                 FNODE_SEM.retype = NODE_SEM(3).retype;
             }
@@ -470,7 +482,7 @@ void sem(Sentence* node, int rulenum, int stepnum){
         case 38:
             if(stepnum == 2){
                 if(NODE_SEM(2).type != SEM_BOOL_EXP)
-                    sem_error(NODE_SEM(2), "exp should be a BOOL EXP in while clause");
+                    sem_error(NODE(2), "exp should be a BOOL EXP in while clause");
                 newZone();
             }else if(stepnum == 3){
                 quitZone();
@@ -478,7 +490,206 @@ void sem(Sentence* node, int rulenum, int stepnum){
             }
             return;
         case 39:
-            
+            if(stepnum == 3){
+                if(NODE_SEM(3).type != SEM_BOOL_EXP)
+                    sem_error(NODE(3), "exp should be a BOOL EXP in for clause");
+            }else if(stepnum == 5){
+                FNODE_SEM.retype = NODE_SEM(5).retype;
+            }
+            return;
+        case 40:
+            if(stepnum == 3){
+                if(NODE_SEM(3).type != SEM_BOOL_EXP)
+                    sem_error(NODE(3), "exp should be a BOOL EXP in for clause");
+            }else if(stepnum == 4){
+                newZone();
+            }else if(stepnum == 5){
+                quitZone();
+                FNODE_SEM.retype = NODE_SEM(5).retype;
+            }
+            return;
+        case 43:
+            if(stepnum == 3){
+                int sret = searchReference(NODE(1), 0);
+                if(sret == -1)
+                    sem_error(NODE(1), "the var isn't defined");
+                if(EXP(table[sret].type) != NODE_SEM(3).type)
+                    sem_error(NODE(1), "type match failed");
+            }
+            return;
+        case 44:
+            if(stepnum == 3){
+                int sret = searchReference(NODE(1), 0);
+                if(sret == -1)
+                    sem_error(NODE(1), "the var isn't defined");
+                if(EXP(table[sret].type) != NODE_SEM(3).type)
+                    sem_error(NODE(1), "type match failed");
+                if(table[sret].type != SEM_INT && table[sret].type != SEM_FLOAT)
+                    sem_error(NODE(1), "+= operator only supports INT and FLOAT");
+            }
+            return;
+        case 45:
+            if(stepnum == 3){
+                int sret = searchReference(NODE(1), 0);
+                if(sret == -1)
+                    sem_error(NODE(1), "the var isn't defined");
+                if(EXP(table[sret].type) != NODE_SEM(3).type)
+                    sem_error(NODE(1), "type match failed");
+                if(table[sret].type != SEM_INT && table[sret].type != SEM_FLOAT)
+                    sem_error(NODE(1), "+= operator only supports INT and FLOAT");
+            }
+            return;
+        case 48:
+            if(stepnum == 2){
+                int sret = searchReference(NODE(2), 0);
+                if(sret == -1)
+                    sem_error(NODE(2), "the var isn't defined");
+                if(table[sret].type != SEM_INT)
+                    sem_error(NODE(2), "++ operator only supports INT");
+            }
+            return;
+        case 49:
+            if(stepnum == 1){
+                int sret = searchReference(NODE(1), 0);
+                if(sret == -1)
+                    sem_error(NODE(1), "the var isn't defined");
+                if(table[sret].type != SEM_INT)
+                    sem_error(NODE(1), "++ operator only supports INT");
+            }
+            return;
+        case 50:
+            if(stepnum == 2){
+                int sret = searchReference(NODE(2), 0);
+                if(sret == -1)
+                    sem_error(NODE(2), "the var isn't defined");
+                if(table[sret].type != SEM_INT)
+                    sem_error(NODE(2), "-- operator only supports INT");
+            }
+            return;
+        case 51:
+            if(stepnum == 1){
+                int sret = searchReference(NODE(1), 0);
+                if(sret == -1)
+                    sem_error(NODE(1), "the var isn't defined");
+                if(table[sret].type != SEM_INT)
+                    sem_error(NODE(1), "-- operator only supports INT");
+            }
+            return;
+        case 52:
+            if(stepnum == 3){
+                int sret = searchReference(NODE(1), 0);
+                if(sret == -1)
+                    sem_error(NODE(1), "the var isn't defined");
+                if(EXP(table[sret].type) != NODE_SEM(3).type)
+                    sem_error(NODE(1), "type match failed");
+            }
+            return;
+        case 53:
+        case 54:
+        case 55:
+        case 56:
+        case 57:
+        case 58:
+        case 59:
+        case 60:
+            if(stepnum == 1){
+                if(NODE_SEM(1).type != SEM_BOOL_EXP)
+                    sem_error(NODE(1), "bool operator only supports BOOL EXP");
+            }else if(stepnum == 3){
+                if(NODE_SEM(3).type != SEM_BOOL_EXP)
+                    sem_error(NODE(3), "bool operator only supports BOOL EXP");
+                FNODE_SEM.type = SEM_BOOL_EXP;
+            }
+            return;
+        case 61:
+        case 62:
+        case 63:
+        case 64:
+        case 65:
+            if(stepnum == 1){
+                if(NODE_SEM(1).type != SEM_INT_EXP && NODE_SEM(1).type != SEM_FLOAT_EXP)
+                    sem_error(NODE(1), "arith operator only supports INT or FLOAT EXP");
+            }else if(stepnum == 3){
+                if(NODE_SEM(3).type != NODE_SEM(1).type)
+                    sem_error(NODE(3), "type match failed");
+                FNODE_SEM.type = NODE_SEM(3).type;
+            }
+            return;
+        case 66:
+            if(stepnum == 1)
+                FNODE_SEM.type = SEM_INT_EXP;
+            return;
+        case 67:
+            if(stepnum == 1)
+                FNODE_SEM.type = SEM_FLOAT_EXP;
+            return;
+        case 68:
+            if(stepnum == 1){
+                FNODE_SEM.type = EXP(NODE_SEM(1).type);
+                FNODE_SEM.canLeft = 1;
+            }
+            return;
+        case 69:
+            if(stepnum == 1){
+                FNODE_SEM.type = NODE_SEM(1).type;
+                FNODE_SEM.canLeft = NODE_SEM(1).canLeft;
+            }
+            return;
+        case 70:
+            if(stepnum == 2){
+                if(NODE_SEM(2).type != SEM_BOOL_EXP)
+                    sem_error(NODE(2), "bool operator only supports BOOL EXP");
+                FNODE_SEM.type = SEM_BOOL_EXP;
+            }
+            return;
+        case 71:
+        case 72:
+        case 73:
+        case 74:
+            if(stepnum == 1){
+                if(NODE_SEM(1).type != SEM_INT_EXP)
+                    sem_error(NODE(1), "bit operator only supports INT EXP");
+            }else if(stepnum == 3){
+                if(NODE_SEM(3).type != SEM_INT_EXP)
+                    sem_error(NODE(1), "bit operator only supports INT EXP");
+                FNODE_SEM.type = SEM_INT_EXP;
+            }
+            return;
+        case 75:
+            if(stepnum == 2)
+                FNODE_SEM.type = SEM_UNDEF_EXP;
+            return;
+        case 76:
+            if(stepnum == 1){
+                int sret = searchReference(NODE(1), 0);
+                if(sret == -1)
+                    sem_error(NODE(1), "the var isn't defined");
+                if(table[sret].type < SEM_INT_ARRAY)
+                    sem_error(NODE(1), "the var isn't an array");
+            }else if(stepnum == 2){
+                if(NODE_SEM(2).type != SEM_INT_EXP)
+                    sem_error(NODE(2), "array index should be an INT EXP");
+                FNODE_SEM.type = table[sret].type - SEM_INT_ARRAY;
+                FNODE_SEM.canLeft = 1;
+            }
+            return;
+        case 77:
+            if(stepnum == 1){
+                if(NODE_SEM(1).canLeft != 1)
+                    sem_error(NODE(1), "exp1 should be a left value");
+            }else if(stepnum == 3){
+                if(NODE_SEM(1).type != NODE_SEM(3).type)
+                    sem_error(NODE(1), "type match failed");
+                FNODE_SEM.type = NODE_SEM(1).type;
+                FNODE_SEM.canLeft = 1;
+            }
+            return;
+        case 78:
+        case 79:
+            if(stepnum == 1){
+                if(NODE_SEM(1).canLeft != 1)
+                    sem_error(NODE(1), "exp1 should be a left value");
+            }
         default:
             return;
     }
