@@ -1,0 +1,6 @@
+int a1;
+int[10] b;
+int a;
+
+int fun1(int a, float b, int a){}
+int fun1(int a, int b){}

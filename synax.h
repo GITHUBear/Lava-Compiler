@@ -28,16 +28,17 @@
 #define SYNAX_ELE_MAX 300
 #define STACKMAX 10000
 
-const char* synax_ele[SYNAX_ELE_MAX];
-const int grammar_length[SYNAX_ELE_MAX];
-int stateStk[STACKMAX];
-Sentence* stcStk[STACKMAX];
-int stkTop;
-int syn_analysis_state;
-int fin;
+// const char* synax_ele[SYNAX_ELE_MAX];
+// const int grammar_length[SYNAX_ELE_MAX];
+// int stateStk[STACKMAX];
+// Sentence* stcStk[STACKMAX];
+// int stkTop;
+// int syn_analysis_state;
+// int fin;
 
-Sentence* pgm;
+// Sentence* pgm;
 
+void printStcInfo(Sentence* node);
 void showAST(Sentence* node, int lv);
 void lex_part(FILE* file);
 void syn_part();

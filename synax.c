@@ -10,8 +10,14 @@ extern const char* words_type[MAXSIZE];
 extern const char* op_type[MAXSIZE];
 extern const char* sep_type[MAXSIZE];
 extern const char* op_detail_type[MAXSIZE];
-extern Word words[MAXWORDS];
-extern int wordsSize;
+Word words[MAXWORDS];
+int stateStk[STACKMAX];
+Sentence* stcStk[STACKMAX];
+int syn_analysis_state;
+int wordsSize;
+int stkTop;
+Sentence* pgm;
+int fin;
 
 const char* synax_ele[] = {"program", "deflist", "tp", "def", "vallist", "fundef",
                               "stmtlist", "args", "param", "stmt", "exp", "initlist", "init",

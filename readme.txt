@@ -108,41 +108,41 @@ Rules:
    3: tp ::= INT. {tp.type = INT}
    4: tp ::= FLOAT. {tp.type = FLOAT}
    5: tp ::= CHAR. {tp.type = CHAR}
-   6: tp ::= INT LMB INUM RMB. {tp.type = INT ARRAY}
-   7: tp ::= FLOAT LMB INUM RMB. {tp.type = FLOAT ARRAY}
-   8: tp ::= CHAR LMB INUM RMB. {tp.type = CHAR ARRAY}
-   9: vallist ::= {ID.type = vallist.type} ID{check ID.name into table} COMMA {vallist.type = vallist.type} vallist. {vallist.num = vallist.num + 1} [COMMA precedence=1] 
+   6: tp ::= INT INUM. {tp.type = INT ARRAY}
+   7: tp ::= FLOAT INUM. {tp.type = FLOAT ARRAY}
+   8: tp ::= CHAR INUM. {tp.type = CHAR ARRAY}
+   9: vallist ::= {ID.type = vallist.type} ID{check ID.name into table} {vallist.type = vallist.type} vallist. {vallist.num = vallist.num + 1} [COMMA precedence=1] 
   10: vallist ::= {ID.type = vallist.type} ID. {vallist.num = 1; ID into table}
-  11: def ::= {vallist.type = def.type} vallist SEMICOLON. {def.num = vallist.num}
-  12: def ::= fundef compstmt. {check compstmt.retype == def.type}
-  13: fundef ::= ID LLB args{get linklist of types: args.types} RLB.{fun ID into table}
-  14: fundef ::= ID LLB RLB.{fun ID into table}
-  15: args ::= {param.args = args.types}param{.args linklist add param.type} COMMA args.{args.num = args.num + 1}
+  11: def ::= {vallist.type = def.type} vallist. {def.num = vallist.num}
+  12: def ::= {fundef.retype = def.type} fundef compstmt. {check compstmt.retype == def.type}
+  13: fundef ::= {} ID args{get linklist of types: args.types}.{fun ID into table}
+  14: fundef ::= {} ID.{fun ID into table}
+  15: args ::= {param.args = args.types}param{.args linklist add param.type} args.{args.num = args.num + 1}
   16: args ::= {param.args = args.types}param.{.args linklist add param.type; args.num = 1}
   17: param ::= tp ID.{check ID into table. param.type = tp.type, param.name = ID.name}
-  18: compstmt ::= {table level++} LGB innerdeflist stmtlist RGB.{table level--; pop table; compstmt.retype = stmtlist.retype}
+  18: compstmt ::= innerdeflist stmtlist.{table level--; pop table; compstmt.retype = stmtlist.retype}
   19: innerdeflist ::= innerdef innerdeflist.{innerdeflist.num = innerdef.num + innerdeflist.num}
   20: innerdeflist ::=.
-  21: innerdef ::= tp {innerdeclist.type = tp.type} innerdeclist SEMICOLON. {innerdef.num = innerdeclist.num}
-  22: innerdeclist ::= {innerdec.type = innerdeclist.type} innerdec COMMA {innerdeclist.type = innerdeclist.type} innerdeclist. {innerdeclist.num = innerdeclist.num + 1} [COMMA precedence=1]
+  21: innerdef ::= tp {innerdeclist.type = tp.type} innerdeclist. {innerdef.num = innerdeclist.num}
+  22: innerdeclist ::= {innerdec.type = innerdeclist.type} innerdec {innerdeclist.type = innerdeclist.type} innerdeclist. {innerdeclist.num = innerdeclist.num + 1} [COMMA precedence=1]
   23: innerdeclist ::= {innerdec.type = innerdeclist.type} innerdec.{innerdeclist.num = 1}
   24: innerdec ::= {ID.type = innerdec.type} ID ASSIGN exp. {check exp.type == innerdec.type; check ID into table} [ASSIGN precedence=2]
   25: innerdec ::= {ID.type = innerdec.type} ID. {check ID into table}
   26: stmtlist ::= stmt stmtlist. {check; stmtlist.retype = stmt.retype || stmtlist.retype}
-  27: stmtlist ::= {table level++} LGB stmtlist RGB {table level--; pop table;} stmtlist. {check stmtlist1.retype == void || stmtlist2.retype == void || stmtlist1.retype == stmtlist.retype; stmtlist.retype = void || stmtlist1.retype || stmtlist2.retype}
+  27: stmtlist ::= {table level++} stmtlist {table level--; pop table;} stmtlist. {check stmtlist1.retype == void || stmtlist2.retype == void || stmtlist1.retype == stmtlist.retype; stmtlist.retype = void || stmtlist1.retype || stmtlist2.retype}
   28: stmtlist ::=.{stmtlist.retype = void}
-  29: stmt ::= exp SEMICOLON.
-  30: stmt ::= RETURN exp SEMICOLON. {stmt.retype = exp.type}
-  31: stmt ::= IF LLB exp {check exp.type == BOOLEXP} RLB stmt. {stmt.retype = stmt.retype} [LOWELSE precedence=13]
-  32: stmt ::= IF LLB exp {check exp.type == BOOLEXP} RLB {table level++} LGB stmtlist RGB. {table level--; pop table; stmt.retype = stmtlist.retype} [LOWELSE precedence=13]
-  33: stmt ::= IF LLB exp {check exp.type == BOOLEXP} RLB stmt ELSE stmt. {check return; stmt.retype} [ELSE precedence=14]
-  34: stmt ::= IF LLB exp {check exp.type == BOOLEXP} RLB stmt ELSE {table level++} LGB stmtlist RGB. {table level--; pop table; check return; stmt.retype} [ELSE precedence=14]
-  35: stmt ::= IF LLB exp {check exp.type == BOOLEXP} RLB {table level++} LGB stmtlist RGB {table level--; pop table} ELSE {table level++} LGB stmtlist RGB. {table level--; pop table; check return; stmt.retype} [ELSE precedence=14]
-  36: stmt ::= IF LLB exp {check exp.type == BOOLEXP} RLB {table level++} LGB stmtlist RGB {table level--; pop table;} ELSE stmt {check return; stmt.retype}. [ELSE precedence=14]
-  37: stmt ::= WHILE LLB exp {check exp.type == BOOLEXP} RLB stmt {stmt.retype = stmt.retype}.
-  38: stmt ::= WHILE LLB exp {check exp.type == BOOLEXP} RLB {table level++} LGB stmtlist RGB {table level--; pop table; stmt.retype = stmtlist.retype}.
-  39: stmt ::= FOR LLB initlist SEMICOLON exp {check exp.type == BOOLEXP} SEMICOLON steplist RLB stmt. {stmt.retype = stmt.retype}
-  40: stmt ::= FOR LLB initlist SEMICOLON exp {check exp.type == BOOLEXP} SEMICOLON steplist RLB {table level++} LGB stmtlist RGB. {table level--; pop table; stmt.retype = stmtlist.retype}
+  29: stmt ::= exp.
+  30: stmt ::= RETURN exp. {stmt.retype = exp.type}
+  31: stmt ::= IF exp {check exp.type == BOOLEXP} stmt. {stmt.retype = stmt.retype} [LOWELSE precedence=13]
+  32: stmt ::= IF exp {check exp.type == BOOLEXP} {table level++}  stmtlist . {table level--; pop table; stmt.retype = stmtlist.retype} [LOWELSE precedence=13]
+  33: stmt ::= IF exp {check exp.type == BOOLEXP} stmt ELSE stmt. {check return; stmt.retype} [ELSE precedence=14]
+  34: stmt ::= IF exp {check exp.type == BOOLEXP} stmt ELSE {table level++} stmtlist. {table level--; pop table; check return; stmt.retype} [ELSE precedence=14]
+  35: stmt ::= IF exp {check exp.type == BOOLEXP} {table level++} stmtlist {table level--; pop table} ELSE {table level++} stmtlist. {table level--; pop table; check return; stmt.retype} [ELSE precedence=14]
+  36: stmt ::= IF exp {check exp.type == BOOLEXP} {table level++} stmtlist {table level--; pop table;} ELSE stmt {check return; stmt.retype}. [ELSE precedence=14]
+  37: stmt ::= WHILE exp {check exp.type == BOOLEXP} stmt {stmt.retype = stmt.retype}.
+  38: stmt ::= WHILE exp {check exp.type == BOOLEXP} {table level++} stmtlist {table level--; pop table; stmt.retype = stmtlist.retype}.
+  39: stmt ::= FOR initlist exp {check exp.type == BOOLEXP} steplist stmt. {stmt.retype = stmt.retype}
+  40: stmt ::= FOR initlist exp {check exp.type == BOOLEXP} steplist {table level++} stmtlist. {table level--; pop table; stmt.retype = stmtlist.retype}
   41: initlist ::= init COMMA initlist. [COMMA precedence=1]
   42: initlist ::= init.
   43: init ::= ID {check ID reference} ASSIGN exp {check ID.type == exp.type}. [ASSIGN precedence=2]

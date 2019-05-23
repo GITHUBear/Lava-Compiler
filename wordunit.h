@@ -86,7 +86,7 @@
 #define SYNAXELE 106
 #define CNUM 107
 
-#define MAXARG 10
+#define MAXARG 12
 
 typedef struct TrieNode{
     int no;
@@ -105,8 +105,9 @@ typedef struct seminfo
     int type;
     int retype;
     int canLeft;
-    int argtype[MAXARG];
+    int *argtype;
     int argnum;
+    int arraynum;
 } seminfo;
 
 typedef union typeVal{
@@ -127,7 +128,6 @@ typedef struct Word{
     int line;
     int colomn;
     int irule;
-    int idc;
     seminfo sem;
     struct Word* next[20];
 } Word;
@@ -137,12 +137,12 @@ typedef struct Word Sentence;
 #define MAXWORDS 10007
 #define MAXSIZE 307
 
-const char* keywords[MAXSIZE];
-const char* words_type[MAXSIZE];
-const char* op_type[MAXSIZE];
-const char* op_detail_type[MAXSIZE];
-const char* sep_type[MAXSIZE];
-Word words[MAXWORDS];
-int wordsSize;
+// const char* keywords[MAXSIZE];
+// const char* words_type[MAXSIZE];
+// const char* op_type[MAXSIZE];
+// const char* op_detail_type[MAXSIZE];
+// const char* sep_type[MAXSIZE];
+// Word words[MAXWORDS];
+// int wordsSize;
 
 #endif

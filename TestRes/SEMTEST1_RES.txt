@@ -1,0 +1,149 @@
+lex:
+(KEYWORD):[int]
+(ID):[a1]
+(SEPERATOR):[;]
+(KEYWORD):[int]
+(SEPERATOR):[[]
+(INUM):[10]
+(SEPERATOR):[]]
+(ID):[b]
+(SEPERATOR):[;]
+(KEYWORD):[int]
+(ID):[a]
+(SEPERATOR):[;]
+(KEYWORD):[int]
+(ID):[fun1]
+(SEPERATOR):[(]
+(KEYWORD):[int]
+(ID):[a]
+(SEPERATOR):[,]
+(KEYWORD):[float]
+(ID):[b]
+(SEPERATOR):[,]
+(KEYWORD):[int]
+(ID):[a]
+(SEPERATOR):[)]
+(SEPERATOR):[{]
+(SEPERATOR):[}]
+(KEYWORD):[int]
+(ID):[fun1]
+(SEPERATOR):[(]
+(KEYWORD):[int]
+(ID):[a]
+(SEPERATOR):[,]
+(KEYWORD):[int]
+(ID):[b]
+(SEPERATOR):[)]
+(SEPERATOR):[{]
+(SEPERATOR):[}]
+
+
+syntax:
+program:
+    deflist:
+        tp:
+            'int':
+        def:
+            vallist:
+                ID:  [a1]
+        deflist:
+            tp:
+                'int':
+                INTEGER:  [10]
+            def:
+                vallist:
+                    ID:  [b]
+            deflist:
+                tp:
+                    'int':
+                def:
+                    vallist:
+                        ID:  [a]
+                deflist:
+                    tp:
+                        'int':
+                    def:
+                        fundef:
+                            ID:  [fun1]
+                            args:
+                                param:
+                                    tp:
+                                        'int':
+                                    ID:  [a]
+                                args:
+                                    param:
+                                        tp:
+                                            'float':
+                                        ID:  [b]
+                                    args:
+                                        param:
+                                            tp:
+                                                'int':
+                                            ID:  [a]
+                        compstmt:
+                            innerdeflist:
+                            stmtlist:
+                    deflist:
+                        tp:
+                            'int':
+                        def:
+                            fundef:
+                                ID:  [fun1]
+                                args:
+                                    param:
+                                        tp:
+                                            'int':
+                                        ID:  [a]
+                                    args:
+                                        param:
+                                            tp:
+                                                'int':
+                                            ID:  [b]
+                            compstmt:
+                                innerdeflist:
+                                stmtlist:
+                        deflist:
+
+
+semantic:
+table:
+   name    type   level    offset  funarg
+     a1     int       0      12 
+
+table:
+   name    type   level    offset  funarg
+     a1     int       0      12 
+      b int_array       0      16 
+
+table:
+   name    type   level    offset  funarg
+     a1     int       0      12 
+      b int_array       0      16 
+      a     int       0      56 
+
+table:
+   name    type   level    offset  funarg
+     a1     int       0      12 
+      b int_array       0      16 
+      a     int       0      56 
+   fun1    func       0           int()
+
+table:
+   name    type   level    offset  funarg
+     a1     int       0      12 
+      b int_array       0      16 
+      a     int       0      56 
+   fun1    func       0           int()
+      a     int       1      12 
+
+table:
+   name    type   level    offset  funarg
+     a1     int       0      12 
+      b int_array       0      16 
+      a     int       0      56 
+   fun1    func       0           int()
+      a     int       1      12 
+      b   float       1      16 
+
+semantic_err: can't deal with ID:  [a]
+reason: function args redefine
