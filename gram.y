@@ -41,20 +41,18 @@ innerdeclist ::= innerdec.{}
 innerdec ::= ID ASSIGN exp.{}
 innerdec ::= ID.{}
 stmtlist ::= stmt stmtlist.{}
-stmtlist ::= LGB stmtlist RGB stmtlist.{}
 stmtlist ::= .{}
+stmt ::= compstmt.{}
 stmt ::= exp SEMICOLON.{}
 stmt ::= RETURN exp SEMICOLON.{}
 stmt ::= IF LLB exp RLB stmt.[LOWELSE]{}
-stmt ::= IF LLB exp RLB LGB stmtlist RGB.[LOWELSE]{}
+
 stmt ::= IF LLB exp RLB stmt ELSE stmt.{}
-stmt ::= IF LLB exp RLB stmt ELSE LGB stmtlist RGB.{}
-stmt ::= IF LLB exp RLB LGB stmtlist RGB ELSE LGB stmtlist RGB.{}
-stmt ::= IF LLB exp RLB LGB stmtlist RGB ELSE stmt.{}
+
 stmt ::= WHILE LLB exp RLB stmt.{}
-stmt ::= WHILE LLB exp RLB LGB stmtlist RGB.{}
+
 stmt ::= FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB stmt.{}
-stmt ::= FOR LLB initlist SEMICOLON exp SEMICOLON steplist RLB LGB stmtlist RGB.{}
+
 initlist ::= init COMMA initlist.{}
 initlist ::= init.{}
 init ::= ID ASSIGN exp.{}
@@ -198,6 +196,10 @@ exp ::= CNUM.{
 }
 
 exp ::= ID LLB exp RLB.{
+    
+}
+
+exp ::= ID LLB RLB.{
     
 }
 

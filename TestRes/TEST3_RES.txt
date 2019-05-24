@@ -145,25 +145,31 @@ program:
                                         ID:  [res]
                             innerdeflist:
                 stmtlist:
-                    stmtlist:
-                        stmtlist:
-                            stmt:
-                                exp:
-                                    exp:
-                                        ID:  [res]
-                                    OPERATER:  (ASSIGN_OP, =)
-                                    exp:
-                                        INTEGER:  [0]
+                    stmt:
+                        compstmt:
+                            innerdeflist:
                             stmtlist:
-                        stmtlist:
-                            stmt:
-                                exp:
-                                    exp:
-                                        ID:  [i]
-                                    OPERATER:  (ASSIGN_OP, =)
-                                    exp:
-                                        INTEGER:  [0]
-                            stmtlist:
+                                stmt:
+                                    compstmt:
+                                        innerdeflist:
+                                        stmtlist:
+                                            stmt:
+                                                exp:
+                                                    exp:
+                                                        ID:  [res]
+                                                    OPERATER:  (ASSIGN_OP, =)
+                                                    exp:
+                                                        INTEGER:  [0]
+                                            stmtlist:
+                                stmtlist:
+                                    stmt:
+                                        exp:
+                                            exp:
+                                                ID:  [i]
+                                            OPERATER:  (ASSIGN_OP, =)
+                                            exp:
+                                                INTEGER:  [0]
+                                    stmtlist:
                     stmtlist:
                         stmt:
                             'for':
@@ -183,17 +189,20 @@ program:
                                 step:
                                     ID:  [i]
                                     OPERATER:  (UNARY_OP, ++)
-                            stmtlist:
-                                stmt:
-                                    exp:
-                                        exp:
-                                            ID:  [a]
+                            stmt:
+                                compstmt:
+                                    innerdeflist:
+                                    stmtlist:
+                                        stmt:
                                             exp:
-                                                ID:  [i]
-                                        OPERATER:  (ASSIGN_OP, =)
-                                        exp:
-                                            ID:  [i]
-                                stmtlist:
+                                                exp:
+                                                    ID:  [a]
+                                                    exp:
+                                                        ID:  [i]
+                                                OPERATER:  (ASSIGN_OP, =)
+                                                exp:
+                                                    ID:  [i]
+                                        stmtlist:
                         stmtlist:
                             stmt:
                                 'for':

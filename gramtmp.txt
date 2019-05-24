@@ -1,1552 +1,1387 @@
 State 0:
-7                           INT shift        140    
-                         FLOAT shift        137    
-                          CHAR shift        134    
+7                           INT shift        125    
+                         FLOAT shift        122    
+                          CHAR shift        119    
                        program accept
-                       deflist shift        141    
-                            tp shift        14     
+                       deflist shift        126    
+                            tp shift        11     
                      {default} reduce       2      
 
 State 1:
-17                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                           LGB shift        7      
-                        RETURN shift        35     
-                            IF shift        124    
-                         WHILE shift        121    
-                           FOR shift        119    
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                      stmtlist shift        109    
-                           exp shift        72     
-                          stmt shift        8      
-                     {default} reduce       28     
+18                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                           LGB shift        9      
+                        RETURN shift        28     
+                            IF shift        110    
+                         WHILE shift        108    
+                           FOR shift        107    
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
+                      compstmt shift-reduce 28     
+                      stmtlist shift-reduce 26     
+                           exp shift        64     
+                          stmt shift        1      
+                     {default} reduce       27     
 
 State 2:
-17                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                           LGB shift        7      
-                        RETURN shift        35     
-                            IF shift        124    
-                         WHILE shift        121    
-                           FOR shift        119    
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
+18                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                           LGB shift        9      
+                        RETURN shift        28     
+                            IF shift        110    
+                         WHILE shift        108    
+                           FOR shift        107    
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
+                      compstmt shift-reduce 28     
                       stmtlist shift        111    
-                           exp shift        72     
-                          stmt shift        8      
-                     {default} reduce       28     
+                           exp shift        64     
+                          stmt shift        1      
+                     {default} reduce       27     
 
 State 3:
-17                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                           LGB shift        7      
-                        RETURN shift        35     
-                            IF shift        124    
-                         WHILE shift        121    
-                           FOR shift        119    
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                      stmtlist shift        116    
-                           exp shift        72     
-                          stmt shift        8      
-                     {default} reduce       28     
+16                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                           LGB shift        9      
+                        RETURN shift        28     
+                            IF shift        110    
+                         WHILE shift        108    
+                           FOR shift        107    
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
+                      compstmt shift-reduce 28     
+                           exp shift        64     
+                          stmt shift-reduce 34     
 
 State 4:
-17                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                           LGB shift        7      
-                        RETURN shift        35     
-                            IF shift        124    
-                         WHILE shift        121    
-                           FOR shift        119    
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                      stmtlist shift        120    
-                           exp shift        72     
-                          stmt shift        8      
-                     {default} reduce       28     
-
-State 5:
-17                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                           LGB shift        7      
-                        RETURN shift        35     
-                            IF shift        124    
-                         WHILE shift        121    
-                           FOR shift        119    
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                      stmtlist shift        122    
-                           exp shift        72     
-                          stmt shift        8      
-                     {default} reduce       28     
-
-State 6:
-17                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                           LGB shift        7      
-                        RETURN shift        35     
-                            IF shift        124    
-                         WHILE shift        121    
-                           FOR shift        119    
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                      stmtlist shift-reduce 27     
-                           exp shift        72     
-                          stmt shift        8      
-                     {default} reduce       28     
-
-State 7:
-17                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                           LGB shift        7      
-                        RETURN shift        35     
-                            IF shift        124    
-                         WHILE shift        121    
-                           FOR shift        119    
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                      stmtlist shift        125    
-                           exp shift        72     
-                          stmt shift        8      
-                     {default} reduce       28     
-
-State 8:
-17                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                           LGB shift        7      
-                        RETURN shift        35     
-                            IF shift        124    
-                         WHILE shift        121    
-                           FOR shift        119    
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                      stmtlist shift-reduce 26     
-                           exp shift        72     
-                          stmt shift        8      
-                     {default} reduce       28     
-
-State 9:
-17                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                           LGB shift        7      
-                        RETURN shift        35     
-                            IF shift        124    
-                         WHILE shift        121    
-                           FOR shift        119    
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                      stmtlist shift        126    
-                           exp shift        72     
-                          stmt shift        8      
-                     {default} reduce       28     
-
-State 10:
-7                           INT shift        140    
-                         FLOAT shift        137    
-                          CHAR shift        134    
-                           RLB shift-reduce 14     
-                            tp shift        128    
-                          args shift        130    
-                         param shift        129    
-
-State 11:
-7                           INT shift        140    
-                         FLOAT shift        137    
-                          CHAR shift        134    
-                            tp shift        24     
-                  innerdeflist shift-reduce 19     
-                      innerdef shift        11     
-                     {default} reduce       20     
-
-State 12:
-7                           INT shift        140    
-                         FLOAT shift        137    
-                          CHAR shift        134    
-                            tp shift        24     
-                  innerdeflist shift        9      
-                      innerdef shift        11     
-                     {default} reduce       20     
-
-State 13:
-6                           INT shift        140    
-                         FLOAT shift        137    
-                          CHAR shift        134    
-                            tp shift        128    
-                          args shift-reduce 15     
-                         param shift        129    
-
-State 14:
-4                            ID shift        105    
-                           def shift        22     
-                       vallist shift        127    
-                        fundef shift        63     
-
-State 15:
-15                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                           LGB shift        1      
-                        RETURN shift        35     
-                            IF shift        124    
-                         WHILE shift        121    
-                           FOR shift        119    
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                           exp shift        72     
-                          stmt shift-reduce 36     
-
-State 16:
-15                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                           LGB shift        3      
-                        RETURN shift        35     
-                            IF shift        124    
-                         WHILE shift        121    
-                           FOR shift        119    
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                           exp shift        72     
-                          stmt shift-reduce 39     
-
-State 17:
-15                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                           LGB shift        4      
-                        RETURN shift        35     
-                            IF shift        124    
-                         WHILE shift        121    
-                           FOR shift        119    
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                           exp shift        72     
-                          stmt shift-reduce 37     
-
-State 18:
-15                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                           LGB shift        5      
-                        RETURN shift        35     
-                            IF shift        124    
-                         WHILE shift        121    
-                           FOR shift        119    
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                           exp shift        72     
+16                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                           LGB shift        9      
+                        RETURN shift        28     
+                            IF shift        110    
+                         WHILE shift        108    
+                           FOR shift        107    
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
+                      compstmt shift-reduce 28     
+                           exp shift        64     
                           stmt shift-reduce 33     
 
-State 19:
-15                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                           LGB shift        2      
-                        RETURN shift        35     
-                            IF shift        124    
-                         WHILE shift        121    
-                           FOR shift        119    
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                           exp shift        72     
-                          stmt shift        123    
-
-State 20:
-5                         BIADD shift        114    
-                       BIMINUS shift        113    
+State 5:
+16                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
                             ID shift        96     
-                      steplist shift-reduce 46     
-                          step shift        115    
+                           LLB shift        32     
+                           LGB shift        9      
+                        RETURN shift        28     
+                            IF shift        110    
+                         WHILE shift        108    
+                           FOR shift        107    
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
+                      compstmt shift-reduce 28     
+                           exp shift        64     
+                          stmt shift-reduce 32     
 
-State 21:
-5                         BIADD shift        114    
-                       BIMINUS shift        113    
+State 6:
+16                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
                             ID shift        96     
-                      steplist shift        117    
-                          step shift        115    
+                           LLB shift        32     
+                           LGB shift        9      
+                        RETURN shift        28     
+                            IF shift        110    
+                         WHILE shift        108    
+                           FOR shift        107    
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
+                      compstmt shift-reduce 28     
+                           exp shift        64     
+                          stmt shift        109    
 
-State 22:
-6                           INT shift        140    
-                         FLOAT shift        137    
-                          CHAR shift        134    
+State 7:
+7                           INT shift        125    
+                         FLOAT shift        122    
+                          CHAR shift        119    
+                           RLB shift-reduce 14     
+                            tp shift        113    
+                          args shift        115    
+                         param shift        114    
+
+State 8:
+7                           INT shift        125    
+                         FLOAT shift        122    
+                          CHAR shift        119    
+                            tp shift        16     
+                  innerdeflist shift-reduce 19     
+                      innerdef shift        8      
+                     {default} reduce       20     
+
+State 9:
+7                           INT shift        125    
+                         FLOAT shift        122    
+                          CHAR shift        119    
+                            tp shift        16     
+                  innerdeflist shift        2      
+                      innerdef shift        8      
+                     {default} reduce       20     
+
+State 10:
+6                           INT shift        125    
+                         FLOAT shift        122    
+                          CHAR shift        119    
+                            tp shift        113    
+                          args shift-reduce 15     
+                         param shift        114    
+
+State 11:
+4                            ID shift        97     
+                           def shift        14     
+                       vallist shift        112    
+                        fundef shift        55     
+
+State 12:
+5                         BIADD shift        103    
+                       BIMINUS shift        102    
+                            ID shift        88     
+                      steplist shift-reduce 40     
+                          step shift        104    
+
+State 13:
+5                         BIADD shift        103    
+                       BIMINUS shift        102    
+                            ID shift        88     
+                      steplist shift        105    
+                          step shift        104    
+
+State 14:
+6                           INT shift        125    
+                         FLOAT shift        122    
+                          CHAR shift        119    
                        deflist shift-reduce 1      
-                            tp shift        14     
+                            tp shift        11     
                      {default} reduce       2      
 
-State 23:
-3                            ID shift        106    
+State 15:
+3                            ID shift        98     
                   innerdeclist shift-reduce 22     
-                      innerdec shift        107    
+                      innerdec shift        99     
 
-State 24:
-3                            ID shift        106    
-                  innerdeclist shift        108    
-                      innerdec shift        107    
+State 16:
+3                            ID shift        98     
+                  innerdeclist shift        100    
+                      innerdec shift        99     
 
-State 25:
-3                            ID shift        95     
-                      initlist shift-reduce 41     
-                          init shift        112    
+State 17:
+3                            ID shift        87     
+                      initlist shift-reduce 35     
+                          init shift        101    
 
-State 26:
-3                            ID shift        95     
-                      initlist shift        118    
-                          init shift        112    
+State 18:
+3                            ID shift        87     
+                      initlist shift        106    
+                          init shift        101    
 
-State 27:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                           exp shift        73     
+State 19:
+10                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                           RLB shift-reduce 80     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
+                           exp shift        61     
 
-State 28:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                           exp shift        74     
-
-State 29:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                           exp shift        75     
-
-State 30:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                           exp shift        76     
-
-State 31:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                           exp shift        77     
-
-State 32:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
+State 20:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
                            exp shift        65     
 
-State 33:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
+State 21:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
                            exp shift        66     
 
-State 34:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
+State 22:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
                            exp shift        67     
 
-State 35:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
+State 23:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
                            exp shift        68     
 
-State 36:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
+State 24:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
                            exp shift        69     
 
-State 37:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                           exp shift        97     
+State 25:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
+                           exp shift        57     
 
-State 38:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                           exp shift        98     
+State 26:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
+                           exp shift        58     
 
-State 39:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                           exp shift        99     
+State 27:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
+                           exp shift        59     
 
-State 40:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                           exp shift        70     
+State 28:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
+                           exp shift        60     
 
-State 41:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                           exp shift        71     
-
-State 42:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                           exp shift        78     
-
-State 43:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                           exp shift        79     
-
-State 44:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                           exp shift        80     
-
-State 45:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                           exp shift        81     
-
-State 46:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                           exp shift        100    
-
-State 47:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                           exp shift        85     
-
-State 48:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                           exp shift        84     
-
-State 49:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                           exp shift        86     
-
-State 50:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                           exp shift        101    
-
-State 51:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                           exp shift        102    
-
-State 52:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                           exp shift        103    
-
-State 53:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                           exp shift        93     
-
-State 54:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                           exp shift        94     
-
-State 55:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                           exp shift        87     
-
-State 56:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
-                           exp shift        88     
-
-State 57:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
+State 29:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
                            exp shift        89     
 
-State 58:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
+State 30:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
                            exp shift        90     
 
-State 59:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
+State 31:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
                            exp shift        91     
 
-State 60:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
+State 32:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
+                           exp shift        62     
+
+State 33:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
+                           exp shift        63     
+
+State 34:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
+                           exp shift        70     
+
+State 35:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
+                           exp shift        71     
+
+State 36:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
+                           exp shift        72     
+
+State 37:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
+                           exp shift        73     
+
+State 38:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
                            exp shift        92     
 
-State 61:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
+State 39:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
+                           exp shift        77     
+
+State 40:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
+                           exp shift        76     
+
+State 41:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
+                           exp shift        78     
+
+State 42:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
+                           exp shift        93     
+
+State 43:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
+                           exp shift        94     
+
+State 44:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
+                           exp shift        95     
+
+State 45:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
+                           exp shift        85     
+
+State 46:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
+                           exp shift        86     
+
+State 47:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
+                           exp shift        79     
+
+State 48:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
+                           exp shift        80     
+
+State 49:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
+                           exp shift        81     
+
+State 50:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
                            exp shift        82     
 
-State 62:
-9                         BIADD shift        38     
-                       BIMINUS shift        37     
-                           NOT shift        39     
-                          INUM shift-reduce 66     
-                            ID shift        104    
-                           LLB shift        40     
-                          FNUM shift-reduce 67     
-                          CNUM shift-reduce 84     
+State 51:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
                            exp shift        83     
 
-State 63:
-2                           LGB shift        12     
+State 52:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
+                           exp shift        84     
+
+State 53:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
+                           exp shift        74     
+
+State 54:
+9                         BIADD shift        30     
+                       BIMINUS shift        29     
+                           NOT shift        31     
+                          INUM shift-reduce 60     
+                            ID shift        96     
+                           LLB shift        32     
+                          FNUM shift-reduce 61     
+                          CNUM shift-reduce 78     
+                           exp shift        75     
+
+State 55:
+2                           LGB shift        9      
                       compstmt shift-reduce 12     
 
-State 64:
-2                            ID shift        131    
+State 56:
+2                            ID shift        116    
                        vallist shift-reduce 9      
 
-State 65:
-24                         COMMA shift        45     
-                        ASSIGN shift        44     
-                         ADDEQ shift        43     
-                       MINUSEQ shift        42     
-                          BIOR shift        61     
-                         BIAND shift        62     
-                            OR shift        48     
-                           XOR shift        47     
-                           AND shift        49     
-                            EQ shift        56     
-                         NOTEQ shift        55     
-                           LSS shift        60     
-                         LSSEQ shift        59     
-                           GRT shift        58     
-                         GRTEQ shift        57     
-                           ADD shift        54     
-                         MINUS shift        53     
-                           DIV shift        51     
-                           MOD shift        50     
-                         MULTI shift        52     
-                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
-                     SEMICOLON shift        21     
+State 57:
+24                         COMMA shift        37     
+                        ASSIGN shift        36     
+                         ADDEQ shift        35     
+                       MINUSEQ shift        34     
+                          BIOR shift        53     
+                         BIAND shift        54     
+                            OR shift        40     
+                           XOR shift        39     
+                           AND shift        41     
+                            EQ shift        48     
+                         NOTEQ shift        47     
+                           LSS shift        52     
+                         LSSEQ shift        51     
+                           GRT shift        50     
+                         GRTEQ shift        49     
+                           ADD shift        46     
+                         MINUS shift        45     
+                           DIV shift        43     
+                           MOD shift        42     
+                         MULTI shift        44     
+                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
+                     SEMICOLON shift        13     
 
-State 66:
-24                         COMMA shift        45     
-                        ASSIGN shift        44     
-                         ADDEQ shift        43     
-                       MINUSEQ shift        42     
-                          BIOR shift        61     
-                         BIAND shift        62     
-                            OR shift        48     
-                           XOR shift        47     
-                           AND shift        49     
-                            EQ shift        56     
-                         NOTEQ shift        55     
-                           LSS shift        60     
-                         LSSEQ shift        59     
-                           GRT shift        58     
-                         GRTEQ shift        57     
-                           ADD shift        54     
-                         MINUS shift        53     
-                           DIV shift        51     
-                           MOD shift        50     
-                         MULTI shift        52     
-                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
-                           RLB shift        17     
+State 58:
+24                         COMMA shift        37     
+                        ASSIGN shift        36     
+                         ADDEQ shift        35     
+                       MINUSEQ shift        34     
+                          BIOR shift        53     
+                         BIAND shift        54     
+                            OR shift        40     
+                           XOR shift        39     
+                           AND shift        41     
+                            EQ shift        48     
+                         NOTEQ shift        47     
+                           LSS shift        52     
+                         LSSEQ shift        51     
+                           GRT shift        50     
+                         GRTEQ shift        49     
+                           ADD shift        46     
+                         MINUS shift        45     
+                           DIV shift        43     
+                           MOD shift        42     
+                         MULTI shift        44     
+                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
+                           RLB shift        4      
 
-State 67:
-24                         COMMA shift        45     
-                        ASSIGN shift        44     
-                         ADDEQ shift        43     
-                       MINUSEQ shift        42     
-                          BIOR shift        61     
-                         BIAND shift        62     
-                            OR shift        48     
-                           XOR shift        47     
-                           AND shift        49     
-                            EQ shift        56     
-                         NOTEQ shift        55     
-                           LSS shift        60     
-                         LSSEQ shift        59     
-                           GRT shift        58     
-                         GRTEQ shift        57     
-                           ADD shift        54     
-                         MINUS shift        53     
-                           DIV shift        51     
-                           MOD shift        50     
-                         MULTI shift        52     
-                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
-                           RLB shift        19     
+State 59:
+24                         COMMA shift        37     
+                        ASSIGN shift        36     
+                         ADDEQ shift        35     
+                       MINUSEQ shift        34     
+                          BIOR shift        53     
+                         BIAND shift        54     
+                            OR shift        40     
+                           XOR shift        39     
+                           AND shift        41     
+                            EQ shift        48     
+                         NOTEQ shift        47     
+                           LSS shift        52     
+                         LSSEQ shift        51     
+                           GRT shift        50     
+                         GRTEQ shift        49     
+                           ADD shift        46     
+                         MINUS shift        45     
+                           DIV shift        43     
+                           MOD shift        42     
+                         MULTI shift        44     
+                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
+                           RLB shift        6      
 
-State 68:
-24                         COMMA shift        45     
-                        ASSIGN shift        44     
-                         ADDEQ shift        43     
-                       MINUSEQ shift        42     
-                          BIOR shift        61     
-                         BIAND shift        62     
-                            OR shift        48     
-                           XOR shift        47     
-                           AND shift        49     
-                            EQ shift        56     
-                         NOTEQ shift        55     
-                           LSS shift        60     
-                         LSSEQ shift        59     
-                           GRT shift        58     
-                         GRTEQ shift        57     
-                           ADD shift        54     
-                         MINUS shift        53     
-                           DIV shift        51     
-                           MOD shift        50     
-                         MULTI shift        52     
-                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
+State 60:
+24                         COMMA shift        37     
+                        ASSIGN shift        36     
+                         ADDEQ shift        35     
+                       MINUSEQ shift        34     
+                          BIOR shift        53     
+                         BIAND shift        54     
+                            OR shift        40     
+                           XOR shift        39     
+                           AND shift        41     
+                            EQ shift        48     
+                         NOTEQ shift        47     
+                           LSS shift        52     
+                         LSSEQ shift        51     
+                           GRT shift        50     
+                         GRTEQ shift        49     
+                           ADD shift        46     
+                         MINUS shift        45     
+                           DIV shift        43     
+                           MOD shift        42     
+                         MULTI shift        44     
+                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
                      SEMICOLON shift-reduce 30     
 
-State 69:
-24                         COMMA shift        45     
-                        ASSIGN shift        44     
-                         ADDEQ shift        43     
-                       MINUSEQ shift        42     
-                          BIOR shift        61     
-                         BIAND shift        62     
-                            OR shift        48     
-                           XOR shift        47     
-                           AND shift        49     
-                            EQ shift        56     
-                         NOTEQ shift        55     
-                           LSS shift        60     
-                         LSSEQ shift        59     
-                           GRT shift        58     
-                         GRTEQ shift        57     
-                           ADD shift        54     
-                         MINUS shift        53     
-                           DIV shift        51     
-                           MOD shift        50     
-                         MULTI shift        52     
-                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
-                           RLB shift-reduce 85     
+State 61:
+24                         COMMA shift        37     
+                        ASSIGN shift        36     
+                         ADDEQ shift        35     
+                       MINUSEQ shift        34     
+                          BIOR shift        53     
+                         BIAND shift        54     
+                            OR shift        40     
+                           XOR shift        39     
+                           AND shift        41     
+                            EQ shift        48     
+                         NOTEQ shift        47     
+                           LSS shift        52     
+                         LSSEQ shift        51     
+                           GRT shift        50     
+                         GRTEQ shift        49     
+                           ADD shift        46     
+                         MINUS shift        45     
+                           DIV shift        43     
+                           MOD shift        42     
+                         MULTI shift        44     
+                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
+                           RLB shift-reduce 79     
 
-State 70:
-24                         COMMA shift        45     
-                        ASSIGN shift        44     
-                         ADDEQ shift        43     
-                       MINUSEQ shift        42     
-                          BIOR shift        61     
-                         BIAND shift        62     
-                            OR shift        48     
-                           XOR shift        47     
-                           AND shift        49     
-                            EQ shift        56     
-                         NOTEQ shift        55     
-                           LSS shift        60     
-                         LSSEQ shift        59     
-                           GRT shift        58     
-                         GRTEQ shift        57     
-                           ADD shift        54     
-                         MINUS shift        53     
-                           DIV shift        51     
-                           MOD shift        50     
-                         MULTI shift        52     
-                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
-                           RLB shift-reduce 69     
+State 62:
+24                         COMMA shift        37     
+                        ASSIGN shift        36     
+                         ADDEQ shift        35     
+                       MINUSEQ shift        34     
+                          BIOR shift        53     
+                         BIAND shift        54     
+                            OR shift        40     
+                           XOR shift        39     
+                           AND shift        41     
+                            EQ shift        48     
+                         NOTEQ shift        47     
+                           LSS shift        52     
+                         LSSEQ shift        51     
+                           GRT shift        50     
+                         GRTEQ shift        49     
+                           ADD shift        46     
+                         MINUS shift        45     
+                           DIV shift        43     
+                           MOD shift        42     
+                         MULTI shift        44     
+                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
+                           RLB shift-reduce 63     
 
-State 71:
-24                         COMMA shift        45     
-                        ASSIGN shift        44     
-                         ADDEQ shift        43     
-                       MINUSEQ shift        42     
-                          BIOR shift        61     
-                         BIAND shift        62     
-                            OR shift        48     
-                           XOR shift        47     
-                           AND shift        49     
-                            EQ shift        56     
-                         NOTEQ shift        55     
-                           LSS shift        60     
-                         LSSEQ shift        59     
-                           GRT shift        58     
-                         GRTEQ shift        57     
-                           ADD shift        54     
-                         MINUS shift        53     
-                           DIV shift        51     
-                           MOD shift        50     
-                         MULTI shift        52     
-                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
-                           RMB shift-reduce 76     
+State 63:
+24                         COMMA shift        37     
+                        ASSIGN shift        36     
+                         ADDEQ shift        35     
+                       MINUSEQ shift        34     
+                          BIOR shift        53     
+                         BIAND shift        54     
+                            OR shift        40     
+                           XOR shift        39     
+                           AND shift        41     
+                            EQ shift        48     
+                         NOTEQ shift        47     
+                           LSS shift        52     
+                         LSSEQ shift        51     
+                           GRT shift        50     
+                         GRTEQ shift        49     
+                           ADD shift        46     
+                         MINUS shift        45     
+                           DIV shift        43     
+                           MOD shift        42     
+                         MULTI shift        44     
+                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
+                           RMB shift-reduce 70     
 
-State 72:
-24                         COMMA shift        45     
-                        ASSIGN shift        44     
-                         ADDEQ shift        43     
-                       MINUSEQ shift        42     
-                          BIOR shift        61     
-                         BIAND shift        62     
-                            OR shift        48     
-                           XOR shift        47     
-                           AND shift        49     
-                            EQ shift        56     
-                         NOTEQ shift        55     
-                           LSS shift        60     
-                         LSSEQ shift        59     
-                           GRT shift        58     
-                         GRTEQ shift        57     
-                           ADD shift        54     
-                         MINUS shift        53     
-                           DIV shift        51     
-                           MOD shift        50     
-                         MULTI shift        52     
-                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
+State 64:
+24                         COMMA shift        37     
+                        ASSIGN shift        36     
+                         ADDEQ shift        35     
+                       MINUSEQ shift        34     
+                          BIOR shift        53     
+                         BIAND shift        54     
+                            OR shift        40     
+                           XOR shift        39     
+                           AND shift        41     
+                            EQ shift        48     
+                         NOTEQ shift        47     
+                           LSS shift        52     
+                         LSSEQ shift        51     
+                           GRT shift        50     
+                         GRTEQ shift        49     
+                           ADD shift        46     
+                         MINUS shift        45     
+                           DIV shift        43     
+                           MOD shift        42     
+                         MULTI shift        44     
+                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
                      SEMICOLON shift-reduce 29     
 
-State 73:
-23                        ASSIGN shift        44     
-                         ADDEQ shift        43     
-                       MINUSEQ shift        42     
-                          BIOR shift        61     
-                         BIAND shift        62     
-                            OR shift        48     
-                           XOR shift        47     
-                           AND shift        49     
-                            EQ shift        56     
-                         NOTEQ shift        55     
-                           LSS shift        60     
-                         LSSEQ shift        59     
-                           GRT shift        58     
-                         GRTEQ shift        57     
-                           ADD shift        54     
-                         MINUS shift        53     
-                           DIV shift        51     
-                           MOD shift        50     
-                         MULTI shift        52     
-                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
+State 65:
+23                        ASSIGN shift        36     
+                         ADDEQ shift        35     
+                       MINUSEQ shift        34     
+                          BIOR shift        53     
+                         BIAND shift        54     
+                            OR shift        40     
+                           XOR shift        39     
+                           AND shift        41     
+                            EQ shift        48     
+                         NOTEQ shift        47     
+                           LSS shift        52     
+                         LSSEQ shift        51     
+                           GRT shift        50     
+                         GRTEQ shift        49     
+                           ADD shift        46     
+                         MINUS shift        45     
+                           DIV shift        43     
+                           MOD shift        42     
+                         MULTI shift        44     
+                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
                      {default} reduce       24     
 
-State 74:
-23                        ASSIGN shift        44     
-                         ADDEQ shift        43     
-                       MINUSEQ shift        42     
-                          BIOR shift        61     
-                         BIAND shift        62     
-                            OR shift        48     
-                           XOR shift        47     
-                           AND shift        49     
-                            EQ shift        56     
-                         NOTEQ shift        55     
-                           LSS shift        60     
-                         LSSEQ shift        59     
-                           GRT shift        58     
-                         GRTEQ shift        57     
-                           ADD shift        54     
-                         MINUS shift        53     
-                           DIV shift        51     
-                           MOD shift        50     
-                         MULTI shift        52     
-                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
-                     {default} reduce       45     
+State 66:
+23                        ASSIGN shift        36     
+                         ADDEQ shift        35     
+                       MINUSEQ shift        34     
+                          BIOR shift        53     
+                         BIAND shift        54     
+                            OR shift        40     
+                           XOR shift        39     
+                           AND shift        41     
+                            EQ shift        48     
+                         NOTEQ shift        47     
+                           LSS shift        52     
+                         LSSEQ shift        51     
+                           GRT shift        50     
+                         GRTEQ shift        49     
+                           ADD shift        46     
+                         MINUS shift        45     
+                           DIV shift        43     
+                           MOD shift        42     
+                         MULTI shift        44     
+                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
+                     {default} reduce       39     
 
-State 75:
-23                        ASSIGN shift        44     
-                         ADDEQ shift        43     
-                       MINUSEQ shift        42     
-                          BIOR shift        61     
-                         BIAND shift        62     
-                            OR shift        48     
-                           XOR shift        47     
-                           AND shift        49     
-                            EQ shift        56     
-                         NOTEQ shift        55     
-                           LSS shift        60     
-                         LSSEQ shift        59     
-                           GRT shift        58     
-                         GRTEQ shift        57     
-                           ADD shift        54     
-                         MINUS shift        53     
-                           DIV shift        51     
-                           MOD shift        50     
-                         MULTI shift        52     
-                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
-                     {default} reduce       44     
+State 67:
+23                        ASSIGN shift        36     
+                         ADDEQ shift        35     
+                       MINUSEQ shift        34     
+                          BIOR shift        53     
+                         BIAND shift        54     
+                            OR shift        40     
+                           XOR shift        39     
+                           AND shift        41     
+                            EQ shift        48     
+                         NOTEQ shift        47     
+                           LSS shift        52     
+                         LSSEQ shift        51     
+                           GRT shift        50     
+                         GRTEQ shift        49     
+                           ADD shift        46     
+                         MINUS shift        45     
+                           DIV shift        43     
+                           MOD shift        42     
+                         MULTI shift        44     
+                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
+                     {default} reduce       38     
 
-State 76:
-23                        ASSIGN shift        44     
-                         ADDEQ shift        43     
-                       MINUSEQ shift        42     
-                          BIOR shift        61     
-                         BIAND shift        62     
-                            OR shift        48     
-                           XOR shift        47     
-                           AND shift        49     
-                            EQ shift        56     
-                         NOTEQ shift        55     
-                           LSS shift        60     
-                         LSSEQ shift        59     
-                           GRT shift        58     
-                         GRTEQ shift        57     
-                           ADD shift        54     
-                         MINUS shift        53     
-                           DIV shift        51     
-                           MOD shift        50     
-                         MULTI shift        52     
-                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
-                     {default} reduce       43     
+State 68:
+23                        ASSIGN shift        36     
+                         ADDEQ shift        35     
+                       MINUSEQ shift        34     
+                          BIOR shift        53     
+                         BIAND shift        54     
+                            OR shift        40     
+                           XOR shift        39     
+                           AND shift        41     
+                            EQ shift        48     
+                         NOTEQ shift        47     
+                           LSS shift        52     
+                         LSSEQ shift        51     
+                           GRT shift        50     
+                         GRTEQ shift        49     
+                           ADD shift        46     
+                         MINUS shift        45     
+                           DIV shift        43     
+                           MOD shift        42     
+                         MULTI shift        44     
+                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
+                     {default} reduce       37     
 
-State 77:
-23                        ASSIGN shift        44     
-                         ADDEQ shift        43     
-                       MINUSEQ shift        42     
-                          BIOR shift        61     
-                         BIAND shift        62     
-                            OR shift        48     
-                           XOR shift        47     
-                           AND shift        49     
-                            EQ shift        56     
-                         NOTEQ shift        55     
-                           LSS shift        60     
-                         LSSEQ shift        59     
-                           GRT shift        58     
-                         GRTEQ shift        57     
-                           ADD shift        54     
-                         MINUS shift        53     
-                           DIV shift        51     
-                           MOD shift        50     
-                         MULTI shift        52     
-                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
-                     {default} reduce       52     
+State 69:
+23                        ASSIGN shift        36     
+                         ADDEQ shift        35     
+                       MINUSEQ shift        34     
+                          BIOR shift        53     
+                         BIAND shift        54     
+                            OR shift        40     
+                           XOR shift        39     
+                           AND shift        41     
+                            EQ shift        48     
+                         NOTEQ shift        47     
+                           LSS shift        52     
+                         LSSEQ shift        51     
+                           GRT shift        50     
+                         GRTEQ shift        49     
+                           ADD shift        46     
+                         MINUS shift        45     
+                           DIV shift        43     
+                           MOD shift        42     
+                         MULTI shift        44     
+                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
+                     {default} reduce       46     
 
-State 78:
-23                        ASSIGN shift        44     
-                         ADDEQ shift        43     
-                       MINUSEQ shift        42     
-                          BIOR shift        61     
-                         BIAND shift        62     
-                            OR shift        48     
-                           XOR shift        47     
-                           AND shift        49     
-                            EQ shift        56     
-                         NOTEQ shift        55     
-                           LSS shift        60     
-                         LSSEQ shift        59     
-                           GRT shift        58     
-                         GRTEQ shift        57     
-                           ADD shift        54     
-                         MINUS shift        53     
-                           DIV shift        51     
-                           MOD shift        50     
-                         MULTI shift        52     
-                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
-                     {default} reduce       79     
-
-State 79:
-23                        ASSIGN shift        44     
-                         ADDEQ shift        43     
-                       MINUSEQ shift        42     
-                          BIOR shift        61     
-                         BIAND shift        62     
-                            OR shift        48     
-                           XOR shift        47     
-                           AND shift        49     
-                            EQ shift        56     
-                         NOTEQ shift        55     
-                           LSS shift        60     
-                         LSSEQ shift        59     
-                           GRT shift        58     
-                         GRTEQ shift        57     
-                           ADD shift        54     
-                         MINUS shift        53     
-                           DIV shift        51     
-                           MOD shift        50     
-                         MULTI shift        52     
-                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
-                     {default} reduce       78     
-
-State 80:
-23                        ASSIGN shift        44     
-                         ADDEQ shift        43     
-                       MINUSEQ shift        42     
-                          BIOR shift        61     
-                         BIAND shift        62     
-                            OR shift        48     
-                           XOR shift        47     
-                           AND shift        49     
-                            EQ shift        56     
-                         NOTEQ shift        55     
-                           LSS shift        60     
-                         LSSEQ shift        59     
-                           GRT shift        58     
-                         GRTEQ shift        57     
-                           ADD shift        54     
-                         MINUS shift        53     
-                           DIV shift        51     
-                           MOD shift        50     
-                         MULTI shift        52     
-                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
-                     {default} reduce       77     
-
-State 81:
-23                        ASSIGN shift        44     
-                         ADDEQ shift        43     
-                       MINUSEQ shift        42     
-                          BIOR shift        61     
-                         BIAND shift        62     
-                            OR shift        48     
-                           XOR shift        47     
-                           AND shift        49     
-                            EQ shift        56     
-                         NOTEQ shift        55     
-                           LSS shift        60     
-                         LSSEQ shift        59     
-                           GRT shift        58     
-                         GRTEQ shift        57     
-                           ADD shift        54     
-                         MINUS shift        53     
-                           DIV shift        51     
-                           MOD shift        50     
-                         MULTI shift        52     
-                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
-                     {default} reduce       75     
-
-State 82:
-19                         BIAND shift        62     
-                            OR shift        48     
-                           XOR shift        47     
-                           AND shift        49     
-                            EQ shift        56     
-                         NOTEQ shift        55     
-                           LSS shift        60     
-                         LSSEQ shift        59     
-                           GRT shift        58     
-                         GRTEQ shift        57     
-                           ADD shift        54     
-                         MINUS shift        53     
-                           DIV shift        51     
-                           MOD shift        50     
-                         MULTI shift        52     
-                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
-                     {default} reduce       54     
-
-State 83:
-18                            OR shift        48     
-                           XOR shift        47     
-                           AND shift        49     
-                            EQ shift        56     
-                         NOTEQ shift        55     
-                           LSS shift        60     
-                         LSSEQ shift        59     
-                           GRT shift        58     
-                         GRTEQ shift        57     
-                           ADD shift        54     
-                         MINUS shift        53     
-                           DIV shift        51     
-                           MOD shift        50     
-                         MULTI shift        52     
-                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
-                     {default} reduce       53     
-
-State 84:
-17                           XOR shift        47     
-                           AND shift        49     
-                            EQ shift        56     
-                         NOTEQ shift        55     
-                           LSS shift        60     
-                         LSSEQ shift        59     
-                           GRT shift        58     
-                         GRTEQ shift        57     
-                           ADD shift        54     
-                         MINUS shift        53     
-                           DIV shift        51     
-                           MOD shift        50     
-                         MULTI shift        52     
-                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
-                     {default} reduce       72     
-
-State 85:
-16                           AND shift        49     
-                            EQ shift        56     
-                         NOTEQ shift        55     
-                           LSS shift        60     
-                         LSSEQ shift        59     
-                           GRT shift        58     
-                         GRTEQ shift        57     
-                           ADD shift        54     
-                         MINUS shift        53     
-                           DIV shift        51     
-                           MOD shift        50     
-                         MULTI shift        52     
-                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
+State 70:
+23                        ASSIGN shift        36     
+                         ADDEQ shift        35     
+                       MINUSEQ shift        34     
+                          BIOR shift        53     
+                         BIAND shift        54     
+                            OR shift        40     
+                           XOR shift        39     
+                           AND shift        41     
+                            EQ shift        48     
+                         NOTEQ shift        47     
+                           LSS shift        52     
+                         LSSEQ shift        51     
+                           GRT shift        50     
+                         GRTEQ shift        49     
+                           ADD shift        46     
+                         MINUS shift        45     
+                           DIV shift        43     
+                           MOD shift        42     
+                         MULTI shift        44     
+                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
                      {default} reduce       73     
 
-State 86:
-15                            EQ shift        56     
-                         NOTEQ shift        55     
-                           LSS shift        60     
-                         LSSEQ shift        59     
-                           GRT shift        58     
-                         GRTEQ shift        57     
-                           ADD shift        54     
-                         MINUS shift        53     
-                           DIV shift        51     
-                           MOD shift        50     
-                         MULTI shift        52     
-                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
+State 71:
+23                        ASSIGN shift        36     
+                         ADDEQ shift        35     
+                       MINUSEQ shift        34     
+                          BIOR shift        53     
+                         BIAND shift        54     
+                            OR shift        40     
+                           XOR shift        39     
+                           AND shift        41     
+                            EQ shift        48     
+                         NOTEQ shift        47     
+                           LSS shift        52     
+                         LSSEQ shift        51     
+                           GRT shift        50     
+                         GRTEQ shift        49     
+                           ADD shift        46     
+                         MINUS shift        45     
+                           DIV shift        43     
+                           MOD shift        42     
+                         MULTI shift        44     
+                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
+                     {default} reduce       72     
+
+State 72:
+23                        ASSIGN shift        36     
+                         ADDEQ shift        35     
+                       MINUSEQ shift        34     
+                          BIOR shift        53     
+                         BIAND shift        54     
+                            OR shift        40     
+                           XOR shift        39     
+                           AND shift        41     
+                            EQ shift        48     
+                         NOTEQ shift        47     
+                           LSS shift        52     
+                         LSSEQ shift        51     
+                           GRT shift        50     
+                         GRTEQ shift        49     
+                           ADD shift        46     
+                         MINUS shift        45     
+                           DIV shift        43     
+                           MOD shift        42     
+                         MULTI shift        44     
+                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
                      {default} reduce       71     
 
-State 87:
-13                           LSS shift        60     
-                         LSSEQ shift        59     
-                           GRT shift        58     
-                         GRTEQ shift        57     
-                           ADD shift        54     
-                         MINUS shift        53     
-                           DIV shift        51     
-                           MOD shift        50     
-                         MULTI shift        52     
-                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
-                     {default} reduce       60     
+State 73:
+23                        ASSIGN shift        36     
+                         ADDEQ shift        35     
+                       MINUSEQ shift        34     
+                          BIOR shift        53     
+                         BIAND shift        54     
+                            OR shift        40     
+                           XOR shift        39     
+                           AND shift        41     
+                            EQ shift        48     
+                         NOTEQ shift        47     
+                           LSS shift        52     
+                         LSSEQ shift        51     
+                           GRT shift        50     
+                         GRTEQ shift        49     
+                           ADD shift        46     
+                         MINUS shift        45     
+                           DIV shift        43     
+                           MOD shift        42     
+                         MULTI shift        44     
+                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
+                     {default} reduce       69     
 
-State 88:
-13                           LSS shift        60     
-                         LSSEQ shift        59     
-                           GRT shift        58     
-                         GRTEQ shift        57     
-                           ADD shift        54     
-                         MINUS shift        53     
-                           DIV shift        51     
-                           MOD shift        50     
-                         MULTI shift        52     
-                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
-                     {default} reduce       59     
+State 74:
+19                         BIAND shift        54     
+                            OR shift        40     
+                           XOR shift        39     
+                           AND shift        41     
+                            EQ shift        48     
+                         NOTEQ shift        47     
+                           LSS shift        52     
+                         LSSEQ shift        51     
+                           GRT shift        50     
+                         GRTEQ shift        49     
+                           ADD shift        46     
+                         MINUS shift        45     
+                           DIV shift        43     
+                           MOD shift        42     
+                         MULTI shift        44     
+                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
+                     {default} reduce       48     
 
-State 89:
-9                           ADD shift        54     
-                         MINUS shift        53     
-                           DIV shift        51     
-                           MOD shift        50     
-                         MULTI shift        52     
-                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
-                     {default} reduce       58     
-
-State 90:
-9                           ADD shift        54     
-                         MINUS shift        53     
-                           DIV shift        51     
-                           MOD shift        50     
-                         MULTI shift        52     
-                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
-                     {default} reduce       57     
-
-State 91:
-9                           ADD shift        54     
-                         MINUS shift        53     
-                           DIV shift        51     
-                           MOD shift        50     
-                         MULTI shift        52     
-                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
-                     {default} reduce       56     
-
-State 92:
-9                           ADD shift        54     
-                         MINUS shift        53     
-                           DIV shift        51     
-                           MOD shift        50     
-                         MULTI shift        52     
-                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
-                     {default} reduce       55     
-
-State 93:
-7                           DIV shift        51     
-                           MOD shift        50     
-                         MULTI shift        52     
-                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
-                     {default} reduce       62     
-
-State 94:
-7                           DIV shift        51     
-                           MOD shift        50     
-                         MULTI shift        52     
-                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
-                     {default} reduce       61     
-
-State 95:
-3                        ASSIGN shift        30     
-                         ADDEQ shift        29     
-                       MINUSEQ shift        28     
-
-State 96:
-3                        ASSIGN shift        31     
-                         BIADD shift-reduce 49     
-                       BIMINUS shift-reduce 51     
-
-State 97:
-4                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
-                     {default} reduce       83     
-
-State 98:
-4                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
-                     {default} reduce       82     
-
-State 99:
-4                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
-                     {default} reduce       70     
-
-State 100:
-4                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
-                     {default} reduce       74     
-
-State 101:
-4                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
-                     {default} reduce       65     
-
-State 102:
-4                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
-                     {default} reduce       64     
-
-State 103:
-4                         BIADD shift-reduce 80     
-                       BIMINUS shift-reduce 81     
-                        BITNOT shift        46     
-                     {default} reduce       63     
-
-State 104:
-3                           LMB shift        41     
-                           LLB shift        36     
-                     {default} reduce       68     
-
-State 105:
-3                         COMMA shift        64     
-                           LLB shift        10     
-                     {default} reduce       10     
-
-State 106:
-2                        ASSIGN shift        27     
-                     {default} reduce       25     
-
-State 107:
-2                         COMMA shift        23     
-                     {default} reduce       23     
-
-State 108:
-1                     SEMICOLON shift-reduce 21     
-
-State 109:
-1                           RGB shift-reduce 35     
-
-State 110:
-2                          ELSE shift        15     
-                     {default} reduce       32     
-
-State 111:
-1                           RGB shift        110    
-
-State 112:
-2                         COMMA shift        25     
-                     {default} reduce       42     
-
-State 113:
-1                            ID shift-reduce 50     
-
-State 114:
-1                            ID shift-reduce 48     
-
-State 115:
-2                         COMMA shift        20     
+State 75:
+18                            OR shift        40     
+                           XOR shift        39     
+                           AND shift        41     
+                            EQ shift        48     
+                         NOTEQ shift        47     
+                           LSS shift        52     
+                         LSSEQ shift        51     
+                           GRT shift        50     
+                         GRTEQ shift        49     
+                           ADD shift        46     
+                         MINUS shift        45     
+                           DIV shift        43     
+                           MOD shift        42     
+                         MULTI shift        44     
+                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
                      {default} reduce       47     
 
-State 116:
-1                           RGB shift-reduce 40     
+State 76:
+17                           XOR shift        39     
+                           AND shift        41     
+                            EQ shift        48     
+                         NOTEQ shift        47     
+                           LSS shift        52     
+                         LSSEQ shift        51     
+                           GRT shift        50     
+                         GRTEQ shift        49     
+                           ADD shift        46     
+                         MINUS shift        45     
+                           DIV shift        43     
+                           MOD shift        42     
+                         MULTI shift        44     
+                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
+                     {default} reduce       66     
 
-State 117:
-1                           RLB shift        16     
+State 77:
+16                           AND shift        41     
+                            EQ shift        48     
+                         NOTEQ shift        47     
+                           LSS shift        52     
+                         LSSEQ shift        51     
+                           GRT shift        50     
+                         GRTEQ shift        49     
+                           ADD shift        46     
+                         MINUS shift        45     
+                           DIV shift        43     
+                           MOD shift        42     
+                         MULTI shift        44     
+                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
+                     {default} reduce       67     
 
-State 118:
-1                     SEMICOLON shift        32     
+State 78:
+15                            EQ shift        48     
+                         NOTEQ shift        47     
+                           LSS shift        52     
+                         LSSEQ shift        51     
+                           GRT shift        50     
+                         GRTEQ shift        49     
+                           ADD shift        46     
+                         MINUS shift        45     
+                           DIV shift        43     
+                           MOD shift        42     
+                         MULTI shift        44     
+                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
+                     {default} reduce       65     
 
-State 119:
-1                           LLB shift        26     
+State 79:
+13                           LSS shift        52     
+                         LSSEQ shift        51     
+                           GRT shift        50     
+                         GRTEQ shift        49     
+                           ADD shift        46     
+                         MINUS shift        45     
+                           DIV shift        43     
+                           MOD shift        42     
+                         MULTI shift        44     
+                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
+                     {default} reduce       54     
 
-State 120:
-1                           RGB shift-reduce 38     
+State 80:
+13                           LSS shift        52     
+                         LSSEQ shift        51     
+                           GRT shift        50     
+                         GRTEQ shift        49     
+                           ADD shift        46     
+                         MINUS shift        45     
+                           DIV shift        43     
+                           MOD shift        42     
+                         MULTI shift        44     
+                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
+                     {default} reduce       53     
 
-State 121:
-1                           LLB shift        33     
+State 81:
+9                           ADD shift        46     
+                         MINUS shift        45     
+                           DIV shift        43     
+                           MOD shift        42     
+                         MULTI shift        44     
+                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
+                     {default} reduce       52     
 
-State 122:
-1                           RGB shift-reduce 34     
+State 82:
+9                           ADD shift        46     
+                         MINUS shift        45     
+                           DIV shift        43     
+                           MOD shift        42     
+                         MULTI shift        44     
+                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
+                     {default} reduce       51     
 
-State 123:
-2                          ELSE shift        18     
-                     {default} reduce       31     
+State 83:
+9                           ADD shift        46     
+                         MINUS shift        45     
+                           DIV shift        43     
+                           MOD shift        42     
+                         MULTI shift        44     
+                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
+                     {default} reduce       50     
 
-State 124:
-1                           LLB shift        34     
+State 84:
+9                           ADD shift        46     
+                         MINUS shift        45     
+                           DIV shift        43     
+                           MOD shift        42     
+                         MULTI shift        44     
+                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
+                     {default} reduce       49     
 
-State 125:
-1                           RGB shift        6      
+State 85:
+7                           DIV shift        43     
+                           MOD shift        42     
+                         MULTI shift        44     
+                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
+                     {default} reduce       56     
 
-State 126:
-1                           RGB shift-reduce 18     
+State 86:
+7                           DIV shift        43     
+                           MOD shift        42     
+                         MULTI shift        44     
+                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
+                     {default} reduce       55     
 
-State 127:
-1                     SEMICOLON shift-reduce 11     
+State 87:
+3                        ASSIGN shift        23     
+                         ADDEQ shift        22     
+                       MINUSEQ shift        21     
 
-State 128:
-1                            ID shift-reduce 17     
+State 88:
+3                        ASSIGN shift        24     
+                         BIADD shift-reduce 43     
+                       BIMINUS shift-reduce 45     
 
-State 129:
-2                         COMMA shift        13     
-                     {default} reduce       16     
+State 89:
+4                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
+                     {default} reduce       77     
 
-State 130:
-1                           RLB shift-reduce 13     
+State 90:
+4                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
+                     {default} reduce       76     
 
-State 131:
-2                         COMMA shift        64     
+State 91:
+4                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
+                     {default} reduce       64     
+
+State 92:
+4                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
+                     {default} reduce       68     
+
+State 93:
+4                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
+                     {default} reduce       59     
+
+State 94:
+4                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
+                     {default} reduce       58     
+
+State 95:
+4                         BIADD shift-reduce 74     
+                       BIMINUS shift-reduce 75     
+                        BITNOT shift        38     
+                     {default} reduce       57     
+
+State 96:
+3                           LMB shift        33     
+                           LLB shift        19     
+                     {default} reduce       62     
+
+State 97:
+3                         COMMA shift        56     
+                           LLB shift        7      
                      {default} reduce       10     
 
-State 132:
+State 98:
+2                        ASSIGN shift        20     
+                     {default} reduce       25     
+
+State 99:
+2                         COMMA shift        15     
+                     {default} reduce       23     
+
+State 100:
+1                     SEMICOLON shift-reduce 21     
+
+State 101:
+2                         COMMA shift        17     
+                     {default} reduce       36     
+
+State 102:
+1                            ID shift-reduce 44     
+
+State 103:
+1                            ID shift-reduce 42     
+
+State 104:
+2                         COMMA shift        12     
+                     {default} reduce       41     
+
+State 105:
+1                           RLB shift        3      
+
+State 106:
+1                     SEMICOLON shift        25     
+
+State 107:
+1                           LLB shift        18     
+
+State 108:
+1                           LLB shift        26     
+
+State 109:
+2                          ELSE shift        5      
+                     {default} reduce       31     
+
+State 110:
+1                           LLB shift        27     
+
+State 111:
+1                           RGB shift-reduce 18     
+
+State 112:
+1                     SEMICOLON shift-reduce 11     
+
+State 113:
+1                            ID shift-reduce 17     
+
+State 114:
+2                         COMMA shift        10     
+                     {default} reduce       16     
+
+State 115:
+1                           RLB shift-reduce 13     
+
+State 116:
+2                         COMMA shift        56     
+                     {default} reduce       10     
+
+State 117:
 1                           RMB shift-reduce 8      
 
-State 133:
-1                          INUM shift        132    
+State 118:
+1                          INUM shift        117    
 
-State 134:
-2                           LMB shift        133    
+State 119:
+2                           LMB shift        118    
                      {default} reduce       5      
 
-State 135:
+State 120:
 1                           RMB shift-reduce 7      
 
-State 136:
-1                          INUM shift        135    
+State 121:
+1                          INUM shift        120    
 
-State 137:
-2                           LMB shift        136    
+State 122:
+2                           LMB shift        121    
                      {default} reduce       4      
 
-State 138:
+State 123:
 1                           RMB shift-reduce 6      
 
-State 139:
-1                          INUM shift        138    
+State 124:
+1                          INUM shift        123    
 
-State 140:
-2                           LMB shift        139    
+State 125:
+2                           LMB shift        124    
                      {default} reduce       3      
 
-State 141:
-1                             $ reduce       0      
+State 126:
+1                             $ reduce       0           

@@ -108,6 +108,7 @@ typedef struct seminfo
     int *argtype;
     int argnum;
     int arraynum;
+    int cannotnew;
 } seminfo;
 
 typedef union typeVal{

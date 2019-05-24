@@ -1,0 +1,74 @@
+lex:
+(KEYWORD):[int]
+(ID):[main]
+(SEPERATOR):[(]
+(SEPERATOR):[)]
+(SEPERATOR):[{]
+(KEYWORD):[int]
+(ID):[a]
+(OPERATOR):[ASSIGN_OP, 57]
+(SEPERATOR):[(]
+(INUM):[1]
+(OPERATOR):[ARITH_OP, 38]
+(SEPERATOR):[(]
+(INUM):[2]
+(OPERATOR):[ARITH_OP, 37]
+(INUM):[3]
+(SEPERATOR):[)]
+(OPERATOR):[ARITH_OP, 35]
+(INUM):[4]
+(SEPERATOR):[)]
+(OPERATOR):[ARITH_OP, 36]
+(INUM):[5]
+(SEPERATOR):[;]
+(KEYWORD):[return]
+(INUM):[0]
+(SEPERATOR):[;]
+(SEPERATOR):[}]
+
+
+syntax:
+program:
+    deflist:
+        tp:
+            'int':
+        def:
+            fundef:
+                ID:  [main]
+            compstmt:
+                innerdeflist:
+                    innerdef:
+                        tp:
+                            'int':
+                        innerdeclist:
+                            innerdec:
+                                ID:  [a]
+                                OPERATER:  (ASSIGN_OP, =)
+                                exp:
+                                    exp:
+                                        exp:
+                                            exp:
+                                                INTEGER:  [1]
+                                            OPERATER:  (ARITH_OP, -)
+                                            exp:
+                                                exp:
+                                                    exp:
+                                                        exp:
+                                                            INTEGER:  [2]
+                                                        OPERATER:  (ARITH_OP, +)
+                                                        exp:
+                                                            INTEGER:  [3]
+                                                OPERATER:  (ARITH_OP, /)
+                                                exp:
+                                                    INTEGER:  [4]
+                                    OPERATER:  (ARITH_OP, %)
+                                    exp:
+                                        INTEGER:  [5]
+                    innerdeflist:
+                stmtlist:
+                    stmt:
+                        'return':
+                        exp:
+                            INTEGER:  [0]
+                    stmtlist:
+        deflist:

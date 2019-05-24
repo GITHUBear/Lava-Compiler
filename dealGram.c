@@ -11,7 +11,7 @@ int main(){
     freopen("./gram.out", "r", stdin);
     FILE* fout = fopen("./gramtmp.txt", "w");
     int i = 1;
-    while(i <= 4687){
+    while(i <= 4092){
         lineno = 0;
         fgets(lines[lineno], 500, stdin);
         lineno++; i++;
