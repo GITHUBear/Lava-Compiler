@@ -2,7 +2,7 @@ int a;
 int[10] b;
 float c;
 
-int main(){
+int main(int aa, float b){
     int a = 1;
     {
         int a = 2;
