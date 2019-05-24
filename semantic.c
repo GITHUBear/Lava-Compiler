@@ -52,30 +52,41 @@ void insertTable(Sentence* id, int opt){
         table[tptr].types = id->sem.argtype;
         table[tptr].argnum = &(id->sem.argnum);
     }
-    if(opt)
+    if(opt){
+        table[tptr].namedup = 1;
         sprintf(table[tptr].oname, "$tmp%d", ++onameCnt);
+    }else{
+        table[tptr].namedup = 0;
+    }
     showTable();
 }
 
 int searchTable(Sentence* id){
-    int cnt = 0;
+    int cnt = 0, rename = 0;
     for(int i = tptr; i > 0; i--){
-        if(strcmp(id->tval.name, table[i].name) == 0 && id->sem.type == table[i].type){
-            if(id->sem.type != SEM_FUNC){
-                if(level == table[i].level) return FOUND_IN_SAME_LEVEL;
-                else return FOUND_IN_DIFF_LEVEL;
-            }else{
-                if(cnt == 1){
-                    cnt++;
-                    if(id->sem.argnum != *(table[i].argnum)) return FUNC_OVERLOAD;
-                    for(int j = 1; j <= id->sem.argnum; j++)
-                        if(id->sem.argtype[j] != table[i].types[j]) return FUNC_OVERLOAD;
-                    return FUNC_CONFLICT;
+        if(strcmp(id->tval.name, table[i].name) == 0){
+            rename = 1;
+            if(id->sem.type == table[i].type){
+                if(id->sem.type != SEM_FUNC){
+                    if(level == table[i].level) return FOUND_IN_SAME_LEVEL;
+                    else return FOUND_IN_DIFF_LEVEL;
+                }else{
+                    if(cnt >= 1){
+                        cnt++;
+                        if(id->sem.argnum != *(table[i].argnum)) continue;
+                        int fd = 1;
+                        for(int j = 1; j <= id->sem.argnum; j++)
+                            if(id->sem.argtype[j] != table[i].types[j]){
+                                fd = 0;
+                                break;
+                            }
+                        if(fd) return FUNC_CONFLICT;
+                    }
                 }
             }
         }
     }
-    return NOT_FOUND;
+    return rename ? SYMBOL_RENAME : NOT_FOUND;
 }
 
 int searchReference(Sentence* id, int isFunc){
@@ -102,13 +113,22 @@ int searchReference(Sentence* id, int isFunc){
     return (funcmatch) ? -2 : -1;
 }
 
+int checkRename(char *name){
+    for(int i = tptr; i > 0; i--){
+        if(strcmp(name, table[i].name) == 0){
+            return 1;
+        }
+    }
+    return 0;
+}
+
 void showTable(){
     printf("table:\n");
     printf("%7s %7s %7s %9s %7s %7s\n", "name", "type", "level", "offset", "funarg", "oname");
     for(int i = 1; i <= tptr; i++){
         if(table[i].type != SEM_FUNC){
             printf("%7s %7s %7d %7d        ", table[i].name, sem_type[table[i].type - SEM_INT], table[i].level, table[i].offset);
-            if(table[i].oname[0] == '$')
+            if(table[i].namedup)
                 printf("%7s", table[i].oname);
         }else{
             printf("%7s %7s %7d           ", table[i].name, sem_type[table[i].type - SEM_INT], table[i].level);
@@ -263,6 +283,8 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 NODE_SEM(1).argtype[++(NODE_SEM(1).argnum)] = FNODE_SEM.type;
                 NODE_SEM(2).argtype = NODE_SEM(1).argtype;
                 NODE_SEM(2).argnum = NODE_SEM(1).argnum;
+                if(checkRename(NODE(1)->tval.name))
+                    sem_error(NODE(1), "function name conflicts with global var or function");
                 insertTable(NODE(1), 0);
                 newZone(1);
             }else if(stepnum == 2){
@@ -278,6 +300,8 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 NODE_SEM(1).type = SEM_FUNC;
                 NODE_SEM(1).argtype = (int *) malloc(MAXARG * sizeof(int));
                 NODE_SEM(1).argtype[++(NODE_SEM(1).argnum)] = FNODE_SEM.type;
+                if(checkRename(NODE(1)->tval.name))
+                    sem_error(NODE(1), "function name conflicts with global var or function");
                 insertTable(NODE(1), 0);
                 newZone(1);
             }else if(stepnum == 1){
@@ -310,9 +334,13 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 NODE_SEM(2).type = NODE_SEM(1).type;
                 NODE_SEM(2).arraynum = NODE_SEM(1).arraynum;
             }else if(stepnum == 2){
-                if(searchTable(NODE(2)) == FOUND_IN_SAME_LEVEL)
+                int sret = searchTable(NODE(2));
+                if(sret == FOUND_IN_SAME_LEVEL)
                     sem_error(NODE(2), "function args redefine");
-                insertTable(NODE(2), 0);
+                if(sret != NOT_FOUND)
+                    insertTable(NODE(2), 1);
+                else
+                    insertTable(NODE(2), 0);
                 FNODE_SEM.argtype[++FNODE_SEM.argnum] = NODE_SEM(2).type;
             }
             return;
@@ -530,6 +558,8 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 if(NODE_SEM(3).type != SEM_BOOL_EXP)
                     sem_error(NODE(3), "bool operator only supports BOOL EXP");
                 FNODE_SEM.type = SEM_BOOL_EXP;
+                if(FNODE_SEM.argtype != NULL)
+                    FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
             }
             return;
         case 49:
@@ -543,6 +573,8 @@ void sem(Sentence* node, int rulenum, int stepnum){
                     && NODE_SEM(1).type != SEM_FLOAT_EXP))
                     sem_error(NODE(1), "cmp operator type match failed");
                 FNODE_SEM.type = SEM_BOOL_EXP;
+                if(FNODE_SEM.argtype != NULL)
+                    FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
             }
             return;
         case 55:
@@ -557,15 +589,23 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 if(NODE_SEM(3).type != NODE_SEM(1).type)
                     sem_error(NODE(3), "type match failed");
                 FNODE_SEM.type = NODE_SEM(3).type;
+                if(FNODE_SEM.argtype != NULL)
+                    FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
             }
             return;
         case 60:
-            if(stepnum == 1)
+            if(stepnum == 1){
                 FNODE_SEM.type = SEM_INT_EXP;
+                if(FNODE_SEM.argtype != NULL)
+                    FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
+            }
             return;
         case 61:
-            if(stepnum == 1)
+            if(stepnum == 1){
                 FNODE_SEM.type = SEM_FLOAT_EXP;
+                if(FNODE_SEM.argtype != NULL)
+                    FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
+            }
             return;
         case 62:
             if(stepnum == 1){
@@ -574,12 +614,16 @@ void sem(Sentence* node, int rulenum, int stepnum){
                     sem_error(NODE(1), "the var isn't defined");
                 FNODE_SEM.type = EXP(table[sret].type);
                 FNODE_SEM.canLeft = 1;
+                if(FNODE_SEM.argtype != NULL)
+                    FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
             }
             return;
         case 63:
             if(stepnum == 1){
                 FNODE_SEM.type = NODE_SEM(1).type;
                 FNODE_SEM.canLeft = NODE_SEM(1).canLeft;
+                if(FNODE_SEM.argtype != NULL)
+                    FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
             }
             return;
         case 64:
@@ -587,6 +631,8 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 if(NODE_SEM(2).type != SEM_BOOL_EXP)
                     sem_error(NODE(2), "bool operator only supports BOOL EXP");
                 FNODE_SEM.type = SEM_BOOL_EXP;
+                if(FNODE_SEM.argtype != NULL)
+                    FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
             }
             return;
         case 65:
@@ -600,6 +646,8 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 if(NODE_SEM(3).type != SEM_INT_EXP)
                     sem_error(NODE(1), "bit operator only supports INT EXP");
                 FNODE_SEM.type = SEM_INT_EXP;
+                if(FNODE_SEM.argtype != NULL)
+                    FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
             }
             return;
         case 69:
@@ -624,8 +672,10 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 int sret = searchReference(NODE(1), 0);
                 if(NODE_SEM(2).type != SEM_INT_EXP)
                     sem_error(NODE(2), "array index should be an INT EXP");
-                FNODE_SEM.type = table[sret].type - SEM_INT_ARRAY;
+                FNODE_SEM.type = EXP(table[sret].type - SEM_INT_ARRAY + SEM_INT);
                 FNODE_SEM.canLeft = 1;
+                if(FNODE_SEM.argtype != NULL)
+                    FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
             }
             return;
         case 71:
@@ -634,8 +684,10 @@ void sem(Sentence* node, int rulenum, int stepnum){
                     sem_error(NODE(1), "exp1 should be a left value");
             }else if(stepnum == 3){
                 if(NODE_SEM(1).type != NODE_SEM(3).type)
-                    sem_error(NODE(1), "type match failed");
+                    sem_error(NODE(1), "\'=\' type match failed");
                 FNODE_SEM.type = NODE_SEM(1).type;
+                if(FNODE_SEM.argtype != NULL)
+                    FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
             }
             return;
         case 72:
@@ -649,6 +701,8 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 if(NODE_SEM(1).type != SEM_INT_EXP && NODE_SEM(1).type != SEM_FLOAT_EXP)
                     sem_error(NODE(1), "+=/-= operator only supports INT or FLOAT EXP");
                 FNODE_SEM.type = NODE_SEM(1).type;
+                if(FNODE_SEM.argtype != NULL)
+                    FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
             }
             return;
         case 74:
@@ -659,6 +713,8 @@ void sem(Sentence* node, int rulenum, int stepnum){
             }else if(stepnum == 2){
                 FNODE_SEM.type = SEM_INT_EXP;
                 FNODE_SEM.canLeft = 1;
+                if(FNODE_SEM.argtype != NULL)
+                    FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
             }
             return;
         case 76:
@@ -668,11 +724,16 @@ void sem(Sentence* node, int rulenum, int stepnum){
                     sem_error(NODE(2), "++/-- only supports an INT left value");
                 FNODE_SEM.type = SEM_INT_EXP;
                 FNODE_SEM.canLeft = 1;
+                if(FNODE_SEM.argtype != NULL)
+                    FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
             }
             return;
         case 78:
-            if(stepnum == 1)
+            if(stepnum == 1){
                 FNODE_SEM.type = SEM_INT_EXP;
+                if(FNODE_SEM.argtype != NULL)
+                    FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
+            }
             return;
         case 79:
             if(stepnum == 1){
@@ -681,12 +742,17 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 NODE_SEM(2).argtype = NODE_SEM(1).argtype;
                 NODE_SEM(2).argnum = NODE_SEM(1).argnum;
             }else if(stepnum == 2){
+                NODE_SEM(1).argnum = NODE_SEM(2).argnum;
+                // printf("%d\n", NODE_SEM(1).argnum);
+                // for(int j = 2; j <= NODE_SEM(1).argnum; j++)
                 int sret = searchReference(NODE(1), 1);
                 if(sret == -1)
                     sem_error(NODE(1), "function not defined");
                 if(sret == -2)
                     sem_error(NODE(1), "function args not match");
-                FNODE_SEM.type = table[sret].types[1];
+                FNODE_SEM.type = EXP(table[sret].types[1]);
+                if(FNODE_SEM.argtype != NULL)
+                    FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
             }
             return;
         case 80:
@@ -698,7 +764,9 @@ void sem(Sentence* node, int rulenum, int stepnum){
                     sem_error(NODE(1), "function not defined");
                 if(sret == -2)
                     sem_error(NODE(1), "function args not match");
-                FNODE_SEM.type = table[sret].types[1];
+                FNODE_SEM.type = EXP(table[sret].types[1]);
+                if(FNODE_SEM.argtype != NULL)
+                    FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
             }
             return;
         default:
@@ -708,8 +776,8 @@ void sem(Sentence* node, int rulenum, int stepnum){
 
 int main()
 {
-    FILE* f = fopen("./Test/SYNTAX_TEST8.txt", "r");
-    freopen("./TestRes/TEST8_RES.txt", "w", stdout);
+    FILE* f = fopen("./sem_test.c", "r");
+    freopen("./TestRes/SEM_TEST.txt", "w", stdout);
     printf("lex:\n");
     lex_part(f);
     printf("\n\nsyntax:\n");
@@ -718,6 +786,7 @@ int main()
     showAST(pgm, 0);
     printf("\n\nsemantic:\n");
     dfs(pgm);
+    printf("\nsemantic analyse passed\n");
     fclose(f);
     return 0;
 }

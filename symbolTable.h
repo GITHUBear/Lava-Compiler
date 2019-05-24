@@ -17,6 +17,7 @@ typedef struct symtable{
     int *types;
     int *argnum;
     char oname[20];
+    int namedup;
 } symtable;
 
 // symtable table[ROWMAX];
@@ -26,7 +27,7 @@ typedef struct symtable{
 #define NOT_FOUND 1
 #define FOUND_IN_SAME_LEVEL 2
 #define FOUND_IN_DIFF_LEVEL 3
-#define FUNC_OVERLOAD 4
-#define FUNC_CONFLICT 5
+#define FUNC_CONFLICT 4
+#define SYMBOL_RENAME 5
 
 #endif
