@@ -1,40 +1,38 @@
 lex:
 (KEYWORD):[int]
-(ID):[a1]
-(SEPERATOR):[;]
-(KEYWORD):[int]
-(SEPERATOR):[[]
-(INUM):[10]
-(SEPERATOR):[]]
-(ID):[b]
-(SEPERATOR):[;]
-(KEYWORD):[int]
-(ID):[a]
-(SEPERATOR):[;]
-(KEYWORD):[int]
-(ID):[fun1]
+(ID):[main]
 (SEPERATOR):[(]
-(KEYWORD):[int]
-(ID):[a]
-(SEPERATOR):[,]
-(KEYWORD):[float]
-(ID):[b]
-(SEPERATOR):[,]
-(KEYWORD):[int]
-(ID):[a]
 (SEPERATOR):[)]
 (SEPERATOR):[{]
+(KEYWORD):[int]
+(ID):[a]
+(OPERATOR):[ASSIGN_OP, 57]
+(INUM):[1]
+(SEPERATOR):[;]
+(SEPERATOR):[{]
+(KEYWORD):[int]
+(ID):[a]
+(OPERATOR):[ASSIGN_OP, 57]
+(INUM):[2]
+(SEPERATOR):[;]
 (SEPERATOR):[}]
-(KEYWORD):[int]
-(ID):[fun1]
+(KEYWORD):[while]
 (SEPERATOR):[(]
-(KEYWORD):[int]
 (ID):[a]
-(SEPERATOR):[,]
-(KEYWORD):[int]
-(ID):[b]
+(OPERATOR):[RELAT_OP, 43]
+(INUM):[10]
 (SEPERATOR):[)]
 (SEPERATOR):[{]
+(ID):[a]
+(OPERATOR):[ASSIGN_OP, 57]
+(ID):[a]
+(OPERATOR):[ARITH_OP, 37]
+(INUM):[10]
+(SEPERATOR):[;]
+(SEPERATOR):[}]
+(KEYWORD):[return]
+(INUM):[0]
+(SEPERATOR):[;]
 (SEPERATOR):[}]
 
 
@@ -44,106 +42,169 @@ program:
         tp:
             'int':
         def:
-            vallist:
-                ID:  [a1]
-        deflist:
-            tp:
-                'int':
-                INTEGER:  [10]
-            def:
-                vallist:
-                    ID:  [b]
-            deflist:
-                tp:
-                    'int':
-                def:
-                    vallist:
-                        ID:  [a]
-                deflist:
-                    tp:
-                        'int':
-                    def:
-                        fundef:
-                            ID:  [fun1]
-                            args:
-                                param:
-                                    tp:
-                                        'int':
-                                    ID:  [a]
-                                args:
-                                    param:
-                                        tp:
-                                            'float':
-                                        ID:  [b]
-                                    args:
-                                        param:
-                                            tp:
-                                                'int':
-                                            ID:  [a]
-                        compstmt:
-                            innerdeflist:
-                            stmtlist:
-                    deflist:
+            fundef:
+                ID:  [main]
+            compstmt:
+                innerdeflist:
+                    innerdef:
                         tp:
                             'int':
-                        def:
-                            fundef:
-                                ID:  [fun1]
-                                args:
-                                    param:
-                                        tp:
-                                            'int':
-                                        ID:  [a]
-                                    args:
-                                        param:
-                                            tp:
-                                                'int':
-                                            ID:  [b]
-                            compstmt:
+                        innerdeclist:
+                            innerdec:
+                                ID:  [a]
+                                OPERATER:  (ASSIGN_OP, =)
+                                exp:
+                                    INTEGER:  [1]
+                    innerdeflist:
+                stmtlist:
+                    stmt:
+                        compstmt:
+                            innerdeflist:
+                                innerdef:
+                                    tp:
+                                        'int':
+                                    innerdeclist:
+                                        innerdec:
+                                            ID:  [a]
+                                            OPERATER:  (ASSIGN_OP, =)
+                                            exp:
+                                                INTEGER:  [2]
                                 innerdeflist:
-                                stmtlist:
-                        deflist:
+                            stmtlist:
+                    stmtlist:
+                        stmt:
+                            'while':
+                            exp:
+                                exp:
+                                    ID:  [a]
+                                OPERATER:  (RELAT_OP, <)
+                                exp:
+                                    INTEGER:  [10]
+                            stmt:
+                                compstmt:
+                                    innerdeflist:
+                                    stmtlist:
+                                        stmt:
+                                            exp:
+                                                exp:
+                                                    ID:  [a]
+                                                OPERATER:  (ASSIGN_OP, =)
+                                                exp:
+                                                    exp:
+                                                        ID:  [a]
+                                                    OPERATER:  (ARITH_OP, +)
+                                                    exp:
+                                                        INTEGER:  [10]
+                                        stmtlist:
+                        stmtlist:
+                            stmt:
+                                'return':
+                                exp:
+                                    INTEGER:  [0]
+                            stmtlist:
+        deflist:
 
 
 semantic:
 table:
-   name    type   level    offset  funarg
-     a1     int       0      12 
+   name    type   level    offset  funarg   oname
+   main    func       0           int()
 
 table:
-   name    type   level    offset  funarg
-     a1     int       0      12 
-      b int_array       0      16 
+   name    type   level    offset  funarg   oname
+   main    func       0           int()
+      a     int       1     -12        
 
 table:
-   name    type   level    offset  funarg
-     a1     int       0      12 
-      b int_array       0      16 
-      a     int       0      56 
+   name    type   level    offset  funarg   oname
+   main    func       0           int()
+      a     int       1     -12        
+  $tmp1     int       1     -16        
+
+after pop
+table:
+   name    type   level    offset  funarg   oname
+   main    func       0           int()
+      a     int       1     -12        
 
 table:
-   name    type   level    offset  funarg
-     a1     int       0      12 
-      b int_array       0      16 
-      a     int       0      56 
-   fun1    func       0           int()
+   name    type   level    offset  funarg   oname
+   main    func       0           int()
+      a     int       1     -12        
+      a     int       2     -16          $tmp2
 
 table:
-   name    type   level    offset  funarg
-     a1     int       0      12 
-      b int_array       0      16 
-      a     int       0      56 
-   fun1    func       0           int()
-      a     int       1      12 
+   name    type   level    offset  funarg   oname
+   main    func       0           int()
+      a     int       1     -12        
+      a     int       2     -16          $tmp2
+  $tmp3     int       2     -20        
+
+after pop
+table:
+   name    type   level    offset  funarg   oname
+   main    func       0           int()
+      a     int       1     -12        
+      a     int       2     -16          $tmp2
 
 table:
-   name    type   level    offset  funarg
-     a1     int       0      12 
-      b int_array       0      16 
-      a     int       0      56 
-   fun1    func       0           int()
-      a     int       1      12 
-      b   float       1      16 
+   name    type   level    offset  funarg   oname
+   main    func       0           int()
+      a     int       1     -12        
 
-semantic_err: can't deal with ID:  [a]
-reason: function args redefine
+table:
+   name    type   level    offset  funarg   oname
+   main    func       0           int()
+      a     int       1     -12        
+  $tmp4     int       1     -16        
+
+table:
+   name    type   level    offset  funarg   oname
+   main    func       0           int()
+      a     int       1     -12        
+  $tmp4     int       1     -16        
+  $tmp5     int       2     -20        
+
+after pop
+table:
+   name    type   level    offset  funarg   oname
+   main    func       0           int()
+      a     int       1     -12        
+  $tmp4     int       1     -16        
+
+table:
+   name    type   level    offset  funarg   oname
+   main    func       0           int()
+      a     int       1     -12        
+  $tmp4     int       1     -16        
+  $tmp6     int       2     -20        
+
+after pop
+table:
+   name    type   level    offset  funarg   oname
+   main    func       0           int()
+      a     int       1     -12        
+  $tmp4     int       1     -16        
+
+table:
+   name    type   level    offset  funarg   oname
+   main    func       0           int()
+      a     int       1     -12        
+  $tmp4     int       1     -16        
+
+table:
+   name    type   level    offset  funarg   oname
+   main    func       0           int()
+      a     int       1     -12        
+  $tmp4     int       1     -16        
+  $tmp7     int       1     -20        
+
+table:
+   name    type   level    offset  funarg   oname
+   main    func       0           int()
+
+table:
+   name    type   level    offset  funarg   oname
+
+
+semantic analyse passed

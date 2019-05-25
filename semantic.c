@@ -27,12 +27,69 @@ int tptr;
 int tptrStk[10000];
 int tptrStkTop;
 int onameCnt;
+char tmpcode[50];
 
 char *sem_type[] = {"int", "float", "char", "func", "int_array", "float_array", "char_array"};
 
 int level = 0;
 int offset = DX;
+int argoffset = ARGDX;
 void showTable();
+
+void list_init(list_t* list){
+    list->next = list->pre = list;
+}
+
+void list_del(list_t* le){
+    list_t* pre = le->pre; list_t* next = le->next;
+    pre->next = next;
+    next->pre = pre;
+    list_init(le);
+}
+
+void list_add(list_t* pre, list_t* le, list_t* next){
+    next->pre = pre->next = le;
+    le->next = next;
+    le->pre = pre;
+}
+
+void list_share(list_t* a, list_t* b){
+    a->pre = b->pre;
+    a->next = b->next;
+    b->pre->next = a;
+    b->next->pre = a;
+}
+
+void list_cat(list_t* a, list_t* b){
+    a->pre->next = b->next;
+    a->pre = b->pre;
+    b->next->pre = a->pre;
+    b->pre->next = a;
+}
+
+code* genCode(){
+    code* c = (code *) malloc(sizeof(code));
+    list_init(&(c->link));
+    strcpy(c->assembly, tmpcode);
+    return c;
+}
+
+void showCode(list_t* hd){
+    list_t* p = hd->next;
+    while(p != hd){
+        code* tmp = link2type(code, p);
+        printf("%s", tmp->assembly);
+        p = p->next;
+    }
+}
+
+void addCodePre(list_t* hd, code* c){
+    list_add(hd, &(c->link), hd->next);
+}
+
+void addCodeBack(list_t* hd, code* c){
+    list_add(hd->pre, &(c->link), hd);
+}
 
 int getSize(int type){
     if(type == SEM_INT || type == SEM_INT_ARRAY) return INT_SIZE;
@@ -40,13 +97,19 @@ int getSize(int type){
     if(type == SEM_CHAR || type == SEM_CHAR_ARRAY) return CHAR_SIZE;
 }
 
-void insertTable(Sentence* id, int opt){
+void insertTable(Sentence* id, int opt, int argopt){
     table[++tptr].name = id->tval.name;
     table[tptr].type = id->sem.type;
     table[tptr].level = level;
     if(table[tptr].type != SEM_FUNC){
-        table[tptr].offset = offset;
-        offset += (getSize(table[tptr].type) * id->sem.arraynum);
+        table[tptr].size = (getSize(table[tptr].type) * id->sem.arraynum);
+        if(argopt){
+            table[tptr].offset = argoffset;
+            argoffset += table[tptr].size;
+        }else{
+            table[tptr].offset = offset;
+            offset -= table[tptr].size;
+        }
     }else{
         table[tptr].offset = offset;
         table[tptr].types = id->sem.argtype;
@@ -59,6 +122,17 @@ void insertTable(Sentence* id, int opt){
         table[tptr].namedup = 0;
     }
     showTable();
+}
+
+void expTmpInsertTable(int type){
+    table[++tptr].name = (char *) malloc(sizeof(char) * 20);
+    sprintf(table[tptr].name, "$tmp%d", ++onameCnt);
+    table[tptr].type = type;
+    table[tptr].level = level;
+    table[tptr].offset = offset;
+    offset -= (getSize(type));
+    table[tptr].namedup = 0;
+    table[tptr].size = getSize(type);
 }
 
 int searchTable(Sentence* id){
@@ -150,14 +224,19 @@ void newZone(int opt){
         offset = DX;
 }
 
-void quitZone(int opt){
+void quitZone(){
     level--;
     tptr = tptrStk[tptrStkTop--];
-    if(opt)
-        offset = table[tptr].offset;
+    offset = table[tptr].offset - table[tptr].size;
+}
+
+void popOne(){
+    tptr--;
+    offset = table[tptr].offset - table[tptr].size;
 }
 
 void dfs(Sentence* node){
+    list_init(&(node->link));
     if(node->type != SYNAXELE) return;
     sem(node, node->irule, 0);
     for(int i = 1; ;i++){
@@ -191,14 +270,18 @@ void sem(Sentence* node, int rulenum, int stepnum){
     switch(rulenum){
         case 0:
             if(stepnum == 1){
-                quitZone(1);
+                quitZone();
                 showTable();
+                list_share(&(node->link), &(NODE(1)->link));
             }
             return;
         case 1:
             if(stepnum == 1){
                 NODE_SEM(2).type = NODE_SEM(1).type;
                 NODE_SEM(2).arraynum = NODE_SEM(1).arraynum;
+            }else if(stepnum == 3){
+                list_share(&(node->link), &(NODE(2)->link));
+                list_cat(&(node->link), &(NODE(3)->link));
             }
             return;
         case 3:
@@ -244,9 +327,17 @@ void sem(Sentence* node, int rulenum, int stepnum){
             }else if(stepnum == 1){
                 if(searchTable(NODE(1)) != NOT_FOUND)
                     sem_error(NODE(1), "external redefine var");
-                insertTable(NODE(1), 0);
+                insertTable(NODE(1), 0, 0);
                 NODE_SEM(2).type = FNODE_SEM.type;
                 NODE_SEM(2).arraynum = FNODE_SEM.arraynum;
+            }else if(stepnum == 2){
+                if(NODE_SEM(1).type < SEM_INT_ARRAY)
+                    sprintf(tmpcode, "%s: .word 0\n", NODE(1)->tval.name);
+                else
+                    sprintf(tmpcode, "%s: .space %d\n", NODE(1)->tval.name
+                        , getSize(NODE_SEM(1).type) * NODE_SEM(1).arraynum);
+                addCodePre(&(NODE(2)->link), genCode());
+                list_share(&(node->link), &(NODE(2)->link));
             }
             return;
         case 10:
@@ -256,13 +347,23 @@ void sem(Sentence* node, int rulenum, int stepnum){
             }else if(stepnum == 1){
                 if(searchTable(NODE(1)) != NOT_FOUND)
                     sem_error(NODE(1), "external redefine var");
-                insertTable(NODE(1), 0);
+                insertTable(NODE(1), 0, 0);
+                if(NODE_SEM(1).type < SEM_INT_ARRAY)
+                    sprintf(tmpcode, "%s: .word 0\n", NODE(1)->tval.name);
+                else
+                    sprintf(tmpcode, "%s: .space %d\n", NODE(1)->tval.name
+                        , getSize(NODE_SEM(1).type) * NODE_SEM(1).arraynum);
+                addCodePre(&(node->link), genCode());
             }
             return;
         case 11:
             if(stepnum == 0){
                 NODE_SEM(1).type = FNODE_SEM.type;
                 NODE_SEM(1).arraynum = FNODE_SEM.arraynum;
+            }else if(stepnum == 1){
+                sprintf(tmpcode, ".data\n");
+                addCodePre(&(NODE(1)->link), genCode());
+                list_share(&(node->link), &(NODE(1)->link));
             }
             return;
         case 12:
@@ -285,8 +386,9 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 NODE_SEM(2).argnum = NODE_SEM(1).argnum;
                 if(checkRename(NODE(1)->tval.name))
                     sem_error(NODE(1), "function name conflicts with global var or function");
-                insertTable(NODE(1), 0);
+                insertTable(NODE(1), 0, 0);
                 newZone(1);
+                argoffset = ARGDX;
             }else if(stepnum == 2){
                 NODE_SEM(1).argnum = NODE_SEM(2).argnum;
                 if(searchTable(NODE(1)) == FUNC_CONFLICT){
@@ -302,7 +404,7 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 NODE_SEM(1).argtype[++(NODE_SEM(1).argnum)] = FNODE_SEM.type;
                 if(checkRename(NODE(1)->tval.name))
                     sem_error(NODE(1), "function name conflicts with global var or function");
-                insertTable(NODE(1), 0);
+                insertTable(NODE(1), 0, 0);
                 newZone(1);
             }else if(stepnum == 1){
                 if(searchTable(NODE(1)) == FUNC_CONFLICT){
@@ -338,9 +440,9 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 if(sret == FOUND_IN_SAME_LEVEL)
                     sem_error(NODE(2), "function args redefine");
                 if(sret != NOT_FOUND)
-                    insertTable(NODE(2), 1);
+                    insertTable(NODE(2), 1, 1);
                 else
-                    insertTable(NODE(2), 0);
+                    insertTable(NODE(2), 0, 1);
                 FNODE_SEM.argtype[++FNODE_SEM.argnum] = NODE_SEM(2).type;
             }
             return;
@@ -349,10 +451,11 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 if(FNODE_SEM.cannotnew == 0)
                     newZone(0);
             }else if(stepnum == 2){
-                if(FNODE_SEM.cannotnew == 0)
-                    quitZone(0);
-                else
-                    quitZone(1);
+                // if(FNODE_SEM.cannotnew == 0)
+                //     quitZone(0);
+                // else
+                //     quitZone(1);
+                quitZone();
                 showTable();
                 FNODE_SEM.retype = NODE_SEM(2).retype;
             }
@@ -386,12 +489,17 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 if(sret == FOUND_IN_SAME_LEVEL)
                     sem_error(NODE(1), "inner redefine var 24");
                 else if(sret == FOUND_IN_DIFF_LEVEL)
-                    insertTable(NODE(1), 1);
+                    insertTable(NODE(1), 1, 0);
                 else if(sret == NOT_FOUND)
-                    insertTable(NODE(1), 0);
+                    insertTable(NODE(1), 0, 0);
             }else if(stepnum == 3){
                 if(EXP(NODE_SEM(1).type) != NODE_SEM(3).type)
                     sem_error(NODE(1), "type match failed");
+                if(NODE_SEM(3).isTmp && NODE_SEM(3).tmpPos == tptr){
+                    popOne();
+                    printf("after pop\n");
+                    showTable();
+                }
             }
             return;
         case 25:
@@ -403,9 +511,9 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 if(sret == FOUND_IN_SAME_LEVEL)
                     sem_error(NODE(1), "inner redefine var 25");
                 else if(sret == FOUND_IN_DIFF_LEVEL)
-                    insertTable(NODE(1), 1);
+                    insertTable(NODE(1), 1, 0);
                 else if(sret == NOT_FOUND)
-                    insertTable(NODE(1), 0);
+                    insertTable(NODE(1), 0, 0);
             }
             return;
         case 26:
@@ -591,6 +699,20 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 FNODE_SEM.type = NODE_SEM(3).type;
                 if(FNODE_SEM.argtype != NULL)
                     FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
+                if(NODE_SEM(3).isTmp && NODE_SEM(3).tmpPos == tptr){
+                    popOne();
+                    printf("after pop\n");
+                    showTable();
+                }
+                if(NODE_SEM(1).isTmp && NODE_SEM(1).tmpPos == tptr){
+                    popOne();
+                    printf("after pop\n");
+                    showTable();
+                }
+                expTmpInsertTable(RET(FNODE_SEM.type));
+                FNODE_SEM.isTmp = 1;
+                FNODE_SEM.tmpPos = tptr;
+                showTable();
             }
             return;
         case 60:
@@ -598,6 +720,10 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 FNODE_SEM.type = SEM_INT_EXP;
                 if(FNODE_SEM.argtype != NULL)
                     FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
+                expTmpInsertTable(RET(FNODE_SEM.type));
+                FNODE_SEM.isTmp = 1;
+                FNODE_SEM.tmpPos = tptr;
+                showTable();
             }
             return;
         case 61:
@@ -605,6 +731,10 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 FNODE_SEM.type = SEM_FLOAT_EXP;
                 if(FNODE_SEM.argtype != NULL)
                     FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
+                expTmpInsertTable(RET(FNODE_SEM.type));
+                FNODE_SEM.isTmp = 1;
+                FNODE_SEM.tmpPos = tptr;
+                showTable();
             }
             return;
         case 62:
@@ -624,6 +754,8 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 FNODE_SEM.canLeft = NODE_SEM(1).canLeft;
                 if(FNODE_SEM.argtype != NULL)
                     FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
+                FNODE_SEM.isTmp = NODE_SEM(1).isTmp;
+                FNODE_SEM.tmpPos = NODE_SEM(1).tmpPos;
             }
             return;
         case 64:
@@ -648,6 +780,20 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 FNODE_SEM.type = SEM_INT_EXP;
                 if(FNODE_SEM.argtype != NULL)
                     FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
+                if(NODE_SEM(3).isTmp && NODE_SEM(3).tmpPos == tptr){
+                    popOne();
+                    printf("after pop\n");
+                    showTable();
+                }
+                if(NODE_SEM(1).isTmp && NODE_SEM(1).tmpPos == tptr){
+                    popOne();
+                    printf("after pop\n");
+                    showTable();
+                }
+                expTmpInsertTable(RET(FNODE_SEM.type));
+                FNODE_SEM.isTmp = 1;
+                FNODE_SEM.tmpPos = tptr;
+                showTable();
             }
             return;
         case 69:
@@ -688,6 +834,11 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 FNODE_SEM.type = NODE_SEM(1).type;
                 if(FNODE_SEM.argtype != NULL)
                     FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
+                if(NODE_SEM(3).isTmp && NODE_SEM(3).tmpPos == tptr){
+                    popOne();
+                    printf("after pop\n");
+                    showTable();
+                }
             }
             return;
         case 72:
@@ -703,6 +854,11 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 FNODE_SEM.type = NODE_SEM(1).type;
                 if(FNODE_SEM.argtype != NULL)
                     FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
+                if(NODE_SEM(3).isTmp && NODE_SEM(3).tmpPos == tptr){
+                    popOne();
+                    printf("after pop\n");
+                    showTable();
+                }
             }
             return;
         case 74:
@@ -733,6 +889,10 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 FNODE_SEM.type = SEM_INT_EXP;
                 if(FNODE_SEM.argtype != NULL)
                     FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
+                expTmpInsertTable(RET(FNODE_SEM.type));
+                FNODE_SEM.isTmp = 1;
+                FNODE_SEM.tmpPos = tptr;
+                showTable();
             }
             return;
         case 79:
@@ -753,6 +913,10 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 FNODE_SEM.type = EXP(table[sret].types[1]);
                 if(FNODE_SEM.argtype != NULL)
                     FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
+                expTmpInsertTable(RET(FNODE_SEM.type));
+                FNODE_SEM.isTmp = 1;
+                FNODE_SEM.tmpPos = tptr;
+                showTable();
             }
             return;
         case 80:
@@ -767,6 +931,10 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 FNODE_SEM.type = EXP(table[sret].types[1]);
                 if(FNODE_SEM.argtype != NULL)
                     FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
+                expTmpInsertTable(RET(FNODE_SEM.type));
+                FNODE_SEM.isTmp = 1;
+                FNODE_SEM.tmpPos = tptr;
+                showTable();
             }
             return;
         default:
@@ -776,6 +944,8 @@ void sem(Sentence* node, int rulenum, int stepnum){
 
 int main()
 {
+    // FILE* f = fopen("./Test/SEM_TEST1.txt", "r");
+    // freopen("./TestRes/SEMTEST1_RES.txt", "w", stdout);
     FILE* f = fopen("./sem_test.c", "r");
     freopen("./TestRes/SEM_TEST.txt", "w", stdout);
     printf("lex:\n");
@@ -787,6 +957,8 @@ int main()
     printf("\n\nsemantic:\n");
     dfs(pgm);
     printf("\nsemantic analyse passed\n");
+    printf("\n\ncode:\n");
+    showCode(&(pgm->link));
     fclose(f);
     return 0;
 }

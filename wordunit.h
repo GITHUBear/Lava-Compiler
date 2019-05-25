@@ -1,6 +1,19 @@
 #ifndef WORD_UNIT_H
 #define WORD_UNIT_H
 
+#define offsetof(type, mem) ((size_t)(&(((type*)0)->mem)))
+#define link2type(type, le) ((type *)((char *)le - offsetof(type, link)))
+
+typedef struct List
+{
+    struct List *pre;
+    struct List *next;
+} list_t;
+
+void list_init(list_t* list);
+void list_del(list_t* le);
+void list_add(list_t* pre, list_t* le, list_t* next);
+
 // reserved word
 #define BOOL 1
 #define BREAK 2
@@ -100,6 +113,12 @@ void insertTrie(const char *str, int no, Trie root);
 void initTrie();
 Trie matchTrie(const char *str, Trie root);
 
+typedef struct code
+{
+    char assembly[50];
+    list_t link;
+} code;
+
 typedef struct seminfo
 {
     int type;
@@ -109,6 +128,8 @@ typedef struct seminfo
     int argnum;
     int arraynum;
     int cannotnew;
+    int isTmp;
+    int tmpPos;
 } seminfo;
 
 typedef union typeVal{
@@ -131,6 +152,7 @@ typedef struct Word{
     int irule;
     seminfo sem;
     struct Word* next[20];
+    list_t link;
 } Word;
 
 typedef struct Word Sentence;

@@ -1,11 +1,11 @@
-int a, b;
-
-int a(int a, int b1){
-    if(a > b1) return a;
-    else return b1;
-}
-
 int main(){
-    int res = a(1,2);
+    int a = 1;
+    {
+        int a = 2;
+    }
+    while(a < 10)
+    {
+        a = a + 10;
+    }
     return 0;
 }

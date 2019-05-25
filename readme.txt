@@ -182,7 +182,7 @@ Rules:
   78: exp ::= CNUM {exp.type = CHAREXP}.
   79: exp ::= ID {check ID references Function} {exp.types = exp.types} exp{check types} {exp.type = ID.type}.
   80: exp :: ID LLB RLB.
-
+4. 中间代码生成
    0: program ::= deflist.
    1: deflist ::= tp def deflist.
    2: deflist ::=.

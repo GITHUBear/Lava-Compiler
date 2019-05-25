@@ -1,7 +1,8 @@
 #ifndef SYMBOL_TABLE_H
 #define SYMBOL_TABLE_H
 
-#define DX 12
+#define DX (-12)
+#define ARGDX 0
 
 #define FUNC 1
 #define VAR 2
@@ -18,6 +19,7 @@ typedef struct symtable{
     int *argnum;
     char oname[20];
     int namedup;
+    int size;
 } symtable;
 
 // symtable table[ROWMAX];
