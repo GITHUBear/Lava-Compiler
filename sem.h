@@ -21,7 +21,7 @@
 
 #define INT_SIZE 4
 #define FLOAT_SIZE 4
-#define CHAR_SIZE 1
+#define CHAR_SIZE 4
 
 void sem(Sentence* node, int rulenum, int stepnum);
 

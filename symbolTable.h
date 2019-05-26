@@ -1,7 +1,7 @@
 #ifndef SYMBOL_TABLE_H
 #define SYMBOL_TABLE_H
 
-#define DX (-12)
+#define DX (-8)
 #define ARGDX 0
 
 #define FUNC 1

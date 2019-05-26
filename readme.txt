@@ -136,7 +136,7 @@ Rules:
   
   34: stmt ::= FOR initlist exp {check exp.type == BOOLEXP} steplist stmt. {stmt.retype = stmt.retype}
 
-  35: initlist ::= init COMMA initlist. [COMMA precedence=1]
+  35: initlist ::= init initlist. [COMMA precedence=1]
   36: initlist ::= init.
   37: init ::= ID {check ID reference} ASSIGN exp {check ID.type == exp.type}. [ASSIGN precedence=2]
   38: init ::= ID {check ID reference} ADDEQ exp {exp.type == ID.type && (ID.type == INT || ID.type == FLOAT)}. [ADDEQ precedence=2]

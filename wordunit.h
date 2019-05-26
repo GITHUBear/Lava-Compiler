@@ -113,6 +113,13 @@ void insertTrie(const char *str, int no, Trie root);
 void initTrie();
 Trie matchTrie(const char *str, Trie root);
 
+typedef struct jmplabel
+{
+    char* truelabel;
+    char* falselabel;
+    char* nextlabel;
+} jmplabel;
+
 typedef struct code
 {
     char assembly[50];
@@ -125,11 +132,14 @@ typedef struct seminfo
     int retype;
     int canLeft;
     int *argtype;
+    int *argpos;
     int argnum;
     int arraynum;
     int cannotnew;
     int isTmp;
     int tmpPos;
+    int stkPos;
+    int isGlobal;
 } seminfo;
 
 typedef union typeVal{
@@ -153,6 +163,7 @@ typedef struct Word{
     seminfo sem;
     struct Word* next[20];
     list_t link;
+    jmplabel jlb;
 } Word;
 
 typedef struct Word Sentence;
