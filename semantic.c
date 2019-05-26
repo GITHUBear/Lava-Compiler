@@ -1104,7 +1104,6 @@ void sem(Sentence* node, int rulenum, int stepnum){
                     FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
                     FNODE_SEM.argpos[FNODE_SEM.argnum] = table[sret].offset;
                 }
-
                 if(table[sret].level == 0){
                     // use address to acess global var
                     expTmpInsertTable(SEM_INT, node);
@@ -1181,6 +1180,7 @@ void sem(Sentence* node, int rulenum, int stepnum){
         case 69:
             if(stepnum == 0){
                 NODE_SEM(1).argtype = FNODE_SEM.argtype;
+                NODE_SEM(1).argpos = FNODE_SEM.argpos;
                 NODE_SEM(1).argnum = FNODE_SEM.argnum;
             }else if(stepnum == 2){
                 FNODE_SEM.argnum = NODE_SEM(1).argnum;
@@ -1292,6 +1292,7 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 NODE_SEM(1).argpos = (int *) malloc(MAXARG * sizeof(int));
                 NODE_SEM(1).argnum = 1;
                 NODE_SEM(2).argtype = NODE_SEM(1).argtype;
+                NODE_SEM(2).argpos = NODE_SEM(1).argpos;
                 NODE_SEM(2).argnum = NODE_SEM(1).argnum;
             }else if(stepnum == 2){
                 NODE_SEM(1).argnum = NODE_SEM(2).argnum;
@@ -1337,10 +1338,10 @@ void sem(Sentence* node, int rulenum, int stepnum){
 
 int main()
 {
-    FILE* f = fopen("./Test/SEM_TEST1.txt", "r");
-    freopen("./TestRes/SEMTEST1_RES.txt", "w", stdout);
-    // FILE* f = fopen("./sem_test.c", "r");
-    // freopen("./TestRes/SEM_TEST.txt", "w", stdout);
+    // FILE* f = fopen("./Test/SEM_TEST1.txt", "r");
+    // freopen("./TestRes/SEMTEST1_RES.txt", "w", stdout);
+    FILE* f = fopen("./sem_test.c", "r");
+    freopen("./TestRes/SEM_TEST.txt", "w", stdout);
     printf("lex:\n");
     lex_part(f);
     printf("\n\nsyntax:\n");
@@ -1350,8 +1351,8 @@ int main()
     printf("\n\nsemantic:\n");
     dfs(pgm);
     printf("\nsemantic analyse passed\n");
-    printf("\n\ncode:\n");
-    showCode(&(pgm->link));
+    // printf("\n\ncode:\n");
+    // showCode(&(pgm->link));
     fclose(f);
     return 0;
 }

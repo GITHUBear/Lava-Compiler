@@ -519,5 +519,717 @@ table:
       a     int       1       0          $tmp1
       b     int       1       4          $tmp2
 
-semantic_err: can't deal with 'stmt'
-reason: statments return type conflict
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int()
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int()
+      a     int       1       0          $tmp3
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int()
+      a     int       1       0          $tmp3
+      b     int       1       4          $tmp4
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int()
+      a     int       1       0          $tmp3
+      b     int       1       4          $tmp4
+      c     int       1       8        
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      a     int       1       0          $tmp3
+      b     int       1       4          $tmp4
+      c     int       1       8        
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      a     int       1       0          $tmp3
+      b     int       1       4          $tmp4
+      c     int       1       8        
+  $tmp5     int       1     -12        
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      a     int       1       0          $tmp3
+      b     int       1       4          $tmp4
+      c     int       1       8        
+  $tmp5     int       1     -12        
+  $tmp6     int       1     -16        
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int()
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int()
+      a     int       1       0          $tmp7
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+      a     int       1       0          $tmp7
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp10     int       1     -24        
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp10     int       1     -24        
+ $tmp11     int       1     -28        
+
+after pop
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp10     int       1     -24        
+
+after pop
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp12     int       1     -24        
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp12     int       1     -24        
+ $tmp13     int       1     -28        
+
+after pop
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp12     int       1     -24        
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp12     int       1     -24        
+      i     int       1     -28        
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp12     int       1     -24        
+      i     int       1     -28        
+  inner     int       2     -32        
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp12     int       1     -24        
+      i     int       1     -28        
+  inner     int       2     -32        
+ $tmp14     int       2     -36        
+
+after pop
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp12     int       1     -24        
+      i     int       1     -28        
+  inner     int       2     -32        
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp12     int       1     -24        
+      i     int       1     -28        
+  inner     int       2     -32        
+ finner   float       2     -36        
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp12     int       1     -24        
+      i     int       1     -28        
+  inner     int       2     -32        
+ finner   float       2     -36        
+ $tmp15   float       2     -40        
+
+after pop
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp12     int       1     -24        
+      i     int       1     -28        
+  inner     int       2     -32        
+ finner   float       2     -36        
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp12     int       1     -24        
+      i     int       1     -28        
+  inner     int       2     -32        
+ finner   float       2     -36        
+  inner     int       3     -40         $tmp16
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp12     int       1     -24        
+      i     int       1     -28        
+  inner     int       2     -32        
+ finner   float       2     -36        
+  inner     int       3     -40         $tmp16
+ $tmp17     int       3     -44        
+
+after pop
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp12     int       1     -24        
+      i     int       1     -28        
+  inner     int       2     -32        
+ finner   float       2     -36        
+  inner     int       3     -40         $tmp16
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp12     int       1     -24        
+      i     int       1     -28        
+  inner     int       2     -32        
+ finner   float       2     -36        
+  inner     int       3     -40         $tmp16
+ inner2     int       3     -44        
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp12     int       1     -24        
+      i     int       1     -28        
+  inner     int       2     -32        
+ finner   float       2     -36        
+  inner     int       3     -40         $tmp16
+ inner2     int       3     -44        
+ $tmp18     int       3     -48        
+
+after pop
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp12     int       1     -24        
+      i     int       1     -28        
+  inner     int       2     -32        
+ finner   float       2     -36        
+  inner     int       3     -40         $tmp16
+ inner2     int       3     -44        
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp12     int       1     -24        
+      i     int       1     -28        
+  inner     int       2     -32        
+ finner   float       2     -36        
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp12     int       1     -24        
+      i     int       1     -28        
+  inner     int       2     -32        
+ finner   float       2     -36        
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp12     int       1     -24        
+      i     int       1     -28        
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp12     int       1     -24        
+      i     int       1     -28        
+ $tmp19     int       1     -32        
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp12     int       1     -24        
+      i     int       1     -28        
+ $tmp19     int       1     -32        
+ $tmp20     int       1     -36        
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp12     int       1     -24        
+      i     int       1     -28        
+ $tmp19     int       1     -32        
+ $tmp20     int       1     -36        
+ $tmp21     int       2     -40        
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp12     int       1     -24        
+      i     int       1     -28        
+ $tmp19     int       1     -32        
+ $tmp20     int       1     -36        
+ $tmp21     int       2     -40        
+ $tmp22     int       3     -44        
+
+after pop
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp12     int       1     -24        
+      i     int       1     -28        
+ $tmp19     int       1     -32        
+ $tmp20     int       1     -36        
+ $tmp21     int       2     -40        
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp12     int       1     -24        
+      i     int       1     -28        
+ $tmp19     int       1     -32        
+ $tmp20     int       1     -36        
+ $tmp21     int       2     -40        
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp12     int       1     -24        
+      i     int       1     -28        
+ $tmp19     int       1     -32        
+ $tmp20     int       1     -36        
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp12     int       1     -24        
+      i     int       1     -28        
+ $tmp19     int       1     -32        
+ $tmp20     int       1     -36        
+ $tmp23     int       1     -40        
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+
+table:
+   name    type   level    offset  funarg   oname
+
+
+semantic analyse passed

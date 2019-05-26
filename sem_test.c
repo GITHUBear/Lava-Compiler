@@ -1,7 +1,7 @@
 int b;
 int[10] barray;
 int global;
-//int[12] b;  1. variable redefined
+// int[12] b;                    // 1. variable redefined
 
 int a(int a, int b){
     if(a > b) return a;
