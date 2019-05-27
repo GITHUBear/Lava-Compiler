@@ -118,6 +118,7 @@ typedef struct jmplabel
     char* truelabel;
     char* falselabel;
     char* nextlabel;
+    char* retlabel;
 } jmplabel;
 
 typedef struct code
@@ -162,6 +163,7 @@ typedef struct Word{
     int irule;
     seminfo sem;
     struct Word* next[20];
+    struct Word** arg;
     list_t link;
     jmplabel jlb;
 } Word;

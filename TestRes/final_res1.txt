@@ -1,0 +1,306 @@
+lex:
+(KEYWORD):[int]
+(ID):[res]
+(SEPERATOR):[;]
+(KEYWORD):[int]
+(ID):[main]
+(SEPERATOR):[(]
+(SEPERATOR):[)]
+(SEPERATOR):[{]
+(KEYWORD):[int]
+(ID):[a]
+(OPERATOR):[ASSIGN_OP, 57]
+(INUM):[3]
+(SEPERATOR):[;]
+(KEYWORD):[int]
+(ID):[b]
+(OPERATOR):[ASSIGN_OP, 57]
+(INUM):[2]
+(SEPERATOR):[;]
+(KEYWORD):[if]
+(SEPERATOR):[(]
+(ID):[a]
+(OPERATOR):[RELAT_OP, 41]
+(ID):[b]
+(OPERATOR):[LOGIC_OP, 51]
+(ID):[a]
+(OPERATOR):[RELAT_OP, 43]
+(ID):[b]
+(SEPERATOR):[)]
+(ID):[res]
+(OPERATOR):[ASSIGN_OP, 57]
+(INUM):[1]
+(SEPERATOR):[;]
+(KEYWORD):[else]
+(ID):[res]
+(OPERATOR):[ASSIGN_OP, 57]
+(INUM):[2]
+(SEPERATOR):[;]
+(KEYWORD):[return]
+(INUM):[0]
+(SEPERATOR):[;]
+(SEPERATOR):[}]
+
+
+syntax:
+program:
+    deflist:
+        tp:
+            'int':
+        def:
+            vallist:
+                ID:  [res]
+        deflist:
+            tp:
+                'int':
+            def:
+                fundef:
+                    ID:  [main]
+                compstmt:
+                    innerdeflist:
+                        innerdef:
+                            tp:
+                                'int':
+                            innerdeclist:
+                                innerdec:
+                                    ID:  [a]
+                                    OPERATER:  (ASSIGN_OP, =)
+                                    exp:
+                                        INTEGER:  [3]
+                        innerdeflist:
+                            innerdef:
+                                tp:
+                                    'int':
+                                innerdeclist:
+                                    innerdec:
+                                        ID:  [b]
+                                        OPERATER:  (ASSIGN_OP, =)
+                                        exp:
+                                            INTEGER:  [2]
+                            innerdeflist:
+                    stmtlist:
+                        stmt:
+                            'if':
+                            exp:
+                                exp:
+                                    exp:
+                                        ID:  [a]
+                                    OPERATER:  (RELAT_OP, >)
+                                    exp:
+                                        ID:  [b]
+                                OPERATER:  (LOGIC_OP, ||)
+                                exp:
+                                    exp:
+                                        ID:  [a]
+                                    OPERATER:  (RELAT_OP, <)
+                                    exp:
+                                        ID:  [b]
+                            stmt:
+                                exp:
+                                    exp:
+                                        ID:  [res]
+                                    OPERATER:  (ASSIGN_OP, =)
+                                    exp:
+                                        INTEGER:  [1]
+                            'else':
+                            stmt:
+                                exp:
+                                    exp:
+                                        ID:  [res]
+                                    OPERATER:  (ASSIGN_OP, =)
+                                    exp:
+                                        INTEGER:  [2]
+                        stmtlist:
+                            stmt:
+                                'return':
+                                exp:
+                                    INTEGER:  [0]
+                            stmtlist:
+            deflist:
+
+
+semantic:
+table:
+   name    type   level    offset  funarg   oname
+    res     int       0     -12        
+
+table:
+   name    type   level    offset  funarg   oname
+    res     int       0     -12        
+   main    func       0           int()
+
+table:
+   name    type   level    offset  funarg   oname
+    res     int       0     -12        
+   main    func       0           int()
+      a     int       1     -12        
+
+table:
+   name    type   level    offset  funarg   oname
+    res     int       0     -12        
+   main    func       0           int()
+      a     int       1     -12        
+  $tmp1     int       1     -16        
+
+after pop
+table:
+   name    type   level    offset  funarg   oname
+    res     int       0     -12        
+   main    func       0           int()
+      a     int       1     -12        
+
+table:
+   name    type   level    offset  funarg   oname
+    res     int       0     -12        
+   main    func       0           int()
+      a     int       1     -12        
+      b     int       1     -16        
+
+table:
+   name    type   level    offset  funarg   oname
+    res     int       0     -12        
+   main    func       0           int()
+      a     int       1     -12        
+      b     int       1     -16        
+  $tmp2     int       1     -20        
+
+after pop
+table:
+   name    type   level    offset  funarg   oname
+    res     int       0     -12        
+   main    func       0           int()
+      a     int       1     -12        
+      b     int       1     -16        
+
+table:
+   name    type   level    offset  funarg   oname
+    res     int       0     -12        
+   main    func       0           int()
+      a     int       1     -12        
+      b     int       1     -16        
+  $tmp3     int       1     -20        
+
+table:
+   name    type   level    offset  funarg   oname
+    res     int       0     -12        
+   main    func       0           int()
+      a     int       1     -12        
+      b     int       1     -16        
+  $tmp3     int       1     -20        
+  $tmp4     int       1     -24        
+
+after pop
+table:
+   name    type   level    offset  funarg   oname
+    res     int       0     -12        
+   main    func       0           int()
+      a     int       1     -12        
+      b     int       1     -16        
+  $tmp3     int       1     -20        
+
+table:
+   name    type   level    offset  funarg   oname
+    res     int       0     -12        
+   main    func       0           int()
+      a     int       1     -12        
+      b     int       1     -16        
+  $tmp3     int       1     -20        
+  $tmp5     int       1     -24        
+
+table:
+   name    type   level    offset  funarg   oname
+    res     int       0     -12        
+   main    func       0           int()
+      a     int       1     -12        
+      b     int       1     -16        
+  $tmp3     int       1     -20        
+  $tmp5     int       1     -24        
+  $tmp6     int       1     -28        
+
+after pop
+table:
+   name    type   level    offset  funarg   oname
+    res     int       0     -12        
+   main    func       0           int()
+      a     int       1     -12        
+      b     int       1     -16        
+  $tmp3     int       1     -20        
+  $tmp5     int       1     -24        
+
+table:
+   name    type   level    offset  funarg   oname
+    res     int       0     -12        
+   main    func       0           int()
+      a     int       1     -12        
+      b     int       1     -16        
+  $tmp3     int       1     -20        
+  $tmp5     int       1     -24        
+  $tmp7     int       1     -28        
+
+table:
+   name    type   level    offset  funarg   oname
+    res     int       0     -12        
+   main    func       0           int()
+
+table:
+   name    type   level    offset  funarg   oname
+
+
+semantic analyse passed
+
+
+code:
+.data
+res: .word 0
+
+.text
+main:
+addiu $sp, $sp, -28
+sw $ra, 24($sp)
+sw $fp, 20($sp)
+addiu $fp, $sp, -28
+addiu $t0, $0, 3
+sw $t0, -16($fp)
+lw $t0, -16($fp)
+sw $t0, -12($fp)
+addiu $t0, $0, 2
+sw $t0, -20($fp)
+lw $t0, -20($fp)
+sw $t0, -16($fp)
+lw $t0, -12($fp)
+lw $t1, -16($fp)
+bgt $t0, $t1, label4
+j label6
+label6:
+lw $t0, -12($fp)
+lw $t1, -16($fp)
+blt $t0, $t1, label4
+j label5
+label4:
+la $t0, res
+sw $t0, -20($fp)
+addiu $t0, $0, 1
+sw $t0, -24($fp)
+lw $t0, -24($fp)
+lw $t1, -20($fp)
+sw $t0, 0($t1)
+j label3
+label5:
+la $t0, res
+sw $t0, -24($fp)
+addiu $t0, $0, 2
+sw $t0, -28($fp)
+lw $t0, -28($fp)
+lw $t1, -24($fp)
+sw $t0, 0($t1)
+label3:
+addiu $t0, $0, 0
+sw $t0, -28($fp)
+lw $v1, -28($fp)
+j label1
+label7:
+label1:
+lw $fp, 20($sp)
+lw $ra, 24($sp)
+addiu $sp, $sp, 28
+jr $ra

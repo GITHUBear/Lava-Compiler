@@ -1,0 +1,230 @@
+lex:
+(KEYWORD):[int]
+(ID):[res]
+(SEPERATOR):[;]
+(KEYWORD):[int]
+(ID):[dump]
+(SEPERATOR):[(]
+(KEYWORD):[int]
+(ID):[a]
+(SEPERATOR):[)]
+(SEPERATOR):[{]
+(KEYWORD):[return]
+(ID):[a]
+(SEPERATOR):[;]
+(SEPERATOR):[}]
+(KEYWORD):[int]
+(ID):[main]
+(SEPERATOR):[(]
+(SEPERATOR):[)]
+(SEPERATOR):[{]
+(ID):[res]
+(OPERATOR):[ASSIGN_OP, 57]
+(ID):[dump]
+(SEPERATOR):[(]
+(INUM):[100]
+(SEPERATOR):[)]
+(SEPERATOR):[;]
+(KEYWORD):[return]
+(INUM):[0]
+(SEPERATOR):[;]
+(SEPERATOR):[}]
+
+
+syntax:
+program:
+    deflist:
+        tp:
+            'int':
+        def:
+            vallist:
+                ID:  [res]
+        deflist:
+            tp:
+                'int':
+            def:
+                fundef:
+                    ID:  [dump]
+                    args:
+                        param:
+                            tp:
+                                'int':
+                            ID:  [a]
+                compstmt:
+                    innerdeflist:
+                    stmtlist:
+                        stmt:
+                            'return':
+                            exp:
+                                ID:  [a]
+                        stmtlist:
+            deflist:
+                tp:
+                    'int':
+                def:
+                    fundef:
+                        ID:  [main]
+                    compstmt:
+                        innerdeflist:
+                        stmtlist:
+                            stmt:
+                                exp:
+                                    exp:
+                                        ID:  [res]
+                                    OPERATER:  (ASSIGN_OP, =)
+                                    exp:
+                                        ID:  [dump]
+                                        exp:
+                                            INTEGER:  [100]
+                            stmtlist:
+                                stmt:
+                                    'return':
+                                    exp:
+                                        INTEGER:  [0]
+                                stmtlist:
+                deflist:
+
+
+semantic:
+table:
+   name    type   level    offset  funarg   oname
+    res     int       0     -12        
+
+table:
+   name    type   level    offset  funarg   oname
+    res     int       0     -12        
+   dump    func       0           int()
+
+table:
+   name    type   level    offset  funarg   oname
+    res     int       0     -12        
+   dump    func       0           int()
+      a     int       1       0        
+
+table:
+   name    type   level    offset  funarg   oname
+    res     int       0     -12        
+   dump    func       0           int(int, )
+      a     int       1       0        
+
+table:
+   name    type   level    offset  funarg   oname
+    res     int       0     -12        
+   dump    func       0           int(int, )
+
+table:
+   name    type   level    offset  funarg   oname
+    res     int       0     -12        
+   dump    func       0           int(int, )
+   main    func       0           int()
+
+table:
+   name    type   level    offset  funarg   oname
+    res     int       0     -12        
+   dump    func       0           int(int, )
+   main    func       0           int()
+  $tmp1     int       1     -12        
+
+table:
+   name    type   level    offset  funarg   oname
+    res     int       0     -12        
+   dump    func       0           int(int, )
+   main    func       0           int()
+  $tmp1     int       1     -12        
+  $tmp2     int       1     -16        
+
+table:
+   name    type   level    offset  funarg   oname
+    res     int       0     -12        
+   dump    func       0           int(int, )
+   main    func       0           int()
+  $tmp1     int       1     -12        
+  $tmp2     int       1     -16        
+  $tmp3     int       1     -20        
+
+after pop
+table:
+   name    type   level    offset  funarg   oname
+    res     int       0     -12        
+   dump    func       0           int(int, )
+   main    func       0           int()
+  $tmp1     int       1     -12        
+  $tmp2     int       1     -16        
+
+table:
+   name    type   level    offset  funarg   oname
+    res     int       0     -12        
+   dump    func       0           int(int, )
+   main    func       0           int()
+  $tmp1     int       1     -12        
+  $tmp2     int       1     -16        
+  $tmp4     int       1     -20        
+
+table:
+   name    type   level    offset  funarg   oname
+    res     int       0     -12        
+   dump    func       0           int(int, )
+   main    func       0           int()
+
+table:
+   name    type   level    offset  funarg   oname
+
+
+semantic analyse passed
+
+
+code:
+.data
+res: .word 0
+
+.text
+dump:
+addiu $sp, $sp, -8
+sw $ra, 4($sp)
+sw $fp, 0($sp)
+addiu $fp, $sp, 8
+lw $v1, 0($fp)
+j label1
+label3:
+label1:
+lw $fp, 0($sp)
+lw $ra, 4($sp)
+addiu $sp, $sp, 8
+jr $ra
+
+.text
+main:
+addiu $sp, $sp, -20
+sw $ra, 16($sp)
+sw $fp, 12($sp)
+addiu $fp, $sp, 20
+la $t0, res
+sw $t0, -12($fp)
+addiu $t0, $0, 100
+sw $t0, -16($fp)
+sw $t2, -4($sp)
+sw $t1, -8($sp)
+sw $t0, -12($sp)
+lw $t0, -16($fp)
+sw $t0, -16($sp)
+addiu $sp, $sp, -16
+jal dump
+sw $v1, -20($fp)
+addiu $sp, $sp, 16
+lw $t0, -12($sp)
+lw $t1, -8($sp)
+lw $t2, -4($sp)
+lw $t0, -20($fp)
+lw $t1, -12($fp)
+sw $t0, 0($t1)
+label6:
+addiu $t0, $0, 0
+sw $t0, -20($fp)
+lw $v1, -20($fp)
+j label4
+label7:
+label4:
+lw $fp, 12($sp)
+lw $ra, 16($sp)
+addiu $sp, $sp, 20
+jr $ra

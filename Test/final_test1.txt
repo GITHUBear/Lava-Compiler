@@ -1,0 +1,11 @@
+int res;
+
+int main(){
+    int a = 3;
+    int b = 2;
+    if(a > b || a < b)
+        res = 1;
+    else
+        res = 2;
+    return 0;
+}

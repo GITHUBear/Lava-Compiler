@@ -387,11 +387,12 @@ void sem(Sentence* node, int rulenum, int stepnum){
             else if(stepnum == 1){
                 NODE_SEM(2).cannotnew = 1;
                 minsize = DX;
+                NODE(2)->jlb.retlabel = newlabel();
             }else if(stepnum == 2){
                 if(NODE_SEM(2).retype != FNODE_SEM.type){
                     sem_error(NODE(2), "function return type conflict");
                 }
-                sprintf(tmpcode, "addiu $fp, $sp, %d\n", minsize);
+                sprintf(tmpcode, "addiu $fp, $sp, %d\n", -minsize);
                 addCodePre(&(NODE(1)->link), genCode());
                 sprintf(tmpcode, "sw $fp, %d($sp)\n", -(minsize + 8));
                 addCodePre(&(NODE(1)->link), genCode());
@@ -406,6 +407,8 @@ void sem(Sentence* node, int rulenum, int stepnum){
 
                 list_cat(&(NODE(1)->link), &(NODE(2)->link));
 
+                sprintf(tmpcode, "%s:\n", NODE(2)->jlb.retlabel);
+                addCodeBack(&(NODE(1)->link), genCode());
                 sprintf(tmpcode, "lw $fp, %d($sp)\n", -(minsize + 8));
                 addCodeBack(&(NODE(1)->link), genCode());
                 sprintf(tmpcode, "lw $ra, %d($sp)\n", -(minsize + 4));
@@ -495,6 +498,7 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 if(FNODE_SEM.cannotnew == 0)
                     newZone(0);
                 NODE(2)->jlb.nextlabel = newlabel();
+                NODE(2)->jlb.retlabel = node->jlb.retlabel;
             }else if(stepnum == 2){
                 // if(FNODE_SEM.cannotnew == 0)
                 //     quitZone(0);
@@ -594,6 +598,8 @@ void sem(Sentence* node, int rulenum, int stepnum){
         case 26:
             if(stepnum == 0){
                 NODE(1)->jlb.nextlabel = newlabel();
+                NODE(1)->jlb.retlabel = node->jlb.retlabel;
+                NODE(2)->jlb.retlabel = node->jlb.retlabel;
             }else if(stepnum == 1){
                 NODE(2)->jlb.nextlabel = node->jlb.nextlabel;
             }else if(stepnum == 2){
@@ -617,6 +623,7 @@ void sem(Sentence* node, int rulenum, int stepnum){
         case 28:
             if(stepnum == 0){
                 NODE(1)->jlb.nextlabel = node->jlb.nextlabel;
+                NODE(1)->jlb.retlabel = node->jlb.retlabel;
             }else if(stepnum == 1){
                 FNODE_SEM.retype = NODE_SEM(1).retype;
                 list_share(&(node->link), &(NODE(1)->link));
@@ -633,6 +640,8 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 FNODE_SEM.retype = RET(NODE_SEM(2).type);
                 sprintf(tmpcode, "lw $v1, %d($fp)\n", NODE_SEM(2).stkPos);
                 addCodeBack(&(NODE(2)->link), genCode());
+                sprintf(tmpcode, "j %s\n", node->jlb.retlabel);
+                addCodeBack(&(NODE(2)->link), genCode());
                 list_share(&(node->link), &(NODE(2)->link));
             }
             return;
@@ -640,6 +649,7 @@ void sem(Sentence* node, int rulenum, int stepnum){
             if(stepnum == 0){
                 NODE(2)->jlb.truelabel = newlabel();
                 NODE(2)->jlb.falselabel = node->jlb.nextlabel;
+                NODE(3)->jlb.retlabel = node->jlb.retlabel;
             }else if(stepnum == 2){
                 if(NODE_SEM(2).type != SEM_BOOL_EXP)
                     sem_error(NODE(2), "exp should be a BOOL EXP in if clause");
@@ -656,6 +666,8 @@ void sem(Sentence* node, int rulenum, int stepnum){
             if(stepnum == 0){
                 NODE(2)->jlb.truelabel = newlabel();
                 NODE(2)->jlb.falselabel = newlabel();
+                NODE(3)->jlb.retlabel = node->jlb.retlabel;
+                NODE(5)->jlb.retlabel = node->jlb.retlabel;
             }else if(stepnum == 2){
                 if(NODE_SEM(2).type != SEM_BOOL_EXP)
                     sem_error(NODE(2), "exp should be a BOOL EXP in if clause");
@@ -685,6 +697,7 @@ void sem(Sentence* node, int rulenum, int stepnum){
             if(stepnum == 0){
                 NODE(2)->jlb.truelabel = newlabel();
                 NODE(2)->jlb.falselabel = node->jlb.nextlabel;
+                NODE(3)->jlb.retlabel = node->jlb.retlabel;
             }else if(stepnum == 2){
                 if(NODE_SEM(2).type != SEM_BOOL_EXP)
                     sem_error(NODE(2), "exp should be a BOOL EXP in while clause");
@@ -705,6 +718,7 @@ void sem(Sentence* node, int rulenum, int stepnum){
             if(stepnum == 0){
                 NODE(3)->jlb.truelabel = newlabel();
                 NODE(3)->jlb.falselabel = node->jlb.nextlabel;
+                NODE(5)->jlb.retlabel = node->jlb.retlabel;
             }else if(stepnum == 3){
                 if(NODE_SEM(3).type != SEM_BOOL_EXP)
                     sem_error(NODE(3), "exp should be a BOOL EXP in for clause");
@@ -1018,6 +1032,7 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 FNODE_SEM.type = NODE_SEM(3).type;
                 if(FNODE_SEM.argtype != NULL){
                     FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
+                    node->arg[FNODE_SEM.argnum] = node;
                 }
                 if(NODE_SEM(3).isTmp && NODE_SEM(3).tmpPos == tptr){
                     popOne();
@@ -1032,9 +1047,6 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 expTmpInsertTable(RET(FNODE_SEM.type), node);
                 FNODE_SEM.isTmp = 1;
                 FNODE_SEM.tmpPos = tptr;
-                if(FNODE_SEM.argtype != NULL){
-                    FNODE_SEM.argpos[FNODE_SEM.argnum] = FNODE_SEM.stkPos;
-                }
                 showTable();
 
                 list_cat(&(NODE(1)->link), &(NODE(3)->link));
@@ -1060,13 +1072,13 @@ void sem(Sentence* node, int rulenum, int stepnum){
         case 60:
             if(stepnum == 1){
                 FNODE_SEM.type = SEM_INT_EXP;
-                if(FNODE_SEM.argtype != NULL)
+                if(FNODE_SEM.argtype != NULL){
                     FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
+                    node->arg[FNODE_SEM.argnum] = node;
+                }
                 expTmpInsertTable(RET(FNODE_SEM.type), node);
                 FNODE_SEM.isTmp = 1;
                 FNODE_SEM.tmpPos = tptr;
-                if(FNODE_SEM.argtype != NULL)
-                    FNODE_SEM.argpos[FNODE_SEM.argnum] = FNODE_SEM.stkPos;
                 showTable();
 
                 sprintf(tmpcode, "addiu $t0, $0, %d\n", NODE(1)->tval.ivalue);
@@ -1078,13 +1090,13 @@ void sem(Sentence* node, int rulenum, int stepnum){
         case 61:
             if(stepnum == 1){
                 FNODE_SEM.type = SEM_FLOAT_EXP;
-                if(FNODE_SEM.argtype != NULL)
+                if(FNODE_SEM.argtype != NULL){
                     FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
+                    node->arg[FNODE_SEM.argnum] = node;
+                }
                 expTmpInsertTable(RET(FNODE_SEM.type), node);
                 FNODE_SEM.isTmp = 1;
                 FNODE_SEM.tmpPos = tptr;
-                if(FNODE_SEM.argtype != NULL)
-                    FNODE_SEM.argpos[FNODE_SEM.argnum] = FNODE_SEM.stkPos;
                 showTable();
 
                 sprintf(tmpcode, "addiu $t0, $0, %d\n", (int)NODE(1)->tval.fvalue);
@@ -1102,7 +1114,7 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 FNODE_SEM.canLeft = 1;
                 if(FNODE_SEM.argtype != NULL){
                     FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
-                    FNODE_SEM.argpos[FNODE_SEM.argnum] = table[sret].offset;
+                    node->arg[FNODE_SEM.argnum] = node;
                 }
                 if(table[sret].level == 0){
                     // use address to acess global var
@@ -1112,6 +1124,7 @@ void sem(Sentence* node, int rulenum, int stepnum){
                     addCodeBack(&(node->link), genCode());
                     sprintf(tmpcode, "sw $t0, %d($fp)\n", FNODE_SEM.stkPos);
                     addCodeBack(&(node->link), genCode());
+                    FNODE_SEM.isGlobal = 1;
                 }else{
                     FNODE_SEM.stkPos = table[sret].offset;
                 }
@@ -1123,11 +1136,12 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 FNODE_SEM.canLeft = NODE_SEM(1).canLeft;
                 if(FNODE_SEM.argtype != NULL){
                     FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
-                    FNODE_SEM.argpos[FNODE_SEM.argnum] = NODE_SEM(1).stkPos;
+                    node->arg[FNODE_SEM.argnum] = node;
                 }
                 FNODE_SEM.isTmp = NODE_SEM(1).isTmp;
                 FNODE_SEM.tmpPos = NODE_SEM(1).tmpPos;
                 FNODE_SEM.stkPos = NODE_SEM(1).stkPos;
+                FNODE_SEM.isGlobal = NODE_SEM(1).isGlobal;
                 list_share(&(node->link), &(NODE(1)->link));
             }
             return;
@@ -1170,8 +1184,6 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 expTmpInsertTable(RET(FNODE_SEM.type), node);
                 FNODE_SEM.isTmp = 1;
                 FNODE_SEM.tmpPos = tptr;
-                if(FNODE_SEM.argtype != NULL)
-                    FNODE_SEM.argpos[FNODE_SEM.argnum] = FNODE_SEM.stkPos;
                 showTable();
 
                 // logic arith not support yet;
@@ -1180,14 +1192,14 @@ void sem(Sentence* node, int rulenum, int stepnum){
         case 69:
             if(stepnum == 0){
                 NODE_SEM(1).argtype = FNODE_SEM.argtype;
-                NODE_SEM(1).argpos = FNODE_SEM.argpos;
+                NODE(1)->arg = node->arg;
                 NODE_SEM(1).argnum = FNODE_SEM.argnum;
             }else if(stepnum == 2){
                 FNODE_SEM.argnum = NODE_SEM(1).argnum;
                 FNODE_SEM.type = SEM_UNDEF_EXP;
                 if(FNODE_SEM.argtype != NULL){
                     FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(NODE_SEM(2).type);
-                    FNODE_SEM.argpos[FNODE_SEM.argnum] = FNODE_SEM.stkPos;
+                    node->arg[FNODE_SEM.argnum] = node;
                 }
 
                 list_cat(&(NODE(1)->link), &(NODE(2)->link));
@@ -1209,8 +1221,44 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 FNODE_SEM.canLeft = 1;
                 if(FNODE_SEM.argtype != NULL){
                     FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
-
+                    node->arg[FNODE_SEM.argnum] = node;
                 }
+                
+                expTmpInsertTable(SEM_INT, node);
+                showTable();
+                if(table[sret].level == 0){
+                    // use address to acess global array
+                    sprintf(tmpcode, "la $t0, %s\n", NODE(1)->tval.name);
+                    addCodeBack(&(NODE(2)->link), genCode());
+                    sprintf(tmpcode, "lw $t1, %d($fp)\n", NODE_SEM(2).stkPos);
+                    addCodeBack(&(NODE(2)->link), genCode());
+                    if(NODE_SEM(2).isGlobal){
+                        sprintf(tmpcode, "lw $t1, 0($t1)\n");
+                        addCodeBack(&(NODE(2)->link), genCode());
+                    }
+                    sprintf(tmpcode, "sll $t1, $t1, 2\n");
+                    addCodeBack(&(NODE(2)->link), genCode());
+                    sprintf(tmpcode, "add $t0, $t0, $t1\n");
+                    addCodeBack(&(NODE(2)->link), genCode());
+                    sprintf(tmpcode, "sw $t0, %d($fp)\n", FNODE_SEM.stkPos);
+                    addCodeBack(&(NODE(2)->link), genCode());
+                }else{
+                    sprintf(tmpcode, "lw $t0, %d($fp)\n", NODE_SEM(2).stkPos);
+                    addCodeBack(&(NODE(2)->link), genCode());
+                    if(NODE_SEM(2).isGlobal){
+                        sprintf(tmpcode, "lw $t0, 0($t0)\n");
+                        addCodeBack(&(NODE(2)->link), genCode());
+                    }
+                    sprintf(tmpcode, "sll $t0, $t0, 2\n");
+                    addCodeBack(&(NODE(2)->link), genCode());
+                    sprintf(tmpcode, "sub $t0, $t0, %d\n", table[sret].offset);
+                    addCodeBack(&(NODE(2)->link), genCode());
+                    sprintf(tmpcode, "sub $t0, $fp, $t0\n");
+                    addCodeBack(&(NODE(2)->link), genCode());
+                    sprintf(tmpcode, "sw $t0, %d($fp)\n", FNODE_SEM.stkPos);
+                }
+                list_share(&(node->link), &(NODE(2)->link));
+                FNODE_SEM.isGlobal = 1;
             }
             return;
         case 71:
@@ -1221,15 +1269,36 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 if(NODE_SEM(1).type != NODE_SEM(3).type)
                     sem_error(NODE(1), "\'=\' type match failed");
                 FNODE_SEM.type = NODE_SEM(1).type;
+                // FNODE_SEM.stkPos , FNODE_SEM.isGlobal
                 if(FNODE_SEM.argtype != NULL){
                     FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
-
+                    node->arg[FNODE_SEM.argnum] = node;
                 }
                 if(NODE_SEM(3).isTmp && NODE_SEM(3).tmpPos == tptr){
                     popOne();
                     printf("after pop\n");
                     showTable();
                 }
+
+                sprintf(tmpcode, "lw $t0, %d($fp)\n", NODE_SEM(3).stkPos);
+                addCodeBack(&(NODE(3)->link), genCode());
+                if(NODE_SEM(3).isGlobal){
+                    sprintf(tmpcode, "lw $t0, 0($t0)\n");
+                    addCodeBack(&(NODE(3)->link), genCode());
+                }
+                if(NODE_SEM(1).isGlobal){
+                    sprintf(tmpcode, "lw $t1, %d($fp)\n", NODE_SEM(1).stkPos);
+                    addCodeBack(&(NODE(3)->link), genCode());
+                    sprintf(tmpcode, "sw $t0, 0($t1)\n");
+                    addCodeBack(&(NODE(3)->link), genCode());
+                }else{
+                    sprintf(tmpcode, "sw $t0, %d($fp)\n", NODE_SEM(1).stkPos);
+                    addCodeBack(&(NODE(3)->link), genCode());
+                }
+                list_cat(&(NODE(1)->link), &(NODE(3)->link));
+                list_share(&(node->link), &(NODE(1)->link));
+                FNODE_SEM.isGlobal = NODE_SEM(1).isGlobal;
+                FNODE_SEM.stkPos = NODE_SEM(1).stkPos;
             }
             return;
         case 72:
@@ -1243,13 +1312,50 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 if(NODE_SEM(1).type != SEM_INT_EXP && NODE_SEM(1).type != SEM_FLOAT_EXP)
                     sem_error(NODE(1), "+=/-= operator only supports INT or FLOAT EXP");
                 FNODE_SEM.type = NODE_SEM(1).type;
-                if(FNODE_SEM.argtype != NULL)
+                // FNODE_SEM.stkPos , FNODE_SEM.isGlobal
+                if(FNODE_SEM.argtype != NULL){
                     FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
+                    node->arg[FNODE_SEM.argnum] = node;
+                }
                 if(NODE_SEM(3).isTmp && NODE_SEM(3).tmpPos == tptr){
                     popOne();
                     printf("after pop\n");
                     showTable();
                 }
+
+                sprintf(tmpcode, "lw $t0, %d($fp)\n", NODE_SEM(3).stkPos);
+                addCodeBack(&(NODE(3)->link), genCode());
+                if(NODE_SEM(3).isGlobal){
+                    sprintf(tmpcode, "lw $t0, 0($t0)\n");
+                    addCodeBack(&(NODE(3)->link), genCode());
+                }
+                if(NODE_SEM(1).isGlobal){
+                    sprintf(tmpcode, "lw $t1, %d($fp)\n", NODE_SEM(1).stkPos);
+                    addCodeBack(&(NODE(3)->link), genCode());
+                    sprintf(tmpcode, "lw $t2, 0($t1)\n");
+                    addCodeBack(&(NODE(3)->link), genCode());
+                    if(rulenum == 72)
+                        sprintf(tmpcode, "add $t0, $t2, $t0\n");
+                    else
+                        sprintf(tmpcode, "sub $t0, $t2, $t0\n");
+                    addCodeBack(&(NODE(3)->link), genCode());
+                    sprintf(tmpcode, "sw $t0, 0($t1)\n");
+                    addCodeBack(&(NODE(3)->link), genCode());
+                }else{
+                    sprintf(tmpcode, "lw $t1, %d($fp)\n", NODE_SEM(1).stkPos);
+                    addCodeBack(&(NODE(3)->link), genCode());
+                    if(rulenum == 72)
+                        sprintf(tmpcode, "add $t0, $t1, $t0\n");
+                    else
+                        sprintf(tmpcode, "sub $t0, $t1, $t0\n");
+                    addCodeBack(&(NODE(3)->link), genCode());
+                    sprintf(tmpcode, "sw $t0, %d($fp)\n", NODE_SEM(1).stkPos);
+                    addCodeBack(&(NODE(3)->link), genCode());
+                }
+                list_cat(&(NODE(1)->link), &(NODE(3)->link));
+                list_share(&(node->link), &(NODE(1)->link));
+                FNODE_SEM.isGlobal = NODE_SEM(1).isGlobal;
+                FNODE_SEM.stkPos = NODE_SEM(1).stkPos;
             }
             return;
         case 74:
@@ -1260,8 +1366,36 @@ void sem(Sentence* node, int rulenum, int stepnum){
             }else if(stepnum == 2){
                 FNODE_SEM.type = SEM_INT_EXP;
                 FNODE_SEM.canLeft = 1;
-                if(FNODE_SEM.argtype != NULL)
+                // FNODE_SEM.stkPos , FNODE_SEM.isGlobal
+                if(FNODE_SEM.argtype != NULL){
                     FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
+                    node->arg[FNODE_SEM.argnum] = node;
+                }
+
+                sprintf(tmpcode, "lw $t0, %d($fp)\n", NODE_SEM(1).stkPos);
+                addCodeBack(&(NODE(1)->link), genCode());
+                if(NODE_SEM(1).isGlobal){
+                    sprintf(tmpcode, "lw $t1, 0($t0)\n");
+                    addCodeBack(&(NODE(1)->link), genCode());
+                    if(rulenum == 74)
+                        sprintf(tmpcode, "addiu $t1, $t1, 1\n");
+                    else 
+                        sprintf(tmpcode, "subiu $t1, $t1, 1\n");
+                    addCodeBack(&(NODE(1)->link), genCode());
+                    sprintf(tmpcode, "sw $t1, 0($t0)\n");
+                    addCodeBack(&(NODE(1)->link), genCode());
+                }else{
+                    if(rulenum == 74)
+                        sprintf(tmpcode, "addiu $t0, $t0, 1\n");
+                    else 
+                        sprintf(tmpcode, "subiu $t0, $t0, 1\n");
+                    addCodeBack(&(NODE(1)->link), genCode());
+                    sprintf(tmpcode, "sw $t0, %d($fp)\n", NODE_SEM(1).stkPos);
+                    addCodeBack(&(NODE(1)->link), genCode());
+                }
+                list_share(&(node->link), &(NODE(1)->link));
+                FNODE_SEM.isGlobal = NODE_SEM(1).isGlobal;
+                FNODE_SEM.stkPos = NODE_SEM(1).stkPos;
             }
             return;
         case 76:
@@ -1271,28 +1405,63 @@ void sem(Sentence* node, int rulenum, int stepnum){
                     sem_error(NODE(2), "++/-- only supports an INT left value");
                 FNODE_SEM.type = SEM_INT_EXP;
                 FNODE_SEM.canLeft = 1;
-                if(FNODE_SEM.argtype != NULL)
+                if(FNODE_SEM.argtype != NULL){
                     FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
+                    node->arg[FNODE_SEM.argnum] = node;
+                }
+
+                sprintf(tmpcode, "lw $t0, %d($fp)\n", NODE_SEM(2).stkPos);
+                    addCodeBack(&(NODE(2)->link), genCode());
+                    if(NODE_SEM(2).isGlobal){
+                        sprintf(tmpcode, "lw $t1, 0($t0)\n");
+                        addCodeBack(&(NODE(2)->link), genCode());
+                        if(rulenum == 76)
+                            sprintf(tmpcode, "addiu $t1, $t1, 1\n");
+                        else 
+                            sprintf(tmpcode, "subiu $t1, $t1, 1\n");
+                        addCodeBack(&(NODE(2)->link), genCode());
+                        sprintf(tmpcode, "sw $t1, 0($t0)\n");
+                        addCodeBack(&(NODE(2)->link), genCode());
+                    }else{
+                        if(rulenum == 76)
+                            sprintf(tmpcode, "addiu $t0, $t0, 1\n");
+                        else 
+                            sprintf(tmpcode, "subiu $t0, $t0, 1\n");
+                        addCodeBack(&(NODE(2)->link), genCode());
+                        sprintf(tmpcode, "sw $t0, %d($fp)\n", NODE_SEM(2).stkPos);
+                        addCodeBack(&(NODE(2)->link), genCode());
+                    }
+                    list_share(&(node->link), &(NODE(2)->link));
+                    FNODE_SEM.isGlobal = NODE_SEM(2).isGlobal;
+                    FNODE_SEM.stkPos = NODE_SEM(2).stkPos;
             }
+
             return;
         case 78:
             if(stepnum == 1){
                 FNODE_SEM.type = SEM_INT_EXP;
-                if(FNODE_SEM.argtype != NULL)
+                if(FNODE_SEM.argtype != NULL){
                     FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
+                    node->arg[FNODE_SEM.argnum] = node;
+                }
                 expTmpInsertTable(RET(FNODE_SEM.type), node);
                 FNODE_SEM.isTmp = 1;
                 FNODE_SEM.tmpPos = tptr;
                 showTable();
+
+                sprintf(tmpcode, "addiu $t0, $0, %d\n", (int)NODE(1)->tval.cvalue);
+                addCodeBack(&(node->link), genCode());
+                sprintf(tmpcode, "sw $t0, %d($fp)\n", FNODE_SEM.stkPos);
+                addCodeBack(&(node->link), genCode());
             }
             return;
         case 79:
             if(stepnum == 1){
                 NODE_SEM(1).argtype = (int *) malloc(MAXARG * sizeof(int));
-                NODE_SEM(1).argpos = (int *) malloc(MAXARG * sizeof(int));
+                NODE(1)->arg = (Sentence **) malloc(MAXARG * sizeof(Sentence *));
                 NODE_SEM(1).argnum = 1;
                 NODE_SEM(2).argtype = NODE_SEM(1).argtype;
-                NODE_SEM(2).argpos = NODE_SEM(1).argpos;
+                NODE(2)->arg = NODE(1)->arg;
                 NODE_SEM(2).argnum = NODE_SEM(1).argnum;
             }else if(stepnum == 2){
                 NODE_SEM(1).argnum = NODE_SEM(2).argnum;
@@ -1304,18 +1473,55 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 if(sret == -2)
                     sem_error(NODE(1), "function args not match");
                 FNODE_SEM.type = EXP(table[sret].types[1]);
-                if(FNODE_SEM.argtype != NULL)
+                if(FNODE_SEM.argtype != NULL){
                     FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
+                    node->arg[FNODE_SEM.argnum] = node;
+                }
                 expTmpInsertTable(RET(FNODE_SEM.type), node);
                 FNODE_SEM.isTmp = 1;
                 FNODE_SEM.tmpPos = tptr;
                 showTable();
+
+                sprintf(tmpcode, "sw $t2, -4($sp)\n");
+                addCodeBack(&(NODE(2)->link), genCode());
+                sprintf(tmpcode, "sw $t1, -8($sp)\n");
+                addCodeBack(&(NODE(2)->link), genCode());
+                sprintf(tmpcode, "sw $t0, -12($sp)\n");
+                addCodeBack(&(NODE(2)->link), genCode());
+                int tmpoffset = -16;
+                for(int i = NODE_SEM(1).argnum; i >= 2; i--){
+                    sprintf(tmpcode, "lw $t0, %d($fp)\n", NODE(1)->arg[i]->sem.stkPos);
+                    addCodeBack(&(NODE(2)->link), genCode());
+                    if(NODE(1)->arg[i]->sem.isGlobal){
+                        sprintf(tmpcode, "lw $t0, 0($t0)\n");
+                        addCodeBack(&(NODE(2)->link), genCode());
+                    }
+                    sprintf(tmpcode, "sw $t0, %d($sp)\n", tmpoffset);
+                    addCodeBack(&(NODE(2)->link), genCode());
+                    tmpoffset -= 4;
+                }
+                tmpoffset += 4;
+                sprintf(tmpcode, "addiu $sp, $sp, %d\n", tmpoffset);
+                addCodeBack(&(NODE(2)->link), genCode());
+                sprintf(tmpcode, "jal %s\n", NODE(1)->tval.name);
+                addCodeBack(&(NODE(2)->link), genCode());
+                sprintf(tmpcode, "sw $v1, %d($fp)\n", FNODE_SEM.stkPos);
+                addCodeBack(&(NODE(2)->link), genCode());
+                sprintf(tmpcode, "addiu $sp, $sp, %d\n", -tmpoffset);
+                addCodeBack(&(NODE(2)->link), genCode());
+                sprintf(tmpcode, "lw $t0, -12($sp)\n");
+                addCodeBack(&(NODE(2)->link), genCode());
+                sprintf(tmpcode, "lw $t1, -8($sp)\n");
+                addCodeBack(&(NODE(2)->link), genCode());
+                sprintf(tmpcode, "lw $t2, -4($sp)\n");
+                addCodeBack(&(NODE(2)->link), genCode());
+                list_share(&(node->link), &(NODE(2)->link));
             }
             return;
         case 80:
             if(stepnum == 1){
                 NODE_SEM(1).argtype = (int *) malloc(MAXARG * sizeof(int));
-                NODE_SEM(1).argpos = (int *) malloc(MAXARG * sizeof(int));
+                NODE(1)->arg = (Sentence **) malloc(MAXARG * sizeof(Sentence *));
                 NODE_SEM(1).argnum = 1;
                 int sret = searchReference(NODE(1), 1);
                 if(sret == -1)
@@ -1323,12 +1529,36 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 if(sret == -2)
                     sem_error(NODE(1), "function args not match");
                 FNODE_SEM.type = EXP(table[sret].types[1]);
-                if(FNODE_SEM.argtype != NULL)
+                if(FNODE_SEM.argtype != NULL){
                     FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(FNODE_SEM.type);
+                    node->arg[FNODE_SEM.argnum] = node;
+                }
                 expTmpInsertTable(RET(FNODE_SEM.type), node);
                 FNODE_SEM.isTmp = 1;
                 FNODE_SEM.tmpPos = tptr;
                 showTable();
+
+                sprintf(tmpcode, "sw $t2, -4($sp)\n");
+                addCodeBack(&(node->link), genCode());
+                sprintf(tmpcode, "sw $t1, -8($sp)\n");
+                addCodeBack(&(node->link), genCode());
+                sprintf(tmpcode, "sw $t0, -12($sp)\n");
+                addCodeBack(&(node->link), genCode());
+
+                sprintf(tmpcode, "addiu $sp, $sp, -12\n");
+                addCodeBack(&(node->link), genCode());
+                sprintf(tmpcode, "jal %s\n", NODE(1)->tval.name);
+                addCodeBack(&(node->link), genCode());
+                sprintf(tmpcode, "sw $v1, %d($fp)\n", FNODE_SEM.stkPos);
+                addCodeBack(&(node->link), genCode());
+                sprintf(tmpcode, "addiu $sp, $sp, 12\n");
+                addCodeBack(&(node->link), genCode());
+                sprintf(tmpcode, "lw $t0, -12($sp)\n");
+                addCodeBack(&(node->link), genCode());
+                sprintf(tmpcode, "lw $t1, -8($sp)\n");
+                addCodeBack(&(node->link), genCode());
+                sprintf(tmpcode, "lw $t2, -4($sp)\n");
+                addCodeBack(&(node->link), genCode());
             }
             return;
         default:
@@ -1340,8 +1570,10 @@ int main()
 {
     // FILE* f = fopen("./Test/SEM_TEST1.txt", "r");
     // freopen("./TestRes/SEMTEST1_RES.txt", "w", stdout);
-    FILE* f = fopen("./sem_test.c", "r");
-    freopen("./TestRes/SEM_TEST.txt", "w", stdout);
+    // FILE* f = fopen("./sem_test.c", "r");
+    // freopen("./TestRes/SEM_TEST.txt", "w", stdout);
+    FILE* f = fopen("./Test/final_test3.txt", "r");
+    freopen("./TestRes/final_res3.txt", "w", stdout);
     printf("lex:\n");
     lex_part(f);
     printf("\n\nsyntax:\n");
@@ -1351,8 +1583,8 @@ int main()
     printf("\n\nsemantic:\n");
     dfs(pgm);
     printf("\nsemantic analyse passed\n");
-    // printf("\n\ncode:\n");
-    // showCode(&(pgm->link));
+    printf("\n\ncode:\n");
+    showCode(&(pgm->link));
     fclose(f);
     return 0;
 }

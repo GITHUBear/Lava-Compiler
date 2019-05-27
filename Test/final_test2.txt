@@ -1,0 +1,10 @@
+int res;
+
+int dump(int a){
+    return a;
+}
+
+int main(){
+    res = dump(100);
+    return 0;
+}

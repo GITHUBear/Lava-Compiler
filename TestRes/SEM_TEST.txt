@@ -1144,7 +1144,70 @@ table:
  $tmp19     int       1     -32        
  $tmp20     int       1     -36        
  $tmp21     int       2     -40        
- $tmp22     int       3     -44        
+ $tmp22     int       2     -44        
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp12     int       1     -24        
+      i     int       1     -28        
+ $tmp19     int       1     -32        
+ $tmp20     int       1     -36        
+ $tmp21     int       2     -40        
+ $tmp22     int       2     -44        
+ $tmp23     int       2     -48        
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp12     int       1     -24        
+      i     int       1     -28        
+ $tmp19     int       1     -32        
+ $tmp20     int       1     -36        
+ $tmp21     int       2     -40        
+ $tmp22     int       2     -44        
+ $tmp23     int       2     -48        
+ $tmp24     int       3     -52        
+
+table:
+   name    type   level    offset  funarg   oname
+      b     int       0     -12        
+ barray int_array       0     -52        
+ global     int       0     -56        
+      a    func       0           int(int, int, )
+   max3    func       0           int(int, int, int, )
+      c    func       0           int(int, )
+   main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp12     int       1     -24        
+      i     int       1     -28        
+ $tmp19     int       1     -32        
+ $tmp20     int       1     -36        
+ $tmp21     int       2     -40        
+ $tmp22     int       2     -44        
+ $tmp23     int       2     -48        
+ $tmp24     int       3     -52        
+ $tmp25     int       3     -56        
 
 after pop
 table:
@@ -1164,6 +1227,9 @@ table:
  $tmp19     int       1     -32        
  $tmp20     int       1     -36        
  $tmp21     int       2     -40        
+ $tmp22     int       2     -44        
+ $tmp23     int       2     -48        
+ $tmp24     int       3     -52        
 
 table:
    name    type   level    offset  funarg   oname
@@ -1182,6 +1248,8 @@ table:
  $tmp19     int       1     -32        
  $tmp20     int       1     -36        
  $tmp21     int       2     -40        
+ $tmp22     int       2     -44        
+ $tmp23     int       2     -48        
 
 table:
    name    type   level    offset  funarg   oname
@@ -1216,7 +1284,7 @@ table:
       i     int       1     -28        
  $tmp19     int       1     -32        
  $tmp20     int       1     -36        
- $tmp23     int       1     -40        
+ $tmp26     int       1     -40        
 
 table:
    name    type   level    offset  funarg   oname

@@ -1,0 +1,601 @@
+lex:
+(KEYWORD):[int]
+(SEPERATOR):[[]
+(INUM):[10]
+(SEPERATOR):[]]
+(ID):[res]
+(SEPERATOR):[;]
+(KEYWORD):[int]
+(ID):[fib]
+(SEPERATOR):[(]
+(KEYWORD):[int]
+(ID):[a]
+(SEPERATOR):[)]
+(SEPERATOR):[{]
+(KEYWORD):[if]
+(SEPERATOR):[(]
+(ID):[a]
+(OPERATOR):[RELAT_OP, 45]
+(INUM):[1]
+(OPERATOR):[LOGIC_OP, 51]
+(ID):[a]
+(OPERATOR):[RELAT_OP, 45]
+(INUM):[2]
+(SEPERATOR):[)]
+(KEYWORD):[return]
+(INUM):[1]
+(SEPERATOR):[;]
+(KEYWORD):[else]
+(KEYWORD):[return]
+(ID):[fib]
+(SEPERATOR):[(]
+(ID):[a]
+(OPERATOR):[ARITH_OP, 38]
+(INUM):[1]
+(SEPERATOR):[)]
+(OPERATOR):[ARITH_OP, 37]
+(ID):[fib]
+(SEPERATOR):[(]
+(ID):[a]
+(OPERATOR):[ARITH_OP, 38]
+(INUM):[2]
+(SEPERATOR):[)]
+(SEPERATOR):[;]
+(SEPERATOR):[}]
+(KEYWORD):[int]
+(ID):[main]
+(SEPERATOR):[(]
+(SEPERATOR):[)]
+(SEPERATOR):[{]
+(KEYWORD):[int]
+(ID):[i]
+(OPERATOR):[ASSIGN_OP, 57]
+(INUM):[1]
+(SEPERATOR):[;]
+(KEYWORD):[while]
+(SEPERATOR):[(]
+(ID):[i]
+(OPERATOR):[RELAT_OP, 43]
+(INUM):[10]
+(SEPERATOR):[)]
+(SEPERATOR):[{]
+(ID):[res]
+(SEPERATOR):[[]
+(ID):[i]
+(SEPERATOR):[]]
+(OPERATOR):[ASSIGN_OP, 57]
+(ID):[fib]
+(SEPERATOR):[(]
+(ID):[i]
+(SEPERATOR):[)]
+(SEPERATOR):[;]
+(ID):[i]
+(OPERATOR):[UNARY_OP, 30]
+(SEPERATOR):[;]
+(SEPERATOR):[}]
+(KEYWORD):[return]
+(INUM):[0]
+(SEPERATOR):[;]
+(SEPERATOR):[}]
+
+
+syntax:
+program:
+    deflist:
+        tp:
+            'int':
+            INTEGER:  [10]
+        def:
+            vallist:
+                ID:  [res]
+        deflist:
+            tp:
+                'int':
+            def:
+                fundef:
+                    ID:  [fib]
+                    args:
+                        param:
+                            tp:
+                                'int':
+                            ID:  [a]
+                compstmt:
+                    innerdeflist:
+                    stmtlist:
+                        stmt:
+                            'if':
+                            exp:
+                                exp:
+                                    exp:
+                                        ID:  [a]
+                                    OPERATER:  (RELAT_OP, ==)
+                                    exp:
+                                        INTEGER:  [1]
+                                OPERATER:  (LOGIC_OP, ||)
+                                exp:
+                                    exp:
+                                        ID:  [a]
+                                    OPERATER:  (RELAT_OP, ==)
+                                    exp:
+                                        INTEGER:  [2]
+                            stmt:
+                                'return':
+                                exp:
+                                    INTEGER:  [1]
+                            'else':
+                            stmt:
+                                'return':
+                                exp:
+                                    exp:
+                                        ID:  [fib]
+                                        exp:
+                                            exp:
+                                                ID:  [a]
+                                            OPERATER:  (ARITH_OP, -)
+                                            exp:
+                                                INTEGER:  [1]
+                                    OPERATER:  (ARITH_OP, +)
+                                    exp:
+                                        ID:  [fib]
+                                        exp:
+                                            exp:
+                                                ID:  [a]
+                                            OPERATER:  (ARITH_OP, -)
+                                            exp:
+                                                INTEGER:  [2]
+                        stmtlist:
+            deflist:
+                tp:
+                    'int':
+                def:
+                    fundef:
+                        ID:  [main]
+                    compstmt:
+                        innerdeflist:
+                            innerdef:
+                                tp:
+                                    'int':
+                                innerdeclist:
+                                    innerdec:
+                                        ID:  [i]
+                                        OPERATER:  (ASSIGN_OP, =)
+                                        exp:
+                                            INTEGER:  [1]
+                            innerdeflist:
+                        stmtlist:
+                            stmt:
+                                'while':
+                                exp:
+                                    exp:
+                                        ID:  [i]
+                                    OPERATER:  (RELAT_OP, <)
+                                    exp:
+                                        INTEGER:  [10]
+                                stmt:
+                                    compstmt:
+                                        innerdeflist:
+                                        stmtlist:
+                                            stmt:
+                                                exp:
+                                                    exp:
+                                                        ID:  [res]
+                                                        exp:
+                                                            ID:  [i]
+                                                    OPERATER:  (ASSIGN_OP, =)
+                                                    exp:
+                                                        ID:  [fib]
+                                                        exp:
+                                                            ID:  [i]
+                                            stmtlist:
+                                                stmt:
+                                                    exp:
+                                                        exp:
+                                                            ID:  [i]
+                                                        OPERATER:  (UNARY_OP, ++)
+                                                stmtlist:
+                            stmtlist:
+                                stmt:
+                                    'return':
+                                    exp:
+                                        INTEGER:  [0]
+                                stmtlist:
+                deflist:
+
+
+semantic:
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+    fib    func       0           int()
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+    fib    func       0           int()
+      a     int       1       0        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+    fib    func       0           int(int, )
+      a     int       1       0        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+    fib    func       0           int(int, )
+      a     int       1       0        
+  $tmp1     int       1     -12        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+    fib    func       0           int(int, )
+      a     int       1       0        
+  $tmp1     int       1     -12        
+  $tmp2     int       1     -16        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+    fib    func       0           int(int, )
+      a     int       1       0        
+  $tmp1     int       1     -12        
+  $tmp2     int       1     -16        
+  $tmp3     int       1     -20        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+    fib    func       0           int(int, )
+      a     int       1       0        
+  $tmp1     int       1     -12        
+  $tmp2     int       1     -16        
+  $tmp3     int       1     -20        
+  $tmp4     int       1     -24        
+
+after pop
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+    fib    func       0           int(int, )
+      a     int       1       0        
+  $tmp1     int       1     -12        
+  $tmp2     int       1     -16        
+  $tmp3     int       1     -20        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+    fib    func       0           int(int, )
+      a     int       1       0        
+  $tmp1     int       1     -12        
+  $tmp2     int       1     -16        
+  $tmp3     int       1     -20        
+  $tmp5     int       1     -24        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+    fib    func       0           int(int, )
+      a     int       1       0        
+  $tmp1     int       1     -12        
+  $tmp2     int       1     -16        
+  $tmp3     int       1     -20        
+  $tmp5     int       1     -24        
+  $tmp6     int       1     -28        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+    fib    func       0           int(int, )
+      a     int       1       0        
+  $tmp1     int       1     -12        
+  $tmp2     int       1     -16        
+  $tmp3     int       1     -20        
+  $tmp5     int       1     -24        
+  $tmp6     int       1     -28        
+  $tmp7     int       1     -32        
+
+after pop
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+    fib    func       0           int(int, )
+      a     int       1       0        
+  $tmp1     int       1     -12        
+  $tmp2     int       1     -16        
+  $tmp3     int       1     -20        
+  $tmp5     int       1     -24        
+  $tmp6     int       1     -28        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+    fib    func       0           int(int, )
+      a     int       1       0        
+  $tmp1     int       1     -12        
+  $tmp2     int       1     -16        
+  $tmp3     int       1     -20        
+  $tmp5     int       1     -24        
+  $tmp6     int       1     -28        
+  $tmp8     int       1     -32        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+    fib    func       0           int(int, )
+      a     int       1       0        
+  $tmp1     int       1     -12        
+  $tmp2     int       1     -16        
+  $tmp3     int       1     -20        
+  $tmp5     int       1     -24        
+  $tmp6     int       1     -28        
+  $tmp8     int       1     -32        
+  $tmp9     int       1     -36        
+
+after pop
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+    fib    func       0           int(int, )
+      a     int       1       0        
+  $tmp1     int       1     -12        
+  $tmp2     int       1     -16        
+  $tmp3     int       1     -20        
+  $tmp5     int       1     -24        
+  $tmp6     int       1     -28        
+  $tmp8     int       1     -32        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+    fib    func       0           int(int, )
+      a     int       1       0        
+  $tmp1     int       1     -12        
+  $tmp2     int       1     -16        
+  $tmp3     int       1     -20        
+  $tmp5     int       1     -24        
+  $tmp6     int       1     -28        
+  $tmp8     int       1     -32        
+ $tmp10     int       1     -36        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+    fib    func       0           int(int, )
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+    fib    func       0           int(int, )
+   main    func       0           int()
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+    fib    func       0           int(int, )
+   main    func       0           int()
+      i     int       1     -12        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+    fib    func       0           int(int, )
+   main    func       0           int()
+      i     int       1     -12        
+ $tmp11     int       1     -16        
+
+after pop
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+    fib    func       0           int(int, )
+   main    func       0           int()
+      i     int       1     -12        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+    fib    func       0           int(int, )
+   main    func       0           int()
+      i     int       1     -12        
+ $tmp12     int       1     -16        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+    fib    func       0           int(int, )
+   main    func       0           int()
+      i     int       1     -12        
+ $tmp12     int       1     -16        
+ $tmp13     int       2     -20        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+    fib    func       0           int(int, )
+   main    func       0           int()
+      i     int       1     -12        
+ $tmp12     int       1     -16        
+ $tmp13     int       2     -20        
+ $tmp14     int       2     -24        
+
+after pop
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+    fib    func       0           int(int, )
+   main    func       0           int()
+      i     int       1     -12        
+ $tmp12     int       1     -16        
+ $tmp13     int       2     -20        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+    fib    func       0           int(int, )
+   main    func       0           int()
+      i     int       1     -12        
+ $tmp12     int       1     -16        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+    fib    func       0           int(int, )
+   main    func       0           int()
+      i     int       1     -12        
+ $tmp12     int       1     -16        
+ $tmp15     int       1     -20        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+    fib    func       0           int(int, )
+   main    func       0           int()
+
+table:
+   name    type   level    offset  funarg   oname
+
+
+semantic analyse passed
+
+
+code:
+.data
+res: .space 40
+
+.text
+fib:
+addiu $sp, $sp, -36
+sw $ra, 32($sp)
+sw $fp, 28($sp)
+addiu $fp, $sp, 36
+addiu $t0, $0, 1
+sw $t0, -12($fp)
+lw $t0, 0($fp)
+lw $t1, -12($fp)
+beq $t0, $t1, label4
+j label6
+label6:
+addiu $t0, $0, 2
+sw $t0, -16($fp)
+lw $t0, 0($fp)
+lw $t1, -16($fp)
+beq $t0, $t1, label4
+j label5
+label4:
+addiu $t0, $0, 1
+sw $t0, -20($fp)
+lw $v1, -20($fp)
+j label1
+j label3
+label5:
+addiu $t0, $0, 1
+sw $t0, -24($fp)
+lw $t0, 0($fp)
+lw $t1, -24($fp)
+sub $t0, $t0, $t1
+sw $t0, -24($fp)
+sw $t2, -4($sp)
+sw $t1, -8($sp)
+sw $t0, -12($sp)
+lw $t0, -24($fp)
+sw $t0, -16($sp)
+addiu $sp, $sp, -16
+jal fib
+sw $v1, -28($fp)
+addiu $sp, $sp, 16
+lw $t0, -12($sp)
+lw $t1, -8($sp)
+lw $t2, -4($sp)
+addiu $t0, $0, 2
+sw $t0, -32($fp)
+lw $t0, 0($fp)
+lw $t1, -32($fp)
+sub $t0, $t0, $t1
+sw $t0, -32($fp)
+sw $t2, -4($sp)
+sw $t1, -8($sp)
+sw $t0, -12($sp)
+lw $t0, -32($fp)
+sw $t0, -16($sp)
+addiu $sp, $sp, -16
+jal fib
+sw $v1, -36($fp)
+addiu $sp, $sp, 16
+lw $t0, -12($sp)
+lw $t1, -8($sp)
+lw $t2, -4($sp)
+lw $t0, -28($fp)
+lw $t1, -36($fp)
+add $t0, $t0, $t1
+sw $t0, -36($fp)
+lw $v1, -36($fp)
+j label1
+label3:
+label1:
+lw $fp, 28($sp)
+lw $ra, 32($sp)
+addiu $sp, $sp, 36
+jr $ra
+
+.text
+main:
+addiu $sp, $sp, -24
+sw $ra, 20($sp)
+sw $fp, 16($sp)
+addiu $fp, $sp, 24
+addiu $t0, $0, 1
+sw $t0, -16($fp)
+lw $t0, -16($fp)
+sw $t0, -12($fp)
+label11:
+addiu $t0, $0, 10
+sw $t0, -16($fp)
+lw $t0, -12($fp)
+lw $t1, -16($fp)
+blt $t0, $t1, label10
+j label9
+label10:
+la $t0, res
+lw $t1, -12($fp)
+sll $t1, $t1, 2
+add $t0, $t0, $t1
+sw $t0, -20($fp)
+sw $t2, -4($sp)
+sw $t1, -8($sp)
+sw $t0, -12($sp)
+lw $t0, -12($fp)
+sw $t0, -16($sp)
+addiu $sp, $sp, -16
+jal fib
+sw $v1, -24($fp)
+addiu $sp, $sp, 16
+lw $t0, -12($sp)
+lw $t1, -8($sp)
+lw $t2, -4($sp)
+lw $t0, -24($fp)
+lw $t1, -20($fp)
+sw $t0, 0($t1)
+label13:
+lw $t0, -12($fp)
+addiu $t0, $t0, 1
+sw $t0, -12($fp)
+label14:
+j label11
+label9:
+addiu $t0, $0, 0
+sw $t0, -20($fp)
+lw $v1, -20($fp)
+j label7
+label15:
+label7:
+lw $fp, 16($sp)
+lw $ra, 20($sp)
+addiu $sp, $sp, 24
+jr $ra
