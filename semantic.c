@@ -287,6 +287,11 @@ void sem(Sentence* node, int rulenum, int stepnum){
             if(stepnum == 1){
                 quitZone();
                 showTable();
+
+                sprintf(tmpcode, "j main\n\n");
+                addCodePre(&(NODE(1)->link), genCode());
+                sprintf(tmpcode, ".text\n");
+                addCodePre(&(NODE(1)->link), genCode());
                 list_share(&(node->link), &(NODE(1)->link));
             }
             return;
@@ -755,15 +760,17 @@ void sem(Sentence* node, int rulenum, int stepnum){
                     sem_error(NODE(1), "the var isn't defined");
                 if(EXP(table[sret].type) != NODE_SEM(3).type)
                     sem_error(NODE(1), "type match failed");
+
                 sprintf(tmpcode, "lw $t0, %d($fp)\n", NODE_SEM(3).stkPos);
-                addCodeBack(&(node->link), genCode());
+                addCodeBack(&(NODE(3)->link), genCode());
                 if(table[sret].level == 0){
                     sprintf(tmpcode, "sw $t0, %s\n", table[sret].name);
-                    addCodeBack(&(node->link), genCode());
+                    addCodeBack(&(NODE(3)->link), genCode());
                 }else{
                     sprintf(tmpcode, "sw $t0, %d($fp)\n", table[sret].offset);
-                    addCodeBack(&(node->link), genCode());
+                    addCodeBack(&(NODE(3)->link), genCode());
                 }
+                list_share(&(node->link), &(NODE(3)->link));
             }
             return;
         case 38:
@@ -775,23 +782,25 @@ void sem(Sentence* node, int rulenum, int stepnum){
                     sem_error(NODE(1), "type match failed");
                 if(table[sret].type != SEM_INT && table[sret].type != SEM_FLOAT)
                     sem_error(NODE(1), "+= operator only supports INT and FLOAT");
+
                 sprintf(tmpcode, "lw $t0, %d($fp)\n", NODE_SEM(3).stkPos);
-                addCodeBack(&(node->link), genCode());
+                addCodeBack(&(NODE(3)->link), genCode());
                 if(table[sret].level == 0){
                     sprintf(tmpcode, "lw $t1, %s\n", table[sret].name);
-                    addCodeBack(&(node->link), genCode());
+                    addCodeBack(&(NODE(3)->link), genCode());
                     sprintf(tmpcode, "add $t0, $t1, $t0\n");
-                    addCodeBack(&(node->link), genCode());
+                    addCodeBack(&(NODE(3)->link), genCode());
                     sprintf(tmpcode, "sw $t0, %s\n", table[sret].name);
-                    addCodeBack(&(node->link), genCode());
+                    addCodeBack(&(NODE(3)->link), genCode());
                 }else{
                     sprintf(tmpcode, "lw $t1, %d($fp)\n", table[sret].offset);
-                    addCodeBack(&(node->link), genCode());
+                    addCodeBack(&(NODE(3)->link), genCode());
                     sprintf(tmpcode, "add $t0, $t1, $t0\n");
-                    addCodeBack(&(node->link), genCode());
+                    addCodeBack(&(NODE(3)->link), genCode());
                     sprintf(tmpcode, "sw $t0, %d($fp)\n", table[sret].offset);
-                    addCodeBack(&(node->link), genCode());
+                    addCodeBack(&(NODE(3)->link), genCode());
                 }
+                list_share(&(node->link), &(NODE(3)->link));                
             }
             return;
         case 39:
@@ -803,23 +812,25 @@ void sem(Sentence* node, int rulenum, int stepnum){
                     sem_error(NODE(1), "type match failed");
                 if(table[sret].type != SEM_INT && table[sret].type != SEM_FLOAT)
                     sem_error(NODE(1), "+= operator only supports INT and FLOAT");
+
                 sprintf(tmpcode, "lw $t0, %d($fp)\n", NODE_SEM(3).stkPos);
-                addCodeBack(&(node->link), genCode());
+                addCodeBack(&(NODE(3)->link), genCode());
                 if(table[sret].level == 0){
                     sprintf(tmpcode, "lw $t1, %s\n", table[sret].name);
-                    addCodeBack(&(node->link), genCode());
+                    addCodeBack(&(NODE(3)->link), genCode());
                     sprintf(tmpcode, "sub $t0, $t1, $t0\n");
-                    addCodeBack(&(node->link), genCode());
+                    addCodeBack(&(NODE(3)->link), genCode());
                     sprintf(tmpcode, "sw $t0, %s\n", table[sret].name);
-                    addCodeBack(&(node->link), genCode());
+                    addCodeBack(&(NODE(3)->link), genCode());
                 }else{
                     sprintf(tmpcode, "lw $t1, %d($fp)\n", table[sret].offset);
-                    addCodeBack(&(node->link), genCode());
+                    addCodeBack(&(NODE(3)->link), genCode());
                     sprintf(tmpcode, "sub $t0, $t1, $t0\n");
-                    addCodeBack(&(node->link), genCode());
+                    addCodeBack(&(NODE(3)->link), genCode());
                     sprintf(tmpcode, "sw $t0, %d($fp)\n", table[sret].offset);
-                    addCodeBack(&(node->link), genCode());
+                    addCodeBack(&(NODE(3)->link), genCode());
                 }
+                list_share(&(node->link), &(NODE(3)->link));
             }
             return;
         case 40:
@@ -936,15 +947,17 @@ void sem(Sentence* node, int rulenum, int stepnum){
                     sem_error(NODE(1), "the var isn't defined");
                 if(EXP(table[sret].type) != NODE_SEM(3).type)
                     sem_error(NODE(1), "type match failed");
+
                 sprintf(tmpcode, "lw $t0, %d($fp)\n", NODE_SEM(3).stkPos);
-                addCodeBack(&(node->link), genCode());
+                addCodeBack(&(NODE(3)->link), genCode());
                 if(table[sret].level == 0){
                     sprintf(tmpcode, "sw $t0, %s\n", table[sret].name);
-                    addCodeBack(&(node->link), genCode());
+                    addCodeBack(&(NODE(3)->link), genCode());
                 }else{
                     sprintf(tmpcode, "sw $t0, %d($fp)\n", table[sret].offset);
-                    addCodeBack(&(node->link), genCode());
+                    addCodeBack(&(NODE(3)->link), genCode());
                 }
+                list_share(&(node->link), &(NODE(3)->link));
             }
             return;
         case 47:
@@ -1570,10 +1583,10 @@ int main()
 {
     // FILE* f = fopen("./Test/SEM_TEST1.txt", "r");
     // freopen("./TestRes/SEMTEST1_RES.txt", "w", stdout);
-    // FILE* f = fopen("./sem_test.c", "r");
-    // freopen("./TestRes/SEM_TEST.txt", "w", stdout);
-    FILE* f = fopen("./Test/final_test3.txt", "r");
-    freopen("./TestRes/final_res3.txt", "w", stdout);
+    FILE* f = fopen("./sem_test.c", "r");
+    freopen("./TestRes/SEM_TEST.txt", "w", stdout);
+    // FILE* f = fopen("./Test/final_test3.txt", "r");
+    // freopen("./TestRes/final_res3.txt", "w", stdout);
     printf("lex:\n");
     lex_part(f);
     printf("\n\nsyntax:\n");

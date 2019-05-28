@@ -177,6 +177,10 @@ lex:
 (KEYWORD):[return]
 (INUM):[1]
 (SEPERATOR):[;]
+(KEYWORD):[else]
+(KEYWORD):[return]
+(FNUM):[0.000000]
+(SEPERATOR):[;]
 (SEPERATOR):[}]
 
 
@@ -466,6 +470,11 @@ program:
                                                             'return':
                                                             exp:
                                                                 INTEGER:  [1]
+                                                        'else':
+                                                        stmt:
+                                                            'return':
+                                                            exp:
+                                                                FLOAT:  [0.000000]
                                                     stmtlist:
                                 deflist:
 
@@ -1295,9 +1304,15 @@ table:
    max3    func       0           int(int, int, int, )
       c    func       0           int(int, )
    main    func       0           int()
+   res2     int       1     -12        
+  $tmp8     int       1     -16        
+  $tmp9     int       1     -20        
+ $tmp12     int       1     -24        
+      i     int       1     -28        
+ $tmp19     int       1     -32        
+ $tmp20     int       1     -36        
+ $tmp26     int       1     -40        
+ $tmp27   float       1     -44        
 
-table:
-   name    type   level    offset  funarg   oname
-
-
-semantic analyse passed
+semantic_err: can't deal with 'stmt'
+reason: statments return type conflict

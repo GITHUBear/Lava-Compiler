@@ -1,0 +1,379 @@
+lex:
+(KEYWORD):[int]
+(SEPERATOR):[[]
+(INUM):[10]
+(SEPERATOR):[]]
+(ID):[a]
+(SEPERATOR):[;]
+(KEYWORD):[int]
+(ID):[res]
+(SEPERATOR):[;]
+(KEYWORD):[int]
+(ID):[main]
+(SEPERATOR):[(]
+(SEPERATOR):[)]
+(SEPERATOR):[{]
+(KEYWORD):[int]
+(ID):[i]
+(SEPERATOR):[;]
+(KEYWORD):[for]
+(SEPERATOR):[(]
+(ID):[i]
+(OPERATOR):[ASSIGN_OP, 57]
+(INUM):[0]
+(SEPERATOR):[;]
+(ID):[i]
+(OPERATOR):[RELAT_OP, 43]
+(INUM):[10]
+(SEPERATOR):[;]
+(ID):[i]
+(OPERATOR):[UNARY_OP, 30]
+(SEPERATOR):[)]
+(SEPERATOR):[{]
+(ID):[a]
+(SEPERATOR):[[]
+(ID):[i]
+(SEPERATOR):[]]
+(OPERATOR):[ASSIGN_OP, 57]
+(ID):[i]
+(SEPERATOR):[;]
+(SEPERATOR):[}]
+(KEYWORD):[for]
+(SEPERATOR):[(]
+(ID):[i]
+(OPERATOR):[ASSIGN_OP, 57]
+(INUM):[0]
+(SEPERATOR):[;]
+(ID):[i]
+(OPERATOR):[RELAT_OP, 43]
+(INUM):[10]
+(SEPERATOR):[;]
+(ID):[i]
+(OPERATOR):[UNARY_OP, 30]
+(SEPERATOR):[)]
+(ID):[res]
+(OPERATOR):[MIXASSIGN_OP, 52]
+(ID):[a]
+(SEPERATOR):[[]
+(ID):[i]
+(SEPERATOR):[]]
+(SEPERATOR):[;]
+(KEYWORD):[return]
+(INUM):[0]
+(SEPERATOR):[;]
+(SEPERATOR):[}]
+
+
+syntax:
+program:
+    deflist:
+        tp:
+            'int':
+            INTEGER:  [10]
+        def:
+            vallist:
+                ID:  [a]
+        deflist:
+            tp:
+                'int':
+            def:
+                vallist:
+                    ID:  [res]
+            deflist:
+                tp:
+                    'int':
+                def:
+                    fundef:
+                        ID:  [main]
+                    compstmt:
+                        innerdeflist:
+                            innerdef:
+                                tp:
+                                    'int':
+                                innerdeclist:
+                                    innerdec:
+                                        ID:  [i]
+                            innerdeflist:
+                        stmtlist:
+                            stmt:
+                                'for':
+                                initlist:
+                                    init:
+                                        ID:  [i]
+                                        OPERATER:  (ASSIGN_OP, =)
+                                        exp:
+                                            INTEGER:  [0]
+                                exp:
+                                    exp:
+                                        ID:  [i]
+                                    OPERATER:  (RELAT_OP, <)
+                                    exp:
+                                        INTEGER:  [10]
+                                steplist:
+                                    step:
+                                        ID:  [i]
+                                        OPERATER:  (UNARY_OP, ++)
+                                stmt:
+                                    compstmt:
+                                        innerdeflist:
+                                        stmtlist:
+                                            stmt:
+                                                exp:
+                                                    exp:
+                                                        ID:  [a]
+                                                        exp:
+                                                            ID:  [i]
+                                                    OPERATER:  (ASSIGN_OP, =)
+                                                    exp:
+                                                        ID:  [i]
+                                            stmtlist:
+                            stmtlist:
+                                stmt:
+                                    'for':
+                                    initlist:
+                                        init:
+                                            ID:  [i]
+                                            OPERATER:  (ASSIGN_OP, =)
+                                            exp:
+                                                INTEGER:  [0]
+                                    exp:
+                                        exp:
+                                            ID:  [i]
+                                        OPERATER:  (RELAT_OP, <)
+                                        exp:
+                                            INTEGER:  [10]
+                                    steplist:
+                                        step:
+                                            ID:  [i]
+                                            OPERATER:  (UNARY_OP, ++)
+                                    stmt:
+                                        exp:
+                                            exp:
+                                                ID:  [res]
+                                            OPERATER:  (MIXASSIGN_OP, +=)
+                                            exp:
+                                                ID:  [a]
+                                                exp:
+                                                    ID:  [i]
+                                stmtlist:
+                                    stmt:
+                                        'return':
+                                        exp:
+                                            INTEGER:  [0]
+                                    stmtlist:
+                deflist:
+
+
+semantic:
+table:
+   name    type   level    offset  funarg   oname
+      a int_array       0     -48        
+
+table:
+   name    type   level    offset  funarg   oname
+      a int_array       0     -48        
+    res     int       0     -52        
+
+table:
+   name    type   level    offset  funarg   oname
+      a int_array       0     -48        
+    res     int       0     -52        
+   main    func       0           int()
+
+table:
+   name    type   level    offset  funarg   oname
+      a int_array       0     -48        
+    res     int       0     -52        
+   main    func       0           int()
+      i     int       1     -12        
+
+table:
+   name    type   level    offset  funarg   oname
+      a int_array       0     -48        
+    res     int       0     -52        
+   main    func       0           int()
+      i     int       1     -12        
+  $tmp1     int       1     -16        
+
+table:
+   name    type   level    offset  funarg   oname
+      a int_array       0     -48        
+    res     int       0     -52        
+   main    func       0           int()
+      i     int       1     -12        
+  $tmp1     int       1     -16        
+  $tmp2     int       1     -20        
+
+table:
+   name    type   level    offset  funarg   oname
+      a int_array       0     -48        
+    res     int       0     -52        
+   main    func       0           int()
+      i     int       1     -12        
+  $tmp1     int       1     -16        
+  $tmp2     int       1     -20        
+  $tmp3     int       2     -24        
+
+table:
+   name    type   level    offset  funarg   oname
+      a int_array       0     -48        
+    res     int       0     -52        
+   main    func       0           int()
+      i     int       1     -12        
+  $tmp1     int       1     -16        
+  $tmp2     int       1     -20        
+
+table:
+   name    type   level    offset  funarg   oname
+      a int_array       0     -48        
+    res     int       0     -52        
+   main    func       0           int()
+      i     int       1     -12        
+  $tmp1     int       1     -16        
+  $tmp2     int       1     -20        
+  $tmp4     int       1     -24        
+
+table:
+   name    type   level    offset  funarg   oname
+      a int_array       0     -48        
+    res     int       0     -52        
+   main    func       0           int()
+      i     int       1     -12        
+  $tmp1     int       1     -16        
+  $tmp2     int       1     -20        
+  $tmp4     int       1     -24        
+  $tmp5     int       1     -28        
+
+table:
+   name    type   level    offset  funarg   oname
+      a int_array       0     -48        
+    res     int       0     -52        
+   main    func       0           int()
+      i     int       1     -12        
+  $tmp1     int       1     -16        
+  $tmp2     int       1     -20        
+  $tmp4     int       1     -24        
+  $tmp5     int       1     -28        
+  $tmp6     int       1     -32        
+
+table:
+   name    type   level    offset  funarg   oname
+      a int_array       0     -48        
+    res     int       0     -52        
+   main    func       0           int()
+      i     int       1     -12        
+  $tmp1     int       1     -16        
+  $tmp2     int       1     -20        
+  $tmp4     int       1     -24        
+  $tmp5     int       1     -28        
+  $tmp6     int       1     -32        
+  $tmp7     int       1     -36        
+
+table:
+   name    type   level    offset  funarg   oname
+      a int_array       0     -48        
+    res     int       0     -52        
+   main    func       0           int()
+      i     int       1     -12        
+  $tmp1     int       1     -16        
+  $tmp2     int       1     -20        
+  $tmp4     int       1     -24        
+  $tmp5     int       1     -28        
+  $tmp6     int       1     -32        
+  $tmp7     int       1     -36        
+  $tmp8     int       1     -40        
+
+table:
+   name    type   level    offset  funarg   oname
+      a int_array       0     -48        
+    res     int       0     -52        
+   main    func       0           int()
+
+table:
+   name    type   level    offset  funarg   oname
+
+
+semantic analyse passed
+
+
+code:
+.text
+j main
+
+.data
+a: .space 40
+.data
+res: .word 0
+
+.text
+main:
+addiu $sp, $sp, -40
+sw $ra, 36($sp)
+sw $fp, 32($sp)
+addiu $fp, $sp, 40
+addiu $t0, $0, 0
+sw $t0, -16($fp)
+lw $t0, -16($fp)
+sw $t0, -12($fp)
+label5:
+addiu $t0, $0, 10
+sw $t0, -20($fp)
+lw $t0, -12($fp)
+lw $t1, -20($fp)
+blt $t0, $t1, label4
+j label3
+label4:
+la $t0, a
+lw $t1, -12($fp)
+sll $t1, $t1, 2
+add $t0, $t0, $t1
+sw $t0, -24($fp)
+lw $t0, -12($fp)
+lw $t1, -24($fp)
+sw $t0, 0($t1)
+label7:
+lw $t0, -12($fp)
+addiu $t0, $t0, 1
+sw $t0, -12($fp)
+j label5
+label3:
+addiu $t0, $0, 0
+sw $t0, -24($fp)
+lw $t0, -24($fp)
+sw $t0, -12($fp)
+label10:
+addiu $t0, $0, 10
+sw $t0, -28($fp)
+lw $t0, -12($fp)
+lw $t1, -28($fp)
+blt $t0, $t1, label9
+j label8
+label9:
+la $t0, res
+sw $t0, -32($fp)
+la $t0, a
+lw $t1, -12($fp)
+sll $t1, $t1, 2
+add $t0, $t0, $t1
+sw $t0, -36($fp)
+lw $t0, -36($fp)
+lw $t0, 0($t0)
+lw $t1, -32($fp)
+lw $t2, 0($t1)
+add $t0, $t2, $t0
+sw $t0, 0($t1)
+lw $t0, -12($fp)
+addiu $t0, $t0, 1
+sw $t0, -12($fp)
+j label10
+label8:
+addiu $t0, $0, 0
+sw $t0, -40($fp)
+lw $v1, -40($fp)
+j label1
+label11:
+label1:
+lw $fp, 32($sp)
+lw $ra, 36($sp)
+addiu $sp, $sp, 40
+jr $ra

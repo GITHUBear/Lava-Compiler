@@ -466,6 +466,9 @@ semantic analyse passed
 
 
 code:
+.text
+j main
+
 .data
 res: .space 40
 
