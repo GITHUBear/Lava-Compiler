@@ -74,6 +74,23 @@ lex:
 (SEPERATOR):[;]
 (SEPERATOR):[}]
 (KEYWORD):[int]
+(ID):[max3]
+(SEPERATOR):[(]
+(KEYWORD):[int]
+(ID):[a]
+(SEPERATOR):[,]
+(KEYWORD):[int]
+(ID):[b]
+(SEPERATOR):[,]
+(KEYWORD):[int]
+(ID):[c]
+(SEPERATOR):[)]
+(SEPERATOR):[{]
+(KEYWORD):[return]
+(ID):[a]
+(SEPERATOR):[;]
+(SEPERATOR):[}]
+(KEYWORD):[int]
 (ID):[main]
 (SEPERATOR):[(]
 (SEPERATOR):[)]
@@ -176,10 +193,6 @@ lex:
 (SEPERATOR):[)]
 (KEYWORD):[return]
 (INUM):[1]
-(SEPERATOR):[;]
-(KEYWORD):[else]
-(KEYWORD):[return]
-(FNUM):[0.000000]
 (SEPERATOR):[;]
 (SEPERATOR):[}]
 
@@ -305,178 +318,202 @@ program:
                                     'int':
                                 def:
                                     fundef:
-                                        ID:  [main]
-                                    compstmt:
-                                        innerdeflist:
-                                            innerdef:
+                                        ID:  [max3]
+                                        args:
+                                            param:
                                                 tp:
                                                     'int':
-                                                innerdeclist:
-                                                    innerdec:
-                                                        ID:  [res2]
-                                                        OPERATER:  (ASSIGN_OP, =)
-                                                        exp:
-                                                            ID:  [c]
-                                                            exp:
-                                                                exp:
-                                                                    ID:  [a]
-                                                                    exp:
-                                                                        exp:
-                                                                            INTEGER:  [1]
-                                                                        exp:
-                                                                            INTEGER:  [2]
-                                                                OPERATER:  (ARITH_OP, +)
-                                                                exp:
-                                                                    INTEGER:  [1]
+                                                ID:  [a]
+                                            args:
+                                                param:
+                                                    tp:
+                                                        'int':
+                                                    ID:  [b]
+                                                args:
+                                                    param:
+                                                        tp:
+                                                            'int':
+                                                        ID:  [c]
+                                    compstmt:
+                                        innerdeflist:
+                                        stmtlist:
+                                            stmt:
+                                                'return':
+                                                exp:
+                                                    ID:  [a]
+                                            stmtlist:
+                                deflist:
+                                    tp:
+                                        'int':
+                                    def:
+                                        fundef:
+                                            ID:  [main]
+                                        compstmt:
                                             innerdeflist:
                                                 innerdef:
                                                     tp:
                                                         'int':
                                                     innerdeclist:
                                                         innerdec:
-                                                            ID:  [i]
-                                                innerdeflist:
-                                        stmtlist:
-                                            stmt:
-                                                compstmt:
-                                                    innerdeflist:
-                                                        innerdef:
-                                                            tp:
-                                                                'int':
-                                                            innerdeclist:
-                                                                innerdec:
-                                                                    ID:  [inner]
-                                                                    OPERATER:  (ASSIGN_OP, =)
+                                                            ID:  [res2]
+                                                            OPERATER:  (ASSIGN_OP, =)
+                                                            exp:
+                                                                ID:  [c]
+                                                                exp:
+                                                                    exp:
+                                                                        ID:  [a]
+                                                                        exp:
+                                                                            exp:
+                                                                                INTEGER:  [1]
+                                                                            exp:
+                                                                                INTEGER:  [2]
+                                                                    OPERATER:  (ARITH_OP, +)
                                                                     exp:
                                                                         INTEGER:  [1]
+                                                innerdeflist:
+                                                    innerdef:
+                                                        tp:
+                                                            'int':
+                                                        innerdeclist:
+                                                            innerdec:
+                                                                ID:  [i]
+                                                    innerdeflist:
+                                            stmtlist:
+                                                stmt:
+                                                    compstmt:
                                                         innerdeflist:
                                                             innerdef:
                                                                 tp:
-                                                                    'float':
+                                                                    'int':
                                                                 innerdeclist:
                                                                     innerdec:
-                                                                        ID:  [finner]
+                                                                        ID:  [inner]
                                                                         OPERATER:  (ASSIGN_OP, =)
                                                                         exp:
-                                                                            FLOAT:  [1.000000]
+                                                                            INTEGER:  [1]
                                                             innerdeflist:
-                                                    stmtlist:
-                                                        stmt:
-                                                            compstmt:
+                                                                innerdef:
+                                                                    tp:
+                                                                        'float':
+                                                                    innerdeclist:
+                                                                        innerdec:
+                                                                            ID:  [finner]
+                                                                            OPERATER:  (ASSIGN_OP, =)
+                                                                            exp:
+                                                                                FLOAT:  [1.000000]
                                                                 innerdeflist:
-                                                                    innerdef:
-                                                                        tp:
-                                                                            'int':
-                                                                        innerdeclist:
-                                                                            innerdec:
-                                                                                ID:  [inner]
-                                                                                OPERATER:  (ASSIGN_OP, =)
-                                                                                exp:
-                                                                                    INTEGER:  [2]
+                                                        stmtlist:
+                                                            stmt:
+                                                                compstmt:
                                                                     innerdeflist:
                                                                         innerdef:
                                                                             tp:
                                                                                 'int':
                                                                             innerdeclist:
                                                                                 innerdec:
-                                                                                    ID:  [inner2]
+                                                                                    ID:  [inner]
                                                                                     OPERATER:  (ASSIGN_OP, =)
                                                                                     exp:
-                                                                                        INTEGER:  [3]
+                                                                                        INTEGER:  [2]
                                                                         innerdeflist:
+                                                                            innerdef:
+                                                                                tp:
+                                                                                    'int':
+                                                                                innerdeclist:
+                                                                                    innerdec:
+                                                                                        ID:  [inner2]
+                                                                                        OPERATER:  (ASSIGN_OP, =)
+                                                                                        exp:
+                                                                                            INTEGER:  [3]
+                                                                            innerdeflist:
+                                                                    stmtlist:
+                                                            stmtlist:
+                                                                stmt:
+                                                                    'if':
+                                                                    exp:
+                                                                        exp:
+                                                                            ID:  [res2]
+                                                                        OPERATER:  (RELAT_OP, >)
+                                                                        exp:
+                                                                            ID:  [inner]
+                                                                    stmt:
+                                                                        compstmt:
+                                                                            innerdeflist:
+                                                                            stmtlist:
                                                                 stmtlist:
-                                                        stmtlist:
-                                                            stmt:
-                                                                'if':
-                                                                exp:
-                                                                    exp:
-                                                                        ID:  [res2]
-                                                                    OPERATER:  (RELAT_OP, >)
-                                                                    exp:
-                                                                        ID:  [inner]
-                                                                stmt:
-                                                                    compstmt:
-                                                                        innerdeflist:
-                                                                        stmtlist:
-                                                            stmtlist:
-                                            stmtlist:
-                                                stmt:
-                                                    'for':
-                                                    initlist:
-                                                        init:
-                                                            ID:  [i]
-                                                            OPERATER:  (ASSIGN_OP, =)
-                                                            exp:
-                                                                INTEGER:  [0]
-                                                    exp:
-                                                        exp:
-                                                            ID:  [i]
-                                                        OPERATER:  (RELAT_OP, <=)
-                                                        exp:
-                                                            INTEGER:  [9]
-                                                    steplist:
-                                                        step:
-                                                            ID:  [i]
-                                                            OPERATER:  (UNARY_OP, ++)
+                                                stmtlist:
                                                     stmt:
-                                                        compstmt:
-                                                            innerdeflist:
-                                                            stmtlist:
-                                                                stmt:
-                                                                    exp:
-                                                                        exp:
-                                                                            ID:  [barray]
-                                                                            exp:
-                                                                                ID:  [i]
-                                                                        OPERATER:  (ASSIGN_OP, =)
-                                                                        exp:
-                                                                            ID:  [i]
+                                                        'for':
+                                                        initlist:
+                                                            init:
+                                                                ID:  [i]
+                                                                OPERATER:  (ASSIGN_OP, =)
+                                                                exp:
+                                                                    INTEGER:  [0]
+                                                        exp:
+                                                            exp:
+                                                                ID:  [i]
+                                                            OPERATER:  (RELAT_OP, <=)
+                                                            exp:
+                                                                INTEGER:  [9]
+                                                        steplist:
+                                                            step:
+                                                                ID:  [i]
+                                                                OPERATER:  (UNARY_OP, ++)
+                                                        stmt:
+                                                            compstmt:
+                                                                innerdeflist:
                                                                 stmtlist:
                                                                     stmt:
-                                                                        'if':
                                                                         exp:
                                                                             exp:
                                                                                 ID:  [barray]
                                                                                 exp:
                                                                                     ID:  [i]
-                                                                            OPERATER:  (RELAT_OP, >)
+                                                                            OPERATER:  (ASSIGN_OP, =)
                                                                             exp:
-                                                                                INTEGER:  [4]
-                                                                        stmt:
-                                                                            compstmt:
-                                                                                innerdeflist:
-                                                                                stmtlist:
-                                                                                    stmt:
-                                                                                        exp:
-                                                                                            exp:
-                                                                                                ID:  [barray]
-                                                                                                exp:
-                                                                                                    ID:  [i]
-                                                                                            OPERATER:  (MIXASSIGN_OP, -=)
-                                                                                            exp:
-                                                                                                INTEGER:  [2]
-                                                                                    stmtlist:
+                                                                                ID:  [i]
                                                                     stmtlist:
-                                                stmtlist:
-                                                    stmt:
-                                                        'if':
-                                                        exp:
-                                                            exp:
-                                                                ID:  [res2]
-                                                            OPERATER:  (RELAT_OP, >)
-                                                            exp:
-                                                                ID:  [i]
-                                                        stmt:
-                                                            'return':
-                                                            exp:
-                                                                INTEGER:  [1]
-                                                        'else':
-                                                        stmt:
-                                                            'return':
-                                                            exp:
-                                                                FLOAT:  [0.000000]
+                                                                        stmt:
+                                                                            'if':
+                                                                            exp:
+                                                                                exp:
+                                                                                    ID:  [barray]
+                                                                                    exp:
+                                                                                        ID:  [i]
+                                                                                OPERATER:  (RELAT_OP, >)
+                                                                                exp:
+                                                                                    INTEGER:  [4]
+                                                                            stmt:
+                                                                                compstmt:
+                                                                                    innerdeflist:
+                                                                                    stmtlist:
+                                                                                        stmt:
+                                                                                            exp:
+                                                                                                exp:
+                                                                                                    ID:  [barray]
+                                                                                                    exp:
+                                                                                                        ID:  [i]
+                                                                                                OPERATER:  (MIXASSIGN_OP, -=)
+                                                                                                exp:
+                                                                                                    INTEGER:  [2]
+                                                                                        stmtlist:
+                                                                        stmtlist:
                                                     stmtlist:
-                                deflist:
+                                                        stmt:
+                                                            'if':
+                                                            exp:
+                                                                exp:
+                                                                    ID:  [res2]
+                                                                OPERATER:  (RELAT_OP, >)
+                                                                exp:
+                                                                    ID:  [i]
+                                                            stmt:
+                                                                'return':
+                                                                exp:
+                                                                    INTEGER:  [1]
+                                                        stmtlist:
+                                    deflist:
 
 
 semantic:
@@ -655,664 +692,5 @@ table:
    max3    func       0           int(int, int, int, )
       c    func       0           int(int, )
 
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
-
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp10     int       1     -24        
-
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp10     int       1     -24        
- $tmp11     int       1     -28        
-
-after pop
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp10     int       1     -24        
-
-after pop
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
-
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp12     int       1     -24        
-
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp12     int       1     -24        
- $tmp13     int       1     -28        
-
-after pop
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp12     int       1     -24        
-
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp12     int       1     -24        
-      i     int       1     -28        
-
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp12     int       1     -24        
-      i     int       1     -28        
-  inner     int       2     -32        
-
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp12     int       1     -24        
-      i     int       1     -28        
-  inner     int       2     -32        
- $tmp14     int       2     -36        
-
-after pop
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp12     int       1     -24        
-      i     int       1     -28        
-  inner     int       2     -32        
-
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp12     int       1     -24        
-      i     int       1     -28        
-  inner     int       2     -32        
- finner   float       2     -36        
-
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp12     int       1     -24        
-      i     int       1     -28        
-  inner     int       2     -32        
- finner   float       2     -36        
- $tmp15   float       2     -40        
-
-after pop
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp12     int       1     -24        
-      i     int       1     -28        
-  inner     int       2     -32        
- finner   float       2     -36        
-
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp12     int       1     -24        
-      i     int       1     -28        
-  inner     int       2     -32        
- finner   float       2     -36        
-  inner     int       3     -40         $tmp16
-
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp12     int       1     -24        
-      i     int       1     -28        
-  inner     int       2     -32        
- finner   float       2     -36        
-  inner     int       3     -40         $tmp16
- $tmp17     int       3     -44        
-
-after pop
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp12     int       1     -24        
-      i     int       1     -28        
-  inner     int       2     -32        
- finner   float       2     -36        
-  inner     int       3     -40         $tmp16
-
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp12     int       1     -24        
-      i     int       1     -28        
-  inner     int       2     -32        
- finner   float       2     -36        
-  inner     int       3     -40         $tmp16
- inner2     int       3     -44        
-
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp12     int       1     -24        
-      i     int       1     -28        
-  inner     int       2     -32        
- finner   float       2     -36        
-  inner     int       3     -40         $tmp16
- inner2     int       3     -44        
- $tmp18     int       3     -48        
-
-after pop
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp12     int       1     -24        
-      i     int       1     -28        
-  inner     int       2     -32        
- finner   float       2     -36        
-  inner     int       3     -40         $tmp16
- inner2     int       3     -44        
-
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp12     int       1     -24        
-      i     int       1     -28        
-  inner     int       2     -32        
- finner   float       2     -36        
-
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp12     int       1     -24        
-      i     int       1     -28        
-  inner     int       2     -32        
- finner   float       2     -36        
-
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp12     int       1     -24        
-      i     int       1     -28        
-
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp12     int       1     -24        
-      i     int       1     -28        
- $tmp19     int       1     -32        
-
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp12     int       1     -24        
-      i     int       1     -28        
- $tmp19     int       1     -32        
- $tmp20     int       1     -36        
-
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp12     int       1     -24        
-      i     int       1     -28        
- $tmp19     int       1     -32        
- $tmp20     int       1     -36        
- $tmp21     int       2     -40        
-
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp12     int       1     -24        
-      i     int       1     -28        
- $tmp19     int       1     -32        
- $tmp20     int       1     -36        
- $tmp21     int       2     -40        
- $tmp22     int       2     -44        
-
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp12     int       1     -24        
-      i     int       1     -28        
- $tmp19     int       1     -32        
- $tmp20     int       1     -36        
- $tmp21     int       2     -40        
- $tmp22     int       2     -44        
- $tmp23     int       2     -48        
-
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp12     int       1     -24        
-      i     int       1     -28        
- $tmp19     int       1     -32        
- $tmp20     int       1     -36        
- $tmp21     int       2     -40        
- $tmp22     int       2     -44        
- $tmp23     int       2     -48        
- $tmp24     int       3     -52        
-
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp12     int       1     -24        
-      i     int       1     -28        
- $tmp19     int       1     -32        
- $tmp20     int       1     -36        
- $tmp21     int       2     -40        
- $tmp22     int       2     -44        
- $tmp23     int       2     -48        
- $tmp24     int       3     -52        
- $tmp25     int       3     -56        
-
-after pop
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp12     int       1     -24        
-      i     int       1     -28        
- $tmp19     int       1     -32        
- $tmp20     int       1     -36        
- $tmp21     int       2     -40        
- $tmp22     int       2     -44        
- $tmp23     int       2     -48        
- $tmp24     int       3     -52        
-
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp12     int       1     -24        
-      i     int       1     -28        
- $tmp19     int       1     -32        
- $tmp20     int       1     -36        
- $tmp21     int       2     -40        
- $tmp22     int       2     -44        
- $tmp23     int       2     -48        
-
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp12     int       1     -24        
-      i     int       1     -28        
- $tmp19     int       1     -32        
- $tmp20     int       1     -36        
-
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp12     int       1     -24        
-      i     int       1     -28        
- $tmp19     int       1     -32        
- $tmp20     int       1     -36        
- $tmp26     int       1     -40        
-
-table:
-   name    type   level    offset  funarg   oname
-      b     int       0     -12        
- barray int_array       0     -52        
- global     int       0     -56        
-      a    func       0           int(int, int, )
-   max3    func       0           int(int, int, int, )
-      c    func       0           int(int, )
-   main    func       0           int()
-   res2     int       1     -12        
-  $tmp8     int       1     -16        
-  $tmp9     int       1     -20        
- $tmp12     int       1     -24        
-      i     int       1     -28        
- $tmp19     int       1     -32        
- $tmp20     int       1     -36        
- $tmp26     int       1     -40        
- $tmp27   float       1     -44        
-
-semantic_err: can't deal with 'stmt'
-reason: statments return type conflict
+semantic_err: can't deal with ID:  [max3]
+reason: function name conflicts with global var or function

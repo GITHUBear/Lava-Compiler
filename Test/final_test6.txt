@@ -1,0 +1,12 @@
+int[10] res;
+
+int getOdd(int x){
+    return 2 * x + 1;
+}
+
+int main(){
+    int i;
+    for(i = 0; i * 2 <= 9; i++)
+        res[i * 2] = getOdd(i);
+    return 0;
+}

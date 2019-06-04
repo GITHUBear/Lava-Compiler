@@ -1,0 +1,18 @@
+int[10] res;
+
+int main(){
+    int i, j;
+    res[1] = 1;
+    res[2] = 1;
+    for(i = 3; i <= 9; i++){
+        int tmp = 0, j = 0;
+        while(i > j){
+            tmp += res[j];
+            j++;
+        }
+        //for(j = 1; j < i; j++)
+        //    tmp += res[j];
+        res[i] = tmp;
+    }
+    return 0;
+}

@@ -242,12 +242,12 @@ void newZone(int opt){
 void quitZone(){
     level--;
     tptr = tptrStk[tptrStkTop--];
-    offset = table[tptr].offset;
+    offset = table[tptr].offset >= 0 ? DX : table[tptr].offset;
 }
 
 void popOne(){
     tptr--;
-    offset = table[tptr].offset;
+    offset = table[tptr].offset >= 0 ? DX : table[tptr].offset;
 }
 
 void dfs(Sentence* node){
@@ -1583,10 +1583,10 @@ int main()
 {
     // FILE* f = fopen("./Test/SEM_TEST1.txt", "r");
     // freopen("./TestRes/SEMTEST1_RES.txt", "w", stdout);
-    FILE* f = fopen("./sem_test.c", "r");
-    freopen("./TestRes/SEM_TEST.txt", "w", stdout);
-    // FILE* f = fopen("./Test/final_test3.txt", "r");
-    // freopen("./TestRes/final_res3.txt", "w", stdout);
+    // FILE* f = fopen("./sem_test.c", "r");
+    // freopen("./TestRes/SEM_TEST.txt", "w", stdout);
+    FILE* f = fopen("./Test/final_test4.txt", "r");
+    freopen("./TestRes/final_res4.txt", "w", stdout);
     printf("lex:\n");
     lex_part(f);
     printf("\n\nsyntax:\n");

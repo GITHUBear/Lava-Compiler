@@ -1,0 +1,633 @@
+lex:
+(KEYWORD):[int]
+(SEPERATOR):[[]
+(INUM):[10]
+(SEPERATOR):[]]
+(ID):[res]
+(SEPERATOR):[;]
+(KEYWORD):[int]
+(ID):[main]
+(SEPERATOR):[(]
+(SEPERATOR):[)]
+(SEPERATOR):[{]
+(KEYWORD):[int]
+(ID):[i]
+(SEPERATOR):[,]
+(ID):[j]
+(SEPERATOR):[;]
+(ID):[res]
+(SEPERATOR):[[]
+(INUM):[1]
+(SEPERATOR):[]]
+(OPERATOR):[ASSIGN_OP, 57]
+(INUM):[1]
+(SEPERATOR):[;]
+(ID):[res]
+(SEPERATOR):[[]
+(INUM):[2]
+(SEPERATOR):[]]
+(OPERATOR):[ASSIGN_OP, 57]
+(INUM):[1]
+(SEPERATOR):[;]
+(KEYWORD):[for]
+(SEPERATOR):[(]
+(ID):[i]
+(OPERATOR):[ASSIGN_OP, 57]
+(INUM):[3]
+(SEPERATOR):[;]
+(ID):[i]
+(OPERATOR):[RELAT_OP, 44]
+(INUM):[9]
+(SEPERATOR):[;]
+(ID):[i]
+(OPERATOR):[UNARY_OP, 30]
+(SEPERATOR):[)]
+(SEPERATOR):[{]
+(KEYWORD):[int]
+(ID):[tmp]
+(OPERATOR):[ASSIGN_OP, 57]
+(INUM):[0]
+(SEPERATOR):[,]
+(ID):[j]
+(OPERATOR):[ASSIGN_OP, 57]
+(INUM):[0]
+(SEPERATOR):[;]
+(KEYWORD):[while]
+(SEPERATOR):[(]
+(ID):[i]
+(OPERATOR):[RELAT_OP, 41]
+(ID):[j]
+(SEPERATOR):[)]
+(SEPERATOR):[{]
+(ID):[tmp]
+(OPERATOR):[MIXASSIGN_OP, 52]
+(ID):[res]
+(SEPERATOR):[[]
+(ID):[j]
+(SEPERATOR):[]]
+(SEPERATOR):[;]
+(ID):[j]
+(OPERATOR):[UNARY_OP, 30]
+(SEPERATOR):[;]
+(SEPERATOR):[}]
+(ID):[res]
+(SEPERATOR):[[]
+(ID):[i]
+(SEPERATOR):[]]
+(OPERATOR):[ASSIGN_OP, 57]
+(ID):[tmp]
+(SEPERATOR):[;]
+(SEPERATOR):[}]
+(KEYWORD):[return]
+(INUM):[0]
+(SEPERATOR):[;]
+(SEPERATOR):[}]
+
+
+syntax:
+program:
+    deflist:
+        tp:
+            'int':
+            INTEGER:  [10]
+        def:
+            vallist:
+                ID:  [res]
+        deflist:
+            tp:
+                'int':
+            def:
+                fundef:
+                    ID:  [main]
+                compstmt:
+                    innerdeflist:
+                        innerdef:
+                            tp:
+                                'int':
+                            innerdeclist:
+                                innerdec:
+                                    ID:  [i]
+                                innerdeclist:
+                                    innerdec:
+                                        ID:  [j]
+                        innerdeflist:
+                    stmtlist:
+                        stmt:
+                            exp:
+                                exp:
+                                    ID:  [res]
+                                    exp:
+                                        INTEGER:  [1]
+                                OPERATER:  (ASSIGN_OP, =)
+                                exp:
+                                    INTEGER:  [1]
+                        stmtlist:
+                            stmt:
+                                exp:
+                                    exp:
+                                        ID:  [res]
+                                        exp:
+                                            INTEGER:  [2]
+                                    OPERATER:  (ASSIGN_OP, =)
+                                    exp:
+                                        INTEGER:  [1]
+                            stmtlist:
+                                stmt:
+                                    'for':
+                                    initlist:
+                                        init:
+                                            ID:  [i]
+                                            OPERATER:  (ASSIGN_OP, =)
+                                            exp:
+                                                INTEGER:  [3]
+                                    exp:
+                                        exp:
+                                            ID:  [i]
+                                        OPERATER:  (RELAT_OP, <=)
+                                        exp:
+                                            INTEGER:  [9]
+                                    steplist:
+                                        step:
+                                            ID:  [i]
+                                            OPERATER:  (UNARY_OP, ++)
+                                    stmt:
+                                        compstmt:
+                                            innerdeflist:
+                                                innerdef:
+                                                    tp:
+                                                        'int':
+                                                    innerdeclist:
+                                                        innerdec:
+                                                            ID:  [tmp]
+                                                            OPERATER:  (ASSIGN_OP, =)
+                                                            exp:
+                                                                INTEGER:  [0]
+                                                        innerdeclist:
+                                                            innerdec:
+                                                                ID:  [j]
+                                                                OPERATER:  (ASSIGN_OP, =)
+                                                                exp:
+                                                                    INTEGER:  [0]
+                                                innerdeflist:
+                                            stmtlist:
+                                                stmt:
+                                                    'while':
+                                                    exp:
+                                                        exp:
+                                                            ID:  [i]
+                                                        OPERATER:  (RELAT_OP, >)
+                                                        exp:
+                                                            ID:  [j]
+                                                    stmt:
+                                                        compstmt:
+                                                            innerdeflist:
+                                                            stmtlist:
+                                                                stmt:
+                                                                    exp:
+                                                                        exp:
+                                                                            ID:  [tmp]
+                                                                        OPERATER:  (MIXASSIGN_OP, +=)
+                                                                        exp:
+                                                                            ID:  [res]
+                                                                            exp:
+                                                                                ID:  [j]
+                                                                stmtlist:
+                                                                    stmt:
+                                                                        exp:
+                                                                            exp:
+                                                                                ID:  [j]
+                                                                            OPERATER:  (UNARY_OP, ++)
+                                                                    stmtlist:
+                                                stmtlist:
+                                                    stmt:
+                                                        exp:
+                                                            exp:
+                                                                ID:  [res]
+                                                                exp:
+                                                                    ID:  [i]
+                                                            OPERATER:  (ASSIGN_OP, =)
+                                                            exp:
+                                                                ID:  [tmp]
+                                                    stmtlist:
+                                stmtlist:
+                                    stmt:
+                                        'return':
+                                        exp:
+                                            INTEGER:  [0]
+                                    stmtlist:
+            deflist:
+
+
+semantic:
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+   main    func       0           int()
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+   main    func       0           int()
+      i     int       1     -12        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+   main    func       0           int()
+      i     int       1     -12        
+      j     int       1     -16        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+   main    func       0           int()
+      i     int       1     -12        
+      j     int       1     -16        
+  $tmp1     int       1     -20        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+   main    func       0           int()
+      i     int       1     -12        
+      j     int       1     -16        
+  $tmp1     int       1     -20        
+  $tmp2     int       1     -24        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+   main    func       0           int()
+      i     int       1     -12        
+      j     int       1     -16        
+  $tmp1     int       1     -20        
+  $tmp2     int       1     -24        
+  $tmp3     int       1     -28        
+
+after pop
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+   main    func       0           int()
+      i     int       1     -12        
+      j     int       1     -16        
+  $tmp1     int       1     -20        
+  $tmp2     int       1     -24        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+   main    func       0           int()
+      i     int       1     -12        
+      j     int       1     -16        
+  $tmp1     int       1     -20        
+  $tmp2     int       1     -24        
+  $tmp4     int       1     -28        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+   main    func       0           int()
+      i     int       1     -12        
+      j     int       1     -16        
+  $tmp1     int       1     -20        
+  $tmp2     int       1     -24        
+  $tmp4     int       1     -28        
+  $tmp5     int       1     -32        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+   main    func       0           int()
+      i     int       1     -12        
+      j     int       1     -16        
+  $tmp1     int       1     -20        
+  $tmp2     int       1     -24        
+  $tmp4     int       1     -28        
+  $tmp5     int       1     -32        
+  $tmp6     int       1     -36        
+
+after pop
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+   main    func       0           int()
+      i     int       1     -12        
+      j     int       1     -16        
+  $tmp1     int       1     -20        
+  $tmp2     int       1     -24        
+  $tmp4     int       1     -28        
+  $tmp5     int       1     -32        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+   main    func       0           int()
+      i     int       1     -12        
+      j     int       1     -16        
+  $tmp1     int       1     -20        
+  $tmp2     int       1     -24        
+  $tmp4     int       1     -28        
+  $tmp5     int       1     -32        
+  $tmp7     int       1     -36        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+   main    func       0           int()
+      i     int       1     -12        
+      j     int       1     -16        
+  $tmp1     int       1     -20        
+  $tmp2     int       1     -24        
+  $tmp4     int       1     -28        
+  $tmp5     int       1     -32        
+  $tmp7     int       1     -36        
+  $tmp8     int       1     -40        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+   main    func       0           int()
+      i     int       1     -12        
+      j     int       1     -16        
+  $tmp1     int       1     -20        
+  $tmp2     int       1     -24        
+  $tmp4     int       1     -28        
+  $tmp5     int       1     -32        
+  $tmp7     int       1     -36        
+  $tmp8     int       1     -40        
+    tmp     int       2     -44        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+   main    func       0           int()
+      i     int       1     -12        
+      j     int       1     -16        
+  $tmp1     int       1     -20        
+  $tmp2     int       1     -24        
+  $tmp4     int       1     -28        
+  $tmp5     int       1     -32        
+  $tmp7     int       1     -36        
+  $tmp8     int       1     -40        
+    tmp     int       2     -44        
+  $tmp9     int       2     -48        
+
+after pop
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+   main    func       0           int()
+      i     int       1     -12        
+      j     int       1     -16        
+  $tmp1     int       1     -20        
+  $tmp2     int       1     -24        
+  $tmp4     int       1     -28        
+  $tmp5     int       1     -32        
+  $tmp7     int       1     -36        
+  $tmp8     int       1     -40        
+    tmp     int       2     -44        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+   main    func       0           int()
+      i     int       1     -12        
+      j     int       1     -16        
+  $tmp1     int       1     -20        
+  $tmp2     int       1     -24        
+  $tmp4     int       1     -28        
+  $tmp5     int       1     -32        
+  $tmp7     int       1     -36        
+  $tmp8     int       1     -40        
+    tmp     int       2     -44        
+      j     int       2     -48         $tmp10
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+   main    func       0           int()
+      i     int       1     -12        
+      j     int       1     -16        
+  $tmp1     int       1     -20        
+  $tmp2     int       1     -24        
+  $tmp4     int       1     -28        
+  $tmp5     int       1     -32        
+  $tmp7     int       1     -36        
+  $tmp8     int       1     -40        
+    tmp     int       2     -44        
+      j     int       2     -48         $tmp10
+ $tmp11     int       2     -52        
+
+after pop
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+   main    func       0           int()
+      i     int       1     -12        
+      j     int       1     -16        
+  $tmp1     int       1     -20        
+  $tmp2     int       1     -24        
+  $tmp4     int       1     -28        
+  $tmp5     int       1     -32        
+  $tmp7     int       1     -36        
+  $tmp8     int       1     -40        
+    tmp     int       2     -44        
+      j     int       2     -48         $tmp10
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+   main    func       0           int()
+      i     int       1     -12        
+      j     int       1     -16        
+  $tmp1     int       1     -20        
+  $tmp2     int       1     -24        
+  $tmp4     int       1     -28        
+  $tmp5     int       1     -32        
+  $tmp7     int       1     -36        
+  $tmp8     int       1     -40        
+    tmp     int       2     -44        
+      j     int       2     -48         $tmp10
+ $tmp12     int       3     -52        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+   main    func       0           int()
+      i     int       1     -12        
+      j     int       1     -16        
+  $tmp1     int       1     -20        
+  $tmp2     int       1     -24        
+  $tmp4     int       1     -28        
+  $tmp5     int       1     -32        
+  $tmp7     int       1     -36        
+  $tmp8     int       1     -40        
+    tmp     int       2     -44        
+      j     int       2     -48         $tmp10
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+   main    func       0           int()
+      i     int       1     -12        
+      j     int       1     -16        
+  $tmp1     int       1     -20        
+  $tmp2     int       1     -24        
+  $tmp4     int       1     -28        
+  $tmp5     int       1     -32        
+  $tmp7     int       1     -36        
+  $tmp8     int       1     -40        
+    tmp     int       2     -44        
+      j     int       2     -48         $tmp10
+ $tmp13     int       2     -52        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+   main    func       0           int()
+      i     int       1     -12        
+      j     int       1     -16        
+  $tmp1     int       1     -20        
+  $tmp2     int       1     -24        
+  $tmp4     int       1     -28        
+  $tmp5     int       1     -32        
+  $tmp7     int       1     -36        
+  $tmp8     int       1     -40        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+   main    func       0           int()
+      i     int       1     -12        
+      j     int       1     -16        
+  $tmp1     int       1     -20        
+  $tmp2     int       1     -24        
+  $tmp4     int       1     -28        
+  $tmp5     int       1     -32        
+  $tmp7     int       1     -36        
+  $tmp8     int       1     -40        
+ $tmp14     int       1     -44        
+
+table:
+   name    type   level    offset  funarg   oname
+    res int_array       0     -48        
+   main    func       0           int()
+
+table:
+   name    type   level    offset  funarg   oname
+
+
+semantic analyse passed
+
+
+code:
+.text
+j main
+
+.data
+res: .space 40
+
+.text
+main:
+addiu $sp, $sp, -52
+sw $ra, 48($sp)
+sw $fp, 44($sp)
+addiu $fp, $sp, 52
+addiu $t0, $0, 1
+sw $t0, -20($fp)
+la $t0, res
+lw $t1, -20($fp)
+sll $t1, $t1, 2
+add $t0, $t0, $t1
+sw $t0, -24($fp)
+addiu $t0, $0, 1
+sw $t0, -28($fp)
+lw $t0, -28($fp)
+lw $t1, -24($fp)
+sw $t0, 0($t1)
+label3:
+addiu $t0, $0, 2
+sw $t0, -28($fp)
+la $t0, res
+lw $t1, -28($fp)
+sll $t1, $t1, 2
+add $t0, $t0, $t1
+sw $t0, -32($fp)
+addiu $t0, $0, 1
+sw $t0, -36($fp)
+lw $t0, -36($fp)
+lw $t1, -32($fp)
+sw $t0, 0($t1)
+label4:
+addiu $t0, $0, 3
+sw $t0, -36($fp)
+lw $t0, -36($fp)
+sw $t0, -12($fp)
+label7:
+addiu $t0, $0, 9
+sw $t0, -40($fp)
+lw $t0, -12($fp)
+lw $t1, -40($fp)
+ble $t0, $t1, label6
+j label5
+label6:
+addiu $t0, $0, 0
+sw $t0, -48($fp)
+lw $t0, -48($fp)
+sw $t0, -44($fp)
+addiu $t0, $0, 0
+sw $t0, -52($fp)
+lw $t0, -52($fp)
+sw $t0, -48($fp)
+label11:
+lw $t0, -12($fp)
+lw $t1, -48($fp)
+bgt $t0, $t1, label10
+j label9
+label10:
+la $t0, res
+lw $t1, -48($fp)
+sll $t1, $t1, 2
+add $t0, $t0, $t1
+sw $t0, -52($fp)
+lw $t0, -52($fp)
+lw $t0, 0($t0)
+lw $t1, -44($fp)
+add $t0, $t1, $t0
+sw $t0, -44($fp)
+label13:
+lw $t0, -48($fp)
+addiu $t0, $t0, 1
+sw $t0, -48($fp)
+label14:
+j label11
+label9:
+la $t0, res
+lw $t1, -12($fp)
+sll $t1, $t1, 2
+add $t0, $t0, $t1
+sw $t0, -52($fp)
+lw $t0, -44($fp)
+lw $t1, -52($fp)
+sw $t0, 0($t1)
+label15:
+lw $t0, -12($fp)
+addiu $t0, $t0, 1
+sw $t0, -12($fp)
+j label7
+label5:
+addiu $t0, $0, 0
+sw $t0, -44($fp)
+lw $v1, -44($fp)
+j label1
+label16:
+label1:
+lw $fp, 44($sp)
+lw $ra, 48($sp)
+addiu $sp, $sp, 52
+jr $ra
