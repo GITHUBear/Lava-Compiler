@@ -1075,8 +1075,20 @@ void sem(Sentence* node, int rulenum, int stepnum){
                     sprintf(tmpcode, "lw $t1, 0($t1)\n");
                     addCodeBack(&(NODE(1)->link), genCode());
                 }
-                sprintf(tmpcode, "%s $t0, $t0, $t1\n", arith[rulenum - 55]);
-                addCodeBack(&(NODE(1)->link), genCode());
+                if(rulenum == 58){
+                    sprintf(tmpcode, "div $t0, $t1\n");
+                    addCodeBack(&(NODE(1)->link), genCode());
+                    sprintf(tmpcode, "mflo $t0\n");
+                    addCodeBack(&(NODE(1)->link), genCode());
+                }else if(rulenum == 59){
+                    sprintf(tmpcode, "div $t0, $t1\n");
+                    addCodeBack(&(NODE(1)->link), genCode());
+                    sprintf(tmpcode, "mfhi $t0\n");
+                    addCodeBack(&(NODE(1)->link), genCode());
+                }else{
+                    sprintf(tmpcode, "%s $t0, $t0, $t1\n", arith[rulenum - 55]);
+                    addCodeBack(&(NODE(1)->link), genCode());
+                }
                 sprintf(tmpcode, "sw $t0, %d($fp)\n", FNODE_SEM.stkPos);
                 addCodeBack(&(NODE(1)->link), genCode());
                 list_share(&(node->link), &(NODE(1)->link));
@@ -1212,7 +1224,7 @@ void sem(Sentence* node, int rulenum, int stepnum){
                 FNODE_SEM.type = SEM_UNDEF_EXP;
                 if(FNODE_SEM.argtype != NULL){
                     FNODE_SEM.argtype[++(FNODE_SEM.argnum)] = RET(NODE_SEM(2).type);
-                    node->arg[FNODE_SEM.argnum] = node;
+                    node->arg[FNODE_SEM.argnum] = NODE(2);
                 }
 
                 list_cat(&(NODE(1)->link), &(NODE(2)->link));
@@ -1585,8 +1597,8 @@ int main()
     // freopen("./TestRes/SEMTEST1_RES.txt", "w", stdout);
     // FILE* f = fopen("./sem_test.c", "r");
     // freopen("./TestRes/SEM_TEST.txt", "w", stdout);
-    FILE* f = fopen("./Test/final_test4.txt", "r");
-    freopen("./TestRes/final_res4.txt", "w", stdout);
+    FILE* f = fopen("./Test/final_test7.txt", "r");
+    freopen("./TestRes/final_res7.txt", "w", stdout);
     printf("lex:\n");
     lex_part(f);
     printf("\n\nsyntax:\n");
